@@ -10,7 +10,7 @@
         <mat-list-item *ngFor="let dinner of dinners">
           <a matLine routerLink="/dinners/{{ dinner.id }}"
             >{{ dinner.name }} in {{ dinner.city }} am
-            {{ dinner.begin | date: "yyyy-MM-dd HH:mm" }} ({{ dinner.id }})</a
+            {{ dinner.begin | date: "yyyy-MM-dd HH:mm" }}</a
           >
           <button
             mat-icon-button
