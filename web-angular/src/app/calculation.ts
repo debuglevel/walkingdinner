@@ -8,4 +8,5 @@ export class Calculation {
   planId: string;
   begin: string;
   end: string;
+  dinnerId: string;
 }

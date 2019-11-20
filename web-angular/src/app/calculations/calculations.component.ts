@@ -41,7 +41,7 @@ export class CalculationsComponent implements OnInit {
       .subscribe(calculations => (this.calculations = calculations));
   }
 
-  add(): void {
+  addSurveyfile(): void {
     const surveyfile = this.fileToUploadBase64;
 
     // TODO: do not hardcode these values

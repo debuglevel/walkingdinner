@@ -1,10 +1,12 @@
 package de.debuglevel.walkingdinner.rest.plan.calculation
 
+import java.util.*
+
 data class CalculationRequest(
     /**
      * Survey data as CSV to base the calculation on
      */
-    val surveyfile: String,
+    val surveyfile: String?,
     /**
      * Size of the population (for calculation with Genetic Algorithm)
      */
@@ -16,5 +18,7 @@ data class CalculationRequest(
     /**
      * Number of generations with constant fitness level to stop further calculations (for calculation with Genetic Algorithm)
      */
-    val steadyFitness: Int
+    val steadyFitness: Int,
+
+    val dinnerId: UUID?
 )

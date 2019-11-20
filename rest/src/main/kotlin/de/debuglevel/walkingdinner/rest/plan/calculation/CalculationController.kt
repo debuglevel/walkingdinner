@@ -1,14 +1,18 @@
 package de.debuglevel.walkingdinner.rest.plan.calculation
 
 import de.debuglevel.walkingdinner.rest.common.Base64String
+import de.debuglevel.walkingdinner.rest.dinner.DinnerService
+import de.debuglevel.walkingdinner.rest.participant.TeamService
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Post
 import mu.KotlinLogging
+import java.lang.IllegalArgumentException
 import java.util.*
 
 @Controller("/plans/calculations")
-class CalculationController(private val calculationService: CalculationService) {
+class CalculationController(private val calculationService: CalculationService,
+                            private val dinnerService: DinnerService) {
     private val logger = KotlinLogging.logger {}
 
     @Get("/{calculationId}")
@@ -29,14 +33,30 @@ class CalculationController(private val calculationService: CalculationService) 
     fun postOne(calculationRequest: CalculationRequest): CalculationResponse {
         logger.debug("Called postOne($calculationRequest)")
 
-        // TODO: as this is just a CSV, we could just transfer it as a String
-        val surveyCsv = Base64String(calculationRequest.surveyfile).asString
-        val calculation = calculationService.startCalculation(
-            surveyCsv,
-            calculationRequest.populationsSize,
-            calculationRequest.fitnessThreshold,
-            calculationRequest.steadyFitness
-        )
+        val calculation = if (calculationRequest.dinnerId != null) {
+            val dinner = dinnerService.get(calculationRequest.dinnerId)
+            val teams = dinner.teams.toList()
+
+            val calculation = calculationService.startCalculation(
+                teams,
+                calculationRequest.populationsSize,
+                calculationRequest.fitnessThreshold,
+                calculationRequest.steadyFitness
+            )
+            calculation
+        } else if (calculationRequest.surveyfile != null && calculationRequest.surveyfile.isNotBlank()) {
+            // TODO: as this is just a CSV, we could just transfer it as a String
+            val surveyCsv = Base64String(calculationRequest.surveyfile).asString
+            val calculation = calculationService.startCalculation(
+                surveyCsv,
+                calculationRequest.populationsSize,
+                calculationRequest.fitnessThreshold,
+                calculationRequest.steadyFitness
+            )
+            calculation
+        }else{
+            throw IllegalArgumentException("dinnerId or surveyfile must be set")
+        }
 
         return CalculationResponse(calculation)
     }

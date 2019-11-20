@@ -1,5 +1,6 @@
 package de.debuglevel.walkingdinner.rest.plan.calculation
 
+import de.debuglevel.walkingdinner.rest.participant.Team
 import de.debuglevel.walkingdinner.rest.participant.TeamService
 import de.debuglevel.walkingdinner.rest.participant.importer.DatabaseBuilder
 import de.debuglevel.walkingdinner.rest.plan.Plan
@@ -79,10 +80,17 @@ open class CalculationService(
         steadyFitness: Int
     ): Calculation {
         val database = databaseBuilder.build(surveyfile)
-        val teams = database.teams
-
         val savedTeams = database.teams.map { teamService.save(it) }
 
+        return startCalculation(savedTeams, populationsSize, fitnessThreshold, steadyFitness)
+    }
+
+    fun startCalculation(
+        teams: List<Team>,
+        populationsSize: Int,
+        fitnessThreshold: Double,
+        steadyFitness: Int
+    ): Calculation {
         val calculation = Calculation(
             null,
             false,
@@ -90,7 +98,7 @@ open class CalculationService(
             fitnessThreshold,
             steadyFitness,
             null,
-            savedTeams
+            teams
         )
 
         val savedCalculation = calculationRepository.save(calculation)
@@ -99,7 +107,7 @@ open class CalculationService(
             populationsSize = savedCalculation.populationsSize,
             steadyFitness = savedCalculation.steadyFitness,
             fitnessThreshold = savedCalculation.fitnessThreshold,
-            teams = database.teams.map { TeamRequest(it) }
+            teams = teams.map { TeamRequest(it) }
         )
 
         logger.debug { "Sending CalculationRequest: $calculationRequest..." }

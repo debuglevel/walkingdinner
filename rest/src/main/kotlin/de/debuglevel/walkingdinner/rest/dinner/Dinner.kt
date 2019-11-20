@@ -15,7 +15,7 @@ data class Dinner(
 
     val name: String,
 
-    @OneToMany(cascade = [CascadeType.ALL])
+    @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
     val teams: Set<Team> = setOf(),
 
     @OneToMany(cascade = [CascadeType.ALL])

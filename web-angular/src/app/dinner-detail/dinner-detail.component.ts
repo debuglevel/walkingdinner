@@ -6,6 +6,8 @@ import { Dinner } from "../dinner";
 import { DinnerService } from "../dinner.service";
 import { OrganisationService } from "../organisation.service";
 import { Organisation } from "../organisation";
+import { CalculationService } from "../calculation.service";
+import { Calculation } from "../calculation";
 
 @Component({
   selector: "app-dinner-detail",
@@ -20,6 +22,7 @@ export class DinnerDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private dinnerService: DinnerService,
     private organisationService: OrganisationService,
+    private calculationService: CalculationService,
     private location: Location
   ) {}
 
@@ -39,6 +42,24 @@ export class DinnerDetailComponent implements OnInit {
     this.organisationService
       .getOrganisations()
       .subscribe(organisations => (this.organisations = organisations));
+  }
+
+  calculatePlan(): void {
+    const dinnerId = this.dinner.id;
+
+    // TODO: do not hardcode these values
+    this.calculationService
+      .addCalculation({
+        finished: false,
+        dinnerId,
+        populationsSize: 200,
+        fitnessThreshold: 0.001,
+        steadyFitness: 100,
+      } as Calculation)
+      .subscribe(calculation => {
+        // do nothing
+        //this.calculations.push(calculation);
+      });
   }
 
   goBack(): void {
