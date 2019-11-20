@@ -19,11 +19,6 @@ data class Calculation(
      */
     var finished: Boolean,
     /**
-     * Survey data as CSV to base the calculation on
-     */
-    @Lob
-    val surveyfile: String,
-    /**
      * Size of the population (for calculation with Genetic Algorithm)
      */
     val populationsSize: Int,

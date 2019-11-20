@@ -86,7 +86,6 @@ open class CalculationService(
         val calculation = Calculation(
             null,
             false,
-            surveyfile,
             populationsSize,
             fitnessThreshold,
             steadyFitness,

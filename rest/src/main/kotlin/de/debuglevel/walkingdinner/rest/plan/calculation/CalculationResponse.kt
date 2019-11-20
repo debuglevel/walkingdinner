@@ -13,10 +13,6 @@ data class CalculationResponse(
      */
     val finished: Boolean,
     /**
-     * Survey data as CSV to base the calculation on
-     */
-    val surveyfile: String,
-    /**
      * Size of the population (for calculation with Genetic Algorithm)
      */
     val populationsSize: Int,
@@ -45,7 +41,6 @@ data class CalculationResponse(
             this(
                 calculation.id!!,
                 calculation.finished,
-                calculation.surveyfile,
                 calculation.populationsSize,
                 calculation.fitnessThreshold,
                 calculation.steadyFitness,
