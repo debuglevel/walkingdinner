@@ -19,4 +19,5 @@ export class Team {
   omnivoreDessert: boolean;
   notes: string;
   city: string;
+  dinnerId: string;
 }

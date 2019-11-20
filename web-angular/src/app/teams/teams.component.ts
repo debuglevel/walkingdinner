@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 
 import { Team } from "../team";
 import { TeamService } from "../team.service";
+import { Dinner } from "../dinner";
+import { DinnerService } from "../dinner.service";
 
 @Component({
   selector: "app-teams",
@@ -10,15 +12,26 @@ import { TeamService } from "../team.service";
 })
 export class TeamsComponent implements OnInit {
   teams: Team[];
+  dinners: Dinner[];
 
-  constructor(private teamService: TeamService) {}
+  constructor(
+    private teamService: TeamService,
+    private dinnerService: DinnerService
+  ) {}
 
   ngOnInit() {
     this.getTeams();
+    this.getDinners();
   }
 
   getTeams(): void {
     this.teamService.getTeams().subscribe(teams => (this.teams = teams));
+  }
+
+  getDinners(): void {
+    this.dinnerService
+      .getDinners()
+      .subscribe(dinners => (this.dinners = dinners));
   }
 
   add(
@@ -40,7 +53,8 @@ export class TeamsComponent implements OnInit {
     omnivoreAppetizer: boolean,
     omnivoreMaindish: boolean,
     omnivoreDessert: boolean,
-    diet: string
+    diet: string,
+    dinnerId: string
   ): void {
     //name = name.trim();
     // if (!name) {
@@ -70,6 +84,7 @@ export class TeamsComponent implements OnInit {
         omnivoreMaindish,
         omnivoreDessert,
         diet,
+        dinnerId,
       } as Team)
       .subscribe(team => {
         this.teams.push(team);

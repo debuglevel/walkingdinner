@@ -53,7 +53,7 @@ class TeamDTO {
 
         val id = null
 
-        val team = Team(id, cook1, cook2, address, diet, capabilities, location, city)
+        val team = Team(id, cook1, cook2, address, diet, capabilities, location, city, null)
 
         return team
     }

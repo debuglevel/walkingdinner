@@ -1,6 +1,7 @@
 package de.debuglevel.walkingdinner.rest.participant
 
 import de.debuglevel.walkingdinner.rest.common.ElementNotFoundException
+import de.debuglevel.walkingdinner.rest.dinner.DinnerService
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
@@ -9,7 +10,7 @@ import mu.KotlinLogging
 import java.util.*
 
 @Controller("/teams")
-class TeamController(private val teamService: TeamService) {
+class TeamController(private val teamService: TeamService, private val dinnerService: DinnerService) {
     private val logger = KotlinLogging.logger {}
 
     @Get("/{teamId}")
@@ -36,7 +37,7 @@ class TeamController(private val teamService: TeamService) {
         logger.debug("Called postOne()")
 
         return try {
-            val team = teamRequest.toTeam()
+            val team = teamRequest.toTeam(dinnerService)
             val savedTeam = teamService.save(team)
             HttpResponse.created(TeamResponse(savedTeam))
         } catch (e: ElementNotFoundException) {

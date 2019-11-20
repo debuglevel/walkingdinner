@@ -2,6 +2,8 @@ package de.debuglevel.walkingdinner.rest.participant
 
 import de.debuglevel.walkingdinner.rest.MailAddress
 import de.debuglevel.walkingdinner.rest.PhoneNumber
+import de.debuglevel.walkingdinner.rest.dinner.DinnerService
+import java.util.*
 
 data class TeamRequest(
     val address: String?,
@@ -22,7 +24,8 @@ data class TeamRequest(
     val omnivoreMaindish: Boolean?,
     val omnivoreDessert: Boolean?,
     val notes: String?,
-    val city: String?
+    val city: String?,
+    val dinnerId: UUID
 ) {
     private val cookingCapabilities: List<CookingCapability>
         get() {
@@ -40,7 +43,7 @@ data class TeamRequest(
             return capabilities.filter { it.value }.map { it.key }
         }
 
-    fun toTeam(): Team {
+    fun toTeam(dinnerService: DinnerService): Team {
         return Team(
             null,
             Cook(
@@ -65,7 +68,8 @@ data class TeamRequest(
             diet ?: throw IllegalArgumentException("diet"),
             cookingCapabilities,
             null,
-            city ?: throw IllegalArgumentException("city")
+            city ?: throw IllegalArgumentException("city"),
+            dinner = dinnerService.get(dinnerId)
         )
     }
 }

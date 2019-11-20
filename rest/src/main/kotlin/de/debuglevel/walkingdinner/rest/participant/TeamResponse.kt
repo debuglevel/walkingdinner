@@ -22,7 +22,8 @@ data class TeamResponse(
     val omnivoreMaindish: Boolean?,
     val omnivoreDessert: Boolean?,
     val notes: String?,
-    val city: String?
+    val city: String?,
+    val dinnerId: UUID
 ) {
     constructor(team: Team) :
             this(
@@ -45,6 +46,7 @@ data class TeamResponse(
                 omnivoreMaindish = team.cookingCapabilities.any { it == CookingCapability.OmnivoreMaindish },
                 omnivoreDessert = team.cookingCapabilities.any { it == CookingCapability.OmnivoreDessert },
                 notes = "TODO",
-                city = team.city
+                city = team.city,
+                dinnerId = team.dinner?.id ?: UUID.randomUUID() // TODO: randomUUID() is just a workaround as long as CSV importer exists and leads to a nullable dinner
             )
 }

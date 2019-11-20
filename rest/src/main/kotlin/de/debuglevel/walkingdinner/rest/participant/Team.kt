@@ -1,5 +1,6 @@
 package de.debuglevel.walkingdinner.rest.participant
 
+import de.debuglevel.walkingdinner.rest.dinner.Dinner
 import de.debuglevel.walkingdinner.rest.participant.location.Location
 import java.util.*
 import javax.persistence.*
@@ -28,7 +29,11 @@ data class Team(
     @OneToOne(cascade = [CascadeType.ALL])
     var location: Location?,
 
-    val city: String
+    val city: String,
+
+    // TODO: is nullable because the CSV importer would need a Dinner otherwise... can be non-null if importer is removed.
+    @ManyToOne
+    val dinner: Dinner?
 ) {
     override fun toString(): String {
         return "Team(id=$id)"

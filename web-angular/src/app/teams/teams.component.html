@@ -30,6 +30,15 @@
     <mat-card-content>
       <form class="form">
         <mat-form-field class="full-width">
+          <mat-label>Dinner</mat-label>
+          <mat-select #teamDinner>
+            <mat-option *ngFor="let dinner of dinners" [value]="dinner.id">
+              {{ dinner.name }} ({{ dinner.begin | date: "yyyy-MM-dd HH:mm" }})
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
           <input matInput placeholder="Adresse" #teamAddress />
         </mat-form-field>
 
@@ -130,7 +139,8 @@
             teamOmnivoreAppetizer.checked,
             teamOmnivoreMaindish.checked,
             teamOmnivoreDessert.checked,
-            teamDiet.value
+            teamDiet.value,
+            teamDinner.value
           );
           teamAddress.value = ''
         "
