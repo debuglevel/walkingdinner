@@ -1,5 +1,6 @@
 package de.debuglevel.walkingdinner.rest.dinner
 
+import de.debuglevel.walkingdinner.rest.organisation.Organisation
 import de.debuglevel.walkingdinner.rest.participant.Team
 import de.debuglevel.walkingdinner.rest.plan.calculation.Calculation
 import java.time.LocalDateTime
@@ -22,7 +23,10 @@ data class Dinner(
 
     val city: String,
 
-    val begin: LocalDateTime
+    val begin: LocalDateTime,
+
+    @ManyToOne
+    val organisation: Organisation
 ) {
     override fun toString(): String {
         return "Dinner(id=$id, name='$name', city='$city', begin=$begin)"

@@ -1,6 +1,8 @@
 package de.debuglevel.walkingdinner.rest.organisation
 
 import de.debuglevel.walkingdinner.rest.MailAddress
+import de.debuglevel.walkingdinner.rest.dinner.Dinner
+import de.debuglevel.walkingdinner.rest.participant.Team
 import java.util.*
 import javax.persistence.*
 
@@ -10,10 +12,11 @@ data class Organisation(
     @GeneratedValue
     val id: UUID? = null,
 
-    //val dinners: Set<Dinner>,
-
     @OneToOne(cascade = [CascadeType.ALL])
     val mail: MailAddress,
 
-    val name: String
+    val name: String,
+
+    @OneToMany(cascade = [CascadeType.ALL])
+    val dinners: Set<Dinner> = setOf()
 )

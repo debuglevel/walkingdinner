@@ -10,17 +10,21 @@ data class DinnerResponse(
 
     val city: String,
 
-    val begin: LocalDateTime
+    val begin: LocalDateTime,
+
+    val organisationId: UUID
 ) {
     constructor(dinner: Dinner) :
             this(
                 dinner.id!!,
                 dinner.name,
                 dinner.city,
-                dinner.begin
+                dinner.begin,
+                dinner.organisation.id!!
             )
 
     override fun toString(): String {
-        return "DinnerResponse(id=$id, name='$name', city='$city', begin=$begin)"
+        return "DinnerResponse(id=$id, name='$name', city='$city', begin=$begin, organisationId=$organisationId)"
     }
+
 }

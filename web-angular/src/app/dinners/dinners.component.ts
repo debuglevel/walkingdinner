@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { Dinner } from "../dinner";
 import { DinnerService } from "../dinner.service";
 import { OrganisationService } from "../organisation.service";
-import { Organisation } from '../organisation';
+import { Organisation } from "../organisation";
 
 @Component({
   selector: "app-dinners",
@@ -14,8 +14,10 @@ export class DinnersComponent implements OnInit {
   dinners: Dinner[];
   organisations: Organisation[];
 
-  constructor(private dinnerService: DinnerService,
-    private organisationService: OrganisationService) {}
+  constructor(
+    private dinnerService: DinnerService,
+    private organisationService: OrganisationService
+  ) {}
 
   ngOnInit() {
     this.getDinners();
@@ -34,7 +36,7 @@ export class DinnersComponent implements OnInit {
       .subscribe(organisations => (this.organisations = organisations));
   }
 
-  add(name: string, begin: string, city: string): void {
+  add(name: string, begin: string, city: string, organisationId: string): void {
     name = name.trim();
     if (!name) {
       return;
@@ -42,7 +44,7 @@ export class DinnersComponent implements OnInit {
     const id = null;
 
     this.dinnerService
-      .addDinner({ id, name, begin, city } as Dinner)
+      .addDinner({ id, name, begin, city, organisationId } as Dinner)
       .subscribe(dinner => {
         this.dinners.push(dinner);
       });

@@ -3,4 +3,5 @@ export class Dinner {
   name: string;
   begin: string;
   city: string;
+  organisationId: string;
 }
