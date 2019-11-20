@@ -8,6 +8,18 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
+      <mat-label>Organisation</mat-label>
+      <mat-select [(value)]="dinner.organisationId">
+        <mat-option
+          *ngFor="let organisation of organisations"
+          [value]="organisation.id"
+        >
+          {{ organisation.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
       <input
         matInput
         placeholder="Name der Veranstaltung"
@@ -24,7 +36,7 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input [(ngModel)]="dinner.city" matInput placeholder="Stadt"/>
+      <input [(ngModel)]="dinner.city" matInput placeholder="Stadt" />
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions>

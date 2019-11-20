@@ -4,6 +4,8 @@ import { Location } from "@angular/common";
 
 import { Dinner } from "../dinner";
 import { DinnerService } from "../dinner.service";
+import { OrganisationService } from "../organisation.service";
+import { Organisation } from "../organisation";
 
 @Component({
   selector: "app-dinner-detail",
@@ -12,15 +14,18 @@ import { DinnerService } from "../dinner.service";
 })
 export class DinnerDetailComponent implements OnInit {
   @Input() dinner: Dinner;
+  organisations: Organisation[];
 
   constructor(
     private route: ActivatedRoute,
     private dinnerService: DinnerService,
+    private organisationService: OrganisationService,
     private location: Location
   ) {}
 
   ngOnInit(): void {
     this.getDinner();
+    this.getOrganisations();
   }
 
   getDinner(): void {
@@ -28,6 +33,12 @@ export class DinnerDetailComponent implements OnInit {
     this.dinnerService
       .getDinner(id)
       .subscribe(dinner => (this.dinner = dinner));
+  }
+
+  getOrganisations(): void {
+    this.organisationService
+      .getOrganisations()
+      .subscribe(organisations => (this.organisations = organisations));
   }
 
   goBack(): void {

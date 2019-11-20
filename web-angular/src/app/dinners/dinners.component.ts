@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 
 import { Dinner } from "../dinner";
 import { DinnerService } from "../dinner.service";
+import { OrganisationService } from "../organisation.service";
+import { Organisation } from '../organisation';
 
 @Component({
   selector: "app-dinners",
@@ -10,17 +12,26 @@ import { DinnerService } from "../dinner.service";
 })
 export class DinnersComponent implements OnInit {
   dinners: Dinner[];
+  organisations: Organisation[];
 
-  constructor(private dinnerService: DinnerService) {}
+  constructor(private dinnerService: DinnerService,
+    private organisationService: OrganisationService) {}
 
   ngOnInit() {
     this.getDinners();
+    this.getOrganisations();
   }
 
   getDinners(): void {
     this.dinnerService
       .getDinners()
       .subscribe(dinners => (this.dinners = dinners));
+  }
+
+  getOrganisations(): void {
+    this.organisationService
+      .getOrganisations()
+      .subscribe(organisations => (this.organisations = organisations));
   }
 
   add(name: string, begin: string, city: string): void {
