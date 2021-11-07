@@ -10,24 +10,26 @@ pluginManagement {
         id "org.jetbrains.kotlin.plugin.jpa" version "$kotlinVersion"
     }
 }
-println("settings.gradle: processing...")
+println("settings.gradle: Processing...")
 
 rootProject.name = 'walkingdinner'
 
 //include 'integration'
 //include 'cli'
-println("settings.gradle: including rest...")
+println("settings.gradle: Including 'rest' subproject...")
 include 'rest'
-println("settings.gradle: including planners...")
+println("settings.gradle: Including 'planners' subproject...")
 include 'planners'
-//include 'planners'
 //include 'models'
 
 // only include 'web-angular' project in Linux, as the node plugin fails in Windows
 import org.gradle.internal.os.OperatingSystem
 
+println("settings.gradle: Checking if operating system is Linux...")
 println("settings.gradle: OperatingSystem.current() = " + OperatingSystem.current())
 if (OperatingSystem.current().isLinux()) {
-    println("settings.gradle: including web-angular...")
+    println("settings.gradle: Including 'web-angular' subproject on Linux...")
     include 'web-angular'
+}else{
+    println("settings.gradle: Skipping 'web-angular' subproject on Windows...")
 }
