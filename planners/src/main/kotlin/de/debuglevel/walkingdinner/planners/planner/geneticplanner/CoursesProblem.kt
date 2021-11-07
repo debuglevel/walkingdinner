@@ -47,7 +47,7 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
                 .flatMap { cm -> cm.value.stream() }
                 .collect(Collectors.toSet<Meeting>())
 
-            val d = (1 * calculateMultipleCookingTeams(
+            val fitness = (1 * calculateMultipleCookingTeams(
                 meetings
             )
                     + 1 * calculateIncompatibleTeams(
@@ -63,7 +63,7 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
                 courses
             ))
 
-            d
+            fitness
         }
     }
 
