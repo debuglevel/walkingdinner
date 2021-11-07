@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
     }
     dependencies {
         // TODO: might be removed when https://hibernate.atlassian.net/browse/HHH-13354 is resolved
