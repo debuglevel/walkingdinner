@@ -89,15 +89,17 @@ class GmailService(
         return credential
     }
 
+    /**
+     * Gets the client secrets from the [clientSecretsFile] JSON file
+     */
     private fun getClientSecrets(): GoogleClientSecrets {
         logger.debug { "Getting client secrets..." }
 
-        // Load client secrets.
         val reader = try {
             logger.trace { "Creating input stream reader for '$clientSecretsFile'..." }
             InputStreamReader(Gmail::class.java.getResourceAsStream(clientSecretsFile))
         } catch (e: Exception) {
-            logger.error(e) { "Could not read Google Gmail client secrets" }
+            logger.error(e) { "Could not read Google Gmail client secrets from '$clientSecretsFile'" }
             throw e
         }
 
@@ -108,12 +110,12 @@ class GmailService(
         return clientSecrets
     }
 
-    fun saveDraft(mailaddresses: Set<String>, subject: String, emailContent: String): Draft {
-        logger.debug { "Saving draft for '$mailaddresses'..." }
+    fun saveDraft(mailAddresses: Set<String>, subject: String, emailContent: String): Draft {
+        logger.debug { "Saving draft for '$mailAddresses'..." }
 
         // "me" indicates that the authorized user should be used
         val authorizedUserValue = "me"
-        val mimeMessage = mailService.buildMimeMessage(mailaddresses, authorizedUserValue, subject, emailContent)
+        val mimeMessage = mailService.buildMimeMessage(mailAddresses, authorizedUserValue, subject, emailContent)
         val draft = createDraft(authorizedUserValue, mimeMessage)
 
         logger.debug { "Saved draft '${draft.id}'" }
