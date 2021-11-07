@@ -124,7 +124,7 @@ dependencies {
     implementation "io.swagger.core.v3:swagger-annotations"
 
     // Genetic Algorithm
-    implementation "io.jenetics:jenetics:$jenetics"
+    implementation "io.jenetics:jenetics:$jeneticsVersion"
 }
 
 // Java configuration
