@@ -31,7 +31,8 @@ object TestDataCourseCompatibility {
                         Diet.Omnivore,
                         listOf(CookingCapability.OmnivoreAppetizer),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -53,7 +54,8 @@ object TestDataCourseCompatibility {
                         Diet.Omnivore,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -75,7 +77,8 @@ object TestDataCourseCompatibility {
                         Diet.Omnivore,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     )
                 ),
                 "Vorspeise"
@@ -104,7 +107,8 @@ object TestDataCourseCompatibility {
                         Diet.Vegan,
                         listOf(CookingCapability.VeganMaindish),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -126,7 +130,8 @@ object TestDataCourseCompatibility {
                         Diet.Vegetarian,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -148,7 +153,8 @@ object TestDataCourseCompatibility {
                         Diet.Omnivore,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     )
                 ),
                 "Hauptspeise"
@@ -176,7 +182,8 @@ object TestDataCourseCompatibility {
                         Diet.Vegetarian,
                         listOf(CookingCapability.VeganDessert),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -198,7 +205,8 @@ object TestDataCourseCompatibility {
                         Diet.Omnivore,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -220,7 +228,8 @@ object TestDataCourseCompatibility {
                         Diet.Vegan,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     )
                 ),
                 "Dessert"
@@ -252,7 +261,8 @@ object TestDataCourseCompatibility {
                         Diet.Vegetarian,
                         listOf(CookingCapability.VegetarianAppetizer),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -274,7 +284,8 @@ object TestDataCourseCompatibility {
                         Diet.Vegan,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -296,7 +307,8 @@ object TestDataCourseCompatibility {
                         Diet.Omnivore,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     )
                 ),
                 "Vorspeise"
@@ -325,7 +337,8 @@ object TestDataCourseCompatibility {
                         Diet.Omnivore,
                         listOf(CookingCapability.OmnivoreMaindish, CookingCapability.VegetarianMaindish),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -347,7 +360,8 @@ object TestDataCourseCompatibility {
                         Diet.Vegan,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -369,7 +383,8 @@ object TestDataCourseCompatibility {
                         Diet.Vegetarian,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     )
                 ),
                 "Hauptspeise"
@@ -397,7 +412,8 @@ object TestDataCourseCompatibility {
                         Diet.Omnivore,
                         listOf(CookingCapability.VegetarianDessert),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -419,7 +435,8 @@ object TestDataCourseCompatibility {
                         Diet.Vegan,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -441,7 +458,8 @@ object TestDataCourseCompatibility {
                         Diet.Vegan,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     )
                 ),
                 "Dessert"

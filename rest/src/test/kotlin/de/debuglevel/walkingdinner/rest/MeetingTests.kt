@@ -28,7 +28,8 @@ class MeetingTests {
             Diet.Omnivore,
             listOf(CookingCapability.OmnivoreAppetizer),
             null,
-            "city"
+            "city",
+            null
         )
         val meeting = Meeting(
             listOf(
@@ -53,7 +54,8 @@ class MeetingTests {
                     Diet.Omnivore,
                     listOf(),
                     null,
-                    "city"
+                    "city",
+                    null
                 ),
                 Team(
                     null,
@@ -75,7 +77,8 @@ class MeetingTests {
                     Diet.Omnivore,
                     listOf(),
                     null,
-                    "city"
+                    "city",
+                    null
                 )
             ),
             "Vorspeise"

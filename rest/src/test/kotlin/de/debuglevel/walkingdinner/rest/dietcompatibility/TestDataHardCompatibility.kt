@@ -34,7 +34,8 @@ object TestDataHardCompatibility {
                         Diet.Omnivore,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -56,7 +57,8 @@ object TestDataHardCompatibility {
                         Diet.Omnivore,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -78,7 +80,8 @@ object TestDataHardCompatibility {
                         Diet.Omnivore,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     )
                 ),
                 "course"
@@ -107,7 +110,8 @@ object TestDataHardCompatibility {
                         Diet.Vegan,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -129,7 +133,8 @@ object TestDataHardCompatibility {
                         Diet.Vegan,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -151,7 +156,8 @@ object TestDataHardCompatibility {
                         Diet.Vegan,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     )
                 ),
                 "course"
@@ -179,7 +185,8 @@ object TestDataHardCompatibility {
                         Diet.Vegetarian,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -201,7 +208,8 @@ object TestDataHardCompatibility {
                         Diet.Vegetarian,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -223,7 +231,8 @@ object TestDataHardCompatibility {
                         Diet.Vegetarian,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     )
                 ),
                 "course"
@@ -255,7 +264,8 @@ object TestDataHardCompatibility {
                         Diet.Vegetarian,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -277,7 +287,8 @@ object TestDataHardCompatibility {
                         Diet.Omnivore,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -299,7 +310,8 @@ object TestDataHardCompatibility {
                         Diet.Omnivore,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     )
                 ),
                 "course"
@@ -328,7 +340,8 @@ object TestDataHardCompatibility {
                         Diet.Vegan,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -350,7 +363,8 @@ object TestDataHardCompatibility {
                         Diet.Vegan,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -372,7 +386,8 @@ object TestDataHardCompatibility {
                         Diet.Vegetarian,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     )
                 ),
                 "course"
@@ -400,7 +415,8 @@ object TestDataHardCompatibility {
                         Diet.Omnivore,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -422,7 +438,8 @@ object TestDataHardCompatibility {
                         Diet.Vegan,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     ),
                     Team(
                         null,
@@ -444,7 +461,8 @@ object TestDataHardCompatibility {
                         Diet.Vegan,
                         listOf(),
                         null,
-                        "city"
+                        "city",
+                        null
                     )
                 ),
                 "course"
