@@ -129,9 +129,6 @@ dependencies {
 //    implementation 'com.sparkjava:spark-template-mustache:2.7.1'
     implementation "org.jtwig:jtwig-core:$jtwigVersion"
 
-    // Genetic Algorithm
-    implementation "io.jenetics:jenetics:$jenetics"
-
     // Jsondb // TODO: replace by micronaut technology
     implementation "io.jsondb:jsondb-core:$jsondbVersion"
     implementation "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
