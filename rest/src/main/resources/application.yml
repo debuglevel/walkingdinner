@@ -8,7 +8,7 @@ app:
         from-mail-address: "user@domain.invalid"
       gmail:
         credentials-folder: "credentials/gmail/"
-        client-secret-file: "/google_gmail_client_secret.json"
+        client-secrets-file: "/google_gmail_client_secret.json"
 
 micronaut:
   application:

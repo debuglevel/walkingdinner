@@ -30,7 +30,7 @@ import javax.mail.internet.MimeMessage
 class GmailService(
     @Property(name = "app.walkingdinner.data.base-path") private val dataBasepath: Path,
     @Property(name = "app.walkingdinner.reporters.gmail.credentials-folder") private val credentialsFolder: Path,
-    @Property(name = "app.walkingdinner.reporters.gmail.client-secret-file") private val clientSecretFile: String,
+    @Property(name = "app.walkingdinner.reporters.gmail.client-secrets-file") private val clientSecretsFile: String,
     private val mailService: MailService
 ) {
     private val logger = KotlinLogging.logger {}
@@ -94,8 +94,8 @@ class GmailService(
 
         // Load client secrets.
         val reader = try {
-            logger.trace { "Creating input stream reader for '$clientSecretFile'..." }
-            InputStreamReader(Gmail::class.java.getResourceAsStream(clientSecretFile))
+            logger.trace { "Creating input stream reader for '$clientSecretsFile'..." }
+            InputStreamReader(Gmail::class.java.getResourceAsStream(clientSecretsFile))
         } catch (e: Exception) {
             logger.error(e) { "Could not read Google Gmail client secrets" }
             throw e
