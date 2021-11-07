@@ -47,6 +47,9 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
                 .flatMap { cm -> cm.value.stream() }
                 .collect(Collectors.toSet<Meeting>())
 
+            val multipleCookingTeamsMalus = 1 * calculateMultipleCookingTeams(
+                meetings
+            )
             val incompatibleTeamsCourse1Malus = 1 * calculateIncompatibleTeams(
                 courseMeetings.getValue(Courses.course1name)
             )
@@ -55,9 +58,6 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
             )
             val incompatibleTeamsCourse3Malus = 1 * calculateIncompatibleTeams(
                 courseMeetings.getValue(Courses.course3name)
-            )
-            val multipleCookingTeamsMalus = 1 * calculateMultipleCookingTeams(
-                meetings
             )
             val overallDistanceMalus = 0.00001 * calculateOverallDistance(courses)
 
