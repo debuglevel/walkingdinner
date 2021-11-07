@@ -44,19 +44,19 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
         return Function { courses ->
             val courseMeetings = courses.toCourseMeetings()
             val meetings = courseMeetings.entries.stream()
-                .flatMap { cm -> cm.value.stream() }
+                .flatMap { courseMeeting -> courseMeeting.value.stream() }
                 .collect(Collectors.toSet<Meeting>())
 
             val multipleCookingTeamsMalus = 1 * calculateMultipleCookingTeams(
                 meetings
             )
-            val incompatibleTeamsCourse1Malus = 1 * calculateIncompatibleTeams(
+            val incompatibleTeamsCourse1Malus = 1 * calculateIncompatibleMeetings(
                 courseMeetings.getValue(Courses.course1name)
             )
-            val incompatibleTeamsCourse2Malus = 1 * calculateIncompatibleTeams(
+            val incompatibleTeamsCourse2Malus = 1 * calculateIncompatibleMeetings(
                 courseMeetings.getValue(Courses.course2name)
             )
-            val incompatibleTeamsCourse3Malus = 1 * calculateIncompatibleTeams(
+            val incompatibleTeamsCourse3Malus = 1 * calculateIncompatibleMeetings(
                 courseMeetings.getValue(Courses.course3name)
             )
             val overallDistanceMalus = 0.00001 * calculateOverallDistance(courses)
@@ -101,30 +101,28 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
             return teamsLocations
         }
 
-        fun calculateIncompatibleTeams(meetings: Set<Meeting>): Double {
-            return meetings.stream()
-                //                .filter(m -> !HardCompatibility.INSTANCE.areCompatibleTeams(m))
-                .filter { m -> !CourseDietCompatibility.areCompatibleTeams(m) }
+        /**
+         * Calculates how many meetings have incompatible teams.
+         */
+        private fun calculateIncompatibleMeetings(meetings: Set<Meeting>): Int {
+            return meetings
+                // .filter(m -> !HardCompatibility.INSTANCE.areCompatibleTeams(m))
+                .filter { meeting -> !CourseDietCompatibility.areCompatibleTeams(meeting) }
                 .count()
-                .toDouble()
         }
 
-        fun calculateOverallDistance(courses: Courses): Double {
+        /**
+         * Calculates the distance (in kilometers) all teams have to travel in sum.
+         */
+        private fun calculateOverallDistance(courses: Courses): Double {
             val meetings = courses.toMeetings()
 
             val courseMeetings = meetings.groupBy { it.course }
 
-            val teamsLocations =
-                getTeamLocations(
-                    courseMeetings
-                )
+            val teamsLocations = getTeamLocations(courseMeetings)
 
             return teamsLocations.values
-                .map {
-                    calculateLocationsDistance(
-                        it
-                    )
-                }
+                .map { calculateLocationsDistance(it) }
                 .sum()
         }
 
@@ -133,10 +131,7 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
                 for (meeting in meetings) {
                     for (team in meeting.teams) {
                         // get item in HashMap or create empty List if not already available
-                        val teamLocations =
-                            teamsLocations.computeIfAbsent(team) {
-                                mutableListOf()
-                            }
+                        val teamLocations = teamsLocations.computeIfAbsent(team) { mutableListOf() }
 
                         teamLocations.add(meeting.getCookingTeam().location)
                     }
@@ -144,17 +139,22 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
             }
         }
 
-        private fun calculateMultipleCookingTeams(meetings: Set<Meeting>): Double {
-            val teamCookings = meetings.map { it.getCookingTeam() }
+        /**
+         * Calculates how many teams cook more than once.
+         */
+        private fun calculateMultipleCookingTeams(meetings: Set<Meeting>): Int {
+            // Find out how often each team cooks
+            val teamCookingCount = meetings
+                .map { it.getCookingTeam() }
                 .groupBy { it }
                 .mapValues { it.value.count() }
 
-            val countMultipleCookingTeams = teamCookings.entries
-                .filter { kv -> kv.value > 1 }
-                .map { it.value }
-                .sum()
+            // Count how many teams cook more than once
+            val multipleCookingTeamsCount = teamCookingCount.values
+                .filter { it > 1 }
+                .sumOf { it }
 
-            return countMultipleCookingTeams.toDouble()
+            return multipleCookingTeamsCount
         }
     }
 }
