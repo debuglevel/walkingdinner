@@ -12,7 +12,7 @@ data class OrganisationResponse(
     constructor(organisation: Organisation) :
             this(
                 organisation.id!!,
-                organisation?.mail?.mail ?: "",
+                organisation.mail.mail,
                 organisation.name
             )
 
