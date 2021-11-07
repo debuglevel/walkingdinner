@@ -17,7 +17,7 @@ object TimeMeasurement {
     fun add(
         id: Any,
         nanosecondsDuration: Long,
-        reportStep: Long
+        reportInterval: Long
     ) {
         val measurement = measurements.putIfAbsent(
             id,
@@ -27,7 +27,7 @@ object TimeMeasurement {
             val callsSum = measurement.calls.incrementAndGet()
             val nanosecondsSum = measurement.nanoseconds.addAndGet(nanosecondsDuration)
 
-            if (callsSum % reportStep == 0L) {
+            if (callsSum % reportInterval == 0L) {
                 val durationPerCall = nanosecondsSum / callsSum
                 val callsPerSecond = (callsSum / (nanosecondsSum / 1_000_000_000.0)).roundToInt()
 
