@@ -36,7 +36,7 @@ class DinnerController(private val dinnerService: DinnerService, private val org
     fun postOne(dinnerRequest: DinnerRequest): HttpResponse<DinnerResponse> {
         logger.debug("Called postOne()")
 
-		return try {
+        return try {
             val dinner = dinnerRequest.toDinner(organisationService)
             val savedDinner = dinnerService.save(dinner)
             HttpResponse.created(DinnerResponse(savedDinner))

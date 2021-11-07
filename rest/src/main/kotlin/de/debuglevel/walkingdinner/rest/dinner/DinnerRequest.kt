@@ -1,6 +1,5 @@
 package de.debuglevel.walkingdinner.rest.dinner
 
-import de.debuglevel.walkingdinner.rest.organisation.Organisation
 import de.debuglevel.walkingdinner.rest.organisation.OrganisationService
 import java.time.LocalDateTime
 import java.util.*

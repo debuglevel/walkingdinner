@@ -48,6 +48,6 @@ println("settings.gradle: OperatingSystem.current() = " + OperatingSystem.curren
 if (OperatingSystem.current().isLinux()) {
     println("settings.gradle: Including 'web-angular' subproject on Linux...")
     include 'web-angular'
-}else{
+} else {
     println("settings.gradle: Skipping 'web-angular' subproject on Windows...")
 }

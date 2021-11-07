@@ -2,17 +2,17 @@ package de.debuglevel.walkingdinner.rest.plan.calculation
 
 import de.debuglevel.walkingdinner.rest.common.Base64String
 import de.debuglevel.walkingdinner.rest.dinner.DinnerService
-import de.debuglevel.walkingdinner.rest.participant.TeamService
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Post
 import mu.KotlinLogging
-import java.lang.IllegalArgumentException
 import java.util.*
 
 @Controller("/plans/calculations")
-class CalculationController(private val calculationService: CalculationService,
-                            private val dinnerService: DinnerService) {
+class CalculationController(
+    private val calculationService: CalculationService,
+    private val dinnerService: DinnerService
+) {
     private val logger = KotlinLogging.logger {}
 
     @Get("/{calculationId}")
@@ -54,7 +54,7 @@ class CalculationController(private val calculationService: CalculationService,
                 calculationRequest.steadyFitness
             )
             calculation
-        }else{
+        } else {
             throw IllegalArgumentException("dinnerId or surveyfile must be set")
         }
 

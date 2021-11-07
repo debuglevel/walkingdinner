@@ -1,8 +1,6 @@
 package de.debuglevel.walkingdinner.rest.plan
 
-import de.debuglevel.walkingdinner.rest.Meeting
 import io.micronaut.test.annotation.MicronautTest
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import javax.inject.Inject
 

@@ -12,7 +12,6 @@ import io.jenetics.PermutationChromosome
 import io.jenetics.engine.Codec
 import io.jenetics.engine.Problem
 import io.jenetics.util.ISeq
-import java.util.*
 import java.util.function.Function
 import java.util.stream.Collectors
 

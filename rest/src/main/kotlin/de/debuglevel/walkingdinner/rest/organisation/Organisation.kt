@@ -2,7 +2,6 @@ package de.debuglevel.walkingdinner.rest.organisation
 
 import de.debuglevel.walkingdinner.rest.MailAddress
 import de.debuglevel.walkingdinner.rest.dinner.Dinner
-import de.debuglevel.walkingdinner.rest.participant.Team
 import java.util.*
 import javax.persistence.*
 

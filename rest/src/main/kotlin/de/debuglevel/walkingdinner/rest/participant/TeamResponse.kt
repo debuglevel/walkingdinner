@@ -47,6 +47,7 @@ data class TeamResponse(
                 omnivoreDessert = team.cookingCapabilities.any { it == CookingCapability.OmnivoreDessert },
                 notes = "TODO",
                 city = team.city,
-                dinnerId = team.dinner?.id ?: UUID.randomUUID() // TODO: randomUUID() is just a workaround as long as CSV importer exists and leads to a nullable dinner
+                dinnerId = team.dinner?.id
+                    ?: UUID.randomUUID() // TODO: randomUUID() is just a workaround as long as CSV importer exists and leads to a nullable dinner
             )
 }
