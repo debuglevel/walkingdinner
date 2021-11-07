@@ -108,7 +108,7 @@ class GeneticPlannerService {
         TimeMeasurement.add("evolveDuration", e.durations.evolveDuration.toNanos(), 500)
 
         if (e.generation % 500 == 0L) {
-            // estimate current evolution speed by consider the current generation; which might be a bit inaccurate
+            // estimate current evolution speed by considering the current evolution step; which is only an approximation to the average speed
             val generationDuration = e.durations.evolveDuration.toNanos() / 1_000_000_000.0
             val generationsPerSecond = (1 / generationDuration).roundToInt()
             println(
