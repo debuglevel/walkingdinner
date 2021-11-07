@@ -12,9 +12,9 @@ data class Location(
     @Id
     var address: String,
 
-    var lng: Double,
+    var longitude: Double,
 
-    var lat: Double,
+    var latitude: Double,
 
     @javax.persistence.Id
     @GeneratedValue
@@ -23,6 +23,6 @@ data class Location(
     constructor() : this("", 0.0, 0.0)
 
     override fun toString(): String {
-        return "$address ($lat, $lng)"
+        return "$address ($latitude, $longitude)"
     }
 }

@@ -27,8 +27,8 @@ class NominatimApiGeolocatorTests {
         val location = nominatimApiGeolocator.getLocation(testData.address, testData.city)
 
         // Assert
-        assertThat(location.lat).isEqualTo(testData.expectedLocation.lat, within(about11meters))
-        assertThat(location.lng).isEqualTo(testData.expectedLocation.lng, within(about11meters))
+        assertThat(location.latitude).isEqualTo(testData.expectedLocation.latitude, within(about11meters))
+        assertThat(location.longitude).isEqualTo(testData.expectedLocation.longitude, within(about11meters))
     }
 
     fun locationProvider() = Stream.of(

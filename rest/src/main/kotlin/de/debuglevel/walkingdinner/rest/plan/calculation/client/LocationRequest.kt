@@ -7,7 +7,7 @@ class LocationRequest(
     val lat: Double
 ) {
     constructor(location: Location) : this(
-        lng = location.lng,
-        lat = location.lat
+        lng = location.longitude,
+        lat = location.latitude
     )
 }
