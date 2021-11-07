@@ -112,7 +112,7 @@ class GeneticPlannerService {
             val generationDuration = e.durations.evolveDuration.toNanos() / 1_000_000_000.0
             val generationsPerSecond = (1 / generationDuration).roundToInt()
             println(
-                "$generationsPerSecond generations/s\t| Generation #${e.generation}\t| Best Fitness: ${
+                "currently $generationsPerSecond generations/s\t| Generation #${e.generation}\t| Best Fitness: ${
                     e.bestFitness.toBigDecimal().toPlainString()
                 }"
             )
