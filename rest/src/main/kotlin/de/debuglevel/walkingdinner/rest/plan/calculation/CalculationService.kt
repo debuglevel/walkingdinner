@@ -66,10 +66,15 @@ open class CalculationService(
     open fun getAll(): Set<Calculation> {
         logger.debug { "Getting all calculations..." }
         val calculations = calculationRepository.findAll()
+        logger.debug { "Got ${calculations.count()} calculations" }
+
+        logger.debug { "Populating ${calculations.count()} calculations..." }
+        val populatedCalculations = calculations
             .map { get(it.id!!) }
             .toSet()
-        logger.debug { "Got calculations: $calculations" }
-        return calculations
+        logger.debug { "Got ${populatedCalculations.count()} populated calculations" }
+
+        return populatedCalculations
     }
 
     @Transactional
