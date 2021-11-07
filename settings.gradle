@@ -1,6 +1,6 @@
 pluginManagement {
     plugins {
-        id 'com.gradle.build-scan' version "$buildScanVersion"
+        id 'com.gradle.enterprise' version "$gradleEnterpriseVersion"
         id 'org.jetbrains.kotlin.jvm' version "$kotlinVersion"
         id 'org.jetbrains.kotlin.kapt' version "$kotlinVersion"
         id "org.jetbrains.kotlin.plugin.allopen" version "$kotlinVersion"
@@ -10,7 +10,25 @@ pluginManagement {
         id "org.jetbrains.kotlin.plugin.jpa" version "$kotlinVersion"
     }
 }
+
+plugins {
+    // Like --scan option to gradle
+    id "com.gradle.enterprise"
+}
+
 println("settings.gradle: Processing...")
+
+// Configuration of com.gradle.enterprise (build scan) plugin
+gradleEnterprise {
+    buildScan {
+        // Accept the license agreement for com.gradle.build-scan plugin
+        termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+        termsOfServiceAgree = 'yes'
+
+        // Always publish scan (no more need for --scan option)
+        publishAlways()
+    }
+}
 
 rootProject.name = 'walkingdinner'
 

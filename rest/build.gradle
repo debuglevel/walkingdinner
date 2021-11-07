@@ -201,16 +201,6 @@ shadowJar {
     mergeServiceFiles()
 }
 
-// Configuration of com.gradle.build-scan plugin
-buildScan {
-    // Accept the license agreement for com.gradle.build-scan plugin
-    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
-    termsOfServiceAgree = 'yes'
-
-    // Always publish scan (no more need for --scan option)
-    publishAlways()
-}
-
 test {
     useJUnitPlatform()
 

@@ -8,10 +8,7 @@ buildscript {
 }
 
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version "1.3.50" apply false
-
-    // Like --scan option to gradle; should be placed before any other plugins
-    id 'com.gradle.build-scan'
+    id 'org.jetbrains.kotlin.jvm' version "1.5.31" apply false
 
 //    // Release version with "gradle release"
     id 'net.researchgate.release'
