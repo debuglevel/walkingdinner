@@ -1,6 +1,5 @@
 package de.debuglevel.walkingdinner.planners.planner.geneticplanner
 
-import de.debuglevel.walkingdinner.planners.Courses
 import de.debuglevel.walkingdinner.planners.Team
 import de.debuglevel.walkingdinner.planners.plan.Plan
 import de.debuglevel.walkingdinner.planners.planner.Planner
@@ -64,7 +63,7 @@ class GeneticPlanner(private val options: GeneticPlannerOptions) :
         // val executor = Executors.newSingleThreadExecutor()
 
         val engine = Engine
-            .builder<Courses, EnumGene<Team>, Double>(problem)
+            .builder(problem)
             .populationSize(options.populationsSize)
             .optimize(Optimize.MINIMUM)
             .alterers(
@@ -81,7 +80,7 @@ class GeneticPlanner(private val options: GeneticPlannerOptions) :
                 )
             )
             .peek(evolutionResultConsumer)
-            .collect(EvolutionResult.toBestEvolutionResult<EnumGene<Team>, Double>())
+            .collect(EvolutionResult.toBestEvolutionResult())
 
         logger.debug("Computed plan: $evolutionResult")
         return evolutionResult
