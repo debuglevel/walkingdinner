@@ -60,8 +60,8 @@ class GeneticPlanner(private val options: GeneticPlannerOptions) :
 
         val problem = CoursesProblem(ISeq.of(options.teams))
 
-        // use single thread when optimizing performance
-        //        final ExecutorService executor = Executors.newSingleThreadExecutor();
+        // Note: Use single threading when optimizing performance
+        // val executor = Executors.newSingleThreadExecutor()
 
         val engine = Engine
             .builder<Courses, EnumGene<Team>, Double>(problem)
@@ -71,7 +71,7 @@ class GeneticPlanner(private val options: GeneticPlannerOptions) :
                 SwapMutator(0.15),
                 PartiallyMatchedCrossover(0.15)
             )
-            //                .executor(executor)
+            // .executor(executor)
             .build()
 
         val evolutionResult: EvolutionResult<EnumGene<Team>, Double> = engine.stream()
