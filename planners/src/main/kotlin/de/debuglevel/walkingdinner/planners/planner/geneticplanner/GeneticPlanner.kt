@@ -15,8 +15,7 @@ import mu.KotlinLogging
 import java.util.*
 import java.util.function.Consumer
 
-class GeneticPlanner(private val options: GeneticPlannerOptions) :
-    Planner {
+class GeneticPlanner(private val options: GeneticPlannerOptions) : Planner {
     private val logger = KotlinLogging.logger {}
 
     private val evolutionResultConsumer: Consumer<EvolutionResult<EnumGene<Team>, Double>>?
@@ -37,15 +36,15 @@ class GeneticPlanner(private val options: GeneticPlannerOptions) :
 
         val evolutionResult = compute()
 
-        val courses = CoursesProblem(evolutionResult.bestPhenotype.genotype.gene.validAlleles)
+        val courses = CoursesProblem(evolutionResult.bestPhenotype().genotype().gene().validAlleles())
             .codec()
-            .decode(evolutionResult.bestPhenotype.genotype)
+            .decode(evolutionResult.bestPhenotype().genotype())
         val meetings = courses.toMeetings()
 
         val additionalInformation = """
-            best generation: ${evolutionResult.generation}
-            total generations: ${evolutionResult.totalGenerations}
-            best fitness: ${evolutionResult.bestFitness}
+            best generation: ${evolutionResult.generation()}
+            total generations: ${evolutionResult.totalGenerations()}
+            best fitness: ${evolutionResult.bestFitness().toBigDecimal().toPlainString()}
             meetings: $meetings
         """.trimIndent()
 

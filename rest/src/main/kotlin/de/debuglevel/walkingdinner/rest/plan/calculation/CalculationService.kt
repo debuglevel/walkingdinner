@@ -32,7 +32,7 @@ open class CalculationService(
 
         // if calculation has no plan yet, try to fetch it from the microservice
         if (calculation.plan == null) {
-            logger.debug { "Calculation ${calculation.id} has no plan yet; fetching calculation from microservice..." }
+            logger.debug { "Calculation ${calculation.id} has no plan yet; fetching calculation (id there: ${calculation.calculationId}) from microservice..." }
             val calculationResponse = calculationClient.getOne(calculation.calculationId!!)
             logger.debug { "Received CalculationResponse: $calculationResponse..." }
 

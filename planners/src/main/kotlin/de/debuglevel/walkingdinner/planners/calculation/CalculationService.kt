@@ -1,6 +1,5 @@
 package de.debuglevel.walkingdinner.planners.calculation
 
-import de.debuglevel.walkingdinner.planners.plan.Plan
 import de.debuglevel.walkingdinner.planners.plan.PlanService
 import de.debuglevel.walkingdinner.planners.planner.geneticplanner.GeneticPlannerOptions
 import de.debuglevel.walkingdinner.planners.planner.geneticplanner.GeneticPlannerService
@@ -49,7 +48,7 @@ class CalculationService(
 
         calculations[uuid] = calculation
 
-        val calculatePlanTask = Callable<Plan> {
+        val calculatePlanTask = Callable {
             try {
                 val geneticPlannerOptions =
                     GeneticPlannerOptions(
@@ -80,5 +79,5 @@ class CalculationService(
         return calculation
     }
 
-    class CalculationNotFoundException(planId: UUID) : Exception("Plan $planId not found")
+    class CalculationNotFoundException(planId: UUID) : Exception("Calculation $planId not found")
 }
