@@ -105,9 +105,11 @@ class GeneticPlannerService {
 //    }
 
     private fun printIntermediary(e: EvolutionResult<EnumGene<Team>, Double>) {
-        TimeMeasurement.add("evolveDuration", e.durations.evolveDuration.toNanos(), 500)
+        val reportInterval = 500L
 
-        if (e.generation % 500 == 0L) {
+        TimeMeasurement.add("evolveDuration", e.durations.evolveDuration.toNanos(), reportInterval)
+
+        if (e.generation % reportInterval == 0L) {
             // estimate current evolution speed by considering the current evolution step; which is only an approximation to the average speed
             val generationDuration = e.durations.evolveDuration.toNanos() / 1_000_000_000.0
             val generationsPerSecond = (1 / generationDuration).roundToInt()
