@@ -21,9 +21,9 @@ FROM openjdk:8-jre-alpine
 WORKDIR /app
 COPY --from=builder /src/planners/build/libs/*-all.jar /app/microservice.jar
 
-# set the default port to 80
-ENV MICRONAUT_SERVER_PORT 80
-EXPOSE 80
+# set the default port to 8080
+ENV MICRONAUT_SERVER_PORT 8080
+EXPOSE 8080
 
 # -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap let the JVM respect CPU and RAM limits inside a Docker container
 CMD ["java", \
