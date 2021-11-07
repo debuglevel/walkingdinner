@@ -3,8 +3,6 @@ app:
     data:
       # base path to store any data
       base-path: data
-    planners:
-      url: http://localhost:8083
     reporters:
       mail:
         from-mail-address: "user@domain.invalid"
@@ -22,11 +20,11 @@ micronaut:
     cors:
       enabled: true # default: false
   http:
-    # manual service discovery
-    services:
-      planners:
-        urls:
-          - http://localhost:8083/
+  #    # manual service discovery; should be disabled in docker-compose deployment
+  #    services:
+  #      planners:
+  #        urls:
+  #          - http://localhost:8083/
   router:
     static-resources:
       # YAML file will be available at http://localhost:8080/swagger/walking-dinner-microservice-0.0.1.yml
