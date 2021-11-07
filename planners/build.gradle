@@ -47,13 +47,10 @@ applicationName = "Walking-Dinner Planners Microservice"
 mainClassName = "io.micronaut.function.executor.FunctionApplication"
 
 repositories {
-    jcenter()
+    mavenCentral()
 //    mavenLocal()
 //    maven {
 //        url "https://jitpack.io"
-//    }
-//    maven {
-//        url "https://dl.bintray.com/debuglevel/maven"
 //    }
 }
 

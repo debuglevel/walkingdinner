@@ -46,14 +46,11 @@ applicationName = "Walking-Dinner Microservice"
 mainClassName = 'de.debuglevel.walkingdinner.Application'
 
 repositories {
-    jcenter()
+    mavenCentral()
 //    mavenLocal()
 //    maven {
 //        url "https://jitpack.io"
 //    }
-    maven {
-        url "https://dl.bintray.com/debuglevel/maven"
-    }
 }
 
 dependencies {
