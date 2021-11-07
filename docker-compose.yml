@@ -47,8 +47,7 @@ services:
 
   # Service discovery with Consul
   consul:
-    # as of 2019-10-09, micronaut only supports 1.2.x
-    image: consul:1.2.4
+    image: consul:1.10.3
     ports:
       - "8500:8500"
 
