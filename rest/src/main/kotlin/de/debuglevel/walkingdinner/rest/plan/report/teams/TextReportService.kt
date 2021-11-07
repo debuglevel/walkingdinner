@@ -53,7 +53,7 @@ open class TextReportService : Reporter {
 
         val cookingDiet = teamMeetings
             .map { it.getCookingTeam().diet }
-            .minBy {
+            .minByOrNull {
                 when (it) {
                     Diet.Vegan -> 1
                     Diet.Vegetarian -> 2
