@@ -26,13 +26,13 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
         val decoder: Function<Genotype<EnumGene<Team>>, Courses> =
             Function { genotype: Genotype<EnumGene<Team>> ->
                 Courses(
-                    genotype.getChromosome(0).toSeq().map { it.allele },
-                    genotype.getChromosome(1).toSeq().map { it.allele },
-                    genotype.getChromosome(2).toSeq().map { it.allele }
+                    genotype.get(0).map { it.validAlleles().get(it.alleleIndex()) },
+                    genotype.get(1).map { it.validAlleles().get(it.alleleIndex()) },
+                    genotype.get(2).map { it.validAlleles().get(it.alleleIndex()) }
                 )
             }
 
-        val codec: Codec<Courses, EnumGene<Team>> = Codec.of<EnumGene<Team>, Courses>(
+        val codec: Codec<Courses, EnumGene<Team>> = Codec.of(
             encoding,
             decoder
         )
