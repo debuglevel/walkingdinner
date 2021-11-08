@@ -7,14 +7,14 @@ services:
       dockerfile: rest/Dockerfile
     image: walkingdinner-rest
     ports:
-      - "8081:8080"
+      - "8081:8081"
     environment:
       # port 8080 is actually already defined as default for docker as ENV in Dockerfile
-      - MICRONAUT_SERVER_PORT=8080
+      - MICRONAUT_SERVER_PORT=8081
       # service must know its own hostname to publish it in service discovery
       - MICRONAUT_SERVER_HOST=rest
       # manual service discovery
-      #- MICRONAUT_HTTP_SERVICES_PLANNERS_URLS=http://planners:8080
+      #- MICRONAUT_HTTP_SERVICES_PLANNERS_URLS=http://planners:8083
       # service discovery and registration with Consul
       - CONSUL_HOST=consul
       - APP_WALKINGDINNER_DATA_BASEPATH=/data
@@ -37,10 +37,10 @@ services:
       dockerfile: planners/Dockerfile
     image: walkingdinner-planners
     ports:
-      - "8083:8080"
+      - "8083:8083"
     environment:
       # port 8080 is actually already defined as default for docker as ENV in Dockerfile
-      - MICRONAUT_SERVER_PORT=8080
+      - MICRONAUT_SERVER_PORT=8083
       # service must know its own hostname to publish it in service discovery
       - MICRONAUT_SERVER_HOST=planners
       # service discovery and registration with Consul
