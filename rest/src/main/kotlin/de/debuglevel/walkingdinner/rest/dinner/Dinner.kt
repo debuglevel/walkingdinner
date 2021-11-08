@@ -29,6 +29,11 @@ data class Dinner(
     val organisation: Organisation
 ) {
     override fun toString(): String {
-        return "Dinner(id=$id, name='$name', city='$city', begin=$begin)"
+        return "Dinner(" +
+                "id=$id, " +
+                "name='$name', " +
+                "city='$city', " +
+                "begin=$begin" +
+                ")"
     }
 }
