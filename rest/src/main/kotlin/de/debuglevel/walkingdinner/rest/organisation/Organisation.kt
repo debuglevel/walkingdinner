@@ -18,4 +18,12 @@ data class Organisation(
 
     @OneToMany(cascade = [CascadeType.ALL])
     val dinners: Set<Dinner> = setOf()
-)
+) {
+    override fun toString(): String {
+        return "Organisation(" +
+                "id=$id, " +
+                "mail=$mail, " +
+                "name='$name'" +
+                ")"
+    }
+}
