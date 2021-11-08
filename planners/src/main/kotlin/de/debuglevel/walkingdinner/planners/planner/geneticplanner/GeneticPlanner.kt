@@ -74,9 +74,8 @@ class GeneticPlanner(private val options: GeneticPlannerOptions) : Planner {
 
         val evolutionResult: EvolutionResult<EnumGene<Team>, Double> = engine.stream()
             .limit(
-                Limits.byFitnessThreshold(options.fitnessThreshold).or(
-                    Limits.bySteadyFitness(options.steadyFitness)
-                )
+                Limits.byFitnessThreshold(options.fitnessThreshold)
+                    .or(Limits.bySteadyFitness(options.steadyFitness))
             )
             .peek(evolutionResultConsumer)
             .collect(EvolutionResult.toBestEvolutionResult())
