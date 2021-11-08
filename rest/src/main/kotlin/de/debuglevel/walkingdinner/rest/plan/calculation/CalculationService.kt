@@ -9,6 +9,7 @@ import de.debuglevel.walkingdinner.rest.plan.calculation.client.CalculationClien
 import de.debuglevel.walkingdinner.rest.plan.calculation.client.CalculationRequest
 import de.debuglevel.walkingdinner.rest.plan.calculation.client.TeamRequest
 import de.debuglevel.walkingdinner.rest.plan.client.PlanClient
+import io.micronaut.http.client.exceptions.HttpClientResponseException
 import mu.KotlinLogging
 import java.util.*
 import javax.inject.Singleton
@@ -42,17 +43,21 @@ open class CalculationService(
 
     private fun updateFromMicroservice(calculation: Calculation) {
         logger.debug { "Fetching calculation (our id: ${calculation.id}, their id: ${calculation.calculationId}) from service..." }
-        val calculationResponse = calculationClient.getOne(calculation.calculationId!!)
-        logger.debug { "Received CalculationResponse: $calculationResponse..." }
+        try {
+            val calculationResponse = calculationClient.getOne(calculation.calculationId!!)
+            logger.debug { "Received CalculationResponse: $calculationResponse..." }
 
-        calculation.finished = calculationResponse.finished
-        calculation.begin = calculationResponse.begin
-        calculation.end = calculationResponse.end
-        val planId = calculationResponse.planId
+            calculation.finished = calculationResponse.finished
+            calculation.begin = calculationResponse.begin
+            calculation.end = calculationResponse.end
+            val planId = calculationResponse.planId
 
-        if (calculation.finished) {
-            val savedPlan = fetchPlan(calculation, planId)
-            calculation.plan = savedPlan // TODO: not sure if this gets persisted somehow
+            if (calculation.finished) {
+                val savedPlan = fetchPlan(calculation, planId)
+                calculation.plan = savedPlan // TODO: not sure if this gets persisted somehow
+            }
+        } catch (e: HttpClientResponseException) {
+            logger.error { "Service returned ${e.status} (${e.message})" }
         }
     }
 
