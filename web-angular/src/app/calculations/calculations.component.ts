@@ -18,11 +18,11 @@ export class CalculationsComponent implements OnInit {
     this.fileToUploadFile = files.item(0);
     this.base64Service
       .getBase64(this.fileToUploadFile)
-      .then(res => {
+      .then((res) => {
         //console.log("Converted file to Base64:", res);
         this.fileToUploadBase64 = res;
       })
-      .catch(error => {
+      .catch((error) => {
         console.log("ERROR:", error.message);
       });
   }
@@ -38,7 +38,7 @@ export class CalculationsComponent implements OnInit {
   getCalculations(): void {
     this.calculationService
       .getCalculations()
-      .subscribe(calculations => (this.calculations = calculations));
+      .subscribe((calculations) => (this.calculations = calculations));
   }
 
   addSurveyfile(): void {
@@ -49,17 +49,22 @@ export class CalculationsComponent implements OnInit {
       .addCalculation({
         finished: false,
         surveyfile,
+        // development shortcut values:
         populationsSize: 200,
-        fitnessThreshold: 0.001,
-        steadyFitness: 100,
+        fitnessThreshold: 0.1,
+        steadyFitness: 10,
+        // (maybe) useful production values:
+        // populationsSize: 200,
+        // fitnessThreshold: 0.001,
+        // steadyFitness: 100,
       } as Calculation)
-      .subscribe(calculation => {
+      .subscribe((calculation) => {
         this.calculations.push(calculation);
       });
   }
 
   delete(calculation: Calculation): void {
-    this.calculations = this.calculations.filter(h => h !== calculation);
+    this.calculations = this.calculations.filter((h) => h !== calculation);
     this.calculationService.deleteCalculation(calculation).subscribe();
   }
 }
