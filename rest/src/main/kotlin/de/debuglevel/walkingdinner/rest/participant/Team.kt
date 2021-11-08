@@ -39,4 +39,6 @@ data class Team(
         return "Team(id=$id)"
     }
 
+    val cooks
+        get() = setOf(cook1, cook2)
 }

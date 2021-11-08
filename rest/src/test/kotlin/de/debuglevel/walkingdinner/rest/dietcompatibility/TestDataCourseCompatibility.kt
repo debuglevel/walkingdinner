@@ -17,14 +17,14 @@ object TestDataCourseCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -40,14 +40,14 @@ object TestDataCourseCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -63,14 +63,14 @@ object TestDataCourseCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -93,14 +93,14 @@ object TestDataCourseCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -116,14 +116,14 @@ object TestDataCourseCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -139,14 +139,14 @@ object TestDataCourseCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -168,14 +168,14 @@ object TestDataCourseCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -191,14 +191,14 @@ object TestDataCourseCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -214,14 +214,14 @@ object TestDataCourseCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -247,14 +247,14 @@ object TestDataCourseCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -270,14 +270,14 @@ object TestDataCourseCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -293,14 +293,14 @@ object TestDataCourseCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -323,14 +323,14 @@ object TestDataCourseCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -346,14 +346,14 @@ object TestDataCourseCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -369,14 +369,14 @@ object TestDataCourseCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -398,14 +398,14 @@ object TestDataCourseCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -421,14 +421,14 @@ object TestDataCourseCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -444,14 +444,14 @@ object TestDataCourseCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",

@@ -48,8 +48,8 @@ data class TeamRequest(
             null,
             Cook(
                 name = Name(name = chef1 ?: throw IllegalArgumentException("chef1")),
-                mail = MailAddress(
-                    mail = mail1 ?: throw IllegalArgumentException("mail1")
+                mailAddress = MailAddress(
+                    value = mail1 ?: throw IllegalArgumentException("mail1")
                 ),
                 phoneNumber = PhoneNumber(
                     number = phone1 ?: throw IllegalArgumentException("phone1")
@@ -57,8 +57,8 @@ data class TeamRequest(
             ),
             Cook(
                 name = Name(name = chef2 ?: throw IllegalArgumentException("chef2")),
-                mail = MailAddress(
-                    mail = mail2 ?: throw IllegalArgumentException("mail2")
+                mailAddress = MailAddress(
+                    value = mail2 ?: throw IllegalArgumentException("mail2")
                 ),
                 phoneNumber = PhoneNumber(
                     number = phone2 ?: throw IllegalArgumentException("phone2")

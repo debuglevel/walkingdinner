@@ -22,7 +22,6 @@ import java.io.IOException
 import java.io.InputStreamReader
 import java.nio.file.Path
 import javax.inject.Singleton
-import javax.mail.MessagingException
 import javax.mail.internet.MimeMessage
 
 // see: https://developers.google.com/gmail/api/SendEmail.java
@@ -40,7 +39,7 @@ class GmailService(
 
     /**
      * Global instance of the scopes required by this quickstart.
-     * If modifying these scopes, delete your previously saved credentials/ folder.
+     * If modifying these scopes, delete your previously saved `credentials/` folder.
      */
     private val authorizationScopes = listOf(GmailScopes.GMAIL_COMPOSE)
 
@@ -62,22 +61,20 @@ class GmailService(
     }
 
     /**
-     * Creates an authorized Credential object.
-     * @param netHttpTransport The network HTTP Transport.
-     * @return An authorized Credential object.
-     * @throws IOException If there is no client_secret.
+     * Creates an authorized Credential object. Saves it in a data store.
      */
-    @Throws(IOException::class)
     private fun getCredentials(netHttpTransport: NetHttpTransport): Credential {
         logger.debug { "Getting credentials..." }
 
         val clientSecrets = getClientSecrets()
 
+        val credentialsFolderFile = dataBasepath.resolve(credentialsFolder).toFile()
+
         // Build flow and trigger user authorization request.
         logger.trace { "Building authorization code flow..." }
         val authorizationCodeFlow = GoogleAuthorizationCodeFlow
             .Builder(netHttpTransport, jacksonFactory, clientSecrets, authorizationScopes)
-            .setDataStoreFactory(FileDataStoreFactory(dataBasepath.resolve(credentialsFolder).toFile()))
+            .setDataStoreFactory(FileDataStoreFactory(credentialsFolderFile))
             .setAccessType("offline")
             .build()
 
@@ -90,8 +87,9 @@ class GmailService(
     }
 
     /**
-     * Gets the client secrets from the [clientSecretsFile] JSON file
+     * Gets the client secrets (i.e. API key and stuff for this application) from the [clientSecretsFile] JSON file.
      */
+    @Throws(IOException::class)
     private fun getClientSecrets(): GoogleClientSecrets {
         logger.debug { "Getting client secrets..." }
 
@@ -110,58 +108,46 @@ class GmailService(
         return clientSecrets
     }
 
-    fun saveDraft(mailAddresses: Set<String>, subject: String, emailContent: String): Draft {
-        logger.debug { "Saving draft for '$mailAddresses'..." }
+    /**
+     * Creates and saves a draft mail.
+     */
+    fun saveDraft(toMailAddresses: Set<String>, subject: String, bodyText: String): Draft {
+        logger.debug { "Saving draft for '$toMailAddresses'..." }
 
         // "me" indicates that the authorized user should be used
         val authorizedUserValue = "me"
-        val mimeMessage = mailService.buildMimeMessage(mailAddresses, authorizedUserValue, subject, emailContent)
-        val draft = createDraft(authorizedUserValue, mimeMessage)
+        val mimeMessage = mailService.buildMimeMessage(toMailAddresses, authorizedUserValue, subject, bodyText)
+        val gmailMessage = buildMessage(mimeMessage)
+        val draft = createDraft(authorizedUserValue, gmailMessage)
 
         logger.debug { "Saved draft '${draft.id}'" }
         return draft
     }
 
     /**
-     * Create draft email.
-     *
-     * @param service an authorized Gmail API instance
-     * @param userId user's email address. The special value "me"
-     * can be used to indicate the authenticated user
-     * @param mimeMessage the MimeMessage used as email within the draft
-     * @return the created draft
-     * @throws MessagingException
-     * @throws IOException
+     * Creates a draft from the [message]. The [userId] should usually be "me" to reference the authenticated user.
      */
-    @Throws(MessagingException::class, IOException::class)
     private fun createDraft(
         userId: String,
-        mimeMessage: MimeMessage
+        message: Message
     ): Draft {
         logger.debug { "Creating draft on Gmail..." }
 
-        val message = buildMessage(mimeMessage)
-        var draft = Draft()
-        draft.message = message
-        // TODO: this could better be a BatchRequest
-        logger.trace { "Submitting request to Gmail..." }
-        draft = gmail.users().drafts().create(userId, draft).execute()
-        logger.trace { "Submitted request to Gmail" }
+        val draft = Draft().apply { this.message = message }
 
-        logger.debug { "Created draft on Gmail '${draft.id}'" }
-        logger.trace { "Created draft on Gmail '${draft.id}': ${draft.toPrettyString()}" }
-        return draft
+        // TODO: this could better be a BatchRequest
+        logger.trace { "Submitting draft to Gmail..." }
+        val submittedDraft = gmail.users().drafts().create(userId, draft).execute()
+        logger.trace { "Submitted draft to Gmail" }
+
+        logger.debug { "Created draft on Gmail '${submittedDraft.id}'" }
+        logger.trace { "Created draft on Gmail '${submittedDraft.id}': ${submittedDraft.toPrettyString()}" }
+        return submittedDraft
     }
 
     /**
-     * Create a message from an email.
-     *
-     * @param mimeMessage Email to be set to raw of message
-     * @return a message containing a base64url encoded email
-     * @throws IOException
-     * @throws MessagingException
+     * Creates a Gmail [Message] from a [MimeMessage].
      */
-    @Throws(MessagingException::class, IOException::class)
     private fun buildMessage(mimeMessage: MimeMessage): Message {
         logger.trace { "Building message from mime message..." }
 
@@ -170,10 +156,9 @@ class GmailService(
         val bytes = byteArrayOutputStream.toByteArray()
         val encodedEmail = Base64.encodeBase64URLSafeString(bytes)
 
-        val message = Message()
-        message.raw = encodedEmail
+        val message = Message().apply { raw = encodedEmail }
 
-        logger.trace { "Builded message from mime message" }
+        logger.trace { "Built message from mime message" }
         return message
     }
 }

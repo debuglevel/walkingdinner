@@ -34,6 +34,9 @@ class ReportController(private val reportService: ReportService) {
         return reportService.createGmailDrafts(planId)
     }
 
+    /**
+     * Downloads a .zip with .eml mails for all teams.
+     */
     @Get("/mails/{planId}")
     @Produces("application/zip")
     fun getAllMail(planId: UUID): ByteArray {

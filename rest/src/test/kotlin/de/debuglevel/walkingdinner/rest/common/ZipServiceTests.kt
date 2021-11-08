@@ -25,7 +25,7 @@ class ZipServiceTests {
         // Act
         val outputStream = ByteArrayOutputStream()
         //val outputStream = FileOutputStream("test.zip")
-        zipService.zip(zipItems, outputStream)
+        zipService.writeZip(zipItems, outputStream)
         //val bytes = outputStream.toByteArray()
 
         // Assert

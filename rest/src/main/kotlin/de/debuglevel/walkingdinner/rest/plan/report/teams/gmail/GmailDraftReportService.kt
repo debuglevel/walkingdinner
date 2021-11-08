@@ -20,7 +20,7 @@ class GmailDraftReportService(
 
         val reports = textReportService.generateReports(meetings)
         val drafts = reports
-            .map { createDraft(it.team, it.text) }
+            .map { createDraft(it.team, it.plaintext) }
             .toSet()
 
         val draftIds = drafts
@@ -31,10 +31,10 @@ class GmailDraftReportService(
     }
 
     private fun createDraft(team: Team, text: String): Draft {
-        val mailaddresses = setOf(team.cook1.mail.mail, team.cook2.mail.mail)
+        val mailAddresses = team.cooks.map { it.mailAddress.value }.toSet()
         val subject = "Walking Dinner"
 
-        val draft = gmailService.saveDraft(mailaddresses, subject, text)
+        val draft = gmailService.saveDraft(mailAddresses, subject, text)
         return draft
     }
 }

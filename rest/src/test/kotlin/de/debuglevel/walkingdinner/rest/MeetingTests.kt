@@ -14,14 +14,14 @@ class MeetingTests {
                 name = Name(
                     name = "cook"
                 ),
-                mail = MailAddress(mail = "mail"),
+                mailAddress = MailAddress(value = "mail"),
                 phoneNumber = PhoneNumber(number = "123")
             ),
             Cook(
                 name = Name(
                     name = "cook"
                 ),
-                mail = MailAddress(mail = "mail"),
+                mailAddress = MailAddress(value = "mail"),
                 phoneNumber = PhoneNumber(number = "123")
             ),
             "address",
@@ -40,14 +40,14 @@ class MeetingTests {
                         name = Name(
                             name = "cook"
                         ),
-                        mail = MailAddress(mail = "mail"),
+                        mailAddress = MailAddress(value = "mail"),
                         phoneNumber = PhoneNumber(number = "123")
                     ),
                     Cook(
                         name = Name(
                             name = "cook"
                         ),
-                        mail = MailAddress(mail = "mail"),
+                        mailAddress = MailAddress(value = "mail"),
                         phoneNumber = PhoneNumber(number = "123")
                     ),
                     "address",
@@ -63,14 +63,14 @@ class MeetingTests {
                         name = Name(
                             name = "cook"
                         ),
-                        mail = MailAddress(mail = "mail"),
+                        mailAddress = MailAddress(value = "mail"),
                         phoneNumber = PhoneNumber(number = "123")
                     ),
                     Cook(
                         name = Name(
                             name = "cook"
                         ),
-                        mail = MailAddress(mail = "mail"),
+                        mailAddress = MailAddress(value = "mail"),
                         phoneNumber = PhoneNumber(number = "123")
                     ),
                     "address",

@@ -76,29 +76,36 @@ open class ReportService(
         logger.debug { "Created Gmail drafts for plan '${createGmailDraftsEvent.gmailDraftsReport.plan.id}'" }
     }
 
+    /**
+     * Creates a .zip with mail messages as .eml files.
+     */
     fun getAllMails(planId: UUID): ByteArray {
         logger.debug { "Creating mail files for plan '$planId'..." }
         val plan = planService.get(planId)
 
-        // get all MimeMessages (which are EML when written to file)
+        // Get all MimeMessages (which are .eml when written to file)
         val mimeMessages = mailFileReportService.generateReports(plan.meetings)
 
-        // zip them into an archive
+        // Zip them into an archive
         val zipItems = mimeMessages.map {
-            val filename = UUID.randomUUID().toString() + ".eml"
+            // Generate some random filename
+            val randomUUID = UUID.randomUUID().toString()
+            val filename = "$randomUUID.eml"
 
-            val outputStream = ByteArrayOutputStream()
-            it.writeTo(outputStream)
-            val inputStream = outputStream.toByteArray().inputStream()
+            // TODO: don't know if .use{} would be good (close() has no effect according to documentation);
+            //  the InputStream is used later on again!
+            //  Probably just gets collected by garbage collector once not used anymore.
+            val byteArrayOutputStream = ByteArrayOutputStream()
+            it.writeTo(byteArrayOutputStream)
+            val byteArrayInputStream = byteArrayOutputStream.toByteArray().inputStream()
 
-            ZipService.ZipItem(filename, inputStream)
+            ZipService.ZipItem(filename, byteArrayInputStream)
         }.toSet()
 
         val byteArrayOutputStream = ByteArrayOutputStream()
-        zipService.zip(zipItems, byteArrayOutputStream)
+        zipService.writeZip(zipItems, byteArrayOutputStream)
         val bytes = byteArrayOutputStream.toByteArray()
 
-        // return archive
         logger.debug { "Created mail files for plan '$planId'" }
         return bytes
     }

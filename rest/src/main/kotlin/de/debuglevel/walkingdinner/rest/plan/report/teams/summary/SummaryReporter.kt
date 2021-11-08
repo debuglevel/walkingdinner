@@ -10,6 +10,9 @@ import javax.inject.Singleton
 class SummaryReporter : Reporter {
     private val logger = KotlinLogging.logger {}
 
+    /**
+     * Generates an overview plaintext of each course, each meeting (with the cooking team highlighted).
+     */
     override fun generateReports(meetings: Set<Meeting>): String {
         logger.trace { "Generating summary report..." }
         val summary = meetings
@@ -25,14 +28,21 @@ class SummaryReporter : Reporter {
         return summary
     }
 
+    /**
+     * Checks if the supplied [team] cooks in this [meeting].
+     */
     private fun isCookingTeam(team: Team, meeting: Meeting): Boolean {
         return meeting.getCookingTeam() == team
     }
 
+    /**
+     * Creates a textual representation of a meeting with the cooking team highlighted.
+     * `[Harry & Ginny]   Ron & Hermione   Lupin & Tonks`
+     */
     fun meetingToString(meeting: Meeting): String {
         return meeting.teams
             .map { it ->
-                val teamText = "${it.cook1.name} & ${it.cook2.name}"
+                val teamText = it.cooks.map { it.name }.joinToString(" & ")
                 if (isCookingTeam(it, meeting)) "[$teamText]" else teamText
             }
             .joinToString("\t")

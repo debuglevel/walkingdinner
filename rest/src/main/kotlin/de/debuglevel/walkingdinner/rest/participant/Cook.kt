@@ -15,7 +15,7 @@ data class Cook(
     val name: Name,
 
     @OneToOne(cascade = [CascadeType.ALL])
-    val mail: MailAddress,
+    val mailAddress: MailAddress,
 
     @OneToOne(cascade = [CascadeType.ALL])
     val phoneNumber: PhoneNumber

@@ -46,8 +46,8 @@ class TeamDTO {
     val cookingCapabilities: List<CookingCapability?> = listOf()
 
     fun toTeam(): Team {
-        val cook1 = Cook(name = name1, mail = mail1, phoneNumber = phone1)
-        val cook2 = Cook(name = name2, mail = mail2, phoneNumber = phone2)
+        val cook1 = Cook(name = name1, mailAddress = mail1, phoneNumber = phone1)
+        val cook2 = Cook(name = name2, mailAddress = mail2, phoneNumber = phone2)
         val location: Location? = null
         val capabilities = this.cookingCapabilities.filterNotNull()
 

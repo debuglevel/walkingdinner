@@ -15,7 +15,10 @@ class ZipService {
 
     data class ZipItem(val filename: String, val inputStream: InputStream)
 
-    fun zip(zipItems: Set<ZipItem>, zipOutputStream: OutputStream) {
+    /**
+     * Archives the [zipItems] into a .zip and writes it into the [outputStream]
+     */
+    fun writeZip(zipItems: Set<ZipItem>, zipOutputStream: OutputStream) {
         logger.debug { "Creating zip file..." }
 
         ZipOutputStream(BufferedOutputStream(zipOutputStream)).use { outputStream ->

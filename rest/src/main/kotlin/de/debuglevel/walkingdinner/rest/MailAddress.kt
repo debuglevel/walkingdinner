@@ -11,9 +11,9 @@ data class MailAddress(
     @GeneratedValue
     val id: UUID? = null,
 
-    val mail: String
+    val value: String
 ) {
     override fun toString(): String {
-        return mail
+        return value
     }
 }

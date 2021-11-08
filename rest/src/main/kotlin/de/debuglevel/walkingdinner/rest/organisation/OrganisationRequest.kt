@@ -9,7 +9,7 @@ data class OrganisationRequest(
     fun toOrganisation(): Organisation {
         return Organisation(
             name = this.name,
-            mail = MailAddress(mail = this.mail)
+            mail = MailAddress(value = this.mail)
         )
     }
 }

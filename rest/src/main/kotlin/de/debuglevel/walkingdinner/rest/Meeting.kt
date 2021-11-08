@@ -17,14 +17,17 @@ data class Meeting(
 ) {
 
     /**
-     * Get the team which is cooking in this meeting
-     * @implNote The cooking team is defined as the first one in the list
+     * Gets the team which is cooking in this meeting.
+     * @implNote The cooking team is defined as the first one in the list.
      */
     fun getCookingTeam(): Team {
         return teams.first()
     }
 
     override fun toString(): String {
-        return "Meeting(id=$id)"
+        return "Meeting(" +
+                "id=$id" +
+                "course='$course', " +
+                ")"
     }
 }

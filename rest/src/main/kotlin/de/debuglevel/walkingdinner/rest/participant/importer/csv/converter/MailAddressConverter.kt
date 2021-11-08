@@ -7,6 +7,6 @@ import de.debuglevel.walkingdinner.rest.MailAddress
 class MailAddressConverter<T> : AbstractBeanField<T>() {
     @Throws(CsvDataTypeMismatchException::class)
     override fun convert(value: String): Any? {
-        return MailAddress(mail = value)
+        return MailAddress(value = value)
     }
 }

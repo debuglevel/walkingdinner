@@ -20,37 +20,14 @@ object TestDataHardCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
-                            phoneNumber = PhoneNumber(number = "123")
-                        ),
-                        "address",
-                        Diet.Omnivore,
-                        listOf(),
-                        null,
-                        "city",
-                        null
-                    ),
-                    Team(
-                        null,
-                        Cook(
-                            name = Name(
-                                name = "cook"
-                            ),
-                            mail = MailAddress(mail = "mail"),
-                            phoneNumber = PhoneNumber(number = "123")
-                        ),
-                        Cook(
-                            name = Name(
-                                name = "cook"
-                            ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -66,14 +43,37 @@ object TestDataHardCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
+                            phoneNumber = PhoneNumber(number = "123")
+                        ),
+                        "address",
+                        Diet.Omnivore,
+                        listOf(),
+                        null,
+                        "city",
+                        null
+                    ),
+                    Team(
+                        null,
+                        Cook(
+                            name = Name(
+                                name = "cook"
+                            ),
+                            mailAddress = MailAddress(value = "mail"),
+                            phoneNumber = PhoneNumber(number = "123")
+                        ),
+                        Cook(
+                            name = Name(
+                                name = "cook"
+                            ),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -96,37 +96,14 @@ object TestDataHardCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
-                            phoneNumber = PhoneNumber(number = "123")
-                        ),
-                        "address",
-                        Diet.Vegan,
-                        listOf(),
-                        null,
-                        "city",
-                        null
-                    ),
-                    Team(
-                        null,
-                        Cook(
-                            name = Name(
-                                name = "cook"
-                            ),
-                            mail = MailAddress(mail = "mail"),
-                            phoneNumber = PhoneNumber(number = "123")
-                        ),
-                        Cook(
-                            name = Name(
-                                name = "cook"
-                            ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -142,14 +119,37 @@ object TestDataHardCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
+                            phoneNumber = PhoneNumber(number = "123")
+                        ),
+                        "address",
+                        Diet.Vegan,
+                        listOf(),
+                        null,
+                        "city",
+                        null
+                    ),
+                    Team(
+                        null,
+                        Cook(
+                            name = Name(
+                                name = "cook"
+                            ),
+                            mailAddress = MailAddress(value = "mail"),
+                            phoneNumber = PhoneNumber(number = "123")
+                        ),
+                        Cook(
+                            name = Name(
+                                name = "cook"
+                            ),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -171,37 +171,14 @@ object TestDataHardCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
-                            phoneNumber = PhoneNumber(number = "123")
-                        ),
-                        "address",
-                        Diet.Vegetarian,
-                        listOf(),
-                        null,
-                        "city",
-                        null
-                    ),
-                    Team(
-                        null,
-                        Cook(
-                            name = Name(
-                                name = "cook"
-                            ),
-                            mail = MailAddress(mail = "mail"),
-                            phoneNumber = PhoneNumber(number = "123")
-                        ),
-                        Cook(
-                            name = Name(
-                                name = "cook"
-                            ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -217,14 +194,37 @@ object TestDataHardCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
+                            phoneNumber = PhoneNumber(number = "123")
+                        ),
+                        "address",
+                        Diet.Vegetarian,
+                        listOf(),
+                        null,
+                        "city",
+                        null
+                    ),
+                    Team(
+                        null,
+                        Cook(
+                            name = Name(
+                                name = "cook"
+                            ),
+                            mailAddress = MailAddress(value = "mail"),
+                            phoneNumber = PhoneNumber(number = "123")
+                        ),
+                        Cook(
+                            name = Name(
+                                name = "cook"
+                            ),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -250,14 +250,14 @@ object TestDataHardCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -273,14 +273,14 @@ object TestDataHardCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -296,14 +296,14 @@ object TestDataHardCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -326,37 +326,14 @@ object TestDataHardCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
-                            phoneNumber = PhoneNumber(number = "123")
-                        ),
-                        "address",
-                        Diet.Vegan,
-                        listOf(),
-                        null,
-                        "city",
-                        null
-                    ),
-                    Team(
-                        null,
-                        Cook(
-                            name = Name(
-                                name = "cook"
-                            ),
-                            mail = MailAddress(mail = "mail"),
-                            phoneNumber = PhoneNumber(number = "123")
-                        ),
-                        Cook(
-                            name = Name(
-                                name = "cook"
-                            ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -372,14 +349,37 @@ object TestDataHardCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
+                            phoneNumber = PhoneNumber(number = "123")
+                        ),
+                        "address",
+                        Diet.Vegan,
+                        listOf(),
+                        null,
+                        "city",
+                        null
+                    ),
+                    Team(
+                        null,
+                        Cook(
+                            name = Name(
+                                name = "cook"
+                            ),
+                            mailAddress = MailAddress(value = "mail"),
+                            phoneNumber = PhoneNumber(number = "123")
+                        ),
+                        Cook(
+                            name = Name(
+                                name = "cook"
+                            ),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -401,14 +401,14 @@ object TestDataHardCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -424,14 +424,14 @@ object TestDataHardCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -447,14 +447,14 @@ object TestDataHardCompatibility {
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",

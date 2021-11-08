@@ -25,14 +25,14 @@ class SummaryReporterTests {
                     name = Name(
                         name = "cook1"
                     ),
-                    mail = MailAddress(mail = "mail"),
+                    mailAddress = MailAddress(value = "mail"),
                     phoneNumber = PhoneNumber(number = "123")
                 ),
                 Cook(
                     name = Name(
                         name = "cook2"
                     ),
-                    mail = MailAddress(mail = "mail"),
+                    mailAddress = MailAddress(value = "mail"),
                     phoneNumber = PhoneNumber(number = "123")
                 ),
                 "address",
@@ -51,14 +51,14 @@ class SummaryReporterTests {
                             name = Name(
                                 name = "cook3"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook4"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",
@@ -74,14 +74,14 @@ class SummaryReporterTests {
                             name = Name(
                                 name = "cook5"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook6"
                             ),
-                            mail = MailAddress(mail = "mail"),
+                            mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
                         "address",

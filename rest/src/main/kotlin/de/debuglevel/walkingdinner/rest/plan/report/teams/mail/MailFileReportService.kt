@@ -18,34 +18,38 @@ class MailFileReportService(
 ) : Reporter {
     private val logger = KotlinLogging.logger {}
 
+    /**
+     * Generates a mail message (i.e. a [MimeMessage]) for each team occurring in the [meetings].
+     */
     override fun generateReports(meetings: Set<Meeting>): Set<MimeMessage> {
         logger.trace { "Generating mail files..." }
 
-        val reports = textReportService.generateReports(meetings)
-        val mimeMessages = reports
-            .map {
-                buildMailFile(it.team, it.text)
-            }
+        val textReports = textReportService.generateReports(meetings)
+        val mimeMessages = textReports
+            .map { buildMailFile(it.team, it.plaintext) }
             .toSet()
 
         logger.trace { "Generated mail files" }
         return mimeMessages
     }
 
-    private fun buildMailFile(team: Team, text: String): MimeMessage {
+    /**
+     * Builds a [MimeMessage] addressed to all the [team] cook's mail addresses, containing [plaintext] as mail body.
+     */
+    private fun buildMailFile(team: Team, plaintext: String): MimeMessage {
         logger.trace { "Generating mail file for team '$team'..." }
 
-        val mailaddresses = setOf(team.cook1.mail.mail, team.cook2.mail.mail)
+        val toMailAddresses = team.cooks.map { it.mailAddress.value }.toSet()
         val subject = "Walking Dinner"
 
         val mimeMessage = mailService.buildMimeMessage(
-            to = mailaddresses,
-            from = fromMailAddress,
+            toMailAddresses = toMailAddresses,
+            fromMailAddress = fromMailAddress,
             subject = subject,
-            bodyText = text
+            bodyText = plaintext
         )
 
-        logger.trace { "Generated mail file for team '$team'." }
+        logger.trace { "Generated mail file for team '$team'" }
         return mimeMessage
     }
 }
