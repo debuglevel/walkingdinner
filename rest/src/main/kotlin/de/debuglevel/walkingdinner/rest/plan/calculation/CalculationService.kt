@@ -32,34 +32,47 @@ open class CalculationService(
 
         // if calculation has no plan yet, try to fetch it from the microservice
         if (calculation.plan == null) {
-            logger.debug { "Calculation ${calculation.id} has no plan yet; fetching calculation (id there: ${calculation.calculationId}) from microservice..." }
-            val calculationResponse = calculationClient.getOne(calculation.calculationId!!)
-            logger.debug { "Received CalculationResponse: $calculationResponse..." }
-
-            calculation.finished = calculationResponse.finished
-            calculation.begin = calculationResponse.begin
-            calculation.end = calculationResponse.end
-
-            if (calculation.finished) {
-                logger.debug { "Calculation ${calculation.id} is finished on calculation microservice; fetching its plan ${calculationResponse.planId!!} from microservice..." }
-                val planResponse = planClient.getOne(calculationResponse.planId!!)
-
-                val fetchedTeams = calculation.teams.map { teamService.get(it.id!!) }
-
-                val plan = Plan(
-                    //meetings = planResponse.meetings.map { it.toMeeting(calculation.teams) }.toSet(),
-                    meetings = planResponse.meetings.map { it.toMeeting(fetchedTeams) }.toSet(),
-                    additionalInformation = "TODO"
-                )
-
-                val savedPlan = planService.add(plan)
-
-                calculation.plan = savedPlan
-            }
+            logger.debug { "Calculation ${calculation.id} has no plan yet" }
+            updateFromMicroservice(calculation)
         }
 
         logger.debug { "Got calculation: $calculation" }
         return calculation
+    }
+
+    private fun updateFromMicroservice(calculation: Calculation) {
+        logger.debug { "Fetching calculation (our id: ${calculation.id}, their id: ${calculation.calculationId}) from service..." }
+        val calculationResponse = calculationClient.getOne(calculation.calculationId!!)
+        logger.debug { "Received CalculationResponse: $calculationResponse..." }
+
+        calculation.finished = calculationResponse.finished
+        calculation.begin = calculationResponse.begin
+        calculation.end = calculationResponse.end
+        val planId = calculationResponse.planId
+
+        if (calculation.finished) {
+            val savedPlan = fetchPlan(calculation, planId)
+            calculation.plan = savedPlan // TODO: not sure if this gets persisted somehow
+        }
+    }
+
+    private fun fetchPlan(
+        calculation: Calculation,
+        planId: UUID?
+    ): Plan {
+        logger.debug { "Calculation ${calculation.id} is finished on calculation microservice; fetching its plan ${planId!!} from microservice..." }
+        val planResponse = planClient.getOne(planId!!)
+
+        val fetchedTeams = calculation.teams.map { teamService.get(it.id!!) }
+
+        val plan = Plan(
+            //meetings = planResponse.meetings.map { it.toMeeting(calculation.teams) }.toSet(),
+            meetings = planResponse.meetings.map { it.toMeeting(fetchedTeams) }.toSet(),
+            additionalInformation = "TODO"
+        )
+
+        val savedPlan = planService.add(plan)
+        return savedPlan
     }
 
     @Transactional
