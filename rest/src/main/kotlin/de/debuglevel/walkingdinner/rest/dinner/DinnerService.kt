@@ -1,5 +1,7 @@
 package de.debuglevel.walkingdinner.rest.dinner
 
+import de.debuglevel.walkingdinner.rest.organisation.OrganisationService
+import io.micronaut.context.BeanContext
 import mu.KotlinLogging
 import java.util.*
 import javax.inject.Singleton
@@ -7,9 +9,17 @@ import javax.transaction.Transactional
 
 @Singleton
 open class DinnerService(
-    private val dinnerRepository: DinnerRepository
+    private val dinnerRepository: DinnerRepository,
+    private val beanContext: BeanContext,
 ) {
     private val logger = KotlinLogging.logger {}
+
+    /**
+     * @implNote In case [OrganisationService] also wants to access [DinnerService],
+     *  this allows a circular dependency as they are not set during initialization.
+     */
+    private val organisationService: OrganisationService
+        get() = beanContext.getBean(OrganisationService::class.java)
 
     fun get(id: UUID): Dinner {
         logger.debug { "Getting dinner '$id'..." }
@@ -26,9 +36,13 @@ open class DinnerService(
         return dinners
     }
 
-    fun save(dinner: Dinner): Dinner {
+    @Transactional
+    open fun save(dinner: Dinner): Dinner {
         logger.debug { "Saving dinner '$dinner'..." }
-        val savedDinner = dinnerRepository.save(dinner)
+        // Load organisation again inside this transaction; would throw an LazyInitializationException otherwise
+        val organisation = organisationService.get(dinner.organisation.id!!)
+        val savingDinner = dinner.copy(organisation = organisation)
+        val savedDinner = dinnerRepository.save(savingDinner)
         logger.debug { "Saved dinner: $savedDinner" }
         return savedDinner
     }
