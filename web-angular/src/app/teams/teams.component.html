@@ -76,57 +76,65 @@
           />
         </mat-form-field> -->
 
-        <mat-form-field class="full-width">
-          <mat-label>Ernährungsform</mat-label>
-          <mat-select #teamDiet>
-            <mat-option value="Vegan">Wir essen vegan</mat-option>
-            <mat-option value="Vegetarian">Wir essen vegetarisch</mat-option>
-            <mat-option value="Omnivore"
-              >Wir essen omnivor (d.h. auch Fleisch)</mat-option
-            >
-          </mat-select>
-        </mat-form-field>
+        <mat-card>
+          <mat-card-title>Ernährung und Kochkünste</mat-card-title>
 
-        Wir kochen gerne...
-        <ul>
-          <li>
-            <mat-checkbox #teamVeganAppetizer>veganer Appetizer</mat-checkbox>
-          </li>
-          <li>
-            <mat-checkbox #teamVegetarianAppetizer
-              >vegetarischer Appetizer</mat-checkbox
-            >
-          </li>
-          <li>
-            <mat-checkbox #teamOmnivoreAppetizer
-              >omnivorer Appetizer</mat-checkbox
-            >
-          </li>
-          <li>
-            <mat-checkbox #teamVeganMaindish>vegane Hauptspeise</mat-checkbox>
-          </li>
-          <li>
-            <mat-checkbox #teamVegetarianMaindish
-              >vegetarische Hauptspeise</mat-checkbox
-            >
-          </li>
-          <li>
-            <mat-checkbox #teamOmnivoreMaindish
-              >omnivore Hauptspeise</mat-checkbox
-            >
-          </li>
-          <li>
-            <mat-checkbox #teamVeganDessert>veganes Dessert</mat-checkbox>
-          </li>
-          <li>
-            <mat-checkbox #teamVegetarianDessert
-              >vegetarisches Dessert</mat-checkbox
-            >
-          </li>
-          <li>
-            <mat-checkbox #teamOmnivoreDessert>omnivores Dessert</mat-checkbox>
-          </li>
-        </ul>
+          <mat-form-field class="full-width">
+            <mat-label>Die Ernährungsform eures Teams...</mat-label>
+            <mat-select #teamDiet>
+              <mat-option value="Vegan">Wir essen vegan</mat-option>
+              <mat-option value="Vegetarian">Wir essen vegetarisch</mat-option>
+              <mat-option value="Omnivore"
+                >Wir essen omnivor (d.h. auch Fleisch)</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+
+          <p>
+            Wählt bitte <em>alle</em> Varianten aus, die ihr zubereiten könntet.
+          </p>
+          <ul>
+            <li>
+              <mat-checkbox #teamVeganAppetizer>veganer Appetizer</mat-checkbox>
+            </li>
+            <li>
+              <mat-checkbox #teamVegetarianAppetizer
+                >vegetarischer Appetizer</mat-checkbox
+              >
+            </li>
+            <li>
+              <mat-checkbox #teamOmnivoreAppetizer
+                >omnivorer Appetizer</mat-checkbox
+              >
+            </li>
+            <li>
+              <mat-checkbox #teamVeganMaindish>vegane Hauptspeise</mat-checkbox>
+            </li>
+            <li>
+              <mat-checkbox #teamVegetarianMaindish
+                >vegetarische Hauptspeise</mat-checkbox
+              >
+            </li>
+            <li>
+              <mat-checkbox #teamOmnivoreMaindish
+                >omnivore Hauptspeise</mat-checkbox
+              >
+            </li>
+            <li>
+              <mat-checkbox #teamVeganDessert>veganes Dessert</mat-checkbox>
+            </li>
+            <li>
+              <mat-checkbox #teamVegetarianDessert
+                >vegetarisches Dessert</mat-checkbox
+              >
+            </li>
+            <li>
+              <mat-checkbox #teamOmnivoreDessert
+                >omnivores Dessert</mat-checkbox
+              >
+            </li>
+          </ul>
+        </mat-card>
 
         <mat-form-field class="full-width">
           <input matInput placeholder="Stadt" #teamCity />
