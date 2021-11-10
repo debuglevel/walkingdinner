@@ -29,23 +29,48 @@
     </mat-card-header>
     <mat-card-content>
       <form class="form">
-        <mat-form-field class="full-width">
-          <mat-label>Dinner</mat-label>
-          <mat-select #teamDinner>
-            <mat-option *ngFor="let dinner of dinners" [value]="dinner.id">
-              {{ dinner.name }} ({{ dinner.begin | date: "yyyy-MM-dd HH:mm" }})
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <mat-card>
+          <mat-card-title>Organisatorisches</mat-card-title>
 
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Adresse" #teamAddress />
-        </mat-form-field>
+          An welchem Dinner möchtet ihr teilnehmen? (Sorry, dass das momentan
+          noch angegeben werden muss... technische Gründe...)
+          <mat-form-field class="full-width">
+            <mat-label>Dinner</mat-label>
+            <mat-select #teamDinner>
+              <mat-option *ngFor="let dinner of dinners" [value]="dinner.id">
+                {{ dinner.name }} ({{
+                  dinner.begin | date: "yyyy-MM-dd HH:mm"
+                }})
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          In welcher Stadt ist eure Koch-Location? (Schon klar, dass in der
+          Stadt des Dinners ist - muss aus technischen Gründen leider momentan
+          noch angegeben werden.)
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Stadt" #teamCity />
+          </mat-form-field>
+
+          An welcher Adresse (z.B. "Markusplatz 3") ist eure Koch-Location?
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Adresse" #teamAddress />
+          </mat-form-field>
+
+          <p>
+            Notiert hier bitte alle Besonderheiten - beispielsweise
+            Unverträglichkeiten oder organisatorische Hinweise.
+          </p>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Notizen" #teamNotes />
+          </mat-form-field>
+        </mat-card>
 
         <mat-card>
           <mat-card-title>Koch 1</mat-card-title>
+          Bitte tragt hier den Koch ein, bei dem das zuhause stattfindet.
           <mat-form-field class="full-width">
-            <input matInput placeholder="Name" #teamChef1 />
+            <input matInput placeholder="Vor- und Nachname" #teamChef1 />
           </mat-form-field>
           <mat-form-field class="full-width">
             <input matInput placeholder="Mail-Adresse" #teamMail1 />
@@ -58,7 +83,7 @@
         <mat-card>
           <mat-card-title>Koch 2</mat-card-title>
           <mat-form-field class="full-width">
-            <input matInput placeholder="Name" #teamChef2 />
+            <input matInput placeholder="Vor- und Nachname" #teamChef2 />
           </mat-form-field>
           <mat-form-field class="full-width">
             <input matInput placeholder="Mail-Adresse" #teamMail2 />
@@ -135,14 +160,6 @@
             </li>
           </ul>
         </mat-card>
-
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Stadt" #teamCity />
-        </mat-form-field>
-
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Notizen" #teamNotes />
-        </mat-form-field>
       </form>
     </mat-card-content>
     <mat-card-actions>
