@@ -42,24 +42,31 @@
           <input matInput placeholder="Adresse" #teamAddress />
         </mat-form-field>
 
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Name von Koch 1" #teamChef1 />
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Name von Koch 2" #teamChef2 />
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Mail von Koch 1" #teamMail1 />
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Mail von Koch 2" #teamMail2 />
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Telefonnummer von Koch 1" #teamPhone1 />
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Telefonnummer von Koch 2" #teamPhone2 />
-        </mat-form-field>
+        <mat-card>
+          <mat-card-title>Koch 1</mat-card-title>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Name" #teamChef1 />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Mail-Adresse" #teamMail1 />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Telefonnummer" #teamPhone1 />
+          </mat-form-field>
+        </mat-card>
+
+        <mat-card>
+          <mat-card-title>Koch 2</mat-card-title>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Name" #teamChef2 />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Mail-Adresse" #teamMail2 />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Telefonnummer" #teamPhone2 />
+          </mat-form-field>
+        </mat-card>
 
         <!-- <mat-form-field class="full-width">
           <input
