@@ -2,6 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
+## Node
+Install node via <https://github.com/nodesource/distributions/blob/master/README.md> or see <https://nodejs.org/en/download/>.
+
 ## Dependencies
 
 Run `npm install` to install dependencies.
