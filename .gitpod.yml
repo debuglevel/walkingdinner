@@ -18,11 +18,12 @@ tasks:
   - name: Angular
     init: |
       echo === INIT
-      cd web-angular
+      cd /workspace/walkingdinner/web-angular
       npm install
       echo === INIT DONE
     command: |
       echo === COMMAND
+      cd /workspace/walkingdinner/web-angular
       npm run
       echo === COMMAND DONE
 
