@@ -24,7 +24,7 @@ tasks:
     command: |
       echo === COMMAND
       cd /workspace/walkingdinner/web-angular
-      npm run
+      npm start
       echo === COMMAND DONE
 
 ports:
