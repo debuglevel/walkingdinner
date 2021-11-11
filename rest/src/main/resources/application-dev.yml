@@ -20,6 +20,8 @@ consul:
       enabled: false
     registration:
       enabled: false
+# Disable HealthMonitor; see https://github.com/micronaut-projects/micronaut-core/issues/3546
+micronaut.health.monitor.enabled: false
 
 datasources:
   # H2 in-memory
