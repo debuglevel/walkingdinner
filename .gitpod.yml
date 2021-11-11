@@ -3,16 +3,28 @@ image:
 
 tasks:
   - name: Backend
-    init: ./gradlew :rest:build
-    command: ./gradlew :rest:run
+    init: |
+      echo === INIT
+      ./gradlew :rest:build
+      echo === INIT DONE
+    # TODO run with "dev" environment?
+    command: |
+      echo === COMMAND
+      ./gradlew :rest:run
+      echo === COMMAND DONE
   # - name: Planners
   #   init: ./gradlew :planners:build
   #   command: ./gradlew :planners:run
   - name: Angular
     init: |
+      echo === INIT
       cd web-angular
       npm install
-    command: npm run
+      echo === INIT DONE
+    command: |
+      echo === COMMAND
+      npm run
+      echo === COMMAND DONE
 
 ports:
   # Backend
