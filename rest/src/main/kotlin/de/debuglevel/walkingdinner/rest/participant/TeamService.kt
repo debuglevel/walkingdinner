@@ -28,7 +28,8 @@ open class TeamService(
         return team
     }
 
-    fun getAll(): Set<Team> {
+    @Transactional
+    open fun getAll(): Set<Team> {
         logger.debug { "Getting all teams..." }
         val teams = teamRepository.findAll().toSet()
         logger.debug { "Got all teams" }
