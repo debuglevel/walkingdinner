@@ -6,14 +6,12 @@ import { environment } from "../environments/environment";
 
 // Material
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import {
-  MatButtonModule,
-  MatCheckboxModule,
-  MatIconModule,
-  MatSidenavModule,
-  MatToolbarModule,
-  MatTooltipModule,
-} from "@angular/material";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatIconModule } from "@angular/material/icon";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatInputModule } from "@angular/material/input";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatListModule } from "@angular/material/list";
