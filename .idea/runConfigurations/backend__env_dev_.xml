@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="backend [env=dev]" type="JetRunConfigurationType">
+    <envs>
+      <env name="MICRONAUT_ENVIRONMENTS" value="dev" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="de.debuglevel.walkingdinner.Application" />
+    <module name="walkingdinner.rest.main" />
+    <shortenClasspath name="NONE" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
