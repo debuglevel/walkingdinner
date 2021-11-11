@@ -12,7 +12,7 @@ tasks:
     init: |
       cd web-angular
       npm install
-    command: ng serve
+    command: npm run
 
 ports:
   # Backend
