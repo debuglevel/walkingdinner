@@ -2,14 +2,30 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: ./gradlew build
-    #name: Gradle Build
-    command: ./gradlew run
-    name: Application Server
+  - name: Backend
+    init: ./gradlew :rest:build
+    command: ./gradlew :rest:run
+  - name: Planners
+    init: ./gradlew :planners:build
+    command: ./gradlew :planners:run
+  - name: Angular
+    init: |
+      cd web-angular
+      npm install
+    command: ng serve
 
 ports:
-  - port: 8080
-#onOpen: open-preview # do not open preview, because there is nothing served on /
+  # Backend
+  - port: 8081
+    onOpen: ignore
+  # Angular
+  - port: 4200
+    onOpen: open-browser
+    #onOpen: open-preview
+  # Planners
+  - port: 8083
+    onOpen: ignore
+
 vscode:
   extensions:
     - mathiasfrohlich.Kotlin@1.7.1:zRxka5i+6/G9r7KC3xmyXQ==
