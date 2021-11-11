@@ -5,9 +5,9 @@ tasks:
   - name: Backend
     init: ./gradlew :rest:build
     command: ./gradlew :rest:run
-  - name: Planners
-    init: ./gradlew :planners:build
-    command: ./gradlew :planners:run
+  # - name: Planners
+  #   init: ./gradlew :planners:build
+  #   command: ./gradlew :planners:run
   - name: Angular
     init: |
       cd web-angular
