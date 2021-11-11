@@ -6,10 +6,10 @@ import de.debuglevel.walkingdinner.rest.participant.location.Location
 import fr.dudie.nominatim.client.JsonNominatimClient
 import fr.dudie.nominatim.client.request.NominatimSearchRequest
 import fr.dudie.nominatim.model.Address
+import jakarta.inject.Singleton
 import mu.KotlinLogging
 import org.apache.http.impl.client.HttpClientBuilder
 import java.text.DecimalFormat
-import javax.inject.Singleton
 import kotlin.concurrent.withLock
 
 @Singleton

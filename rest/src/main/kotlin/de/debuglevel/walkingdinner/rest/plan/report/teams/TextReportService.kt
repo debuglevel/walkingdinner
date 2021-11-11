@@ -5,10 +5,10 @@ import de.debuglevel.walkingdinner.rest.participant.Diet
 import de.debuglevel.walkingdinner.rest.participant.Team
 import de.debuglevel.walkingdinner.rest.plan.Courses
 import de.debuglevel.walkingdinner.rest.plan.report.Reporter
+import jakarta.inject.Singleton
 import mu.KotlinLogging
 import org.jtwig.JtwigModel
 import org.jtwig.JtwigTemplate
-import javax.inject.Singleton
 
 @Singleton
 open class TextReportService : Reporter {

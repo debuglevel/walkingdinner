@@ -3,8 +3,8 @@ package de.debuglevel.walkingdinner.rest.plan.report.teams.summary
 import de.debuglevel.walkingdinner.rest.Meeting
 import de.debuglevel.walkingdinner.rest.participant.Team
 import de.debuglevel.walkingdinner.rest.plan.report.Reporter
+import jakarta.inject.Singleton
 import mu.KotlinLogging
-import javax.inject.Singleton
 
 @Singleton
 class SummaryReporter : Reporter {
