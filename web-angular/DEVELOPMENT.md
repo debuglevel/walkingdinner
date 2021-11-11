@@ -8,7 +8,7 @@ Install node via <https://github.com/nvm-sh/nvm> or <https://github.com/nodesour
 
 ## Dependencies
 
-Run `npm install` to install dependencies.
+Run `npm install` to install dependencies. Maybe `npm install --legacy-peer-deps`. Who knows.
 
 ## Development server
 
