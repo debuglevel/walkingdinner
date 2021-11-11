@@ -103,7 +103,6 @@ dependencies {
     // Micronaut HTTP Client
     implementation "io.micronaut:micronaut-http-client"
 
-
     // Micronaut Management & Monitoring
     /// automatically provides the /health endpoint publicly, and some other with authentication
     implementation 'io.micronaut:micronaut-management'
