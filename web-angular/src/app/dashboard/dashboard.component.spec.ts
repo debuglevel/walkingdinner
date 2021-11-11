@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
 import { DashboardComponent } from "./dashboard.component";
 import { OrganisationSearchComponent } from "../organisation-search/organisation-search.component";
@@ -14,7 +14,7 @@ describe("DashboardComponent", () => {
   let organisationService;
   let getOrganisationsSpy;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     organisationService = jasmine.createSpyObj("OrganisationService", [
       "getOrganisations",
     ]);
@@ -46,11 +46,11 @@ describe("DashboardComponent", () => {
     );
   });
 
-  it("should call organisationService", async(() => {
+  it("should call organisationService", waitForAsync(() => {
     expect(getOrganisationsSpy.calls.any()).toBe(true);
   }));
 
-  it("should display 4 links", async(() => {
+  it("should display 4 links", waitForAsync(() => {
     expect(fixture.nativeElement.querySelectorAll("a").length).toEqual(4);
   }));
 });
