@@ -25,13 +25,13 @@ export class TeamsComponent implements OnInit {
   }
 
   getTeams(): void {
-    this.teamService.getTeams().subscribe(teams => (this.teams = teams));
+    this.teamService.getTeams().subscribe((teams) => (this.teams = teams));
   }
 
   getDinners(): void {
     this.dinnerService
       .getDinners()
-      .subscribe(dinners => (this.dinners = dinners));
+      .subscribe((dinners) => (this.dinners = dinners));
   }
 
   add(
@@ -61,8 +61,6 @@ export class TeamsComponent implements OnInit {
     //   return;
     // }
 
-    console.log(veganAppetizer);
-
     this.teamService
       .addTeam({
         address,
@@ -86,13 +84,13 @@ export class TeamsComponent implements OnInit {
         diet,
         dinnerId,
       } as Team)
-      .subscribe(team => {
+      .subscribe((team) => {
         this.teams.push(team);
       });
   }
 
   delete(team: Team): void {
-    this.teams = this.teams.filter(h => h !== team);
+    this.teams = this.teams.filter((h) => h !== team);
     this.teamService.deleteTeam(team).subscribe();
   }
 }
