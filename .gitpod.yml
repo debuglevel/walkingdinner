@@ -15,3 +15,6 @@ vscode:
     - mathiasfrohlich.Kotlin@1.7.1:zRxka5i+6/G9r7KC3xmyXQ==
     # code completion for application.yml (see: https://docs.micronaut.io/latest/guide/index.html#vsCodeSetup)
     - Pivotal.vscode-spring-boot@1.20.0:jaH7mimG3KKfktrKqHw8Kg==
+    
+    # TODO: copied from gitpod typescript template
+    #- dbaeumer.vscode-eslint
