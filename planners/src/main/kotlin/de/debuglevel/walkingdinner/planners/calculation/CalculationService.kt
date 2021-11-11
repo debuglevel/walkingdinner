@@ -4,12 +4,12 @@ import de.debuglevel.walkingdinner.planners.plan.PlanService
 import de.debuglevel.walkingdinner.planners.planner.geneticplanner.GeneticPlannerOptions
 import de.debuglevel.walkingdinner.planners.planner.geneticplanner.GeneticPlannerService
 import io.micronaut.context.annotation.Property
+import jakarta.inject.Singleton
 import mu.KotlinLogging
 import java.time.LocalDateTime
 import java.util.*
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors
-import javax.inject.Singleton
 
 @Singleton
 class CalculationService(

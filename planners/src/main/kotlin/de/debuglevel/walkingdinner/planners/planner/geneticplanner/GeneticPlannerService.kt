@@ -6,9 +6,9 @@ import de.debuglevel.walkingdinner.planners.plan.Plan
 import io.jenetics.EnumGene
 import io.jenetics.engine.EvolutionResult
 import io.jenetics.engine.EvolutionStatistics
+import jakarta.inject.Singleton
 import mu.KotlinLogging
 import java.util.function.Consumer
-import javax.inject.Singleton
 import kotlin.math.roundToInt
 
 @Singleton
