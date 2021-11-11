@@ -7,10 +7,9 @@ tasks:
       echo === INIT
       ./gradlew :rest:build
       echo === INIT DONE
-    # TODO run with "dev" environment?
     command: |
       echo === COMMAND
-      ./gradlew :rest:run
+      MICRONAUT_ENVIRONMENTS=dev ./gradlew :rest:run
       echo === COMMAND DONE
   # - name: Planners
   #   init: ./gradlew :planners:build
