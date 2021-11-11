@@ -1,6 +1,8 @@
 {
   "name": "web-angular",
   "version": "0.0.0",
+  "description": "Angular based web interface for WalkingDinner",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -43,6 +45,6 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "protractor": "~7.0.0",
     "ts-node": "~10.1.0",
-    "typescript": "~4.4.3"
+    "typescript": "~4.4.4"
   }
 }
