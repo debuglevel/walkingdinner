@@ -1,18 +1,18 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
-import { Team } from "../team";
-import { TeamService } from "../team.service";
-import { Dinner } from "../dinner";
-import { DinnerService } from "../dinner.service";
+import { Team } from '../team';
+import { TeamService } from '../team.service';
+import { Dinner } from '../dinner';
+import { DinnerService } from '../dinner.service';
 
 @Component({
-  selector: "app-teams",
-  templateUrl: "./teams.component.html",
-  styleUrls: ["./teams.component.css"],
+  selector: 'app-teams',
+  templateUrl: './teams.component.html',
+  styleUrls: ['./teams.component.css'],
 })
 export class TeamsComponent implements OnInit {
-  teams: Team[];
-  dinners: Dinner[];
+  teams: Team[] | undefined;
+  dinners: Dinner[] | undefined;
 
   constructor(
     private teamService: TeamService,
@@ -25,13 +25,13 @@ export class TeamsComponent implements OnInit {
   }
 
   getTeams(): void {
-    this.teamService.getTeams().subscribe(teams => (this.teams = teams));
+    this.teamService.getTeams().subscribe((teams) => (this.teams = teams));
   }
 
   getDinners(): void {
     this.dinnerService
       .getDinners()
-      .subscribe(dinners => (this.dinners = dinners));
+      .subscribe((dinners) => (this.dinners = dinners));
   }
 
   add(
@@ -86,13 +86,17 @@ export class TeamsComponent implements OnInit {
         diet,
         dinnerId,
       } as Team)
-      .subscribe(team => {
-        this.teams.push(team);
+      .subscribe((team) => {
+        if (this.teams) {
+          this.teams.push(team);
+        }
       });
   }
 
   delete(team: Team): void {
-    this.teams = this.teams.filter(h => h !== team);
-    this.teamService.deleteTeam(team).subscribe();
+    if (this.teams) {
+      this.teams = this.teams.filter((h) => h !== team);
+      this.teamService.deleteTeam(team).subscribe();
+    }
   }
 }

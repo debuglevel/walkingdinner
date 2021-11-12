@@ -1,17 +1,17 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-import { Location } from "@angular/common";
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
-import { Calculation } from "../calculation";
-import { CalculationService } from "../calculation.service";
+import { Calculation } from '../calculation';
+import { CalculationService } from '../calculation.service';
 
 @Component({
-  selector: "app-calculation-detail",
-  templateUrl: "./calculation-detail.component.html",
-  styleUrls: ["./calculation-detail.component.css"],
+  selector: 'app-calculation-detail',
+  templateUrl: './calculation-detail.component.html',
+  styleUrls: ['./calculation-detail.component.css'],
 })
 export class CalculationDetailComponent implements OnInit {
-  @Input() calculation: Calculation;
+  @Input() calculation: Calculation | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,10 +24,12 @@ export class CalculationDetailComponent implements OnInit {
   }
 
   getCalculation(): void {
-    const id = this.route.snapshot.paramMap.get("id");
-    this.calculationService
-      .getCalculation(id)
-      .subscribe(calculation => (this.calculation = calculation));
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id != null) {
+      this.calculationService
+        .getCalculation(id)
+        .subscribe((calculation) => (this.calculation = calculation));
+    }
   }
 
   goBack(): void {
@@ -35,8 +37,10 @@ export class CalculationDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.calculationService
-      .updateCalculation(this.calculation)
-      .subscribe(() => this.goBack());
+    if (this.calculation) {
+      this.calculationService
+        .updateCalculation(this.calculation)
+        .subscribe(() => this.goBack());
+    }
   }
 }

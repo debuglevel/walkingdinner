@@ -1,4 +1,4 @@
-export class Organisation {
+export interface Organisation {
   id: string;
   name: string;
   mail: string;

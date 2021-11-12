@@ -1,4 +1,4 @@
-export class Team {
+export interface Team {
   id: string;
   address: string;
   chef1: string;

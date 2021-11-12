@@ -1,20 +1,20 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of } from "rxjs";
-import { catchError, map, tap } from "rxjs/operators";
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
-import { Organisation } from "./organisation";
-import { MessageService } from "./message.service";
-import { SettingsService } from "./settings.service";
+import { Organisation } from './organisation';
+import { MessageService } from './message.service';
+import { SettingsService } from './settings.service';
 
-const httpOptions = {
-  headers: new HttpHeaders({ "Content-Type": "application/json" }),
-};
-
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class OrganisationService {
-  private organisationsUrl = "/organisations/"; // URL to web api
+  private organisationsUrl = '/organisations/'; // URL to web api
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 
   constructor(
     private http: HttpClient,
@@ -27,8 +27,8 @@ export class OrganisationService {
   /** GET organisations from the server */
   getOrganisations(): Observable<Organisation[]> {
     return this.http.get<Organisation[]>(this.organisationsUrl).pipe(
-      tap(_ => this.log("fetched organisations")),
-      catchError(this.handleError<Organisation[]>("getOrganisations", []))
+      tap((_) => this.log('fetched organisations')),
+      catchError(this.handleError<Organisation[]>('getOrganisations', []))
     );
   }
 
@@ -36,8 +36,8 @@ export class OrganisationService {
   getOrganisationNo404<Data>(id: string): Observable<Organisation> {
     const url = `${this.organisationsUrl}?id=${id}`;
     return this.http.get<Organisation[]>(url).pipe(
-      map(organisations => organisations[0]), // returns a {0|1} element array
-      tap(h => {
+      map((organisations) => organisations[0]), // returns a {0|1} element array
+      tap((h) => {
         const outcome = h ? `fetched` : `did not find`;
         this.log(`${outcome} organisation id=${id}`);
       }),
@@ -49,7 +49,7 @@ export class OrganisationService {
   getOrganisation(id: string): Observable<Organisation> {
     const url = `${this.organisationsUrl}${id}`;
     return this.http.get<Organisation>(url).pipe(
-      tap(_ => this.log(`fetched organisation id=${id}`)),
+      tap((_) => this.log(`fetched organisation id=${id}`)),
       catchError(this.handleError<Organisation>(`getOrganisation id=${id}`))
     );
   }
@@ -63,8 +63,8 @@ export class OrganisationService {
     return this.http
       .get<Organisation[]>(`${this.organisationsUrl}?name=${term}`)
       .pipe(
-        tap(_ => this.log(`searched organisations matching "${term}"`)),
-        catchError(this.handleError<Organisation[]>("searchOrganisations", []))
+        tap((_) => this.log(`searched organisations matching "${term}"`)),
+        catchError(this.handleError<Organisation[]>('searchOrganisations', []))
       );
   }
 
@@ -73,12 +73,12 @@ export class OrganisationService {
   /** POST: add a new organisation to the server */
   addOrganisation(organisation: Organisation): Observable<Organisation> {
     return this.http
-      .post<Organisation>(this.organisationsUrl, organisation, httpOptions)
+      .post<Organisation>(this.organisationsUrl, organisation, this.httpOptions)
       .pipe(
         tap((newOrganisation: Organisation) =>
           this.log(`added organisation w/ id=${newOrganisation.id}`)
         ),
-        catchError(this.handleError<Organisation>("addOrganisation"))
+        catchError(this.handleError<Organisation>('addOrganisation'))
       );
   }
 
@@ -87,21 +87,23 @@ export class OrganisationService {
     organisation: Organisation | string
   ): Observable<Organisation> {
     const id =
-      typeof organisation === "string" ? organisation : organisation.id;
+      typeof organisation === 'string' ? organisation : organisation.id;
     const url = `${this.organisationsUrl}${id}`;
 
-    return this.http.delete<Organisation>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted organisation id=${id}`)),
-      catchError(this.handleError<Organisation>("deleteOrganisation"))
+    return this.http.delete<Organisation>(url, this.httpOptions).pipe(
+      tap((_) => this.log(`deleted organisation id=${id}`)),
+      catchError(this.handleError<Organisation>('deleteOrganisation'))
     );
   }
 
   /** PUT: update the organisation on the server */
   updateOrganisation(organisation: Organisation): Observable<any> {
-    return this.http.put(this.organisationsUrl, organisation, httpOptions).pipe(
-      tap(_ => this.log(`updated organisation id=${organisation.id}`)),
-      catchError(this.handleError<any>("updateOrganisation"))
-    );
+    return this.http
+      .put(this.organisationsUrl, organisation, this.httpOptions)
+      .pipe(
+        tap((_) => this.log(`updated organisation id=${organisation.id}`)),
+        catchError(this.handleError<any>('updateOrganisation'))
+      );
   }
 
   /**
@@ -110,7 +112,7 @@ export class OrganisationService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T>(operation = "operation", result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead

@@ -1,4 +1,4 @@
-export class Calculation {
+export interface Calculation {
   id: string;
   finished: boolean;
   surveyfile: string;

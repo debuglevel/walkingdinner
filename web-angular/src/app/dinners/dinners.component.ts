@@ -1,18 +1,18 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
-import { Dinner } from "../dinner";
-import { DinnerService } from "../dinner.service";
-import { OrganisationService } from "../organisation.service";
-import { Organisation } from "../organisation";
+import { Dinner } from '../dinner';
+import { DinnerService } from '../dinner.service';
+import { OrganisationService } from '../organisation.service';
+import { Organisation } from '../organisation';
 
 @Component({
-  selector: "app-dinners",
-  templateUrl: "./dinners.component.html",
-  styleUrls: ["./dinners.component.css"],
+  selector: 'app-dinners',
+  templateUrl: './dinners.component.html',
+  styleUrls: ['./dinners.component.css'],
 })
 export class DinnersComponent implements OnInit {
-  dinners: Dinner[];
-  organisations: Organisation[];
+  dinners: Dinner[] | undefined;
+  organisations: Organisation[] | undefined;
 
   constructor(
     private dinnerService: DinnerService,
@@ -27,13 +27,13 @@ export class DinnersComponent implements OnInit {
   getDinners(): void {
     this.dinnerService
       .getDinners()
-      .subscribe(dinners => (this.dinners = dinners));
+      .subscribe((dinners) => (this.dinners = dinners));
   }
 
   getOrganisations(): void {
     this.organisationService
       .getOrganisations()
-      .subscribe(organisations => (this.organisations = organisations));
+      .subscribe((organisations) => (this.organisations = organisations));
   }
 
   add(name: string, begin: string, city: string, organisationId: string): void {
@@ -45,13 +45,17 @@ export class DinnersComponent implements OnInit {
 
     this.dinnerService
       .addDinner({ id, name, begin, city, organisationId } as Dinner)
-      .subscribe(dinner => {
-        this.dinners.push(dinner);
+      .subscribe((dinner) => {
+        if (this.dinners) {
+          this.dinners.push(dinner);
+        }
       });
   }
 
   delete(dinner: Dinner): void {
-    this.dinners = this.dinners.filter(h => h !== dinner);
-    this.dinnerService.deleteDinner(dinner).subscribe();
+    if (this.dinners) {
+      this.dinners = this.dinners.filter((h) => h !== dinner);
+      this.dinnerService.deleteDinner(dinner).subscribe();
+    }
   }
 }

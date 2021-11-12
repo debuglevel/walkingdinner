@@ -18,7 +18,7 @@ import { MatListModule } from "@angular/material/list";
 import { MatCardModule } from "@angular/material/card";
 import { MatSelectModule } from "@angular/material/select";
 
-import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
+//import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 import { InMemoryDataService } from "./in-memory-data.service";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -68,11 +68,11 @@ export function app_Init(settingsHttpService: SettingsHttpService) {
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    environment.useMockupDatabase
+    /*environment.useMockupDatabase
       ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
           dataEncapsulation: false,
         })
-      : [],
+      : [],*/
   ],
   declarations: [
     AppComponent,

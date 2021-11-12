@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
-import { Organisation } from "../organisation";
-import { OrganisationService } from "../organisation.service";
+import { Organisation } from '../organisation';
+import { OrganisationService } from '../organisation.service';
 
 @Component({
-  selector: "app-organisations",
-  templateUrl: "./organisations.component.html",
-  styleUrls: ["./organisations.component.css"],
+  selector: 'app-organisations',
+  templateUrl: './organisations.component.html',
+  styleUrls: ['./organisations.component.css'],
 })
 export class OrganisationsComponent implements OnInit {
-  organisations: Organisation[];
+  organisations: Organisation[] | undefined;
 
   constructor(private organisationService: OrganisationService) {}
 
@@ -20,7 +20,7 @@ export class OrganisationsComponent implements OnInit {
   getOrganisations(): void {
     this.organisationService
       .getOrganisations()
-      .subscribe(organisations => (this.organisations = organisations));
+      .subscribe((organisations) => (this.organisations = organisations));
   }
 
   add(name: string, mail: string): void {
@@ -30,13 +30,17 @@ export class OrganisationsComponent implements OnInit {
     }
     this.organisationService
       .addOrganisation({ name, mail } as Organisation)
-      .subscribe(organisation => {
-        this.organisations.push(organisation);
+      .subscribe((organisation) => {
+        if (this.organisations) {
+          this.organisations.push(organisation);
+        }
       });
   }
 
   delete(organisation: Organisation): void {
-    this.organisations = this.organisations.filter(h => h !== organisation);
-    this.organisationService.deleteOrganisation(organisation).subscribe();
+    if (this.organisations) {
+      this.organisations = this.organisations.filter((h) => h !== organisation);
+      this.organisationService.deleteOrganisation(organisation).subscribe();
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { InMemoryDbService } from "angular-in-memory-web-api";
+//import { InMemoryDbService } from "angular-in-memory-web-api";
 import { Organisation } from "./organisation";
 import { Dinner } from "./dinner";
 import { Plan } from "./plan";
@@ -7,7 +7,7 @@ import { Injectable } from "@angular/core";
 @Injectable({
   providedIn: "root",
 })
-export class InMemoryDataService implements InMemoryDbService {
+export class InMemoryDataService /*implements InMemoryDbService*/ {
   createDb() {
     const organisations = [
       { id: "a9d21e9f-fc3f-4207-a553-49c57e1c9850", name: "Umbrella Corp." },
@@ -126,10 +126,13 @@ export class InMemoryDataService implements InMemoryDbService {
 // see: https://stackoverflow.com/a/26502275/4764279
 class Guid {
   static newGuid() {
-    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
-      var r = (Math.random() * 16) | 0,
-        v = c == "x" ? r : (r & 0x3) | 0x8;
-      return v.toString(16);
-    });
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+      /[xy]/g,
+      function (c) {
+        var r = (Math.random() * 16) | 0,
+          v = c == "x" ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      }
+    );
   }
 }

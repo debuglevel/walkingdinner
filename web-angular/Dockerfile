@@ -1,9 +1,10 @@
 ## Building stage
-FROM node:10.15.3-alpine AS builder
+FROM node:16.13.0-alpine3.12 AS builder
 WORKDIR /src/
 
 # cache dependencies
 COPY package*.json /src/
+#RUN npm install --legacy-peer-deps
 RUN npm install
 
 # build source

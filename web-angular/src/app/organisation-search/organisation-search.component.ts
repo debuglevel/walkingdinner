@@ -1,19 +1,19 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
-import { Observable, Subject } from "rxjs";
+import { Observable, Subject } from 'rxjs';
 
-import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
-import { Organisation } from "../organisation";
-import { OrganisationService } from "../organisation.service";
+import { Organisation } from '../organisation';
+import { OrganisationService } from '../organisation.service';
 
 @Component({
-  selector: "app-organisation-search",
-  templateUrl: "./organisation-search.component.html",
-  styleUrls: ["./organisation-search.component.css"],
+  selector: 'app-organisation-search',
+  templateUrl: './organisation-search.component.html',
+  styleUrls: ['./organisation-search.component.css'],
 })
 export class OrganisationSearchComponent implements OnInit {
-  organisations$: Observable<Organisation[]>;
+  organisations$: Observable<Organisation[]> | undefined;
   private searchTerms = new Subject<string>();
 
   constructor(private organisationService: OrganisationService) {}

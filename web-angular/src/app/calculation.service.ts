@@ -1,20 +1,20 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of } from "rxjs";
-import { catchError, map, tap } from "rxjs/operators";
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
-import { Calculation } from "./calculation";
-import { MessageService } from "./message.service";
-import { SettingsService } from "./settings.service";
+import { Calculation } from './calculation';
+import { MessageService } from './message.service';
+import { SettingsService } from './settings.service';
 
-const httpOptions = {
-  headers: new HttpHeaders({ "Content-Type": "application/json" }),
-};
-
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class CalculationService {
-  private calculationsUrl = "/plans/calculations/"; // URL to web api
+  private calculationsUrl = '/plans/calculations/'; // URL to web api
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 
   constructor(
     private http: HttpClient,
@@ -27,8 +27,8 @@ export class CalculationService {
   /** GET calculations from the server */
   getCalculations(): Observable<Calculation[]> {
     return this.http.get<Calculation[]>(this.calculationsUrl).pipe(
-      tap(_ => this.log("fetched calculations")),
-      catchError(this.handleError<Calculation[]>("getCalculations", []))
+      tap((_) => this.log('fetched calculations')),
+      catchError(this.handleError<Calculation[]>('getCalculations', []))
     );
   }
 
@@ -36,8 +36,8 @@ export class CalculationService {
   getCalculationNo404<Data>(id: string): Observable<Calculation> {
     const url = `${this.calculationsUrl}?id=${id}`;
     return this.http.get<Calculation[]>(url).pipe(
-      map(calculations => calculations[0]), // returns a {0|1} element array
-      tap(h => {
+      map((calculations) => calculations[0]), // returns a {0|1} element array
+      tap((h) => {
         const outcome = h ? `fetched` : `did not find`;
         this.log(`${outcome} calculation id=${id}`);
       }),
@@ -49,7 +49,7 @@ export class CalculationService {
   getCalculation(id: string): Observable<Calculation> {
     const url = `${this.calculationsUrl}${id}`;
     return this.http.get<Calculation>(url).pipe(
-      tap(_ => this.log(`fetched calculation id=${id}`)),
+      tap((_) => this.log(`fetched calculation id=${id}`)),
       catchError(this.handleError<Calculation>(`getCalculation id=${id}`))
     );
   }
@@ -63,8 +63,8 @@ export class CalculationService {
     return this.http
       .get<Calculation[]>(`${this.calculationsUrl}?name=${term}`)
       .pipe(
-        tap(_ => this.log(`searched calculations matching "${term}"`)),
-        catchError(this.handleError<Calculation[]>("searchCalculations", []))
+        tap((_) => this.log(`searched calculations matching "${term}"`)),
+        catchError(this.handleError<Calculation[]>('searchCalculations', []))
       );
   }
 
@@ -73,12 +73,12 @@ export class CalculationService {
   /** POST: add a new calculation to the server */
   addCalculation(calculation: Calculation): Observable<Calculation> {
     return this.http
-      .post<Calculation>(this.calculationsUrl, calculation, httpOptions)
+      .post<Calculation>(this.calculationsUrl, calculation, this.httpOptions)
       .pipe(
         tap((newCalculation: Calculation) =>
           this.log(`added calculation w/ id=${newCalculation.id}`)
         ),
-        catchError(this.handleError<Calculation>("addCalculation"))
+        catchError(this.handleError<Calculation>('addCalculation'))
       );
   }
 
@@ -86,21 +86,23 @@ export class CalculationService {
   deleteCalculation(
     calculation: Calculation | string
   ): Observable<Calculation> {
-    const id = typeof calculation === "string" ? calculation : calculation.id;
+    const id = typeof calculation === 'string' ? calculation : calculation.id;
     const url = `${this.calculationsUrl}${id}`;
 
-    return this.http.delete<Calculation>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted calculation id=${id}`)),
-      catchError(this.handleError<Calculation>("deleteCalculation"))
+    return this.http.delete<Calculation>(url, this.httpOptions).pipe(
+      tap((_) => this.log(`deleted calculation id=${id}`)),
+      catchError(this.handleError<Calculation>('deleteCalculation'))
     );
   }
 
   /** PUT: update the calculation on the server */
   updateCalculation(calculation: Calculation): Observable<any> {
-    return this.http.put(this.calculationsUrl, calculation, httpOptions).pipe(
-      tap(_ => this.log(`updated calculation id=${calculation.id}`)),
-      catchError(this.handleError<any>("updateCalculation"))
-    );
+    return this.http
+      .put(this.calculationsUrl, calculation, this.httpOptions)
+      .pipe(
+        tap((_) => this.log(`updated calculation id=${calculation.id}`)),
+        catchError(this.handleError<any>('updateCalculation'))
+      );
   }
 
   /**
@@ -109,7 +111,7 @@ export class CalculationService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T>(operation = "operation", result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead

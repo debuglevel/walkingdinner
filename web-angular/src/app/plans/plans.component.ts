@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
-import { Plan } from "../plan";
-import { PlanService } from "../plan.service";
+import { Plan } from '../plan';
+import { PlanService } from '../plan.service';
 
 @Component({
-  selector: "app-plans",
-  templateUrl: "./plans.component.html",
-  styleUrls: ["./plans.component.css"],
+  selector: 'app-plans',
+  templateUrl: './plans.component.html',
+  styleUrls: ['./plans.component.css'],
 })
 export class PlansComponent implements OnInit {
-  plans: Plan[];
+  plans: Plan[] | undefined;
 
   constructor(private planService: PlanService) {}
 
@@ -18,11 +18,13 @@ export class PlansComponent implements OnInit {
   }
 
   getPlans(): void {
-    this.planService.getPlans().subscribe(plans => (this.plans = plans));
+    this.planService.getPlans().subscribe((plans) => (this.plans = plans));
   }
 
   delete(plan: Plan): void {
-    this.plans = this.plans.filter(h => h !== plan);
-    this.planService.deletePlan(plan).subscribe();
+    if (this.plans) {
+      this.plans = this.plans.filter((h) => h !== plan);
+      this.planService.deletePlan(plan).subscribe();
+    }
   }
 }

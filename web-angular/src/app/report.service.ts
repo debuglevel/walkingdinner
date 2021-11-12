@@ -1,20 +1,20 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of } from "rxjs";
-import { catchError, map, tap } from "rxjs/operators";
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
-import { Report } from "./report";
-import { MessageService } from "./message.service";
-import { SettingsService } from "./settings.service";
+import { Report } from './report';
+import { MessageService } from './message.service';
+import { SettingsService } from './settings.service';
 
-const httpOptions = {
-  headers: new HttpHeaders({ "Content-Type": "application/json" }),
-};
-
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class ReportService {
-  private reportsUrl = "/plans/reports/"; // URL to web api
+  private reportsUrl = '/plans/reports/'; // URL to web api
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 
   constructor(
     private http: HttpClient,
@@ -41,9 +41,9 @@ export class ReportService {
 
   postGmailDraftsReport(planId: string): Observable<string> {
     const url = this.getGmailDraftsReportUrl(planId);
-    return this.http.post<string>(url, null, httpOptions).pipe(
+    return this.http.post<string>(url, null, this.httpOptions).pipe(
       tap((newReport: string) => this.log(`posted gmail drafts report w/`)),
-      catchError(this.handleError<string>("postGmailDraftsReport"))
+      catchError(this.handleError<string>('postGmailDraftsReport'))
     );
   }
 
@@ -51,7 +51,7 @@ export class ReportService {
   getSummaryReport(planId: string): Observable<string> {
     const url = `${this.reportsUrl}${planId}`;
     return this.http.get<string>(url).pipe(
-      tap(_ => this.log(`fetched summary report planId=${planId}`)),
+      tap((_) => this.log(`fetched summary report planId=${planId}`)),
       catchError(this.handleError<string>(`getSummaryReport planId=${planId}`))
     );
   }
@@ -61,8 +61,8 @@ export class ReportService {
   /** GET reports from the server */
   getReports(): Observable<Report[]> {
     return this.http.get<Report[]>(this.reportsUrl).pipe(
-      tap(_ => this.log("fetched reports")),
-      catchError(this.handleError<Report[]>("getReports", []))
+      tap((_) => this.log('fetched reports')),
+      catchError(this.handleError<Report[]>('getReports', []))
     );
   }
 
@@ -70,8 +70,8 @@ export class ReportService {
   getReportNo404<Data>(id: string): Observable<Report> {
     const url = `${this.reportsUrl}?id=${id}`;
     return this.http.get<Report[]>(url).pipe(
-      map(reports => reports[0]), // returns a {0|1} element array
-      tap(h => {
+      map((reports) => reports[0]), // returns a {0|1} element array
+      tap((h) => {
         const outcome = h ? `fetched` : `did not find`;
         this.log(`${outcome} report id=${id}`);
       }),
@@ -83,7 +83,7 @@ export class ReportService {
   getReport(id: string): Observable<Report> {
     const url = `${this.reportsUrl}${id}`;
     return this.http.get<Report>(url).pipe(
-      tap(_ => this.log(`fetched report id=${id}`)),
+      tap((_) => this.log(`fetched report id=${id}`)),
       catchError(this.handleError<Report>(`getReport id=${id}`))
     );
   }
@@ -95,8 +95,8 @@ export class ReportService {
       return of([]);
     }
     return this.http.get<Report[]>(`${this.reportsUrl}?name=${term}`).pipe(
-      tap(_ => this.log(`searched reports matching "${term}"`)),
-      catchError(this.handleError<Report[]>("searchReports", []))
+      tap((_) => this.log(`searched reports matching "${term}"`)),
+      catchError(this.handleError<Report[]>('searchReports', []))
     );
   }
 
@@ -104,30 +104,32 @@ export class ReportService {
 
   /** POST: add a new report to the server */
   addReport(report: Report): Observable<Report> {
-    return this.http.post<Report>(this.reportsUrl, report, httpOptions).pipe(
-      tap((newReport: Report) =>
-        this.log(`added report w/ id=${newReport.id}`)
-      ),
-      catchError(this.handleError<Report>("addReport"))
-    );
+    return this.http
+      .post<Report>(this.reportsUrl, report, this.httpOptions)
+      .pipe(
+        tap((newReport: Report) =>
+          this.log(`added report w/ id=${newReport.id}`)
+        ),
+        catchError(this.handleError<Report>('addReport'))
+      );
   }
 
   /** DELETE: delete the report from the server */
   deleteReport(report: Report | string): Observable<Report> {
-    const id = typeof report === "string" ? report : report.id;
+    const id = typeof report === 'string' ? report : report.id;
     const url = `${this.reportsUrl}${id}`;
 
-    return this.http.delete<Report>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted report id=${id}`)),
-      catchError(this.handleError<Report>("deleteReport"))
+    return this.http.delete<Report>(url, this.httpOptions).pipe(
+      tap((_) => this.log(`deleted report id=${id}`)),
+      catchError(this.handleError<Report>('deleteReport'))
     );
   }
 
   /** PUT: update the report on the server */
   updateReport(report: Report): Observable<any> {
-    return this.http.put(this.reportsUrl, report, httpOptions).pipe(
-      tap(_ => this.log(`updated report id=${report.id}`)),
-      catchError(this.handleError<any>("updateReport"))
+    return this.http.put(this.reportsUrl, report, this.httpOptions).pipe(
+      tap((_) => this.log(`updated report id=${report.id}`)),
+      catchError(this.handleError<any>('updateReport'))
     );
   }
 
@@ -137,7 +139,7 @@ export class ReportService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T>(operation = "operation", result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead

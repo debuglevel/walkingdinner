@@ -1,31 +1,46 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
-import { Calculation } from "../calculation";
-import { CalculationService } from "../calculation.service";
-import { Base64Service } from "../base64.service";
+import { Calculation } from '../calculation';
+import { CalculationService } from '../calculation.service';
+import { Base64Service } from '../base64.service';
 
 @Component({
-  selector: "app-calculations",
-  templateUrl: "./calculations.component.html",
-  styleUrls: ["./calculations.component.css"],
+  selector: 'app-calculations',
+  templateUrl: './calculations.component.html',
+  styleUrls: ['./calculations.component.css'],
 })
 export class CalculationsComponent implements OnInit {
-  calculations: Calculation[];
+  calculations: Calculation[] | undefined;
 
-  fileToUploadFile: File = null;
-  fileToUploadBase64: String = null;
-  handleFileInput(files: FileList) {
-    this.fileToUploadFile = files.item(0);
-    this.base64Service
-      .getBase64(this.fileToUploadFile)
-      .then((res) => {
-        //console.log("Converted file to Base64:", res);
-        this.fileToUploadBase64 = res;
-      })
-      .catch((error) => {
-        console.log("ERROR:", error.message);
-      });
+  fileToUploadFile: File | null = null;
+  fileToUploadBase64: String | null = null;
+  handleFileInput(event: Event | null) {
+    if (event) {
+      const eventTarget = event.target;
+      if (eventTarget) {
+        const htmlInputElement = eventTarget as HTMLInputElement;
+        const files = htmlInputElement.files;
+        if (files) {
+          this.handleFileInput2(files);
+        }
+      }
+    }
   }
+  handleFileInput2(files: FileList) {
+    this.fileToUploadFile = files.item(0);
+    if (this.fileToUploadFile != null) {
+      this.base64Service
+        .getBase64(this.fileToUploadFile)
+        .then((res) => {
+          //console.log("Converted file to Base64:", res);
+          this.fileToUploadBase64 = res;
+        })
+        .catch((error) => {
+          console.log('ERROR:', error.message);
+        });
+    }
+  }
+
   constructor(
     private calculationService: CalculationService,
     private base64Service: Base64Service
@@ -59,12 +74,16 @@ export class CalculationsComponent implements OnInit {
         // steadyFitness: 100,
       } as Calculation)
       .subscribe((calculation) => {
-        this.calculations.push(calculation);
+        if (this.calculations) {
+          this.calculations.push(calculation);
+        }
       });
   }
 
   delete(calculation: Calculation): void {
-    this.calculations = this.calculations.filter((h) => h !== calculation);
-    this.calculationService.deleteCalculation(calculation).subscribe();
+    if (this.calculations) {
+      this.calculations = this.calculations.filter((h) => h !== calculation);
+      this.calculationService.deleteCalculation(calculation).subscribe();
+    }
   }
 }

@@ -1,20 +1,20 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, of } from "rxjs";
-import { catchError, map, tap } from "rxjs/operators";
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
-import { Plan } from "./plan";
-import { MessageService } from "./message.service";
-import { SettingsService } from "./settings.service";
+import { Plan } from './plan';
+import { MessageService } from './message.service';
+import { SettingsService } from './settings.service';
 
-const httpOptions = {
-  headers: new HttpHeaders({ "Content-Type": "application/json" }),
-};
-
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class PlanService {
-  private plansUrl = "/plans/"; // URL to web api
+  private plansUrl = '/plans/'; // URL to web api
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
 
   constructor(
     private http: HttpClient,
@@ -27,8 +27,8 @@ export class PlanService {
   /** GET plans from the server */
   getPlans(): Observable<Plan[]> {
     return this.http.get<Plan[]>(this.plansUrl).pipe(
-      tap(_ => this.log("fetched plans")),
-      catchError(this.handleError<Plan[]>("getPlans", []))
+      tap((_) => this.log('fetched plans')),
+      catchError(this.handleError<Plan[]>('getPlans', []))
     );
   }
 
@@ -36,8 +36,8 @@ export class PlanService {
   getPlanNo404<Data>(id: string): Observable<Plan> {
     const url = `${this.plansUrl}?id=${id}`;
     return this.http.get<Plan[]>(url).pipe(
-      map(plans => plans[0]), // returns a {0|1} element array
-      tap(h => {
+      map((plans) => plans[0]), // returns a {0|1} element array
+      tap((h) => {
         const outcome = h ? `fetched` : `did not find`;
         this.log(`${outcome} plan id=${id}`);
       }),
@@ -49,7 +49,7 @@ export class PlanService {
   getPlan(id: string): Observable<Plan> {
     const url = `${this.plansUrl}${id}`;
     return this.http.get<Plan>(url).pipe(
-      tap(_ => this.log(`fetched plan id=${id}`)),
+      tap((_) => this.log(`fetched plan id=${id}`)),
       catchError(this.handleError<Plan>(`getPlan id=${id}`))
     );
   }
@@ -61,8 +61,8 @@ export class PlanService {
       return of([]);
     }
     return this.http.get<Plan[]>(`${this.plansUrl}?name=${term}`).pipe(
-      tap(_ => this.log(`searched plans matching "${term}"`)),
-      catchError(this.handleError<Plan[]>("searchPlans", []))
+      tap((_) => this.log(`searched plans matching "${term}"`)),
+      catchError(this.handleError<Plan[]>('searchPlans', []))
     );
   }
 
@@ -70,28 +70,28 @@ export class PlanService {
 
   /** POST: add a new plan to the server */
   addPlan(plan: Plan): Observable<Plan> {
-    return this.http.post<Plan>(this.plansUrl, plan, httpOptions).pipe(
+    return this.http.post<Plan>(this.plansUrl, plan, this.httpOptions).pipe(
       tap((newPlan: Plan) => this.log(`added plan w/ id=${newPlan.id}`)),
-      catchError(this.handleError<Plan>("addPlan"))
+      catchError(this.handleError<Plan>('addPlan'))
     );
   }
 
   /** DELETE: delete the plan from the server */
   deletePlan(plan: Plan | string): Observable<Plan> {
-    const id = typeof plan === "string" ? plan : plan.id;
+    const id = typeof plan === 'string' ? plan : plan.id;
     const url = `${this.plansUrl}${id}`;
 
-    return this.http.delete<Plan>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted plan id=${id}`)),
-      catchError(this.handleError<Plan>("deletePlan"))
+    return this.http.delete<Plan>(url, this.httpOptions).pipe(
+      tap((_) => this.log(`deleted plan id=${id}`)),
+      catchError(this.handleError<Plan>('deletePlan'))
     );
   }
 
   /** PUT: update the plan on the server */
   updatePlan(plan: Plan): Observable<any> {
-    return this.http.put(this.plansUrl, plan, httpOptions).pipe(
-      tap(_ => this.log(`updated plan id=${plan.id}`)),
-      catchError(this.handleError<any>("updatePlan"))
+    return this.http.put(this.plansUrl, plan, this.httpOptions).pipe(
+      tap((_) => this.log(`updated plan id=${plan.id}`)),
+      catchError(this.handleError<any>('updatePlan'))
     );
   }
 
@@ -101,7 +101,7 @@ export class PlanService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T>(operation = "operation", result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead

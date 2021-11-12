@@ -1,17 +1,17 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-import { Location } from "@angular/common";
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
-import { Organisation } from "../organisation";
-import { OrganisationService } from "../organisation.service";
+import { Organisation } from '../organisation';
+import { OrganisationService } from '../organisation.service';
 
 @Component({
-  selector: "app-organisation-detail",
-  templateUrl: "./organisation-detail.component.html",
-  styleUrls: ["./organisation-detail.component.css"],
+  selector: 'app-organisation-detail',
+  templateUrl: './organisation-detail.component.html',
+  styleUrls: ['./organisation-detail.component.css'],
 })
 export class OrganisationDetailComponent implements OnInit {
-  @Input() organisation: Organisation;
+  @Input() organisation: Organisation | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,10 +24,12 @@ export class OrganisationDetailComponent implements OnInit {
   }
 
   getOrganisation(): void {
-    const id = this.route.snapshot.paramMap.get("id");
-    this.organisationService
-      .getOrganisation(id)
-      .subscribe(organisation => (this.organisation = organisation));
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.organisationService
+        .getOrganisation(id)
+        .subscribe((organisation) => (this.organisation = organisation));
+    }
   }
 
   goBack(): void {
@@ -35,8 +37,10 @@ export class OrganisationDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.organisationService
-      .updateOrganisation(this.organisation)
-      .subscribe(() => this.goBack());
+    if (this.organisation) {
+      this.organisationService
+        .updateOrganisation(this.organisation)
+        .subscribe(() => this.goBack());
+    }
   }
 }

@@ -1,5 +1,5 @@
-export class Dinner {
-  id: string;
+export interface Dinner {
+  id: string | null;
   name: string;
   begin: string;
   city: string;
