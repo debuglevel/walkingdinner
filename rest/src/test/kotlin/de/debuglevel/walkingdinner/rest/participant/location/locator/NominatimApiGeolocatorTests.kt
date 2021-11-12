@@ -1,7 +1,7 @@
 package de.debuglevel.walkingdinner.rest.participant.location.locator
 
 import de.debuglevel.walkingdinner.rest.participant.location.Location
-import io.micronaut.test.annotation.MicronautTest
+import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.within
 import org.junit.jupiter.api.TestInstance

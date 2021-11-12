@@ -4,7 +4,7 @@ import de.debuglevel.walkingdinner.rest.MailAddress
 import de.debuglevel.walkingdinner.rest.Meeting
 import de.debuglevel.walkingdinner.rest.PhoneNumber
 import de.debuglevel.walkingdinner.rest.participant.*
-import io.micronaut.test.annotation.MicronautTest
+import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
