@@ -40,7 +40,7 @@ open class TeamService(
     open fun save(team: Team): Team {
         logger.debug { "Saving team '$team'..." }
         // Load organisation again inside this transaction; would throw an LazyInitializationException otherwise
-        val dinner = dinnerService.get(team.dinner?.id!!)
+        val dinner = team.dinner?.id?.let { dinnerService.get(it) }
         val savingTeam = team.copy(dinner = dinner)
         val savedTeam = teamRepository.save(savingTeam)
         logger.debug { "Saved team: $savedTeam" }
