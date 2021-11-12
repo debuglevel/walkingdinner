@@ -151,9 +151,6 @@ dependencies {
     // Debuglevel Microservice Commons
     //implementation "com.github.debuglevel:microservice-commons:f24dd3964f"
 
-    // JSON // TODO: replace by micronaut technology
-    implementation "com.google.code.gson:gson:$gsonVersion"
-
     // Template Engine // TODO: replace by micronaut technology
     implementation "org.jtwig:jtwig-core:$jtwigVersion"
 
