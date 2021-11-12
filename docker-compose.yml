@@ -11,14 +11,23 @@ services:
     environment:
       # port 8080 is actually already defined as default for docker as ENV in Dockerfile
       - MICRONAUT_SERVER_PORT=8081
+      #      # log as JSON
+      #      - LOG_APPENDER=json-stdout
+      #      # enable health check if Consul is used
+      #      - CONSUL_CLIENT_HEALTH_CHECK=true
+      #      # register this service on Consul
+      #      - CONSUL_CLIENT_REGISTRATION_ENABLED=true
+      #      # search for services on Consul
+      #      - CONSUL_CLIENT_DISCOVERY_ENABLED=true
+      # Consul server
+      - CONSUL_HOST=consul
+      #      - CONSUL_PORT=8500
       # service must know its own hostname to publish it in service discovery
       - MICRONAUT_SERVER_HOST=rest
       # manual service discovery
       #- MICRONAUT_HTTP_SERVICES_PLANNERS_URLS=http://planners:8083
-      # service discovery and registration with Consul
-      - CONSUL_HOST=consul
       - APP_WALKINGDINNER_DATA_BASEPATH=/data
-      - DATASOURCES_DEFAULT_URL=jdbc:h2:/data/micronaut-data/h2;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+      - DATASOURCES_DEFAULT_URL=jdbc:h2:/data/micronaut-data/h2;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     volumes:
       - walkingdinner-rest-data:/data
 
@@ -41,16 +50,60 @@ services:
     environment:
       # port 8080 is actually already defined as default for docker as ENV in Dockerfile
       - MICRONAUT_SERVER_PORT=8083
+      #      # log as JSON
+      #      - LOG_APPENDER=json-stdout
+      #      # enable health check if Consul is used
+      #      - CONSUL_CLIENT_HEALTH_CHECK=true
+      #      # register this service on Consul
+      #      - CONSUL_CLIENT_REGISTRATION_ENABLED=true
+      #      # search for services on Consul
+      #      - CONSUL_CLIENT_DISCOVERY_ENABLED=true
+      # Consul server
+      - CONSUL_HOST=consul
+      #      - CONSUL_PORT=8500
       # service must know its own hostname to publish it in service discovery
       - MICRONAUT_SERVER_HOST=planners
-      # service discovery and registration with Consul
-      - CONSUL_HOST=consul
 
-  # Service discovery with Consul
+  # Service registration and discovery with Consul
   consul:
     image: consul:1.10.3
     ports:
       - "8500:8500"
+
+#  # Database and admin tools
+#  db:
+#    image: mariadb:10.5.8-focal
+##    ports:
+##      - 3306:3306
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=password
+#      # would not create a database if MYSQL_DATABASE is not set
+#      - MYSQL_DATABASE=db
+#      - MYSQL_USER=user
+#      - MYSQL_PASSWORD=password
+#  postgres:
+#    image: postgres:13.2-alpine
+#    ports:
+#      - 5432:5432
+#    environment:
+#      # does not seem to work
+#      - POSTGRES_DATABASE=db
+#      # is (in contrast to mariadb) the superuser
+#      - POSTGRES_USER=user
+#      - POSTGRES_PASSWORD=password
+#  phpmyadmin:
+#    image: phpmyadmin:5.0.4
+#    ports:
+#      - 8090:80
+#    environment:
+#      - PMA_HOST=db
+#      - UPLOAD_LIMIT=1024000
+#  adminer:
+#    image: adminer:4.7.8-standalone
+#    ports:
+#      - 8091:8080
+#    environment:
+#      - ADMINER_DEFAULT_SERVER=db
 
 volumes:
   walkingdinner-rest-data:

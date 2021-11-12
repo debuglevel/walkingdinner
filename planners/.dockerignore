@@ -1,6 +1,3 @@
-web-angular
-*/build
-
 # Ignore Docker related files as they might change during development,
 # but their content should have no impact on the actual application.
 # If they change and in Dockerfile is a "COPY . /src", Docker would invalidate

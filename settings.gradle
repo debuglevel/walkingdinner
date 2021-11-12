@@ -8,6 +8,8 @@ pluginManagement {
         id 'net.researchgate.release' version "$releasePluginVersion"
         id 'com.github.johnrengelman.shadow' version "$shadowVersion"
         id "org.jetbrains.kotlin.plugin.jpa" version "$kotlinVersion"
+        id 'com.google.protobuf' version "$protobufPluginVersion"
+        id 'com.github.jk1.dependency-license-report' version "$dependencyLicenseReportVersion"
     }
 }
 
@@ -42,7 +44,6 @@ include 'planners'
 
 // only include 'web-angular' project in Linux, as the node plugin fails in Windows
 import org.gradle.internal.os.OperatingSystem
-
 println("settings.gradle: Checking if operating system is Linux...")
 println("settings.gradle: OperatingSystem.current() = " + OperatingSystem.current())
 if (OperatingSystem.current().isLinux()) {
