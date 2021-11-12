@@ -154,6 +154,9 @@ dependencies {
     // JSON // TODO: replace by micronaut technology
     implementation "com.google.code.gson:gson:$gsonVersion"
 
+    // Template Engine // TODO: replace by micronaut technology
+    implementation "org.jtwig:jtwig-core:$jtwigVersion"
+
     // Jsondb // TODO: replace by micronaut technology
     implementation "io.jsondb:jsondb-core:$jsondbVersion"
     implementation "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
