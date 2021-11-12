@@ -20,13 +20,10 @@ class DatabasecacheGeolocator(
     override fun getLocation(address: String?, city: String): Location {
         logger.debug { "Getting location for address='$address' in city='$city' ..." }
 
-        // HACK: somehow handle the "address, city" concatenation and city lookup
-
         val cachedLocations =
             locationService.getAll() // TODO: quick hack due to migration from JsonDB; but probably a performance nightmare
-        logger.debug { "Got ${cachedLocations.size} cached Locations" }
-        cachedLocations.forEach { logger.debug { "== '$it'" } }
 
+        // HACK: somehow handle the "address, city" concatenation and city lookup
         val cachedLocation = if (address != null) {
             cachedLocations.firstOrNull { it.address == "$address, $city" }
         } else {
