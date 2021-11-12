@@ -16,12 +16,12 @@ import com.google.api.services.gmail.model.Draft
 import com.google.api.services.gmail.model.Message
 import de.debuglevel.walkingdinner.rest.plan.report.teams.mail.MailService
 import io.micronaut.context.annotation.Property
-import jakarta.inject.Singleton
 import mu.KotlinLogging
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.io.InputStreamReader
 import java.nio.file.Path
+import javax.inject.Singleton
 import javax.mail.internet.MimeMessage
 
 // see: https://developers.google.com/gmail/api/SendEmail.java

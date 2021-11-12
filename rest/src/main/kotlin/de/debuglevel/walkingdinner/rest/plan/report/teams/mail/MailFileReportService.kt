@@ -6,8 +6,8 @@ import de.debuglevel.walkingdinner.rest.participant.Team
 import de.debuglevel.walkingdinner.rest.plan.report.Reporter
 import de.debuglevel.walkingdinner.rest.plan.report.teams.TextReportService
 import io.micronaut.context.annotation.Property
-import jakarta.inject.Singleton
 import mu.KotlinLogging
+import javax.inject.Singleton
 import javax.mail.internet.MimeMessage
 
 @Singleton

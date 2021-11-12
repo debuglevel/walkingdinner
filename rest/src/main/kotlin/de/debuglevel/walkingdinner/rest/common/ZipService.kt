@@ -1,6 +1,5 @@
 package de.debuglevel.walkingdinner.rest.common
 
-import jakarta.inject.Singleton
 import mu.KotlinLogging
 import java.io.BufferedInputStream
 import java.io.BufferedOutputStream
@@ -8,6 +7,7 @@ import java.io.InputStream
 import java.io.OutputStream
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
+import javax.inject.Singleton
 
 @Singleton
 class ZipService {
