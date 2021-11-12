@@ -151,16 +151,8 @@ dependencies {
     // Debuglevel Microservice Commons
     //implementation "com.github.debuglevel:microservice-commons:f24dd3964f"
 
-    // Spark (REST server) // TODO: replace by micronaut technology
-//    implementation 'com.sparkjava:spark-kotlin:1.0.0-alpha'
-//    implementation 'de.debuglevel.sparkmicroserviceutils:sparkmicroserviceutils:0.0.21'
-
     // JSON // TODO: replace by micronaut technology
     implementation "com.google.code.gson:gson:$gsonVersion"
-
-//    // Template Engine // TODO: replace by micronaut technology
-//    implementation 'com.sparkjava:spark-template-mustache:2.7.1'
-    implementation "org.jtwig:jtwig-core:$jtwigVersion"
 
     // Jsondb // TODO: replace by micronaut technology
     implementation "io.jsondb:jsondb-core:$jsondbVersion"
@@ -180,10 +172,6 @@ dependencies {
     implementation "javax.mail:javax.mail-api:$javaxMailVersion"
     implementation "com.sun.mail:javax.mail:$javaxMailVersion"
 
-//    // MongoDB
-//    implementation 'org.litote.kmongo:kmongo:3.11.0'
-//    implementation group: 'org.mongodb', name: 'bson', version: '3.11.0'
-
     // Google Maps Services
     implementation "com.google.maps:google-maps-services:$googleMapsVersion"
 
@@ -195,9 +183,6 @@ dependencies {
 
     // Clikt // TODO: replace by micronaut technology
     implementation "com.github.ajalt:clikt:$cliktVersion"
-
-//    // Configuration // TODO: replace by micronaut technology
-//    implementation 'com.natpryce:konfig:1.6.9.0'
 }
 
 // Java configuration
