@@ -2,6 +2,7 @@ package de.debuglevel.walkingdinner.rest.plan.calculation
 
 import de.debuglevel.walkingdinner.rest.participant.Team
 import de.debuglevel.walkingdinner.rest.plan.Plan
+import org.hibernate.annotations.GenericGenerator
 import java.time.LocalDateTime
 import java.util.*
 import javax.persistence.*
@@ -12,7 +13,9 @@ data class Calculation(
      * UUID of the calculation
      */
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "BINARY(16)")
     val id: UUID? = null,
     /**
      * Whether the calculation of the plan has finished or is still in progress

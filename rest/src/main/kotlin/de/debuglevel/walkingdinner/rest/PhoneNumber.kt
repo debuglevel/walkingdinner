@@ -2,16 +2,16 @@ package de.debuglevel.walkingdinner.rest
 
 import com.google.i18n.phonenumbers.NumberParseException
 import com.google.i18n.phonenumbers.PhoneNumberUtil
+import org.hibernate.annotations.GenericGenerator
 import java.util.*
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.Transient
+import javax.persistence.*
 
 @Entity
 data class PhoneNumber(
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "BINARY(16)")
     val id: UUID? = null,
 
     val number: String

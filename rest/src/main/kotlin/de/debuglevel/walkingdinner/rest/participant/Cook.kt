@@ -2,13 +2,16 @@ package de.debuglevel.walkingdinner.rest.participant
 
 import de.debuglevel.walkingdinner.rest.MailAddress
 import de.debuglevel.walkingdinner.rest.PhoneNumber
+import org.hibernate.annotations.GenericGenerator
 import java.util.*
 import javax.persistence.*
 
 @Entity
 data class Cook(
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "BINARY(16)")
     val id: UUID? = null,
 
     @OneToOne(cascade = [CascadeType.ALL])

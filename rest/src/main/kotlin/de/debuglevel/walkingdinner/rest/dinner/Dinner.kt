@@ -3,6 +3,7 @@ package de.debuglevel.walkingdinner.rest.dinner
 import de.debuglevel.walkingdinner.rest.organisation.Organisation
 import de.debuglevel.walkingdinner.rest.participant.Team
 import de.debuglevel.walkingdinner.rest.plan.calculation.Calculation
+import org.hibernate.annotations.GenericGenerator
 import java.time.LocalDateTime
 import java.util.*
 import javax.persistence.*
@@ -10,7 +11,9 @@ import javax.persistence.*
 @Entity
 data class Dinner(
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "BINARY(16)")
     val id: UUID? = null,
 
     val name: String,

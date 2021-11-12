@@ -2,13 +2,16 @@ package de.debuglevel.walkingdinner.rest.organisation
 
 import de.debuglevel.walkingdinner.rest.MailAddress
 import de.debuglevel.walkingdinner.rest.dinner.Dinner
+import org.hibernate.annotations.GenericGenerator
 import java.util.*
 import javax.persistence.*
 
 @Entity
 data class Organisation(
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "BINARY(16)")
     val id: UUID? = null,
 
     @OneToOne(cascade = [CascadeType.ALL])

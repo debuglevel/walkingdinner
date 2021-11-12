@@ -1,6 +1,7 @@
 package de.debuglevel.walkingdinner.rest
 
 import de.debuglevel.walkingdinner.rest.participant.Team
+import org.hibernate.annotations.GenericGenerator
 import java.util.*
 import javax.persistence.*
 
@@ -12,7 +13,9 @@ data class Meeting(
     val course: String,
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @Column(columnDefinition = "BINARY(16)")
     val id: UUID? = null
 ) {
 
