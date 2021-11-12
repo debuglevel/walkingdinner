@@ -20,7 +20,7 @@ RUN ./gradlew --version
 
 # build source
 COPY . /src/
-RUN ./gradlew :planners:
+RUN ./gradlew :planners:build
 
 ## Final image
 FROM azul/zulu-openjdk-alpine:${OPENJDK_VERSION}-jre AS runtime
