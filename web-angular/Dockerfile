@@ -12,7 +12,7 @@ COPY . /src/
 RUN $(npm bin)/ng build --output-path=./dist/out
 
 ## Final image
-FROM nginx:1.15
+FROM nginx:1.21.4-alpine
 RUN rm -rf /usr/share/nginx/html/*
 COPY --from=builder /src/docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /src/dist/out/ /usr/share/nginx/html
