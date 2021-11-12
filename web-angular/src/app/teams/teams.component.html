@@ -62,7 +62,7 @@
             Unverträglichkeiten oder organisatorische Hinweise.
           </p>
           <mat-form-field class="full-width">
-            <input matInput placeholder="Notizen" #teamNotes />
+            <textarea matInput placeholder="Notizen" #teamNotes></textarea>
           </mat-form-field>
         </mat-card>
 
@@ -132,6 +132,8 @@
                 >omnivorer Appetizer</mat-checkbox
               >
             </li>
+          </ul>
+          <ul>
             <li>
               <mat-checkbox #teamVeganMaindish>vegane Hauptspeise</mat-checkbox>
             </li>
@@ -145,6 +147,8 @@
                 >omnivore Hauptspeise</mat-checkbox
               >
             </li>
+          </ul>
+          <ul>
             <li>
               <mat-checkbox #teamVeganDessert>veganes Dessert</mat-checkbox>
             </li>
@@ -170,7 +174,7 @@
           add(
             teamAddress.value,
             teamChef1.value,
-            teamChef1.value,
+            teamChef2.value,
             teamMail1.value,
             teamMail2.value,
             teamPhone1.value,

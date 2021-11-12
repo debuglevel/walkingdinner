@@ -14,17 +14,27 @@ micronaut:
     #enabled: true
 
 # Disable service discovery and registration
+# TODO there seems still something try to reach consul (at least in gitpod). Check if this still happens with a newer version of micronaut.
 consul:
   client:
+    config:
+      enabled: false
+    pool:
+      enabled: false
     discovery:
       enabled: false
     registration:
       enabled: false
+      check:
+        enabled: false
+    defaultZone: ""
+# Disable HealthMonitor; see https://github.com/micronaut-projects/micronaut-core/issues/3546
+micronaut.health.monitor.enabled: false
 
 datasources:
   # H2 in-memory
   default:
-    url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:developmentDatabase;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     driverClassName: org.h2.Driver
     username: sa
     password: ''

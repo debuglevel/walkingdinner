@@ -35,10 +35,15 @@ data class Team(
     @ManyToOne
     val dinner: Dinner?
 ) {
-    override fun toString(): String {
-        return "Team(id=$id)"
-    }
 
     val cooks
         get() = setOf(cook1, cook2)
+
+    override fun toString(): String {
+        return "Team(" +
+                "id=$id, " +
+                "address='$address', " +
+                "city='$city'" +
+                ")"
+    }
 }

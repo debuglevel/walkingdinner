@@ -5,11 +5,11 @@ import de.debuglevel.walkingdinner.rest.participant.Team
 import de.debuglevel.walkingdinner.rest.participant.location.Location
 import io.jsondb.JsonDBTemplate
 import io.micronaut.context.annotation.Property
+import jakarta.inject.Singleton
 import mu.KotlinLogging
 import java.nio.file.Files
 import java.nio.file.Path
 import java.text.DecimalFormat
-import javax.inject.Singleton
 
 @Singleton
 class DatabasecacheGeolocator(

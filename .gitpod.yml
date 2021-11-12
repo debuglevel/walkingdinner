@@ -1,0 +1,48 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Backend
+    init: |
+      echo === INIT
+      ./gradlew :rest:build
+      echo === INIT DONE
+    command: |
+      echo === COMMAND
+      MICRONAUT_ENVIRONMENTS=dev ./gradlew :rest:run
+      echo === COMMAND DONE
+  # - name: Planners
+  #   init: ./gradlew :planners:build
+  #   command: ./gradlew :planners:run
+  - name: Angular
+    init: |
+      echo === INIT
+      cd /workspace/walkingdinner/web-angular
+      npm install
+      echo === INIT DONE
+    command: |
+      echo === COMMAND
+      cd /workspace/walkingdinner/web-angular
+      npm start
+      echo === COMMAND DONE
+
+ports:
+  # Backend
+  - port: 8081
+    onOpen: ignore
+  # Angular
+  - port: 4200
+    onOpen: open-browser
+    #onOpen: open-preview
+  # Planners
+  - port: 8083
+    onOpen: ignore
+
+vscode:
+  extensions:
+    - mathiasfrohlich.Kotlin@1.7.1:zRxka5i+6/G9r7KC3xmyXQ==
+    # code completion for application.yml (see: https://docs.micronaut.io/latest/guide/index.html#vsCodeSetup)
+    - Pivotal.vscode-spring-boot@1.20.0:jaH7mimG3KKfktrKqHw8Kg==
+    
+    # TODO: copied from gitpod typescript template
+    #- dbaeumer.vscode-eslint
