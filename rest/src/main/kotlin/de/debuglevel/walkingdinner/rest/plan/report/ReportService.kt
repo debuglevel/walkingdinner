@@ -12,10 +12,10 @@ import de.debuglevel.walkingdinner.rest.plan.report.teams.summary.SummaryReporte
 import io.micronaut.context.event.ApplicationEventPublisher
 import io.micronaut.runtime.event.annotation.EventListener
 import io.micronaut.scheduling.annotation.Async
-import jakarta.inject.Singleton
 import mu.KotlinLogging
 import java.io.ByteArrayOutputStream
 import java.util.*
+import javax.inject.Singleton
 
 @Singleton
 open class ReportService(
@@ -26,7 +26,7 @@ open class ReportService(
     private val mailFileReportService: MailFileReportService,
     private val planService: PlanService,
     private val zipService: ZipService,
-    private val eventPublisher: ApplicationEventPublisher<Any>
+    private val eventPublisher: ApplicationEventPublisher
 ) {
     private val logger = KotlinLogging.logger {}
 
