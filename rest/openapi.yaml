@@ -1,0 +1,1247 @@
+openapi: 3.0.1
+info:
+  title: Walking-Dinner Microservice
+  description: Microservice for walking dinner
+  contact:
+    name: Marc Kohaupt
+    url: http://debuglevel.de
+    email: debuglevel at gmail.com
+  license:
+    name: Unlicense
+    url: https://unlicense.org/
+  version: 0.0.1
+paths:
+  /dinners/{dinnerId}:
+    get:
+      operationId: getOne
+      parameters:
+        - name: dinnerId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        default:
+          description: getOne default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DinnerResponse'
+  /dinners:
+    get:
+      operationId: getList
+      parameters: [ ]
+      responses:
+        default:
+          description: getList default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DinnerResponse'
+    post:
+      operationId: postOne
+      parameters: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dinnerRequest:
+                  $ref: '#/components/schemas/DinnerRequest'
+        required: true
+      responses:
+        default:
+          description: postOne default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DinnerResponse'
+  /organisations/{organisationId}:
+    get:
+      operationId: getOne
+      parameters:
+        - name: organisationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        default:
+          description: getOne default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganisationResponse'
+  /organisations:
+    get:
+      operationId: getList
+      parameters: [ ]
+      responses:
+        default:
+          description: getList default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrganisationResponse'
+    post:
+      operationId: postOne
+      parameters: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                organisationRequest:
+                  $ref: '#/components/schemas/OrganisationRequest'
+        required: true
+      responses:
+        default:
+          description: postOne default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganisationResponse'
+  /teams/{teamId}:
+    get:
+      operationId: getOne
+      parameters:
+        - name: teamId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        default:
+          description: getOne default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamResponse'
+  /teams:
+    get:
+      operationId: getList
+      parameters: [ ]
+      responses:
+        default:
+          description: getList default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeamResponse'
+    post:
+      operationId: postOne
+      parameters: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamRequest:
+                  $ref: '#/components/schemas/TeamRequest'
+        required: true
+      responses:
+        default:
+          description: postOne default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamResponse'
+  /plans/calculations/{calculationId}:
+    get:
+      operationId: getOne
+      parameters:
+        - name: calculationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        default:
+          description: getOne default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculationResponse'
+  /plans/calculations:
+    get:
+      operationId: getList
+      parameters: [ ]
+      responses:
+        default:
+          description: getList default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CalculationResponse'
+    post:
+      operationId: postOne
+      parameters: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                calculationRequest:
+                  $ref: '#/components/schemas/CalculationRequest'
+        required: true
+      responses:
+        default:
+          description: postOne default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculationResponse'
+  /plans/{planId}:
+    get:
+      operationId: getOne
+      parameters:
+        - name: planId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        default:
+          description: getOne default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+  /plans:
+    get:
+      operationId: getList
+      parameters: [ ]
+      responses:
+        default:
+          description: getList default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Plan'
+  /plans/reports/summary/{planId}:
+    get:
+      operationId: getOnePlaintext
+      parameters:
+        - name: planId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        default:
+          description: getOnePlaintext default response
+          content:
+            text/plain:
+              schema:
+                type: string
+  /plans/reports/gmail/{reportId}:
+    get:
+      operationId: getOneGmailReport
+      parameters:
+        - name: reportId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        default:
+          description: getOneGmailReport default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GmailDraftsReport'
+  /plans/reports/gmail/{planId}:
+    post:
+      operationId: postOneGmailReport
+      parameters:
+        - name: planId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        default:
+          description: postOneGmailReport default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GmailDraftsReport'
+  /plans/reports/mails/{planId}:
+    get:
+      summary: Downloads a .zip with .eml mails for all teams.
+      description: Downloads a .zip with .eml mails for all teams.
+      operationId: getAllMail
+      parameters:
+        - name: planId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        default:
+          content:
+            application/zip:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: byte
+components:
+  schemas:
+    DinnerResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        city:
+          type: string
+        begin:
+          type: string
+          format: date-time
+        organisationId:
+          type: string
+          format: uuid
+    DinnerRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        city:
+          type: string
+        begin:
+          type: string
+          format: date-time
+        organisationId:
+          type: string
+          format: uuid
+    OrganisationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          nullable: true
+        mail:
+          type: string
+        name:
+          type: string
+    OrganisationRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        mail:
+          type: string
+    TeamResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        address:
+          type: string
+          nullable: true
+        chef1:
+          type: string
+          nullable: true
+        chef2:
+          type: string
+          nullable: true
+        mail1:
+          type: string
+          nullable: true
+        mail2:
+          type: string
+          nullable: true
+        phone1:
+          type: string
+          nullable: true
+        phone2:
+          type: string
+          nullable: true
+        diet:
+          $ref: '#/components/schemas/Diet'
+        veganAppetizer:
+          type: boolean
+          nullable: true
+        veganMaindish:
+          type: boolean
+          nullable: true
+        veganDessert:
+          type: boolean
+          nullable: true
+        vegetarianAppetizer:
+          type: boolean
+          nullable: true
+        vegetarianMaindish:
+          type: boolean
+          nullable: true
+        vegetarianDessert:
+          type: boolean
+          nullable: true
+        omnivoreAppetizer:
+          type: boolean
+          nullable: true
+        omnivoreMaindish:
+          type: boolean
+          nullable: true
+        omnivoreDessert:
+          type: boolean
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        dinnerId:
+          type: string
+          format: uuid
+    Diet:
+      type: string
+      enum:
+        - Vegan
+        - Vegetarian
+        - Omnivore
+    TeamRequest:
+      type: object
+      properties:
+        address:
+          type: string
+          nullable: true
+        chef1:
+          type: string
+          nullable: true
+        chef2:
+          type: string
+          nullable: true
+        mail1:
+          type: string
+          nullable: true
+        mail2:
+          type: string
+          nullable: true
+        phone1:
+          type: string
+          nullable: true
+        phone2:
+          type: string
+          nullable: true
+        diet:
+          $ref: '#/components/schemas/Diet'
+        veganAppetizer:
+          type: boolean
+          nullable: true
+        veganMaindish:
+          type: boolean
+          nullable: true
+        veganDessert:
+          type: boolean
+          nullable: true
+        vegetarianAppetizer:
+          type: boolean
+          nullable: true
+        vegetarianMaindish:
+          type: boolean
+          nullable: true
+        vegetarianDessert:
+          type: boolean
+          nullable: true
+        omnivoreAppetizer:
+          type: boolean
+          nullable: true
+        omnivoreMaindish:
+          type: boolean
+          nullable: true
+        omnivoreDessert:
+          type: boolean
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        dinnerId:
+          type: string
+          format: uuid
+    CalculationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: UUID of the calculation
+          format: uuid
+        finished:
+          type: boolean
+          description: Whether the calculation of the plan has finished or is still
+            in progress
+        populationsSize:
+          type: integer
+          description: Size of the population (for calculation with Genetic Algorithm)
+          format: int32
+        fitnessThreshold:
+          type: number
+          description: "Fitness level to beat (minimization problem, i.e. fitness\
+            \ must be less than this threshold) (for calculation with Genetic Algorithm)"
+          format: double
+        steadyFitness:
+          type: integer
+          description: Number of generations with constant fitness level to stop further
+            calculations (for calculation with Genetic Algorithm)
+          format: int32
+        planId:
+          type: string
+          description: "UUID of the plan, once it is calculated"
+          format: uuid
+          nullable: true
+        begin:
+          type: string
+          description: When the calculation began
+          format: date-time
+          nullable: true
+        end:
+          type: string
+          description: When the calculation finished
+          format: date-time
+          nullable: true
+    CalculationRequest:
+      type: object
+      properties:
+        surveyfile:
+          type: string
+          description: Survey data as CSV to base the calculation on
+          nullable: true
+        populationsSize:
+          type: integer
+          description: Size of the population (for calculation with Genetic Algorithm)
+          format: int32
+        fitnessThreshold:
+          type: number
+          description: "Fitness level to beat (minimization problem, i.e. fitness\
+            \ must be less than this threshold) (for calculation with Genetic Algorithm)"
+          format: double
+        steadyFitness:
+          type: integer
+          description: Number of generations with constant fitness level to stop further
+            calculations (for calculation with Genetic Algorithm)
+          format: int32
+        dinnerId:
+          type: string
+          format: uuid
+          nullable: true
+    Plan:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          nullable: true
+        meetings:
+          type: array
+          items:
+            $ref: '#/components/schemas/Meeting'
+        additionalInformation:
+          type: string
+    Meeting:
+      type: object
+      properties:
+        teams:
+          type: array
+          items:
+            $ref: '#/components/schemas/Team'
+        course:
+          type: string
+        id:
+          type: string
+          format: uuid
+          nullable: true
+        cookingTeam:
+          $ref: '#/components/schemas/Team'
+    Team:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          nullable: true
+        cook1:
+          $ref: '#/components/schemas/Cook'
+        cook2:
+          $ref: '#/components/schemas/Cook'
+        address:
+          type: string
+        diet:
+          $ref: '#/components/schemas/Diet'
+        cookingCapabilities:
+          type: array
+          items:
+            $ref: '#/components/schemas/CookingCapability'
+        location:
+          $ref: '#/components/schemas/Location'
+        city:
+          type: string
+        dinner:
+          $ref: '#/components/schemas/Dinner'
+        cooks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cook'
+    Cook:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          nullable: true
+        name:
+          $ref: '#/components/schemas/Name'
+        mailAddress:
+          $ref: '#/components/schemas/MailAddress'
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumber'
+    Name:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          nullable: true
+        name:
+          type: string
+        firstname:
+          type: string
+        lastname:
+          type: string
+        abbreviatedName:
+          type: string
+    MailAddress:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          nullable: true
+        value:
+          type: string
+    PhoneNumber:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          nullable: true
+        number:
+          type: string
+    CookingCapability:
+      type: string
+      enum:
+        - VeganAppetizer
+        - VeganMaindish
+        - VeganDessert
+        - VegetarianAppetizer
+        - VegetarianMaindish
+        - VegetarianDessert
+        - OmnivoreAppetizer
+        - OmnivoreMaindish
+        - OmnivoreDessert
+    Location:
+      type: object
+      properties:
+        address:
+          type: string
+        longitude:
+          type: number
+          format: double
+        latitude:
+          type: number
+          format: double
+        id:
+          type: string
+          format: uuid
+          nullable: true
+    Dinner:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          nullable: true
+        name:
+          type: string
+        teams:
+          type: array
+          items:
+            $ref: '#/components/schemas/Team'
+        calculations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Calculation'
+        city:
+          type: string
+        begin:
+          type: string
+          format: date-time
+        organisation:
+          $ref: '#/components/schemas/Organisation'
+    Calculation:
+      type: object
+      properties:
+        id:
+          type: string
+          description: UUID of the calculation
+          format: uuid
+          nullable: true
+        finished:
+          type: boolean
+          description: Whether the calculation of the plan has finished or is still
+            in progress
+        populationsSize:
+          type: integer
+          description: Size of the population (for calculation with Genetic Algorithm)
+          format: int32
+        fitnessThreshold:
+          type: number
+          description: "Fitness level to beat (minimization problem, i.e. fitness\
+            \ must be less than this threshold) (for calculation with Genetic Algorithm)"
+          format: double
+        steadyFitness:
+          type: integer
+          description: Number of generations with constant fitness level to stop further
+            calculations (for calculation with Genetic Algorithm)
+          format: int32
+        plan:
+          $ref: '#/components/schemas/Plan'
+        teams:
+          type: array
+          description: Teams to calculate into the plan
+          items:
+            $ref: '#/components/schemas/Team'
+        calculationId:
+          type: string
+          description: ID on calculation microservices
+          format: uuid
+          nullable: true
+        begin:
+          type: string
+          description: When the calculation began
+          format: date-time
+          nullable: true
+        end:
+          type: string
+          description: When the calculation finished
+          format: date-time
+          nullable: true
+    Organisation:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          nullable: true
+        mail:
+          $ref: '#/components/schemas/MailAddress'
+        name:
+          type: string
+        dinners:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dinner'
+    GmailDraftsReport:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          nullable: true
+        plan:
+          $ref: '#/components/schemas/Plan'
+        drafts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Draft'
+    AbstractMap_String.Object_:
+      type: object
+      properties:
+        empty:
+          type: boolean
+        keySet:
+          type: array
+          items:
+            type: string
+        values:
+          type: array
+          items:
+            type: object
+    GenericData:
+      allOf:
+        - $ref: '#/components/schemas/AbstractMap_String.Object_'
+        - type: object
+          properties:
+            unknownKeys:
+              type: object
+              additionalProperties: true
+            classInfo:
+              $ref: '#/components/schemas/ClassInfo'
+    ClassInfo:
+      type: object
+      properties:
+        underlyingClass:
+          $ref: '#/components/schemas/Class_Object_'
+        ignoreCase:
+          type: boolean
+        enum:
+          type: boolean
+        names:
+          type: array
+          items:
+            type: string
+        fieldInfos:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInfo'
+    Class_Object_:
+      type: object
+      properties:
+        interface:
+          type: boolean
+        array:
+          type: boolean
+        primitive:
+          type: boolean
+        annotation:
+          type: boolean
+        synthetic:
+          type: boolean
+        name:
+          type: string
+        classLoader:
+          $ref: '#/components/schemas/ClassLoader'
+        typeParameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Class_Object_'
+        superclass:
+          $ref: '#/components/schemas/Class_Object_'
+        genericSuperclass:
+          $ref: '#/components/schemas/Type'
+        package:
+          $ref: '#/components/schemas/Package'
+        interfaces:
+          type: array
+          items:
+            type: object
+        genericInterfaces:
+          type: array
+          items:
+            type: object
+        componentType:
+          $ref: '#/components/schemas/Class_Object_'
+        modifiers:
+          type: integer
+          format: int32
+        signers:
+          type: array
+          items:
+            type: object
+        enclosingMethod:
+          $ref: '#/components/schemas/Method'
+        enclosingConstructor:
+          $ref: '#/components/schemas/Constructor_Object_'
+        declaringClass:
+          $ref: '#/components/schemas/Class_Object_'
+        enclosingClass:
+          $ref: '#/components/schemas/Class_Object_'
+        simpleName:
+          type: string
+        typeName:
+          type: string
+        canonicalName:
+          type: string
+        anonymousClass:
+          type: boolean
+        localClass:
+          type: boolean
+        memberClass:
+          type: boolean
+        classes:
+          type: array
+          items:
+            type: object
+        fields:
+          type: array
+          items:
+            type: object
+        methods:
+          type: array
+          items:
+            type: object
+        constructors:
+          type: array
+          items:
+            type: object
+        declaredClasses:
+          type: array
+          items:
+            type: object
+        declaredFields:
+          type: array
+          items:
+            type: object
+        declaredMethods:
+          type: array
+          items:
+            type: object
+        declaredConstructors:
+          type: array
+          items:
+            type: object
+        protectionDomain:
+          $ref: '#/components/schemas/ProtectionDomain'
+        enum:
+          type: boolean
+        enumConstants:
+          type: array
+          items:
+            type: object
+        annotations:
+          type: array
+          items:
+            type: object
+        declaredAnnotations:
+          type: array
+          items:
+            type: object
+        annotatedSuperclass:
+          $ref: '#/components/schemas/AnnotatedType'
+        annotatedInterfaces:
+          type: array
+          items:
+            type: object
+    ClassLoader:
+      type: object
+      properties:
+        parent:
+          $ref: '#/components/schemas/ClassLoader'
+    Type:
+      type: object
+      properties:
+        typeName:
+          type: string
+    Package:
+      type: object
+      properties:
+        name:
+          type: string
+        specificationTitle:
+          type: string
+        specificationVersion:
+          type: string
+        specificationVendor:
+          type: string
+        implementationTitle:
+          type: string
+        implementationVersion:
+          type: string
+        implementationVendor:
+          type: string
+        sealed:
+          type: boolean
+        annotations:
+          type: array
+          items:
+            type: object
+        declaredAnnotations:
+          type: array
+          items:
+            type: object
+    AccessibleObject:
+      type: object
+      properties:
+        accessible:
+          type: boolean
+        annotations:
+          type: array
+          items:
+            type: object
+        declaredAnnotations:
+          type: array
+          items:
+            type: object
+    Executable:
+      allOf:
+        - $ref: '#/components/schemas/AccessibleObject'
+        - type: object
+          properties:
+            parameterCount:
+              type: integer
+              format: int32
+            genericParameterTypes:
+              type: array
+              items:
+                type: object
+            parameters:
+              type: array
+              items:
+                type: object
+            genericExceptionTypes:
+              type: array
+              items:
+                type: object
+            varArgs:
+              type: boolean
+            synthetic:
+              type: boolean
+            declaredAnnotations:
+              type: array
+              items:
+                type: object
+            annotatedReceiverType:
+              $ref: '#/components/schemas/AnnotatedType'
+            annotatedParameterTypes:
+              type: array
+              items:
+                type: object
+            annotatedExceptionTypes:
+              type: array
+              items:
+                type: object
+    AnnotatedType:
+      type: object
+    Method:
+      allOf:
+        - $ref: '#/components/schemas/Executable'
+        - $ref: '#/components/schemas/AccessibleObject'
+        - type: object
+          properties:
+            declaringClass:
+              $ref: '#/components/schemas/Class_Object_'
+            name:
+              type: string
+            modifiers:
+              type: integer
+              format: int32
+            typeParameters:
+              type: array
+              items:
+                $ref: '#/components/schemas/Method'
+            returnType:
+              $ref: '#/components/schemas/Class_Object_'
+            genericReturnType:
+              $ref: '#/components/schemas/Type'
+            parameterTypes:
+              type: array
+              items:
+                type: object
+            parameterCount:
+              type: integer
+              format: int32
+            genericParameterTypes:
+              type: array
+              items:
+                type: object
+            exceptionTypes:
+              type: array
+              items:
+                type: object
+            genericExceptionTypes:
+              type: array
+              items:
+                type: object
+            bridge:
+              type: boolean
+            varArgs:
+              type: boolean
+            synthetic:
+              type: boolean
+            default:
+              type: boolean
+            defaultValue:
+              $ref: '#/components/schemas/Object'
+            declaredAnnotations:
+              type: array
+              items:
+                type: object
+            parameterAnnotations:
+              type: array
+              items:
+                type: object
+            annotatedReturnType:
+              $ref: '#/components/schemas/AnnotatedType'
+    Object:
+      type: object
+    Constructor_Object_:
+      allOf:
+        - $ref: '#/components/schemas/Executable'
+        - $ref: '#/components/schemas/AccessibleObject'
+        - type: object
+          properties:
+            declaringClass:
+              $ref: '#/components/schemas/Class_Object_'
+            name:
+              type: string
+            modifiers:
+              type: integer
+              format: int32
+            typeParameters:
+              type: array
+              items:
+                $ref: '#/components/schemas/Constructor_Object_'
+            parameterTypes:
+              type: array
+              items:
+                type: object
+            parameterCount:
+              type: integer
+              format: int32
+            genericParameterTypes:
+              type: array
+              items:
+                type: object
+            exceptionTypes:
+              type: array
+              items:
+                type: object
+            genericExceptionTypes:
+              type: array
+              items:
+                type: object
+            varArgs:
+              type: boolean
+            synthetic:
+              type: boolean
+            declaredAnnotations:
+              type: array
+              items:
+                type: object
+            parameterAnnotations:
+              type: array
+              items:
+                type: object
+            annotatedReturnType:
+              $ref: '#/components/schemas/AnnotatedType'
+            annotatedReceiverType:
+              $ref: '#/components/schemas/AnnotatedType'
+    ProtectionDomain:
+      type: object
+      properties:
+        codeSource:
+          $ref: '#/components/schemas/CodeSource'
+        classLoader:
+          $ref: '#/components/schemas/ClassLoader'
+        principals:
+          type: array
+          items:
+            type: object
+        permissions:
+          $ref: '#/components/schemas/PermissionCollection'
+    CodeSource:
+      type: object
+      properties:
+        location:
+          type: string
+          format: url
+        certificates:
+          type: array
+          items:
+            type: object
+        codeSigners:
+          type: array
+          items:
+            type: object
+    PermissionCollection:
+      type: object
+      properties:
+        readOnly:
+          type: boolean
+    FieldInfo:
+      type: object
+      properties:
+        field:
+          $ref: '#/components/schemas/Field'
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/Class_Object_'
+        genericType:
+          $ref: '#/components/schemas/Type'
+        final:
+          type: boolean
+        primitive:
+          type: boolean
+        classInfo:
+          $ref: '#/components/schemas/ClassInfo'
+    Field:
+      allOf:
+        - $ref: '#/components/schemas/AccessibleObject'
+        - type: object
+          properties:
+            declaringClass:
+              $ref: '#/components/schemas/Class_Object_'
+            name:
+              type: string
+            modifiers:
+              type: integer
+              format: int32
+            enumConstant:
+              type: boolean
+            synthetic:
+              type: boolean
+            type:
+              $ref: '#/components/schemas/Class_Object_'
+            genericType:
+              $ref: '#/components/schemas/Type'
+            declaredAnnotations:
+              type: array
+              items:
+                type: object
+            annotatedType:
+              $ref: '#/components/schemas/AnnotatedType'
+    GenericJson:
+      allOf:
+        - $ref: '#/components/schemas/GenericData'
+        - $ref: '#/components/schemas/AbstractMap_String.Object_'
+        - type: object
+          properties:
+            factory:
+              $ref: '#/components/schemas/JsonFactory'
+    JsonFactory:
+      type: object
+    Draft:
+      allOf:
+        - $ref: '#/components/schemas/GenericJson'
+        - $ref: '#/components/schemas/GenericData'
+        - $ref: '#/components/schemas/AbstractMap_String.Object_'
+        - type: object
+          properties:
+            id:
+              type: string
+            message:
+              type: object
+              additionalProperties: true

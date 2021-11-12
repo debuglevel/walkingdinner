@@ -1,0 +1,261 @@
+openapi: 3.0.1
+info:
+  title: Walking-Dinner Planner Microservice
+  description: Microservice for walking dinner planners
+  contact:
+    name: Marc Kohaupt
+    url: http://debuglevel.de
+    email: debuglevel at gmail.com
+  license:
+    name: Unlicense
+    url: https://unlicense.org/
+  version: 0.0.1
+paths:
+  /calculations:
+    get:
+      operationId: getList
+      parameters: [ ]
+      responses:
+        "200":
+          description: getList 200 response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CalculationResponse'
+    post:
+      operationId: postOne
+      parameters: [ ]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - calculationRequest
+              type: object
+              properties:
+                calculationRequest:
+                  $ref: '#/components/schemas/CalculationRequest'
+        required: true
+      responses:
+        "200":
+          description: postOne 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculationResponse'
+  /calculations/{calculationId}:
+    get:
+      operationId: getOne
+      parameters:
+        - name: calculationId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: getOne 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculationResponse'
+  /plans:
+    get:
+      operationId: getList_1
+      parameters: [ ]
+      responses:
+        "200":
+          description: getList_1 200 response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PlanResponse'
+  /plans/{planId}:
+    get:
+      operationId: getOne_1
+      parameters:
+        - name: planId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: getOne_1 200 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanResponse'
+components:
+  schemas:
+    CalculationRequest:
+      required:
+        - fitnessThreshold
+        - populationsSize
+        - steadyFitness
+        - teams
+      type: object
+      properties:
+        populationsSize:
+          type: integer
+          description: Size of the population
+          format: int32
+        fitnessThreshold:
+          type: number
+          description: "Fitness level to beat (minimization problem, i.e. fitness\
+            \ must be less than this threshold)"
+          format: double
+        steadyFitness:
+          type: integer
+          description: Number of generations with constant fitness level to stop further
+            calculations
+          format: int32
+        teams:
+          type: array
+          description: Teams to calculate into the plan
+          items:
+            $ref: '#/components/schemas/TeamRequest'
+    CalculationResponse:
+      required:
+        - finished
+        - fitnessThreshold
+        - id
+        - populationsSize
+        - steadyFitness
+        - teams
+      type: object
+      properties:
+        id:
+          type: string
+          description: UUID of the calculation
+          format: uuid
+        finished:
+          type: boolean
+          description: Whether the calculation of the plan has finished or is still
+            in progress
+        populationsSize:
+          type: integer
+          description: Size of the population (for calculation with Genetic Algorithm)
+          format: int32
+        fitnessThreshold:
+          type: number
+          description: "Fitness level to beat (minimization problem, i.e. fitness\
+            \ must be less than this threshold) (for calculation with Genetic Algorithm)"
+          format: double
+        steadyFitness:
+          type: integer
+          description: Number of generations with constant fitness level to stop further
+            calculations (for calculation with Genetic Algorithm)
+          format: int32
+        teams:
+          type: array
+          description: Teams to calculate into the plan
+          items:
+            $ref: '#/components/schemas/TeamResponse'
+        planId:
+          type: string
+          description: "UUID of the plan, once it is calculated"
+          format: uuid
+          nullable: true
+        begin:
+          type: string
+          description: When the calculation began
+          format: date-time
+          nullable: true
+        end:
+          type: string
+          description: When the calculation finished
+          format: date-time
+          nullable: true
+    CookingCapability:
+      type: string
+      enum:
+        - VeganAppetizer
+        - VeganMaindish
+        - VeganDessert
+        - VegetarianAppetizer
+        - VegetarianMaindish
+        - VegetarianDessert
+        - OmnivoreAppetizer
+        - OmnivoreMaindish
+        - OmnivoreDessert
+    Diet:
+      type: string
+      enum:
+        - Vegan
+        - Vegetarian
+        - Omnivore
+    LocationRequest:
+      required:
+        - lat
+        - lng
+      type: object
+      properties:
+        lng:
+          type: number
+          format: double
+        lat:
+          type: number
+          format: double
+    MeetingResponse:
+      required:
+        - course
+        - id
+        - teams
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        course:
+          type: string
+        teams:
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamResponse'
+    PlanResponse:
+      required:
+        - id
+        - meetings
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        meetings:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeetingResponse'
+    TeamRequest:
+      required:
+        - cookingCapabilities
+        - diet
+        - id
+        - location
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        diet:
+          $ref: '#/components/schemas/Diet'
+        cookingCapabilities:
+          type: array
+          items:
+            $ref: '#/components/schemas/CookingCapability'
+        location:
+          $ref: '#/components/schemas/LocationRequest'
+    TeamResponse:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
