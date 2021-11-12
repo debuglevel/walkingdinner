@@ -33,7 +33,7 @@ micronaut:
         paths: classpath:META-INF/swagger
         mapping: /swagger/**
   security:
-    default: false
+    enabled: false
     #enabled: true
 
 consul:
