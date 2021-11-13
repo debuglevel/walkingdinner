@@ -29,10 +29,10 @@ object Application {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        de.debuglevel.walkingdinner.planner.Application.logger.info { "Starting up..." }
-        de.debuglevel.walkingdinner.planner.Application.applicationContext = Micronaut
+        logger.info { "Starting up..." }
+        applicationContext = Micronaut
             .build(*args)
-            .classes(de.debuglevel.walkingdinner.planner.Application.javaClass)
+            .classes(Application.javaClass)
             .banner(false)
             .start()
     }

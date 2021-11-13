@@ -6,7 +6,7 @@ import de.debuglevel.walkingdinner.planner.Team
 import java.util.*
 import java.util.stream.Stream
 
-object TestDataCourseCompatibility {
+object CourseCompatibilityTestData {
     fun compatibleMeetingsProvider() = Stream.of(
         MeetingData(
             Meeting(

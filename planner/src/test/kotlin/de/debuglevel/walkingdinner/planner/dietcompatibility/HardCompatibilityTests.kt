@@ -10,7 +10,7 @@ class HardCompatibilityTests {
 
     @ParameterizedTest
     @MethodSource("compatibleMeetingsProvider")
-    fun `meetings are compatible`(testData: TestDataHardCompatibility.MeetingData) {
+    fun `meetings are compatible`(testData: HardCompatibilityTestData.MeetingData) {
         // Arrange
 
         // Act
@@ -22,7 +22,7 @@ class HardCompatibilityTests {
 
     @ParameterizedTest
     @MethodSource("incompatibleMeetingsProvider")
-    fun `meetings are incompatible`(testData: TestDataHardCompatibility.MeetingData) {
+    fun `meetings are incompatible`(testData: HardCompatibilityTestData.MeetingData) {
         // Arrange
 
         // Act
@@ -32,6 +32,6 @@ class HardCompatibilityTests {
         assertThat(areCompatible).isFalse
     }
 
-    fun compatibleMeetingsProvider() = TestDataHardCompatibility.compatibleMeetingsProvider()
-    fun incompatibleMeetingsProvider() = TestDataHardCompatibility.incompatibleMeetingsProvider()
+    fun compatibleMeetingsProvider() = HardCompatibilityTestData.compatibleMeetingsProvider()
+    fun incompatibleMeetingsProvider() = HardCompatibilityTestData.incompatibleMeetingsProvider()
 }

@@ -2,6 +2,9 @@ package de.debuglevel.walkingdinner.planner
 
 data class Meeting(
     val course: String,
+    /**
+     * TODO: Maybe throw an exception somehow if count() is not 3
+     */
     val teams: List<Team>
 ) {
     /**
