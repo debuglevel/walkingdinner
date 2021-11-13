@@ -1,10 +1,13 @@
 package de.debuglevel.walkingdinner.planner
 
+import mu.KotlinLogging
+
 data class Courses(
     val course1teams: Iterable<Team>,
     val course2teams: Iterable<Team>,
     val course3teams: Iterable<Team>
 ) {
+    private val logger = KotlinLogging.logger {}
 
     // TODO: should be labeled in english
     companion object {
@@ -44,28 +47,15 @@ data class Courses(
      * TODO: Should probably throw an exception if an unsuitable number of teams was supplied.
      */
     private fun teamToMeetings(teams: Iterable<Team>, courseName: String): Set<Meeting> {
-        val meetingSize = 3
+        val meetingSize = 3 // TODO: Should be fetched somewhere else
 
-        val meetings = mutableSetOf<Meeting>()
-
-        // Create an empty array to be filled with 3 teams
-        val meetingTeams: Array<Team?> = Array(meetingSize) { null }
-
-        // Iterate through all teams
-        for ((index, value) in teams.withIndex()) {
-            // Put each team at its position in the array
-            meetingTeams[index % meetingSize] = value
-
-            // If the array is full...
-            if (index % meetingSize == meetingSize - 1) {
-                // Create a meeting with this teams
-                val meeting = Meeting(
-                    courseName,
-                    meetingTeams.filterNotNull() // Ensure not-null and clones the list
-                )
-                meetings.add(meeting)
-            }
+        if (teams.count().rem(meetingSize) != 0) {
+            logger.warn { "There are ${teams.count()} teams but each meeting only allows $meetingSize teams, which leads to the last meeting having not enough teams. Undefined behavior might occur." }
         }
+
+        val meetings = teams
+            .chunked(meetingSize) { teams_ -> Meeting(courseName, teams_.toList()) }
+            .toSet()
 
         return meetings
     }
