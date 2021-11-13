@@ -2,9 +2,9 @@ package de.debuglevel.walkingdinner.backend.dinner
 
 import de.debuglevel.walkingdinner.backend.organisation.OrganisationService
 import io.micronaut.context.BeanContext
+import jakarta.inject.Singleton
 import mu.KotlinLogging
 import java.util.*
-import javax.inject.Singleton
 import javax.transaction.Transactional
 
 @Singleton

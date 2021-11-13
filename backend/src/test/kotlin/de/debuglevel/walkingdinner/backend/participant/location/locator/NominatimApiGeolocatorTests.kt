@@ -2,13 +2,13 @@ package de.debuglevel.walkingdinner.backend.participant.location.locator
 
 import de.debuglevel.walkingdinner.backend.participant.location.Location
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
+import jakarta.inject.Inject
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.within
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
-import javax.inject.Inject
 
 @MicronautTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

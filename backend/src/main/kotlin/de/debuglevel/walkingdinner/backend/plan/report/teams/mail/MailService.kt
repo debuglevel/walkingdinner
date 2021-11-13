@@ -1,8 +1,8 @@
 package de.debuglevel.walkingdinner.backend.plan.report.teams.mail
 
+import jakarta.inject.Singleton
 import mu.KotlinLogging
 import java.util.*
-import javax.inject.Singleton
 import javax.mail.Session
 import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage

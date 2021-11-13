@@ -3,8 +3,8 @@ package de.debuglevel.walkingdinner.backend.participant.importer
 import de.debuglevel.walkingdinner.backend.participant.Team
 import de.debuglevel.walkingdinner.backend.participant.importer.csv.CsvTeamImporter
 import de.debuglevel.walkingdinner.backend.participant.location.locator.DatabasecacheGeolocator
+import jakarta.inject.Singleton
 import mu.KotlinLogging
-import javax.inject.Singleton
 
 @Singleton
 class DatabaseBuilder(private val databasecacheGeolocator: DatabasecacheGeolocator) {

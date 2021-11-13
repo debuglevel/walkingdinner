@@ -5,9 +5,9 @@ import com.google.maps.GeocodingApi
 import de.debuglevel.walkingdinner.backend.common.GeoUtils
 import de.debuglevel.walkingdinner.backend.participant.Team
 import de.debuglevel.walkingdinner.backend.participant.location.Location
+import jakarta.inject.Singleton
 import mu.KotlinLogging
 import java.text.DecimalFormat
-import javax.inject.Singleton
 
 // TODO: does probably not really work anymore; should be aligned to NominatimApiGeolocator
 @Singleton

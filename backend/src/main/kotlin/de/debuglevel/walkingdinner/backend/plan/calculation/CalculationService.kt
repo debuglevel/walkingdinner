@@ -10,9 +10,9 @@ import de.debuglevel.walkingdinner.backend.plan.calculation.client.CalculationRe
 import de.debuglevel.walkingdinner.backend.plan.calculation.client.TeamRequest
 import de.debuglevel.walkingdinner.backend.plan.client.PlanClient
 import io.micronaut.http.client.exceptions.HttpClientResponseException
+import jakarta.inject.Singleton
 import mu.KotlinLogging
 import java.util.*
-import javax.inject.Singleton
 import javax.transaction.Transactional
 
 @Singleton

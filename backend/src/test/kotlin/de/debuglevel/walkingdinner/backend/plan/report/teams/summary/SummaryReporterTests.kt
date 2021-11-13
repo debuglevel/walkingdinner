@@ -5,10 +5,10 @@ import de.debuglevel.walkingdinner.backend.Meeting
 import de.debuglevel.walkingdinner.backend.PhoneNumber
 import de.debuglevel.walkingdinner.backend.participant.*
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
+import jakarta.inject.Inject
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
-import javax.inject.Inject
 
 @MicronautTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)

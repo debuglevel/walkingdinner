@@ -4,9 +4,9 @@ import de.debuglevel.walkingdinner.backend.common.GeoUtils
 import de.debuglevel.walkingdinner.backend.participant.Team
 import de.debuglevel.walkingdinner.backend.participant.location.Location
 import de.debuglevel.walkingdinner.backend.participant.location.LocationService
+import jakarta.inject.Singleton
 import mu.KotlinLogging
 import java.text.DecimalFormat
-import javax.inject.Singleton
 
 @Singleton
 class DatabasecacheGeolocator(
