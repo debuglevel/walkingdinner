@@ -16,6 +16,9 @@ data class Courses(
         const val course3name = "Dessert"
     }
 
+    /**
+     * Gets all [Meeting]s of all [Courses].
+     */
     fun toMeetings(): Set<Meeting> {
         return toCourseMeetings()
             .values
@@ -23,6 +26,9 @@ data class Courses(
             .toSet()
     }
 
+    /**
+     * Gets all [Meeting]s of all [Courses], separated by each Course.
+     */
     fun toCourseMeetings(): Map<String, Set<Meeting>> {
         val courseMeetings = hashMapOf<String, Set<Meeting>>()
 
