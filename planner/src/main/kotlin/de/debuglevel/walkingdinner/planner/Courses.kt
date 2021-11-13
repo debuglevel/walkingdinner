@@ -39,21 +39,31 @@ data class Courses(
         return courseMeetings
     }
 
+    /**
+     * Transforms a list of sequential [Team]s to a set of [Meeting]s.
+     * TODO: Should probably throw an exception if an unsuitable number of teams was supplied.
+     */
     private fun teamToMeetings(teams: Iterable<Team>, courseName: String): Set<Meeting> {
+        val meetingSize = 3
+
         val meetings = mutableSetOf<Meeting>()
 
-        val meetingTeams: Array<Team?> = Array(3) { null }
+        // Create an empty array to be filled with 3 teams
+        val meetingTeams: Array<Team?> = Array(meetingSize) { null }
 
+        // Iterate through all teams
         for ((index, value) in teams.withIndex()) {
-            meetingTeams[index % 3] = value
+            // Put each team at its position in the array
+            meetingTeams[index % meetingSize] = value
 
-            if (index % 3 == 2) {
-                meetings.add(
-                    Meeting(
-                        courseName,
-                        meetingTeams.filterNotNull()
-                    )
+            // If the array is full...
+            if (index % meetingSize == meetingSize - 1) {
+                // Create a meeting with this teams
+                val meeting = Meeting(
+                    courseName,
+                    meetingTeams.filterNotNull() // Ensure not-null and clones the list
                 )
+                meetings.add(meeting)
             }
         }
 
