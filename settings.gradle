@@ -36,8 +36,8 @@ rootProject.name = 'walkingdinner'
 
 //include 'integration'
 //include 'cli'
-println("settings.gradle: Including 'rest' subproject...")
-include 'rest'
+println("settings.gradle: Including 'backend' subproject...")
+include 'backend'
 println("settings.gradle: Including 'planner' subproject...")
 include 'planner'
 //include 'models'

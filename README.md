@@ -10,7 +10,7 @@ deployed - usage of `docker-compose.yml` is recommended therefore.
 
 ### Services
 
-* `rest` is the main API backend. It stores data et cetera.
-* `angular` is the web fronted which talks to the `rest` service.
-* `planner` is a worker microservice to calculate routes and stuff. It's separated from `rest` because it might produce
-  heavy loads and maybe should be scaled to multiple machines.
+* `backend` is the main API backend. It stores data et cetera.
+* `angular` is the web fronted which talks to the `backend` service.
+* `planner` is a worker microservice to calculate routes and stuff. It's separated from `backend` because it might
+  produce heavy loads and maybe should be scaled to multiple machines.
