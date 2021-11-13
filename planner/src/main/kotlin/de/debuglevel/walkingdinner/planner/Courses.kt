@@ -33,16 +33,16 @@ data class Courses(
         val courseMeetings = hashMapOf<String, Set<Meeting>>()
 
         courseMeetings[course1name] = teamToMeetings(
-            course1teams,
-            course1name
+            course1name,
+            course1teams
         )
         courseMeetings[course2name] = teamToMeetings(
-            course2teams,
-            course2name
+            course2name,
+            course2teams
         )
         courseMeetings[course3name] = teamToMeetings(
-            course3teams,
-            course3name
+            course3name,
+            course3teams
         )
 
         return courseMeetings
@@ -52,7 +52,7 @@ data class Courses(
      * Transforms a list of sequential [Team]s to a set of [Meeting]s.
      * TODO: Should probably throw an exception if an unsuitable number of teams was supplied.
      */
-    private fun teamToMeetings(teams: Iterable<Team>, courseName: String): Set<Meeting> {
+    private fun teamToMeetings(courseName: String, teams: Iterable<Team>): Set<Meeting> {
         val meetingSize = 3 // TODO: Should be fetched somewhere else
 
         if (teams.count().rem(meetingSize) != 0) {
