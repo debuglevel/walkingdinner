@@ -1,6 +1,5 @@
 ## CAUTION: This Dockerfile must be built with the context of the project root, not the directory containing this Dockerfile
 
-
 ARG OPENJDK_VERSION=11.0.11
 
 ## Building stage

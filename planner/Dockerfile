@@ -58,4 +58,5 @@ CMD ["java", \
      "-noverify", \
      "-XX:TieredStopAtLevel=1", \
      "-Dcom.sun.management.jmxremote", \
-     "-cp", "/app/microservice.jar", "de.debuglevel.walkingdinner.planner.Application"]
+     "-jar", "/app/microservice.jar"]
+#     "-cp", "/app/microservice.jar", "de.debuglevel.walkingdinner.planner.Application"]

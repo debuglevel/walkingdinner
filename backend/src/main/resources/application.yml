@@ -17,7 +17,7 @@ app:
 
 micronaut:
   application:
-    name: walkingdinner
+    name: backend
     instance:
       id: ${random.shortuuid}
   server:
