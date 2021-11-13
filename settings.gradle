@@ -38,8 +38,8 @@ rootProject.name = 'walkingdinner'
 //include 'cli'
 println("settings.gradle: Including 'rest' subproject...")
 include 'rest'
-println("settings.gradle: Including 'planners' subproject...")
-include 'planners'
+println("settings.gradle: Including 'planner' subproject...")
+include 'planner'
 //include 'models'
 
 // only include 'web-angular' project in Linux, as the node plugin fails in Windows

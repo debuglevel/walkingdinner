@@ -25,7 +25,7 @@ services:
       # service must know its own hostname to publish it in service discovery
       - MICRONAUT_SERVER_HOST=rest
       # manual service discovery
-      #- MICRONAUT_HTTP_SERVICES_PLANNERS_URLS=http://planners:8083
+      #- MICRONAUT_HTTP_SERVICES_PLANNER_URLS=http://planner:8083
       - APP_WALKINGDINNER_DATA_BASEPATH=/data
       - DATASOURCES_DEFAULT_URL=jdbc:h2:/data/micronaut-data/h2;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     volumes:
@@ -40,11 +40,11 @@ services:
     environment:
       - API_URL=http://localhost:8081
 
-  planners:
+  planner:
     build:
       context: .
-      dockerfile: planners/Dockerfile
-    image: walkingdinner-planners
+      dockerfile: planner/Dockerfile
+    image: walkingdinner-planner
     ports:
       - "8083:8083"
     environment:
@@ -62,7 +62,7 @@ services:
       - CONSUL_HOST=consul
       #      - CONSUL_PORT=8500
       # service must know its own hostname to publish it in service discovery
-      - MICRONAUT_SERVER_HOST=planners
+      - MICRONAUT_SERVER_HOST=planner
 
   # Service registration and discovery with Consul
   consul:

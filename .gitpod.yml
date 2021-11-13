@@ -11,9 +11,9 @@ tasks:
       echo === COMMAND
       MICRONAUT_ENVIRONMENTS=dev ./gradlew :rest:run
       echo === COMMAND DONE
-  # - name: Planners
-  #   init: ./gradlew :planners:build
-  #   command: ./gradlew :planners:run
+  # - name: Planner
+  #   init: ./gradlew :planner:build
+  #   command: ./gradlew :planner:run
   - name: Angular
     init: |
       echo === INIT

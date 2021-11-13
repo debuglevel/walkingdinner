@@ -4,7 +4,7 @@ import io.micronaut.http.annotation.Get
 import io.micronaut.http.client.annotation.Client
 import java.util.*
 
-@Client("planners", path = "/plans")
+@Client("planner", path = "/plans")
 interface PlanClient {
     @Get("/{planId}")
     fun getOne(planId: UUID): PlanResponse

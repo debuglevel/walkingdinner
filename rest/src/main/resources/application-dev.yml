@@ -6,7 +6,7 @@ micronaut:
   http:
     # manual service discovery; should be disabled in docker-compose deployment; is useful when developing but running other services as docker container
     services:
-      planners:
+      planner:
         urls:
           - http://localhost:8083/
   security:
