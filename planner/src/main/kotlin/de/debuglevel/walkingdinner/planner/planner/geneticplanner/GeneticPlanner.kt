@@ -49,7 +49,7 @@ class GeneticPlanner(private val options: GeneticPlannerOptions) : Planner {
             meetings: $meetings
         """.trimIndent()
 
-        val plan = Plan(UUID.randomUUID(), meetings, additionalInformation)
+        val plan = Plan(UUID.randomUUID(), meetings.toSet(), additionalInformation)
         logger.debug("Planned: $plan")
         return plan
     }

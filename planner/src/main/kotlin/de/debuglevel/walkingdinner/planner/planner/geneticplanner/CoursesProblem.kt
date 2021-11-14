@@ -13,7 +13,6 @@ import io.jenetics.engine.Codec
 import io.jenetics.engine.Problem
 import io.jenetics.util.ISeq
 import java.util.function.Function
-import java.util.stream.Collectors
 
 class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<Team>, Double> {
     override fun codec(): Codec<Courses, EnumGene<Team>> {
@@ -40,32 +39,25 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
         return codec
     }
 
+    /**
+     * Calculates the [fitness] of a [Courses] object.
+     * @implNote: As weird things might happen with a genetic approach, use [List]s instead of [Set]s so that no deduplication will occur and order is preserved.
+     */
     override fun fitness(): Function<Courses, Double> {
         return Function { courses ->
             val courseMeetings = courses.toCourseMeetings()
-            val meetings = courseMeetings.entries.stream()
-                .flatMap { courseMeeting -> courseMeeting.value.stream() }
-                .collect(Collectors.toSet<Meeting>())
 
-            val multipleCookingTeamsMalus = 1 * calculateMultipleCookingTeams(
-                meetings
-            )
-            val incompatibleTeamsCourse1Malus = 1 * calculateIncompatibleMeetings(
-                courseMeetings.getValue(Courses.course1name)
-            )
-            val incompatibleTeamsCourse2Malus = 1 * calculateIncompatibleMeetings(
-                courseMeetings.getValue(Courses.course2name)
-            )
-            val incompatibleTeamsCourse3Malus = 1 * calculateIncompatibleMeetings(
-                courseMeetings.getValue(Courses.course3name)
-            )
-            val overallDistanceMalus = 0.00001 * calculateOverallDistance(courses)
+            val meetings = courseMeetings.values.flatten()
+
+            val multipleCookingTeamsMalus = 1 * calculateMultipleCookingTeams(meetings)
+
+            val incompatibleTeamsMalus = courseMeetings.values.sumOf { 1 * calculateIncompatibleMeetings(it) }
+
+            val overallDistanceMalus = 0.00001 * calculateOverallDistance(courseMeetings)
 
             val fitness =
                 multipleCookingTeamsMalus +
-                        incompatibleTeamsCourse1Malus +
-                        incompatibleTeamsCourse2Malus +
-                        incompatibleTeamsCourse3Malus +
+                        incompatibleTeamsMalus +
                         overallDistanceMalus
 
             fitness
@@ -73,65 +65,50 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
     }
 
     companion object {
-        private fun getTeamLocations(courseMeetings: Map<String, List<Meeting>>): HashMap<Team, MutableList<Location>> {
-            val teamsLocations = HashMap<Team, MutableList<Location>>()
-
-            addLocations(
-                teamsLocations,
-                courseMeetings.getValue(Courses.course1name)
-            )
-            addLocations(
-                teamsLocations,
-                courseMeetings.getValue(Courses.course2name)
-            )
-            addLocations(
-                teamsLocations,
-                courseMeetings.getValue(Courses.course3name)
-            )
-
-            return teamsLocations
-        }
-
         /**
-         * Calculates how many meetings have incompatible teams.
+         * Calculates how many meetings have incompatible teams (according to their diet and cooking capabilities).
          */
-        private fun calculateIncompatibleMeetings(meetings: Set<Meeting>): Int {
-            return meetings
-                // .filter(m -> !HardCompatibility.INSTANCE.areCompatibleTeams(m))
-                .filter { meeting -> !CourseDietCompatibility.areCompatibleTeams(meeting) }
-                .count()
+        private fun calculateIncompatibleMeetings(meetings: List<Meeting>): Int {
+            // .count{ m -> !HardCompatibility.INSTANCE.areCompatibleTeams(m) }
+            return meetings.count { meeting -> !CourseDietCompatibility.areCompatibleTeams(meeting) }
         }
 
         /**
          * Calculates the distance (in kilometers) all teams have to travel in sum.
          */
-        private fun calculateOverallDistance(courses: Courses): Double {
-            val meetings = courses.toMeetings()
+        private fun calculateOverallDistance(coursesMeetings: Map<String, List<Meeting>>): Double {
+            val teamsLocations = getTeamLocations(coursesMeetings)
 
-            val courseMeetings = meetings.groupBy { it.course }
-
-            val teamsLocations = getTeamLocations(courseMeetings)
-
-            return teamsLocations.values
-                .map { GeoUtils.calculateLocationsDistance(it) }
-                .sum()
+            return teamsLocations.values.sumOf { GeoUtils.calculateLocationsDistance(it) }
         }
 
-        private fun addLocations(teamsLocations: HashMap<Team, MutableList<Location>>, meetings: List<Meeting>) {
-            for (meeting in meetings) {
-                for (team in meeting.teams) {
-                    // Get item in HashMap or create empty List if not already available
-                    val teamLocations = teamsLocations.computeIfAbsent(team) { mutableListOf() }
+        /**
+         * Gets the [Location]s for each [Team].
+         */
+        private fun getTeamLocations(coursesMeetings: Map<String, List<Meeting>>): HashMap<Team, MutableList<Location>> {
+            // Create a HashMap with an empty List for each Team
+            val teamsLocations = HashMap<Team, MutableList<Location>>()
+            coursesMeetings.values.flatten().map { it.teams }.flatten().distinct().forEach {
+                teamsLocations[it] = mutableListOf()
+            }
 
-                    teamLocations.add(meeting.getCookingTeam().location)
+            for (courseName in Courses.orderedCourseNames) {
+                val courseMeetings = coursesMeetings.getValue(courseName)
+                for (meeting in courseMeetings) {
+                    for (team in meeting.teams) {
+                        val teamLocations = teamsLocations.getValue(team)
+                        teamLocations.add(meeting.getLocation())
+                    }
                 }
             }
+
+            return teamsLocations
         }
 
         /**
          * Calculates how many teams cook more than once in the given [meetings].
          */
-        private fun calculateMultipleCookingTeams(meetings: Set<Meeting>): Int {
+        private fun calculateMultipleCookingTeams(meetings: List<Meeting>): Int {
             // Find out how often each team cooks
             val teamCookingCount = meetings
                 .map { it.getCookingTeam() }

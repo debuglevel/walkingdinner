@@ -17,4 +17,12 @@ data class Meeting(
     fun getCookingTeam(): Team {
         return teams.first()
     }
+
+    /**
+     * Get the [Location] where this [Meeting] happens.
+     * @implNote This is always the [Location] of the cooking [Team].
+     */
+    fun getLocation(): Location {
+        return getCookingTeam().location
+    }
 }
