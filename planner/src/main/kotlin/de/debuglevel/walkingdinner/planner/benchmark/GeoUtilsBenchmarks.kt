@@ -101,8 +101,8 @@ open class GeoUtilsBenchmarks {
 //    @Fork(2)
 //    @Warmup(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
 //    @Measurement(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
-//    fun calculateOriginal(state: MyState): Double {
-//        return GeoUtils.calculateDistance(state.source!!, state.destination!!)
+//    fun calculateHaversine(state: MyState): Double {
+//        return HaversineDistanceCalculator.calculate(state.source!!, state.destination!!)
 //    }
 //
 //    @Benchmark
@@ -112,7 +112,37 @@ open class GeoUtilsBenchmarks {
 //    @Warmup(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
 //    @Measurement(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
 //    fun calculateKeerthana(state: MyState): Double {
-//        return GeoUtils.calculateDistanceKeerthana(state.source!!, state.destination!!)
+//        return KeerthanaDistanceCalculator.calculate(state.source!!, state.destination!!)
+//    }
+//
+//    @Benchmark
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.MICROSECONDS)
+//    @Fork(2)
+//    @Warmup(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
+//    @Measurement(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
+//    fun calculateMeymann(state: MyState): Double {
+//        return MeymannDistanceCalculator.calculate(state.source!!, state.destination!!)
+//    }
+//
+//    @Benchmark
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.MICROSECONDS)
+//    @Fork(2)
+//    @Warmup(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
+//    @Measurement(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
+//    fun calculateVincenty2(state: MyState): Double {
+//        return SimpleVincentyDistanceCalculator.calculate(state.source!!, state.destination!!)
+//    }
+//
+//    @Benchmark
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.MICROSECONDS)
+//    @Fork(2)
+//    @Warmup(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
+//    @Measurement(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
+//    fun calculateVincenty3(state: MyState): Double {
+//        return OopVincentyDistanceCalculator.calculate(state.source!!, state.destination!!)
 //    }
 
 //    @Param("asin", "atan")
@@ -187,4 +217,20 @@ open class GeoUtilsBenchmarks {
             Main.main(args)
         }
     }
+
+//    object ResultRunner {
+//        @Throws(Exception::class)
+//        @JvmStatic
+//        fun main(args: Array<String>) {
+//            // two location on the other end of Bamberg
+//            val source = Location(49.91636810424702, 10.92011342922161)
+//            val destination = Location(49.877702745650865, 10.882582258206535)
+//
+//            println("Vincenty simple: " + SimpleVincentyDistanceCalculator.calculate(source, destination))
+//            println("Vincenty OOP:    " + OopVincentyDistanceCalculator.calculate(source, destination))
+//            println("Meymann:         " + MeymannDistanceCalculator.calculate(source, destination))
+//            println("Haversine:       " + HaversineDistanceCalculator.calculate(source, destination))
+//            println("Keerthana:       " + KeerthanaDistanceCalculator.calculate(source, destination))
+//        }
+//    }
 }

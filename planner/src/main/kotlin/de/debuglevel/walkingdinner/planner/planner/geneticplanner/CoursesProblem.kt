@@ -4,7 +4,7 @@ import de.debuglevel.walkingdinner.planner.Courses
 import de.debuglevel.walkingdinner.planner.Location
 import de.debuglevel.walkingdinner.planner.Meeting
 import de.debuglevel.walkingdinner.planner.Team
-import de.debuglevel.walkingdinner.planner.common.GeoUtils
+import de.debuglevel.walkingdinner.planner.common.geo.GeoUtils
 import de.debuglevel.walkingdinner.planner.dietcompatibility.CourseDietCompatibility
 import io.jenetics.EnumGene
 import io.jenetics.Genotype
