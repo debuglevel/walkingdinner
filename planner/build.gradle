@@ -185,6 +185,10 @@ dependencies {
 
     // Genetic Algorithm
     implementation "io.jenetics:jenetics:$jeneticsVersion"
+
+    // Benchmarking
+    implementation "org.openjdk.jmh:jmh-core:1.33"
+    implementation "org.openjdk.jmh:jmh-generator-annprocess:1.33"
 }
 
 // Java configuration

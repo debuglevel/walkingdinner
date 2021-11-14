@@ -1,9 +1,10 @@
 package de.debuglevel.walkingdinner.planner.common
 
 import de.debuglevel.walkingdinner.planner.Location
-import kotlin.math.asin
+import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.sin
+import kotlin.math.sqrt
 
 object GeoUtils {
     /**
@@ -48,9 +49,10 @@ object GeoUtils {
                             sin(longitudeDistance / 2)
                             * sin(longitudeDistance / 2))
 
-        // TODO: Microbenchmark which one is faster
-        //val c = atan2(sqrt(a), sqrt(1 - a))
-        val c = asin(a)
+        // There Haversine formula uses asin() while the sample code at https://stackoverflow.com/a/27943/4764279
+        // uses atan2(). According to my own benchmark the atan2() variant is 3-4 times faster.
+        //val c = asin(a) // slower variant, but original to the Haversine formula
+        val c = atan2(sqrt(a), sqrt(1 - a))
 
         val distance = 2 * AVERAGE_RADIUS_OF_EARTH_KM * c
         return distance
