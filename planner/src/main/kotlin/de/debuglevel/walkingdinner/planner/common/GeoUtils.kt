@@ -40,7 +40,7 @@ object GeoUtils {
         val latitudeDistance = Math.toRadians(source.latitude - destination.latitude)
         val longitudeDistance = Math.toRadians(source.longitude - destination.longitude)
 
-        // Calculating sin() only once is 1.3 times faster
+        // Performance: Calculating sin() only once is 1.3 times faster
         val sinLatitudeDistance = sin(latitudeDistance / 2)
         val sinLongitudeDistance = sin(longitudeDistance / 2)
         val a =
@@ -50,11 +50,12 @@ object GeoUtils {
                             sinLongitudeDistance
                             * sinLongitudeDistance)
 
-        // There Haversine formula uses asin() while the sample code at https://stackoverflow.com/a/27943/4764279
-        // uses atan2(). According to my own benchmark the atan2() variant is 3-4 times faster.
+        // There Haversine formula uses asin() while the sample code at https://stackoverflow.com/a/27943/4764279 uses atan2().
+        // Performance: According to my own benchmark the atan2() variant is 3-4 times faster.
         //val c = asin(a) // slower variant, but original to the Haversine formula
         val c = atan2(sqrt(a), sqrt(1 - a))
 
+        // Performance: Multiplying by 2 does not affect speed.
         val distance = 2 * AVERAGE_RADIUS_OF_EARTH_KM * c
         return distance
     }
