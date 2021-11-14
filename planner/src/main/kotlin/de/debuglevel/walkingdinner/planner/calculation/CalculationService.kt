@@ -50,14 +50,7 @@ class CalculationService(
 
         val calculatePlanTask = Callable {
             try {
-                val geneticPlannerOptions =
-                    GeneticPlannerOptions(
-                        teams = calculation.teams,
-                        fitnessThreshold = calculation.fitnessThreshold,
-                        populationsSize = calculation.populationsSize,
-                        steadyFitness = calculation.steadyFitness,
-                        courses = calculation.coursesNames,
-                    )
+                val geneticPlannerOptions = GeneticPlannerOptions(calculation)
 
                 calculation.begin = LocalDateTime.now()
                 val plan = geneticPlannerService.calculate(geneticPlannerOptions)

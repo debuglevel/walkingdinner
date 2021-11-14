@@ -18,13 +18,7 @@ class GeneticPlanFunction(private val geneticPlannerService: GeneticPlannerServi
 
         val calculation = addCalculationRequest.toCalculation()
 
-        val geneticPlannerOptions = GeneticPlannerOptions(
-            teams = calculation.teams,
-            fitnessThreshold = calculation.fitnessThreshold,
-            populationsSize = calculation.populationsSize,
-            steadyFitness = calculation.steadyFitness,
-            courses = calculation.coursesNames,
-        )
+        val geneticPlannerOptions = GeneticPlannerOptions(calculation)
         val plan = geneticPlannerService.calculate(geneticPlannerOptions)
         val getPlanResponse = GetPlanResponse(plan)
 

@@ -1,6 +1,7 @@
 package de.debuglevel.walkingdinner.planner.planner.geneticplanner
 
 import de.debuglevel.walkingdinner.planner.Team
+import de.debuglevel.walkingdinner.planner.calculation.Calculation
 import io.jenetics.EnumGene
 import io.jenetics.engine.EvolutionResult
 import java.util.function.Consumer
@@ -24,4 +25,12 @@ data class GeneticPlannerOptions(
      * Courses in the event
      */
     val courses: List<String>,
-)
+) {
+    constructor(calculation: Calculation) : this(
+        teams = calculation.teams,
+        fitnessThreshold = calculation.fitnessThreshold,
+        populationsSize = calculation.populationsSize,
+        steadyFitness = calculation.steadyFitness,
+        courses = calculation.coursesNames,
+    )
+}
