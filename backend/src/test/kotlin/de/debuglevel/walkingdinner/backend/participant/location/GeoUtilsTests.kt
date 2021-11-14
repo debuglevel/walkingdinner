@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.backend.participant.location
 
-import de.debuglevel.walkingdinner.backend.common.GeoUtils
+import de.debuglevel.walkingdinner.backend.common.geo.GeoUtils
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.within
 import org.junit.jupiter.api.TestInstance

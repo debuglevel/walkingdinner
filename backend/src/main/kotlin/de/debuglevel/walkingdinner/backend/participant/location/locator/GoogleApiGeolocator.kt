@@ -2,7 +2,7 @@ package de.debuglevel.walkingdinner.backend.participant.location.locator
 
 import com.google.maps.GeoApiContext
 import com.google.maps.GeocodingApi
-import de.debuglevel.walkingdinner.backend.common.GeoUtils
+import de.debuglevel.walkingdinner.backend.common.geo.GeoUtils
 import de.debuglevel.walkingdinner.backend.participant.Team
 import de.debuglevel.walkingdinner.backend.participant.location.Location
 import jakarta.inject.Singleton

@@ -1,4 +1,4 @@
-package de.debuglevel.walkingdinner.backend.common
+package de.debuglevel.walkingdinner.backend.common.geo
 
 import de.debuglevel.walkingdinner.backend.participant.location.Location
 import kotlin.math.atan2

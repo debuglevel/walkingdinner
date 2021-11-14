@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.backend.participant.location.locator
 
-import de.debuglevel.walkingdinner.backend.common.GeoUtils
+import de.debuglevel.walkingdinner.backend.common.geo.GeoUtils
 import de.debuglevel.walkingdinner.backend.participant.Team
 import de.debuglevel.walkingdinner.backend.participant.location.Location
 import de.debuglevel.walkingdinner.backend.participant.location.LocationService
