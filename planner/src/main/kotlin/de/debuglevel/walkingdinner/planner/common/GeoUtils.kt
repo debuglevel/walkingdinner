@@ -16,37 +16,43 @@ object GeoUtils {
     private const val AVERAGE_RADIUS_OF_EARTH_KM = 6371.0
 
     /**
-     * Calculates te distance (in kilometers) between to [Location]s.
-     * @implNote Uses the Haversine formula
+     * Calculates te distance (in kilometers) between to [Location]s and caches the result.
      */
-    fun calculateDistanceInKilometer(
+    fun cachedCalculateDistance(
         source: Location,
         destination: Location
     ): Double {
         // Retrieve distance from cache if already calculated
-        val pair = source to destination
+        val distance = distances.computeIfAbsent(source to destination) { calculateDistance(source, destination) }
 
-        val distance = distances.computeIfAbsent(pair) {
-            val latitudeDistance = Math.toRadians(source.latitude - destination.latitude)
-            val longitudeDistance = Math.toRadians(source.longitude - destination.longitude)
+        return distance
+    }
 
-            val a =
-                (sin(latitudeDistance / 2)
-                        * sin(latitudeDistance / 2)
-                        ) + (
-                        cos(Math.toRadians(source.latitude)) *
-                                cos(Math.toRadians(destination.latitude)) *
-                                sin(longitudeDistance / 2)
-                                * sin(longitudeDistance / 2))
+    /**
+     * Calculates te distance (in kilometers) between to [Location]s.
+     * @implNote Uses the Haversine formula
+     */
+    fun calculateDistance(
+        source: Location,
+        destination: Location
+    ): Double {
+        val latitudeDistance = Math.toRadians(source.latitude - destination.latitude)
+        val longitudeDistance = Math.toRadians(source.longitude - destination.longitude)
 
-            // TODO: Microbenchmark which one is faster
-            //val c = atan2(sqrt(a), sqrt(1 - a))
-            val c = asin(a)
+        val a =
+            (sin(latitudeDistance / 2)
+                    * sin(latitudeDistance / 2)
+                    ) + (
+                    cos(Math.toRadians(source.latitude)) *
+                            cos(Math.toRadians(destination.latitude)) *
+                            sin(longitudeDistance / 2)
+                            * sin(longitudeDistance / 2))
 
-            val distance = 2 * AVERAGE_RADIUS_OF_EARTH_KM * c
-            distance
-        }
+        // TODO: Microbenchmark which one is faster
+        //val c = atan2(sqrt(a), sqrt(1 - a))
+        val c = asin(a)
 
+        val distance = 2 * AVERAGE_RADIUS_OF_EARTH_KM * c
         return distance
     }
 
@@ -59,7 +65,7 @@ object GeoUtils {
             .windowed(2, 1, false) {
                 val source = it[0]
                 val destination = it[1]
-                calculateDistanceInKilometer(source, destination)
+                cachedCalculateDistance(source, destination)
             }.sum()
 
         return distance

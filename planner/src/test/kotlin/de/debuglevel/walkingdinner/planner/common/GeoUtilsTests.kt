@@ -17,8 +17,8 @@ class GeoUtilsTests {
         // Arrange
 
         // Act
-        val distance1to2 = GeoUtils.calculateDistanceInKilometer(testData.location1, testData.location2)
-        val distance2to1 = GeoUtils.calculateDistanceInKilometer(testData.location2, testData.location1)
+        val distance1to2 = GeoUtils.cachedCalculateDistance(testData.location1, testData.location2)
+        val distance2to1 = GeoUtils.cachedCalculateDistance(testData.location2, testData.location1)
 
         // Assert
         assertThat(distance1to2).isCloseTo(testData.distance, within(0.01))
