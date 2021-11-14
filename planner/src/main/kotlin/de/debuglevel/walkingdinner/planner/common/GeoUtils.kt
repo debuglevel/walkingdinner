@@ -16,34 +16,37 @@ object GeoUtils {
 
     private const val AVERAGE_RADIUS_OF_EARTH_KM = 6371.0
 
+    /**
+     * Calculates te distance (in kilometers) between to [Location]s.
+     * @implNote Uses the Haversine formula
+     */
     fun calculateDistanceInKilometer(
         source: Location,
         destination: Location
     ): Double {
         // Retrieve distance from cache if already calculated
-        val pair = Pair(source, destination)
-        var distance = distances[pair]
-        return if (distance != null) {
-            distance
-        } else {
-            val latDistance = Math.toRadians(source.latitude - destination.latitude)
-            val lngDistance = Math.toRadians(source.longitude - destination.longitude)
+        val pair = source to destination
+
+        val distance = distances.computeIfAbsent(pair) {
+            val latitudeDistance = Math.toRadians(source.latitude - destination.latitude)
+            val longitudeDistance = Math.toRadians(source.longitude - destination.longitude)
 
             val a =
-                sin(latDistance / 2) * sin(latDistance / 2) + (cos(Math.toRadians(source.latitude)) * cos(
-                    Math.toRadians(destination.latitude)
-                )
-                        * sin(lngDistance / 2) * sin(lngDistance / 2))
+                (sin(latitudeDistance / 2)
+                        * sin(latitudeDistance / 2)
+                        ) + (
+                        cos(Math.toRadians(source.latitude)) *
+                                cos(Math.toRadians(destination.latitude)) *
+                                sin(longitudeDistance / 2)
+                                * sin(longitudeDistance / 2))
 
             val c = 2 * atan2(sqrt(a), sqrt(1 - a))
 
-            distance = AVERAGE_RADIUS_OF_EARTH_KM * c
-
-            // Put calculation into cache
-            distances[pair] = distance
-
+            val distance = AVERAGE_RADIUS_OF_EARTH_KM * c
             distance
         }
+
+        return distance
     }
 
     /**
