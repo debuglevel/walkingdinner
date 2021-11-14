@@ -1,0 +1,32 @@
+# Use MICRONAUT_ENVIRONMENTS=dev to activate this environment
+
+micronaut:
+  server:
+  #port: 8083 # default: -1 (random port)
+  security:
+    enabled: false # default: false
+
+logger:
+  levels:
+    de.debuglevel: DEBUG
+    io.micronaut.http.server: DEBUG
+    io.micronaut.data.query: DEBUG
+    # io.micronaut.context.condition: DEBUG # log information about loading conditional beans
+
+# Disable service discovery and registration
+# TODO there seems still something try to reach consul (at least in gitpod). Check if this still happens with a newer version of micronaut.
+consul:
+  client:
+    config:
+      enabled: false
+    pool:
+      enabled: false
+    discovery:
+      enabled: false
+    registration:
+      enabled: false
+      check:
+        enabled: false
+    defaultZone: ""
+# Disable HealthMonitor; see https://github.com/micronaut-projects/micronaut-core/issues/3546
+micronaut.health.monitor.enabled: false
