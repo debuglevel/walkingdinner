@@ -19,20 +19,16 @@ object TimeMeasurement {
         nanosecondsDuration: Long,
         reportInterval: Long
     ) {
-        val measurement = measurements.putIfAbsent(
-            id,
-            Measurement(id)
-        )
-        if (measurement != null) {
-            val callsSum = measurement.calls.incrementAndGet()
-            val nanosecondsSum = measurement.nanoseconds.addAndGet(nanosecondsDuration)
+        val measurement = measurements.getOrPut(id) { Measurement(id) }
 
-            if (callsSum % reportInterval == 0L) {
-                val durationPerCall = nanosecondsSum / callsSum
-                val callsPerSecond = (callsSum / (nanosecondsSum / 1_000_000_000.0)).roundToInt()
+        val callsSum = measurement.calls.incrementAndGet()
+        val nanosecondsSum = measurement.nanoseconds.addAndGet(nanosecondsDuration)
 
-                println("Performance of '${measurement.id}' after $callsSum calls: $durationPerCall ns/call or $callsPerSecond calls/s")
-            }
+        if (callsSum.rem(reportInterval) == 0L) {
+            val durationPerCall = nanosecondsSum / callsSum
+            val callsPerSecond = (callsSum / (nanosecondsSum / 1_000_000_000.0)).roundToInt()
+
+            println("Performance of '${measurement.id}' after $callsSum calls: $durationPerCall ns/call or $callsPerSecond calls/s")
         }
     }
 
