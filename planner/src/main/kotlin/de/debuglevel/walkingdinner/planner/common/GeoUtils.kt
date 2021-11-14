@@ -40,10 +40,10 @@ object GeoUtils {
                                 * sin(longitudeDistance / 2))
 
             // TODO: Microbenchmark which one is faster
-            //val c = 2 * atan2(sqrt(a), sqrt(1 - a))
-            val c = 2 * asin(a)
+            //val c = atan2(sqrt(a), sqrt(1 - a))
+            val c = asin(a)
 
-            val distance = AVERAGE_RADIUS_OF_EARTH_KM * c
+            val distance = 2 * AVERAGE_RADIUS_OF_EARTH_KM * c
             distance
         }
 
