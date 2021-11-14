@@ -16,12 +16,14 @@ class GeneticPlanFunction(private val geneticPlannerService: GeneticPlannerServi
     override fun apply(addCalculationRequest: AddCalculationRequest): GetPlanResponse {
         logger.info { "Processing $addCalculationRequest..." }
 
+        val calculation = addCalculationRequest.toCalculation()
+
         val geneticPlannerOptions = GeneticPlannerOptions(
-            teams = addCalculationRequest.teams.map { it.toTeam() },
-            fitnessThreshold = addCalculationRequest.fitnessThreshold,
-            populationsSize = addCalculationRequest.populationsSize,
-            steadyFitness = addCalculationRequest.steadyFitness,
-            courses = addCalculationRequest.coursesNames,
+            teams = calculation.teams,
+            fitnessThreshold = calculation.fitnessThreshold,
+            populationsSize = calculation.populationsSize,
+            steadyFitness = calculation.steadyFitness,
+            courses = calculation.coursesNames,
         )
         val plan = geneticPlannerService.calculate(geneticPlannerOptions)
         val getPlanResponse = GetPlanResponse(plan)
