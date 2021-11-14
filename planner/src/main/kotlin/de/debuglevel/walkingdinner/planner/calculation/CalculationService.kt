@@ -60,7 +60,7 @@ class CalculationService(
                     )
 
                 calculation.begin = LocalDateTime.now()
-                val plan = geneticPlannerService.calculatePlan(geneticPlannerOptions)
+                val plan = geneticPlannerService.calculate(geneticPlannerOptions)
                 calculation.end = LocalDateTime.now()
                 calculation.finished = true
 

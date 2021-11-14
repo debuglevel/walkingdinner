@@ -23,7 +23,7 @@ class GeneticPlanFunction(private val geneticPlannerService: GeneticPlannerServi
             steadyFitness = addCalculationRequest.steadyFitness,
             courses = addCalculationRequest.coursesNames,
         )
-        val plan = geneticPlannerService.calculatePlan(geneticPlannerOptions)
+        val plan = geneticPlannerService.calculate(geneticPlannerOptions)
         val getPlanResponse = GetPlanResponse(plan)
 
         logger.info { "Processed $addCalculationRequest: $getPlanResponse" }

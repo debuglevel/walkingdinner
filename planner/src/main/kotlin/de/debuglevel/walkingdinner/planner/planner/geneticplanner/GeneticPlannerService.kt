@@ -16,7 +16,7 @@ import kotlin.math.roundToInt
 class GeneticPlannerService {
     private val logger = KotlinLogging.logger {}
 
-    fun calculatePlan(
+    fun calculate(
         options: GeneticPlannerOptions
     ): Plan {
         val evolutionStatistics = EvolutionStatistics.ofNumber<Double>()
