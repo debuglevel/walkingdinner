@@ -73,15 +73,6 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
     }
 
     companion object {
-        private fun calculateLocationsDistance(locations: List<Location?>): Double {
-            val location0 = locations[0]!!
-            val location1 = locations[1]!!
-            val location2 = locations[2]!!
-
-            return GeoUtils.calculateDistanceInKilometer(location0, location1) +
-                    GeoUtils.calculateDistanceInKilometer(location1, location2)
-        }
-
         private fun getTeamLocations(courseMeetings: Map<String, List<Meeting>>): HashMap<Team, MutableList<Location?>> {
             val teamsLocations = HashMap<Team, MutableList<Location?>>()
 
@@ -122,7 +113,7 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
             val teamsLocations = getTeamLocations(courseMeetings)
 
             return teamsLocations.values
-                .map { calculateLocationsDistance(it) }
+                .map { GeoUtils.calculateLocationsDistance(it) }
                 .sum()
         }
 
@@ -130,7 +121,7 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
             if (meetings != null) {
                 for (meeting in meetings) {
                     for (team in meeting.teams) {
-                        // get item in HashMap or create empty List if not already available
+                        // Get item in HashMap or create empty List if not already available
                         val teamLocations = teamsLocations.computeIfAbsent(team) { mutableListOf() }
 
                         teamLocations.add(meeting.getCookingTeam().location)
@@ -140,7 +131,7 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
         }
 
         /**
-         * Calculates how many teams cook more than once.
+         * Calculates how many teams cook more than once in the given [meetings].
          */
         private fun calculateMultipleCookingTeams(meetings: Set<Meeting>): Int {
             // Find out how often each team cooks

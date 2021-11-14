@@ -10,9 +10,10 @@ object TimeMeasurement {
     private val measurements = mutableMapOf<Any, Measurement>()
 
     /**
+     * Add a time measurement ([nanosecondsDuration]) of an executed operation (identified by an [id]). Print a report on every [reportInterval] calls.
      * Remarks:
-     * - use only single thread
-     * - only measure one variant of a function; replace it afterwards and recompile and rerun (subsequent calls are faster than the first one)
+     * - Use it only on a single thread (results may be not 100% accurate with multiple threads)
+     * - Only measure one variant of a function; replace it afterwards and recompile and rerun (subsequent calls are faster than the first one)
      */
     fun add(
         id: Any,
@@ -21,6 +22,7 @@ object TimeMeasurement {
     ) {
         val measurement = measurements.getOrPut(id) { Measurement(id) }
 
+        // Does not lock both variables (and probably also should not as it would block at least for a short time); strictly-speaking is not accurate with multiple threads.
         val callsSum = measurement.calls.incrementAndGet()
         val nanosecondsSum = measurement.nanoseconds.addAndGet(nanosecondsDuration)
 

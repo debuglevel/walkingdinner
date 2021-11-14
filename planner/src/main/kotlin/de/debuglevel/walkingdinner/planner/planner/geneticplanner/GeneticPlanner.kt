@@ -15,18 +15,19 @@ import mu.KotlinLogging
 import java.util.*
 import java.util.function.Consumer
 
+/**
+ * A [Planner] which generates a [Plan] with a genetic algorithm.
+ */
 class GeneticPlanner(private val options: GeneticPlannerOptions) : Planner {
     private val logger = KotlinLogging.logger {}
 
-    private val evolutionResultConsumer: Consumer<EvolutionResult<EnumGene<Team>, Double>>?
+    private val evolutionResultConsumer: Consumer<EvolutionResult<EnumGene<Team>, Double>>
 
     init {
         logger.debug { "Initializing GeneticPlanner with options: $options..." }
-        if (options.evolutionResultConsumer == null) {
-            this.evolutionResultConsumer = Consumer { }
-        } else {
-            this.evolutionResultConsumer = options.evolutionResultConsumer
-        }
+
+        // Add a dummy Consumer if none was provided
+        this.evolutionResultConsumer = options.evolutionResultConsumer ?: Consumer {}
 
         logger.debug { "Initialized GeneticPlanner" }
     }
@@ -58,9 +59,6 @@ class GeneticPlanner(private val options: GeneticPlannerOptions) : Planner {
 
         val problem = CoursesProblem(ISeq.of(options.teams))
 
-        // Note: Use single threading when optimizing performance
-        // val executor = Executors.newSingleThreadExecutor()
-
         val engine = Engine
             .builder(problem)
             .populationSize(options.populationsSize)
@@ -69,7 +67,7 @@ class GeneticPlanner(private val options: GeneticPlannerOptions) : Planner {
                 SwapMutator(0.15),
                 PartiallyMatchedCrossover(0.15)
             )
-            // .executor(executor)
+            // .executor(Executors.newSingleThreadExecutor()) // Note: Use single threading when optimizing performance
             .build()
 
         val evolutionResult: EvolutionResult<EnumGene<Team>, Double> = engine.stream()

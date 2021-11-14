@@ -1,5 +1,8 @@
 package de.debuglevel.walkingdinner.planner
 
+/**
+ * A [Meeting] of [teams] which happens during a [course].
+ */
 data class Meeting(
     val course: String,
     /**
@@ -8,8 +11,8 @@ data class Meeting(
     val teams: List<Team>
 ) {
     /**
-     * Get the team which is cooking in this meeting
-     * @implNote The cooking team is defined as the first one in the list
+     * Get the [Team] which is cooking in this [Meeting].
+     * @implNote The cooking [Team] is defined as the first one in the list.
      */
     fun getCookingTeam(): Team {
         return teams.first()
