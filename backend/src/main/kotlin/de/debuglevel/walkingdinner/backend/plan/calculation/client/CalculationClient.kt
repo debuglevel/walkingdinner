@@ -1,5 +1,6 @@
 package de.debuglevel.walkingdinner.backend.plan.calculation.client
 
+import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Post
 import io.micronaut.http.client.annotation.Client
@@ -14,5 +15,5 @@ interface CalculationClient {
     fun getList(): Set<CalculationResponse>
 
     @Post("/")
-    fun postOne(calculationRequest: CalculationRequest): CalculationResponse
+    fun postOne(@Body calculationRequest: CalculationRequest): CalculationResponse
 }
