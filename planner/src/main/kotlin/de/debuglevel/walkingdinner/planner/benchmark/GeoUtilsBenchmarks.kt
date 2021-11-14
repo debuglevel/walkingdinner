@@ -1,10 +1,7 @@
 package de.debuglevel.walkingdinner.planner.benchmark
 
 import de.debuglevel.walkingdinner.planner.Location
-import de.debuglevel.walkingdinner.planner.common.GeoUtils
 import org.openjdk.jmh.Main
-import org.openjdk.jmh.annotations.*
-import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 
 
@@ -54,37 +51,69 @@ open class GeoUtilsBenchmarks {
 //    }
 
 
-    @State(Scope.Thread)
-    open class MyState {
-        @Setup(Level.Invocation)
-        fun doSetup() {
-            source = pseudorandomLocation()
-            destination = pseudorandomLocation()
-        }
+//    @State(Scope.Thread)
+//    open class MyState {
+//        @Setup(Level.Invocation)
+//        fun doSetup() {
+//            source = pseudorandomLocation()
+//            destination = pseudorandomLocation()
+//        }
+//
+//        var source: Location? = null
+//        var destination: Location? = null
+//    }
+//
+//    @Benchmark
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.MICROSECONDS)
+//    @Fork(2)
+//    @Warmup(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
+//    @Measurement(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
+//    fun cached(state: MyState): Double {
+//        return GeoUtils.cachedCalculateDistance(state.source!!, state.destination!!)
+//    }
+//
+//    @Benchmark
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.MICROSECONDS)
+//    @Fork(2)
+//    @Warmup(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
+//    @Measurement(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
+//    fun uncached(state: MyState): Double {
+//        return GeoUtils.calculateDistance(state.source!!, state.destination!!)
+//    }
 
-        var source: Location? = null
-        var destination: Location? = null
-    }
-
-    @Benchmark
-    @BenchmarkMode(Mode.AverageTime)
-    @OutputTimeUnit(TimeUnit.MICROSECONDS)
-    @Fork(2)
-    @Warmup(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
-    @Measurement(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
-    fun cached(state: MyState): Double {
-        return GeoUtils.cachedCalculateDistance(state.source!!, state.destination!!)
-    }
-
-    @Benchmark
-    @BenchmarkMode(Mode.AverageTime)
-    @OutputTimeUnit(TimeUnit.MICROSECONDS)
-    @Fork(2)
-    @Warmup(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
-    @Measurement(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
-    fun uncached(state: MyState): Double {
-        return GeoUtils.calculateDistance(state.source!!, state.destination!!)
-    }
+//    @State(Scope.Thread)
+//    open class MyState {
+//        @Setup(Level.Invocation)
+//        fun doSetup() {
+//            source = randomLocation()
+//            destination = randomLocation()
+//        }
+//
+//        var source: Location? = null
+//        var destination: Location? = null
+//    }
+//
+//    @Benchmark
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.MICROSECONDS)
+//    @Fork(2)
+//    @Warmup(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
+//    @Measurement(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
+//    fun calculateOriginal(state: MyState): Double {
+//        return GeoUtils.calculateDistance(state.source!!, state.destination!!)
+//    }
+//
+//    @Benchmark
+//    @BenchmarkMode(Mode.AverageTime)
+//    @OutputTimeUnit(TimeUnit.MICROSECONDS)
+//    @Fork(2)
+//    @Warmup(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
+//    @Measurement(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
+//    fun calculateModified(state: MyState): Double {
+//        return GeoUtils.calculateDistanceModified(state.source!!, state.destination!!)
+//    }
 
 //    @Param("asin", "atan")
 //    val name: String = ""
@@ -125,6 +154,10 @@ open class GeoUtilsBenchmarks {
                 0.0, 90.0, -90.0,
                 23.2344, 54.234543, 123.2345, -23.757, -63.54646, -1.5454, 76.465, -24.43569
             ).random()
+        }
+
+        fun randomLocation(): Location {
+            return Location(randomLongitude(), randomLatitude())
         }
 
         fun pseudorandomLocation(): Location {
