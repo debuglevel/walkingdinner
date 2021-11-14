@@ -78,15 +78,15 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
 
             addLocations(
                 teamsLocations,
-                courseMeetings[Courses.course1name]
+                courseMeetings.getValue(Courses.course1name)
             )
             addLocations(
                 teamsLocations,
-                courseMeetings[Courses.course2name]
+                courseMeetings.getValue(Courses.course2name)
             )
             addLocations(
                 teamsLocations,
-                courseMeetings[Courses.course3name]
+                courseMeetings.getValue(Courses.course3name)
             )
 
             return teamsLocations
@@ -117,15 +117,13 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
                 .sum()
         }
 
-        private fun addLocations(teamsLocations: HashMap<Team, MutableList<Location>>, meetings: List<Meeting>?) {
-            if (meetings != null) {
-                for (meeting in meetings) {
-                    for (team in meeting.teams) {
-                        // Get item in HashMap or create empty List if not already available
-                        val teamLocations = teamsLocations.computeIfAbsent(team) { mutableListOf() }
+        private fun addLocations(teamsLocations: HashMap<Team, MutableList<Location>>, meetings: List<Meeting>) {
+            for (meeting in meetings) {
+                for (team in meeting.teams) {
+                    // Get item in HashMap or create empty List if not already available
+                    val teamLocations = teamsLocations.computeIfAbsent(team) { mutableListOf() }
 
-                        teamLocations.add(meeting.getCookingTeam().location)
-                    }
+                    teamLocations.add(meeting.getCookingTeam().location)
                 }
             }
         }
