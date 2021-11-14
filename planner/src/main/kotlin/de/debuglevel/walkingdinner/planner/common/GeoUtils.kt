@@ -10,14 +10,14 @@ object GeoUtils {
     /**
      * Cache for already calculated distances
      *
-     * @remarks Microbenchmark: w/ cache 5000ms for 100.000.000 requests, w/o cache 8000ms.
+     * @remarks Microbenchmark with JMH: about 4 times faster with caching.
      */
     private val distances = hashMapOf<Pair<Location, Location>, Double>()
 
     private const val AVERAGE_RADIUS_OF_EARTH_KM = 6371.0
 
     /**
-     * Calculates te distance (in kilometers) between to [Location]s and caches the result.
+     * Calculates the distance (in kilometers) between to [Location]s and caches the result.
      */
     fun cachedCalculateDistance(
         source: Location,
@@ -30,7 +30,7 @@ object GeoUtils {
     }
 
     /**
-     * Calculates te distance (in kilometers) between to [Location]s.
+     * Calculates the distance (in kilometers) between to [Location]s.
      * @implNote Uses the Haversine formula
      */
     fun calculateDistance(
