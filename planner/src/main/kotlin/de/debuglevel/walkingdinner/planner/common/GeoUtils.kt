@@ -1,10 +1,9 @@
 package de.debuglevel.walkingdinner.planner.common
 
 import de.debuglevel.walkingdinner.planner.Location
-import kotlin.math.atan2
+import kotlin.math.asin
 import kotlin.math.cos
 import kotlin.math.sin
-import kotlin.math.sqrt
 
 object GeoUtils {
     /**
@@ -40,7 +39,9 @@ object GeoUtils {
                                 sin(longitudeDistance / 2)
                                 * sin(longitudeDistance / 2))
 
-            val c = 2 * atan2(sqrt(a), sqrt(1 - a))
+            // TODO: Microbenchmark which one is faster
+            //val c = 2 * atan2(sqrt(a), sqrt(1 - a))
+            val c = 2 * asin(a)
 
             val distance = AVERAGE_RADIUS_OF_EARTH_KM * c
             distance
