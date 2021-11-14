@@ -14,7 +14,7 @@ class HardCompatibilityTests {
         // Arrange
 
         // Act
-        val areCompatible = HardDietCompatibility.areCompatibleTeams(testData.meeting)
+        val areCompatible = HardDietCompatibility.isCompatible(testData.meeting)
 
         // Assert
         assertThat(areCompatible).isTrue
@@ -26,7 +26,7 @@ class HardCompatibilityTests {
         // Arrange
 
         // Act
-        val areCompatible = HardDietCompatibility.areCompatibleTeams(testData.meeting)
+        val areCompatible = HardDietCompatibility.isCompatible(testData.meeting)
 
         // Assert
         assertThat(areCompatible).isFalse

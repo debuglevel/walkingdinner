@@ -11,7 +11,7 @@ import mu.KotlinLogging
 object HardDietCompatibility : DietCompatibility {
     private val logger = KotlinLogging.logger {}
 
-    override fun areCompatibleTeams(meeting: Meeting): Boolean {
+    override fun isCompatible(meeting: Meeting): Boolean {
         return meeting.teams.all {
             isCompatibleDiet(
                 meeting.teams.first(),

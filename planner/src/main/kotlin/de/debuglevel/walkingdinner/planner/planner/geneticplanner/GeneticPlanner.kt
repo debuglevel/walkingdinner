@@ -37,7 +37,7 @@ class GeneticPlanner(private val options: GeneticPlannerOptions) : Planner {
 
         val evolutionResult = compute()
 
-        val courses = CoursesProblem(evolutionResult.bestPhenotype().genotype().gene().validAlleles())
+        val courses = CoursesProblem(evolutionResult.bestPhenotype().genotype().gene().validAlleles(), options.courses)
             .codec()
             .decode(evolutionResult.bestPhenotype().genotype())
         val meetings = courses.toMeetings()
@@ -57,7 +57,7 @@ class GeneticPlanner(private val options: GeneticPlannerOptions) : Planner {
     private fun compute(): EvolutionResult<EnumGene<Team>, Double> {
         logger.debug("Computing plan...")
 
-        val problem = CoursesProblem(ISeq.of(options.teams))
+        val problem = CoursesProblem(ISeq.of(options.teams), options.courses)
 
         val engine = Engine
             .builder(problem)

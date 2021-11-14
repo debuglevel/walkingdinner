@@ -16,7 +16,11 @@ data class AddCalculationRequest(
     /**
      * Teams to calculate into the plan
      */
-    val teams: List<AddTeamRequest>
+    val teams: List<AddTeamRequest>,
+    /**
+     * Courses in the event
+     */
+    val coursesNames: List<String>,
 ) {
     fun toCalculation(): Calculation {
         return Calculation(
@@ -26,7 +30,8 @@ data class AddCalculationRequest(
             populationsSize = this.populationsSize,
             fitnessThreshold = this.fitnessThreshold,
             finished = false,
-            plan = null
+            plan = null,
+            coursesNames = coursesNames,
         )
     }
 }

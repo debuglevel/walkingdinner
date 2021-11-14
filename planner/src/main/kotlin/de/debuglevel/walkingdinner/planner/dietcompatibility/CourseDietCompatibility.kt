@@ -1,6 +1,5 @@
 package de.debuglevel.walkingdinner.planner.dietcompatibility
 
-import de.debuglevel.walkingdinner.planner.Courses
 import de.debuglevel.walkingdinner.planner.Meeting
 import de.debuglevel.walkingdinner.planner.Team
 import mu.KotlinLogging
@@ -14,23 +13,26 @@ import mu.KotlinLogging
 object CourseDietCompatibility : DietCompatibility {
     private val logger = KotlinLogging.logger {}
 
-    override fun areCompatibleTeams(meeting: Meeting): Boolean {
-        val cook = meeting.getCookingTeam()
-        val otherTeams = meeting.teams.filter { it != cook }
+    override fun isCompatible(meeting: Meeting): Boolean {
+        val cookingTeam = meeting.getCookingTeam()
+        val otherTeams = meeting.teams.minus(cookingTeam)
 
         return isCapabilityCompatible(
-            meeting.course,
-            cook.cookingCapabilities.filterNotNull(),
+            meeting.courseName,
+            cookingTeam.cookingCapabilities,
             otherTeams
         )
     }
 
+    /**
+     * Check if all [otherTeams] are compatible with the [cookingCapabilities] of the cooking team.
+     */
     private fun isCapabilityCompatible(
         course: String,
         cookingCapabilities: List<CookingCapability>,
-        teams: List<Team>
+        otherTeams: List<Team>
     ): Boolean {
-        return teams.all {
+        return otherTeams.all {
             isCapabilityCompatible(
                 course,
                 cookingCapabilities,
@@ -39,32 +41,40 @@ object CourseDietCompatibility : DietCompatibility {
         }
     }
 
+    /**
+     * Check if the [otherTeam] is compatible with the [cookingCapabilities] of the cooking team.
+     */
     private fun isCapabilityCompatible(
         course: String,
         cookingCapabilities: List<CookingCapability>,
         otherTeam: Team
     ): Boolean {
+        // TODO: although Courses are flexible, this is still hardcoded to the old scheme.
+        val course1name = "Vorspeise"
+        val course2name = "Hauptspeise"
+        val course3name = "Dessert"
+
         when (otherTeam.diet) {
             Diet.Vegan -> {
                 when (course) {
-                    Courses.course1name ->
+                    course1name ->
                         return cookingCapabilities.contains(CookingCapability.VeganAppetizer)
-                    Courses.course2name ->
+                    course2name ->
                         return cookingCapabilities.contains(CookingCapability.VeganMaindish)
-                    Courses.course3name ->
+                    course3name ->
                         return cookingCapabilities.contains(CookingCapability.VeganDessert)
                 }
             }
 
             Diet.Vegetarian -> {
                 when (course) {
-                    Courses.course1name ->
+                    course1name ->
                         return cookingCapabilities.contains(CookingCapability.VeganAppetizer) ||
                                 cookingCapabilities.contains(CookingCapability.VegetarianAppetizer)
-                    Courses.course2name ->
+                    course2name ->
                         return cookingCapabilities.contains(CookingCapability.VeganMaindish) ||
                                 cookingCapabilities.contains(CookingCapability.VegetarianMaindish)
-                    Courses.course3name ->
+                    course3name ->
                         return cookingCapabilities.contains(CookingCapability.VeganDessert) ||
                                 cookingCapabilities.contains(CookingCapability.VegetarianDessert)
                 }
@@ -72,15 +82,15 @@ object CourseDietCompatibility : DietCompatibility {
 
             Diet.Omnivore -> {
                 when (course) {
-                    Courses.course1name ->
+                    course1name ->
                         return cookingCapabilities.contains(CookingCapability.VeganAppetizer) ||
                                 cookingCapabilities.contains(CookingCapability.VegetarianAppetizer) ||
                                 cookingCapabilities.contains(CookingCapability.OmnivoreAppetizer)
-                    Courses.course2name ->
+                    course2name ->
                         return cookingCapabilities.contains(CookingCapability.VeganMaindish) ||
                                 cookingCapabilities.contains(CookingCapability.VegetarianMaindish) ||
                                 cookingCapabilities.contains(CookingCapability.OmnivoreMaindish)
-                    Courses.course3name ->
+                    course3name ->
                         return cookingCapabilities.contains(CookingCapability.VeganDessert) ||
                                 cookingCapabilities.contains(CookingCapability.VegetarianDessert) ||
                                 cookingCapabilities.contains(CookingCapability.OmnivoreDessert)

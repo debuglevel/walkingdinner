@@ -19,5 +19,9 @@ data class GeneticPlannerOptions(
      * Size of the population
      */
     val populationsSize: Int,
-    var evolutionResultConsumer: Consumer<EvolutionResult<EnumGene<Team>, Double>>? = null
+    var evolutionResultConsumer: Consumer<EvolutionResult<EnumGene<Team>, Double>>? = null,
+    /**
+     * Courses in the event
+     */
+    val courses: List<String>,
 )

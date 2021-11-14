@@ -14,7 +14,7 @@ class CourseCompatibilityTests {
         // Arrange
 
         // Act
-        val areCompatible = CourseDietCompatibility.areCompatibleTeams(testData.meeting)
+        val areCompatible = CourseDietCompatibility.isCompatible(testData.meeting)
 
         // Assert
         assertThat(areCompatible).isTrue
@@ -26,7 +26,7 @@ class CourseCompatibilityTests {
         // Arrange
 
         // Act
-        val areCompatible = CourseDietCompatibility.areCompatibleTeams(testData.meeting)
+        val areCompatible = CourseDietCompatibility.isCompatible(testData.meeting)
 
         // Assert
         assertThat(areCompatible).isFalse

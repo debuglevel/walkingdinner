@@ -41,5 +41,9 @@ data class Calculation(
     /**
      * When the calculation finished
      */
-    var end: LocalDateTime? = null
+    var end: LocalDateTime? = null,
+    /**
+     * Courses in the event
+     */
+    val coursesNames: List<String>,
 )

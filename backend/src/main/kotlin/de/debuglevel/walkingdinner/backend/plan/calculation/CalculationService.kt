@@ -114,6 +114,8 @@ open class CalculationService(
         fitnessThreshold: Double,
         steadyFitness: Int
     ): Calculation {
+        // TODO: hardcode coursesNames for now
+        val coursesNames = listOf("Vorspeise", "Hauptspeise", "Dessert")
         val calculation = Calculation(
             null,
             false,
@@ -121,7 +123,11 @@ open class CalculationService(
             fitnessThreshold,
             steadyFitness,
             null,
-            teams
+            teams,
+            null,
+            null,
+            null,
+            coursesNames
         )
 
         val savedCalculation = calculationRepository.save(calculation)
@@ -130,7 +136,8 @@ open class CalculationService(
             populationsSize = savedCalculation.populationsSize,
             steadyFitness = savedCalculation.steadyFitness,
             fitnessThreshold = savedCalculation.fitnessThreshold,
-            teams = teams.map { TeamRequest(it) }
+            teams = teams.map { TeamRequest(it) },
+            coursesNames = savedCalculation.coursesNames,
         )
 
         logger.debug { "Sending CalculationRequest: $calculationRequest..." }

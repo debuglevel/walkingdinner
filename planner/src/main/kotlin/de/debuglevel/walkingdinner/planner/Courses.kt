@@ -10,26 +10,20 @@ import mu.KotlinLogging
  *   Might probably better be placed somewhere near the [GeneticPlanner].
  */
 data class Courses(
-    val course1teams: Iterable<Team>,
-    val course2teams: Iterable<Team>,
-    val course3teams: Iterable<Team>
+    val coursesTeams: List<Pair<String, List<Team>>>,
 ) {
     private val logger = KotlinLogging.logger {}
 
-    // TODO: should be labeled in english
-    companion object {
-        const val course1name = "Vorspeise"
-        const val course2name = "Hauptspeise"
-        const val course3name = "Dessert"
-
-        val orderedCourseNames = listOf(Courses.course1name, Courses.course2name, Courses.course3name)
-    }
+    val orderedCoursesNames: List<String>
+        get() {
+            return coursesTeams.map { it.first }
+        }
 
     /**
      * Gets all [Meeting]s of all [Courses].
      */
     fun toMeetings(): List<Meeting> {
-        return toCourseMeetings()
+        return toCoursesMeetings()
             .values
             .flatten()
     }
@@ -37,23 +31,10 @@ data class Courses(
     /**
      * Gets all [Meeting]s of all [Courses], separated by each Course.
      */
-    fun toCourseMeetings(): Map<String, List<Meeting>> {
-        val courseMeetings = hashMapOf<String, List<Meeting>>()
-
-        courseMeetings[course1name] = teamsToMeetings(
-            course1name,
-            course1teams
-        )
-        courseMeetings[course2name] = teamsToMeetings(
-            course2name,
-            course2teams
-        )
-        courseMeetings[course3name] = teamsToMeetings(
-            course3name,
-            course3teams
-        )
-
-        return courseMeetings
+    fun toCoursesMeetings(): Map<String, List<Meeting>> {
+        val coursesMeetings = coursesTeams
+            .associateBy({ it.first }, { teamsToMeetings(it.first, it.second) })
+        return coursesMeetings
     }
 
     /**

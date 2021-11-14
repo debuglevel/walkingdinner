@@ -11,6 +11,6 @@ data class GetMeetingResponse(
     constructor(meeting: Meeting) : this(
         id = meeting.id!!,
         teams = meeting.teams.map { GetTeamResponse(it) },
-        course = meeting.course
+        course = meeting.courseName
     )
 }

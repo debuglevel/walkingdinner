@@ -55,7 +55,8 @@ class CalculationService(
                         teams = calculation.teams,
                         fitnessThreshold = calculation.fitnessThreshold,
                         populationsSize = calculation.populationsSize,
-                        steadyFitness = calculation.steadyFitness
+                        steadyFitness = calculation.steadyFitness,
+                        courses = calculation.coursesNames,
                     )
 
                 calculation.begin = LocalDateTime.now()

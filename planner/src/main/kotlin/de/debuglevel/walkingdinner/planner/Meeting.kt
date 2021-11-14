@@ -3,10 +3,10 @@ package de.debuglevel.walkingdinner.planner
 import java.util.*
 
 /**
- * A [Meeting] of [teams] which happens during a [course].
+ * A [Meeting] of [teams] which happens during a [courseName].
  */
 data class Meeting(
-    val course: String,
+    val courseName: String,
     /**
      * TODO: Maybe throw an exception somehow if count() is not 3
      */

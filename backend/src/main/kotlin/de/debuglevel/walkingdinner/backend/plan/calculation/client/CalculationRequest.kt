@@ -18,12 +18,17 @@ data class CalculationRequest(
     /**
      * Teams to calculate into the plan
      */
-    val teams: List<TeamRequest>
+    val teams: List<TeamRequest>,
+    /**
+     * Courses in the event
+     */
+    val coursesNames: List<String>,
 ) {
     constructor(calculation: Calculation) : this(
         populationsSize = calculation.populationsSize,
         steadyFitness = calculation.steadyFitness,
         fitnessThreshold = calculation.fitnessThreshold,
-        teams = calculation.teams.map { TeamRequest(it) }
+        teams = calculation.teams.map { TeamRequest(it) },
+        coursesNames = calculation.coursesNames,
     )
 }

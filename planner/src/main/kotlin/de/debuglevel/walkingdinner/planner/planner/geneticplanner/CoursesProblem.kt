@@ -14,21 +14,29 @@ import io.jenetics.engine.Problem
 import io.jenetics.util.ISeq
 import java.util.function.Function
 
-class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<Team>, Double> {
+class CoursesProblem(
+    private val teams: ISeq<Team>,
+    private val courseNames: List<String>,
+) : Problem<Courses, EnumGene<Team>, Double> {
     override fun codec(): Codec<Courses, EnumGene<Team>> {
-        val encoding: Genotype<EnumGene<Team>> = Genotype.of(
-            PermutationChromosome.of(teams),
-            PermutationChromosome.of(teams),
-            PermutationChromosome.of(teams)
-        )
+        // Encode the problem domain into a Genotype which can be evolved
+        // Create a Chromosome for each Course. Create a Genotype from all Chromosomes.
+        val chromosomes: List<PermutationChromosome<Team>> = courseNames.map { PermutationChromosome.of(teams) }
+        val encoding: Genotype<EnumGene<Team>> = Genotype.of(chromosomes)
 
+        // Decodes the Genotype back into the problem domain (where e.g. fitness can be evaluated)
         val decoder: Function<Genotype<EnumGene<Team>>, Courses> =
             Function { genotype: Genotype<EnumGene<Team>> ->
-                Courses(
-                    genotype.get(0).map { it.validAlleles().get(it.alleleIndex()) },
-                    genotype.get(1).map { it.validAlleles().get(it.alleleIndex()) },
-                    genotype.get(2).map { it.validAlleles().get(it.alleleIndex()) }
-                )
+                // Create a List with all Courses with all ordered Teams
+                val coursesTeams = genotype.map { chromosome ->
+                    chromosome.map { enumGene ->
+                        enumGene.validAlleles().get(enumGene.alleleIndex())
+                    }
+                }
+
+                // Associate each List of Teams (i.e. Teams ordered in Course) with its name
+                val coursesTeams2 = courseNames zip coursesTeams
+                Courses(coursesTeams2)
             }
 
         val codec: Codec<Courses, EnumGene<Team>> = Codec.of(
@@ -45,15 +53,15 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
      */
     override fun fitness(): Function<Courses, Double> {
         return Function { courses ->
-            val courseMeetings = courses.toCourseMeetings()
+            val coursesMeetings = courses.toCoursesMeetings()
 
-            val meetings = courseMeetings.values.flatten()
+            val meetings = coursesMeetings.values.flatten()
 
             val multipleCookingTeamsMalus = 1 * calculateMultipleCookingTeams(meetings)
 
-            val incompatibleTeamsMalus = courseMeetings.values.sumOf { 1 * calculateIncompatibleMeetings(it) }
+            val incompatibleTeamsMalus = coursesMeetings.values.sumOf { 1 * calculateIncompatibleMeetings(it) }
 
-            val overallDistanceMalus = 0.00001 * calculateOverallDistance(courseMeetings)
+            val overallDistanceMalus = 0.00001 * calculateOverallDistance(courses.orderedCoursesNames, coursesMeetings)
 
             val fitness =
                 multipleCookingTeamsMalus +
@@ -70,29 +78,35 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
          */
         private fun calculateIncompatibleMeetings(meetings: List<Meeting>): Int {
             // .count{ m -> !HardCompatibility.INSTANCE.areCompatibleTeams(m) }
-            return meetings.count { meeting -> !CourseDietCompatibility.areCompatibleTeams(meeting) }
+            return meetings.count { meeting -> !CourseDietCompatibility.isCompatible(meeting) }
         }
 
         /**
          * Calculates the distance (in kilometers) all teams have to travel in sum.
          */
-        private fun calculateOverallDistance(coursesMeetings: Map<String, List<Meeting>>): Double {
-            val teamsLocations = getTeamLocations(coursesMeetings)
+        private fun calculateOverallDistance(
+            orderedCoursesNames: List<String>,
+            coursesMeetings: Map<String, List<Meeting>>
+        ): Double {
+            val teamsLocations = getTeamLocations(orderedCoursesNames, coursesMeetings)
 
             return teamsLocations.values.sumOf { GeoUtils.calculateLocationsDistance(it) }
         }
 
         /**
-         * Gets the [Location]s for each [Team].
+         * Gets the ordered [Location]s for each [Team].
          */
-        private fun getTeamLocations(coursesMeetings: Map<String, List<Meeting>>): HashMap<Team, MutableList<Location>> {
+        private fun getTeamLocations(
+            orderedCoursesNames: List<String>,
+            coursesMeetings: Map<String, List<Meeting>>
+        ): HashMap<Team, MutableList<Location>> {
             // Create a HashMap with an empty List for each Team
             val teamsLocations = HashMap<Team, MutableList<Location>>()
             coursesMeetings.values.flatten().map { it.teams }.flatten().distinct().forEach {
                 teamsLocations[it] = mutableListOf()
             }
 
-            for (courseName in Courses.orderedCourseNames) {
+            for (courseName in orderedCoursesNames) {
                 val courseMeetings = coursesMeetings.getValue(courseName)
                 for (meeting in courseMeetings) {
                     for (team in meeting.teams) {
