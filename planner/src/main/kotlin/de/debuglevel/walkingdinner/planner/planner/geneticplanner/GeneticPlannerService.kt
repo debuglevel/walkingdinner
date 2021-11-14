@@ -8,6 +8,7 @@ import io.jenetics.engine.EvolutionResult
 import io.jenetics.engine.EvolutionStatistics
 import jakarta.inject.Singleton
 import mu.KotlinLogging
+import java.util.*
 import java.util.function.Consumer
 import kotlin.math.roundToInt
 
@@ -19,14 +20,15 @@ class GeneticPlannerService {
         options: GeneticPlannerOptions
     ): Plan {
         val evolutionStatistics = EvolutionStatistics.ofNumber<Double>()
-        val consumer = Consumer<EvolutionResult<EnumGene<Team>, Double>> {
+        options.evolutionResultConsumer = Consumer<EvolutionResult<EnumGene<Team>, Double>> {
             evolutionStatistics.accept(it)
             printIntermediary(it)
             logTimeMeasurement(it)
         }
-        options.evolutionResultConsumer = consumer
 
         val plan = GeneticPlanner(options).plan()
+        // Set an ID for each meeting; we do not generate an ID during evolution, as this might be time-consuming (but untested; at least unnecessary).
+        plan.meetings.forEach { it.id = UUID.randomUUID() }
 
         return plan
     }

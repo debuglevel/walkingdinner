@@ -2,7 +2,7 @@ app:
   walkingdinner:
     calculations:
       # number of calculations that will be done in parallel
-      max-concurrent: 4
+      maximum-parallel: 4
 
   security:
     configurable-credential-authentication:

@@ -14,7 +14,7 @@ import java.util.concurrent.Executors
 @Singleton
 class CalculationService(
     private val geneticPlannerService: GeneticPlannerService,
-    @Property(name = "app.walkingdinner.calculations.max-concurrent") private val threadCount: Int,
+    @Property(name = "app.walkingdinner.calculations.maximum-parallel") private val threadCount: Int,
     private val planService: PlanService
 ) {
     private val logger = KotlinLogging.logger {}

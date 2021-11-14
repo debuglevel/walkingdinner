@@ -1,11 +1,10 @@
 package de.debuglevel.walkingdinner.planner.calculation
 
-import de.debuglevel.walkingdinner.planner.plan.TeamResponse
-import de.debuglevel.walkingdinner.planner.plan.toTeamResponse
+import de.debuglevel.walkingdinner.planner.plan.GetTeamResponse
 import java.time.LocalDateTime
 import java.util.*
 
-data class CalculationResponse(
+data class GetCalculationResponse(
     /**
      * UUID of the calculation
      */
@@ -29,7 +28,7 @@ data class CalculationResponse(
     /**
      * Teams to calculate into the plan
      */
-    val teams: List<TeamResponse>,
+    val teams: List<GetTeamResponse>,
     /**
      * UUID of the plan, once it is calculated
      */
@@ -42,18 +41,16 @@ data class CalculationResponse(
      * When the calculation finished
      */
     var end: LocalDateTime? = null
-)
-
-fun Calculation.toCalculationResponse(): CalculationResponse {
-    return CalculationResponse(
-        id = this.id!!,
-        finished = this.finished,
-        fitnessThreshold = this.fitnessThreshold,
-        populationsSize = this.populationsSize,
-        steadyFitness = this.steadyFitness,
-        teams = this.teams.map { it.toTeamResponse() },
-        planId = this.plan?.id,
-        begin = this.begin,
-        end = this.end
+) {
+    constructor(calculation: Calculation) : this(
+        id = calculation.id!!,
+        finished = calculation.finished,
+        fitnessThreshold = calculation.fitnessThreshold,
+        populationsSize = calculation.populationsSize,
+        steadyFitness = calculation.steadyFitness,
+        teams = calculation.teams.map { GetTeamResponse(it) },
+        planId = calculation.plan?.id,
+        begin = calculation.begin,
+        end = calculation.end
     )
 }

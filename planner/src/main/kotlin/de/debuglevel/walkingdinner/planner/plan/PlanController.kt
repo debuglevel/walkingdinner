@@ -10,16 +10,16 @@ class PlanController(private val planService: PlanService) {
     private val logger = KotlinLogging.logger {}
 
     @Get("/{planId}")
-    fun getOne(planId: UUID): PlanResponse {
+    fun getOne(planId: UUID): GetPlanResponse {
         logger.debug("Called getOne($planId)")
         val plan = planService.get(planId)
-        return plan.toPlanResponse()
+        return GetPlanResponse(plan)
     }
 
     @Get("/")
-    fun getList(): Set<PlanResponse> {
+    fun getList(): Set<GetPlanResponse> {
         logger.debug("Called getList()")
         val plans = planService.getAll()
-        return plans.map { it.toPlanResponse() }.toSet()
+        return plans.map { GetPlanResponse(it) }.toSet()
     }
 }

@@ -2,7 +2,7 @@ package de.debuglevel.walkingdinner.planner.calculation
 
 import de.debuglevel.walkingdinner.planner.Location
 
-class LocationRequest(
+class AddLocationRequest(
     val lng: Double,
     val lat: Double
 ) {

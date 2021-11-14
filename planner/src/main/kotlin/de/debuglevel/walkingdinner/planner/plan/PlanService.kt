@@ -8,6 +8,9 @@ import java.util.*
 class PlanService {
     private val logger = KotlinLogging.logger {}
 
+    /**
+     * TODO: Would probably be useful if just persisted.
+     */
     private val plans = mutableMapOf<UUID, Plan>()
 
     fun get(id: UUID): Plan {

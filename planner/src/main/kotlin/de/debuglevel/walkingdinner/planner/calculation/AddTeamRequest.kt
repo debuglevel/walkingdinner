@@ -5,11 +5,11 @@ import de.debuglevel.walkingdinner.planner.dietcompatibility.CookingCapability
 import de.debuglevel.walkingdinner.planner.dietcompatibility.Diet
 import java.util.*
 
-data class TeamRequest(
+data class AddTeamRequest(
     val id: UUID,
     val diet: Diet,
     val cookingCapabilities: List<CookingCapability>,
-    val location: LocationRequest
+    val location: AddLocationRequest
 ) {
     fun toTeam(): Team {
         return Team(id, diet, cookingCapabilities, location.toLocation())

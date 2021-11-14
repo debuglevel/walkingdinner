@@ -1,5 +1,7 @@
 package de.debuglevel.walkingdinner.planner
 
+import java.util.*
+
 /**
  * A [Meeting] of [teams] which happens during a [course].
  */
@@ -8,7 +10,11 @@ data class Meeting(
     /**
      * TODO: Maybe throw an exception somehow if count() is not 3
      */
-    val teams: List<Team>
+    val teams: List<Team>,
+    /**
+     * @implNote: In case of [GeneticPlanner], this is only set after the final [Plan] is ready.
+     */
+    var id: UUID? = null
 ) {
     /**
      * Get the [Team] which is cooking in this [Meeting].

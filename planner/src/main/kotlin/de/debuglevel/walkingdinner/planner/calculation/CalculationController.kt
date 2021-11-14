@@ -11,24 +11,24 @@ class CalculationController(private val calculationService: CalculationService) 
     private val logger = KotlinLogging.logger {}
 
     @Get("/{calculationId}")
-    fun getOne(calculationId: UUID): CalculationResponse {
+    fun getOne(calculationId: UUID): GetCalculationResponse {
         logger.debug("Called getOne($calculationId)")
         val calculation = calculationService.get(calculationId)
-        return calculation.toCalculationResponse()
+        return GetCalculationResponse(calculation)
     }
 
     @Get("/")
-    fun getList(): Set<CalculationResponse> {
+    fun getList(): Set<GetCalculationResponse> {
         logger.debug("Called getList()")
         val calculations = calculationService.getAll()
-        return calculations.map { it.toCalculationResponse() }.toSet()
+        return calculations.map { GetCalculationResponse(it) }.toSet()
     }
 
     @Post("/")
-    fun postOne(calculationRequest: CalculationRequest): CalculationResponse {
-        logger.debug("Called postOne($calculationRequest)")
-        val calculation = calculationRequest.toCalculation()
+    fun postOne(addCalculationRequest: AddCalculationRequest): GetCalculationResponse {
+        logger.debug("Called postOne($addCalculationRequest)")
+        val calculation = addCalculationRequest.toCalculation()
         calculationService.start(calculation)
-        return calculation.toCalculationResponse()
+        return GetCalculationResponse(calculation)
     }
 }

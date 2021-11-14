@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.planner.calculation
 
-data class CalculationRequest(
+data class AddCalculationRequest(
     /**
      * Size of the population
      */
@@ -16,7 +16,7 @@ data class CalculationRequest(
     /**
      * Teams to calculate into the plan
      */
-    val teams: List<TeamRequest>
+    val teams: List<AddTeamRequest>
 ) {
     fun toCalculation(): Calculation {
         return Calculation(

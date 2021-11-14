@@ -23,7 +23,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/CalculationResponse'
+                  $ref: '#/components/schemas/GetCalculationResponse'
     post:
       operationId: postOne
       parameters: [ ]
@@ -32,11 +32,11 @@ paths:
           application/json:
             schema:
               required:
-                - calculationRequest
+                - addCalculationRequest
               type: object
               properties:
-                calculationRequest:
-                  $ref: '#/components/schemas/CalculationRequest'
+                addCalculationRequest:
+                  $ref: '#/components/schemas/AddCalculationRequest'
         required: true
       responses:
         "200":
@@ -44,7 +44,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CalculationResponse'
+                $ref: '#/components/schemas/GetCalculationResponse'
   /calculations/{calculationId}:
     get:
       operationId: getOne
@@ -61,7 +61,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CalculationResponse'
+                $ref: '#/components/schemas/GetCalculationResponse'
   /plans:
     get:
       operationId: getList_1
@@ -74,7 +74,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/PlanResponse'
+                  $ref: '#/components/schemas/GetPlanResponse'
   /plans/{planId}:
     get:
       operationId: getOne_1
@@ -91,10 +91,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PlanResponse'
+                $ref: '#/components/schemas/GetPlanResponse'
 components:
   schemas:
-    CalculationRequest:
+    AddCalculationRequest:
       required:
         - fitnessThreshold
         - populationsSize
@@ -120,8 +120,57 @@ components:
           type: array
           description: Teams to calculate into the plan
           items:
-            $ref: '#/components/schemas/TeamRequest'
-    CalculationResponse:
+            $ref: '#/components/schemas/AddTeamRequest'
+    AddLocationRequest:
+      required:
+        - lat
+        - lng
+      type: object
+      properties:
+        lng:
+          type: number
+          format: double
+        lat:
+          type: number
+          format: double
+    AddTeamRequest:
+      required:
+        - cookingCapabilities
+        - diet
+        - id
+        - location
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        diet:
+          $ref: '#/components/schemas/Diet'
+        cookingCapabilities:
+          type: array
+          items:
+            $ref: '#/components/schemas/CookingCapability'
+        location:
+          $ref: '#/components/schemas/AddLocationRequest'
+    CookingCapability:
+      type: string
+      enum:
+        - VeganAppetizer
+        - VeganMaindish
+        - VeganDessert
+        - VegetarianAppetizer
+        - VegetarianMaindish
+        - VegetarianDessert
+        - OmnivoreAppetizer
+        - OmnivoreMaindish
+        - OmnivoreDessert
+    Diet:
+      type: string
+      enum:
+        - Vegan
+        - Vegetarian
+        - Omnivore
+    GetCalculationResponse:
       required:
         - finished
         - fitnessThreshold
@@ -157,7 +206,7 @@ components:
           type: array
           description: Teams to calculate into the plan
           items:
-            $ref: '#/components/schemas/TeamResponse'
+            $ref: '#/components/schemas/GetTeamResponse'
         planId:
           type: string
           description: "UUID of the plan, once it is calculated"
@@ -173,37 +222,7 @@ components:
           description: When the calculation finished
           format: date-time
           nullable: true
-    CookingCapability:
-      type: string
-      enum:
-        - VeganAppetizer
-        - VeganMaindish
-        - VeganDessert
-        - VegetarianAppetizer
-        - VegetarianMaindish
-        - VegetarianDessert
-        - OmnivoreAppetizer
-        - OmnivoreMaindish
-        - OmnivoreDessert
-    Diet:
-      type: string
-      enum:
-        - Vegan
-        - Vegetarian
-        - Omnivore
-    LocationRequest:
-      required:
-        - lat
-        - lng
-      type: object
-      properties:
-        lng:
-          type: number
-          format: double
-        lat:
-          type: number
-          format: double
-    MeetingResponse:
+    GetMeetingResponse:
       required:
         - course
         - id
@@ -218,9 +237,10 @@ components:
         teams:
           type: array
           items:
-            $ref: '#/components/schemas/TeamResponse'
-    PlanResponse:
+            $ref: '#/components/schemas/GetTeamResponse'
+    GetPlanResponse:
       required:
+        - additionalInformation
         - id
         - meetings
       type: object
@@ -231,27 +251,10 @@ components:
         meetings:
           type: array
           items:
-            $ref: '#/components/schemas/MeetingResponse'
-    TeamRequest:
-      required:
-        - cookingCapabilities
-        - diet
-        - id
-        - location
-      type: object
-      properties:
-        id:
+            $ref: '#/components/schemas/GetMeetingResponse'
+        additionalInformation:
           type: string
-          format: uuid
-        diet:
-          $ref: '#/components/schemas/Diet'
-        cookingCapabilities:
-          type: array
-          items:
-            $ref: '#/components/schemas/CookingCapability'
-        location:
-          $ref: '#/components/schemas/LocationRequest'
-    TeamResponse:
+    GetTeamResponse:
       required:
         - id
       type: object
