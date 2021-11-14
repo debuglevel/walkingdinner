@@ -31,7 +31,7 @@ object GeoUtils {
 
     /**
      * Calculates the distance (in kilometers) between to [Location]s.
-     * @implNote Uses the Haversine formula
+     * @implNote Uses the Haversine formula (see https://stackoverflow.com/a/27943/4764279)
      */
     fun calculateDistance(
         source: Location,
@@ -58,6 +58,45 @@ object GeoUtils {
         // Performance: Multiplying by 2 does not affect speed.
         val distance = 2 * AVERAGE_RADIUS_OF_EARTH_KM * c
         return distance
+    }
+
+    /**
+     * Calculates the distance (in kilometers) between to [Location]s.
+     * @implNote Uses the Keerthana Gopalakrishnan's formula (see https://stackoverflow.com/a/49916544/4764279, https://stackoverflow.com/a/37870363/4764279) which might to be more precise, but 2 times slower.
+     */
+    fun calculateDistanceKeerthana(
+        source: Location,
+        destination: Location
+    ): Double {
+        val a = 6378.137 // equatorial radius in km
+        val b = 6356.752 // polar radius in km
+
+        val square = { x: Double -> (x * x) }
+        val radius =
+            { latitude: Double ->
+                sqrt(
+                    (square(a * a * cos(latitude)) + square(b * b * sin(latitude))) / (square(a * cos(latitude)) + square(
+                        b * sin(latitude)
+                    ))
+                )
+            }
+
+        val latitude1 = source.latitude * Math.PI / 180
+        val longitude1 = source.longitude * Math.PI / 180
+        val latitude2 = destination.latitude * Math.PI / 180
+        val longitude2 = destination.longitude * Math.PI / 180
+
+        val radius1 = radius(latitude1)
+        val x1 = radius1 * cos(latitude1) * cos(longitude1)
+        val y1 = radius1 * cos(latitude1) * sin(longitude1)
+        val z1 = radius1 * sin(latitude1)
+
+        val radius2 = radius(latitude2)
+        val x2 = radius2 * cos(latitude2) * cos(longitude2)
+        val y2 = radius2 * cos(latitude2) * sin(longitude2)
+        val z2 = radius2 * sin(latitude2)
+
+        return sqrt(square(x1 - x2) + square(y1 - y2) + square(z1 - z2))
     }
 
     /**

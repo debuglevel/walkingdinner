@@ -111,8 +111,8 @@ open class GeoUtilsBenchmarks {
 //    @Fork(2)
 //    @Warmup(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
 //    @Measurement(iterations = 3, time = 5, timeUnit = TimeUnit.SECONDS)
-//    fun calculateModified(state: MyState): Double {
-//        return GeoUtils.calculateDistanceModified(state.source!!, state.destination!!)
+//    fun calculateKeerthana(state: MyState): Double {
+//        return GeoUtils.calculateDistanceKeerthana(state.source!!, state.destination!!)
 //    }
 
 //    @Param("asin", "atan")
