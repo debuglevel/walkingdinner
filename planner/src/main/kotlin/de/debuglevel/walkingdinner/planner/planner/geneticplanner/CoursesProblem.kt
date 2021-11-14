@@ -73,8 +73,8 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
     }
 
     companion object {
-        private fun getTeamLocations(courseMeetings: Map<String, List<Meeting>>): HashMap<Team, MutableList<Location?>> {
-            val teamsLocations = HashMap<Team, MutableList<Location?>>()
+        private fun getTeamLocations(courseMeetings: Map<String, List<Meeting>>): HashMap<Team, MutableList<Location>> {
+            val teamsLocations = HashMap<Team, MutableList<Location>>()
 
             addLocations(
                 teamsLocations,
@@ -117,7 +117,7 @@ class CoursesProblem(private val teams: ISeq<Team>) : Problem<Courses, EnumGene<
                 .sum()
         }
 
-        private fun addLocations(teamsLocations: HashMap<Team, MutableList<Location?>>, meetings: List<Meeting>?) {
+        private fun addLocations(teamsLocations: HashMap<Team, MutableList<Location>>, meetings: List<Meeting>?) {
             if (meetings != null) {
                 for (meeting in meetings) {
                     for (team in meeting.teams) {

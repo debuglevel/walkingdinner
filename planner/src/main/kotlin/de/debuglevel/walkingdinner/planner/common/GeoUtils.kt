@@ -50,8 +50,8 @@ object GeoUtils {
      * Calculate the distance (in kilometers) between multiple [locations].
      * TODO: add a test
      */
-    fun calculateLocationsDistance(locations: List<Location?>): Double {
-        val distance = locations.filterNotNull()
+    fun calculateLocationsDistance(locations: List<Location>): Double {
+        val distance = locations
             .windowed(2, 1, false) {
                 val source = it[0]
                 val destination = it[1]
