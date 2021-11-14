@@ -53,9 +53,9 @@ object GeoUtils {
     fun calculateLocationsDistance(locations: List<Location?>): Double {
         val distance = locations.filterNotNull()
             .windowed(2, 1, false) {
-                val start = it[0]
-                val end = it[1]
-                calculateDistanceInKilometer(start, end)
+                val source = it[0]
+                val destination = it[1]
+                calculateDistanceInKilometer(source, destination)
             }.sum()
 
         return distance
