@@ -6,6 +6,9 @@ import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.sqrt
 
+/**
+ * TODO: Should be replaced by the function from planner module. Should probably be a shared library.
+ */
 object GeoUtils {
     /**
      * Cache for already calculated distances
