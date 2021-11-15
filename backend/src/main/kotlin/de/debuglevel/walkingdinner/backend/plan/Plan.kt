@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.backend.plan
 
-import de.debuglevel.walkingdinner.backend.Meeting
+import de.debuglevel.walkingdinner.backend.meeting.Meeting
 import org.hibernate.annotations.GenericGenerator
 import java.util.*
 import javax.persistence.*

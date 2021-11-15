@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.backend.report.teams
 
-import de.debuglevel.walkingdinner.backend.Meeting
+import de.debuglevel.walkingdinner.backend.meeting.Meeting
 import de.debuglevel.walkingdinner.backend.plan.Courses
 import de.debuglevel.walkingdinner.backend.report.Reporter
 import de.debuglevel.walkingdinner.backend.team.Diet

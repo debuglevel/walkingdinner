@@ -1,13 +1,10 @@
 package de.debuglevel.walkingdinner.backend.summary
 
-import de.debuglevel.walkingdinner.backend.Meeting
 import de.debuglevel.walkingdinner.backend.common.MailAddress
 import de.debuglevel.walkingdinner.backend.common.PhoneNumber
+import de.debuglevel.walkingdinner.backend.meeting.Meeting
 import de.debuglevel.walkingdinner.backend.report.teams.summary.SummaryReporter
-import de.debuglevel.walkingdinner.backend.team.CookingCapability
-import de.debuglevel.walkingdinner.backend.team.Diet
-import de.debuglevel.walkingdinner.backend.team.Name
-import de.debuglevel.walkingdinner.backend.team.Team
+import de.debuglevel.walkingdinner.backend.team.*
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import jakarta.inject.Inject
 import org.assertj.core.api.Assertions
@@ -51,14 +48,14 @@ class SummaryReporterTests {
                     cookingTeam,
                     Team(
                         null,
-                        de.debuglevel.walkingdinner.backend.team.Cook(
+                        Cook(
                             name = Name(
                                 name = "cook3"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        de.debuglevel.walkingdinner.backend.team.Cook(
+                        Cook(
                             name = Name(
                                 name = "cook4"
                             ),
@@ -74,14 +71,14 @@ class SummaryReporterTests {
                     ),
                     Team(
                         null,
-                        de.debuglevel.walkingdinner.backend.team.Cook(
+                        Cook(
                             name = Name(
                                 name = "cook5"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        de.debuglevel.walkingdinner.backend.team.Cook(
+                        Cook(
                             name = Name(
                                 name = "cook6"
                             ),

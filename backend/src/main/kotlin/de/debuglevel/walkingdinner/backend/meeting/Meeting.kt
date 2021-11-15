@@ -1,4 +1,4 @@
-package de.debuglevel.walkingdinner.backend
+package de.debuglevel.walkingdinner.backend.meeting
 
 import de.debuglevel.walkingdinner.backend.team.Team
 import org.hibernate.annotations.GenericGenerator

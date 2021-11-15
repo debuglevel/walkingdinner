@@ -1,7 +1,7 @@
 package de.debuglevel.walkingdinner.backend.report.teams.mail
 
 
-import de.debuglevel.walkingdinner.backend.Meeting
+import de.debuglevel.walkingdinner.backend.meeting.Meeting
 import de.debuglevel.walkingdinner.backend.report.Reporter
 import de.debuglevel.walkingdinner.backend.report.teams.TextReportService
 import de.debuglevel.walkingdinner.backend.team.Team

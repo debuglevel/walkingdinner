@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.backend.plan.client
 
-import de.debuglevel.walkingdinner.backend.Meeting
+import de.debuglevel.walkingdinner.backend.meeting.Meeting
 import de.debuglevel.walkingdinner.backend.team.Team
 import java.util.*
 
