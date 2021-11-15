@@ -44,7 +44,7 @@ class CalculationController(
                 calculationRequest.steadyFitness
             )
             calculation
-        } else if (calculationRequest.surveyfile != null && calculationRequest.surveyfile.isNotBlank()) {
+        } else if (!calculationRequest.surveyfile.isNullOrBlank()) {
             // TODO: as this is just a CSV, we could just transfer it as a String
             val surveyCsv = Base64String(calculationRequest.surveyfile).asString
             val calculation = calculationService.startCalculation(
