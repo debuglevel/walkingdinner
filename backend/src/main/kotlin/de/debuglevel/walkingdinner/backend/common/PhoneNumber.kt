@@ -1,7 +1,6 @@
 package de.debuglevel.walkingdinner.backend.common
 
 import com.google.i18n.phonenumbers.NumberParseException
-import com.google.i18n.phonenumbers.PhoneNumberUtil
 import org.hibernate.annotations.GenericGenerator
 import java.util.*
 import javax.persistence.*
@@ -22,9 +21,7 @@ data class PhoneNumber(
     @get:Transient
     private val formattedNumber: String by lazy {
         try {
-            val phoneUtil = PhoneNumberUtil.getInstance()
-            val numberProto = phoneUtil.parse(number, "DE")
-            phoneUtil.format(numberProto, PhoneNumberUtil.PhoneNumberFormat.INTERNATIONAL)
+            PhoneNumberUtils.format(number)
         } catch (e: NumberParseException) {
             number
         }
