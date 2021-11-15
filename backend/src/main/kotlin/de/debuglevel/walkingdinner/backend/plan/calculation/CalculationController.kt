@@ -46,7 +46,7 @@ class CalculationController(
             calculation
         } else if (!calculationRequest.surveyfile.isNullOrBlank()) {
             // TODO: as this is just a CSV, we could just transfer it as a String
-            val surveyCsv = Base64String(calculationRequest.surveyfile).asString
+            val surveyCsv = Base64String(calculationRequest.surveyfile).decodedString
             val calculation = calculationService.startCalculation(
                 surveyCsv,
                 calculationRequest.populationsSize,

@@ -22,7 +22,7 @@ class Base64StringTests {
         val base64string = Base64String(testData.base64)
 
         // Assert
-        Assertions.assertThat(base64string.value).isEqualTo(testData.base64)
+        Assertions.assertThat(base64string.base64encodedValue).isEqualTo(testData.base64)
     }
 
     @ParameterizedTest
@@ -35,7 +35,7 @@ class Base64StringTests {
         //val base64Strings = strings.keys.map { Base64String(it) }
 
         // Assert
-        Assertions.assertThat(base64string.asString).isEqualTo(testData.decoded)
+        Assertions.assertThat(base64string.decodedString).isEqualTo(testData.decoded)
     }
 
     data class Base64Data(
