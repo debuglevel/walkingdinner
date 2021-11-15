@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.backend.team
 
-import de.debuglevel.walkingdinner.backend.PhoneNumber
+import de.debuglevel.walkingdinner.backend.common.PhoneNumber
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance

@@ -1,8 +1,8 @@
 package de.debuglevel.walkingdinner.backend.plan.report.teams.summary
 
-import de.debuglevel.walkingdinner.backend.MailAddress
 import de.debuglevel.walkingdinner.backend.Meeting
-import de.debuglevel.walkingdinner.backend.PhoneNumber
+import de.debuglevel.walkingdinner.backend.common.MailAddress
+import de.debuglevel.walkingdinner.backend.common.PhoneNumber
 import de.debuglevel.walkingdinner.backend.team.CookingCapability
 import de.debuglevel.walkingdinner.backend.team.Diet
 import de.debuglevel.walkingdinner.backend.team.Name

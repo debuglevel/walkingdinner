@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.backend.organisation
 
-import de.debuglevel.walkingdinner.backend.MailAddress
+import de.debuglevel.walkingdinner.backend.common.MailAddress
 
 data class OrganisationRequest(
     val name: String,

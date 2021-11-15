@@ -1,7 +1,7 @@
 package de.debuglevel.walkingdinner.backend.team
 
-import de.debuglevel.walkingdinner.backend.MailAddress
-import de.debuglevel.walkingdinner.backend.PhoneNumber
+import de.debuglevel.walkingdinner.backend.common.MailAddress
+import de.debuglevel.walkingdinner.backend.common.PhoneNumber
 import org.hibernate.annotations.GenericGenerator
 import java.util.*
 import javax.persistence.*

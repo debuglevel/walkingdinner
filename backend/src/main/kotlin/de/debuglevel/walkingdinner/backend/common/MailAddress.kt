@@ -1,4 +1,4 @@
-package de.debuglevel.walkingdinner.backend
+package de.debuglevel.walkingdinner.backend.common
 
 import org.hibernate.annotations.GenericGenerator
 import java.util.*

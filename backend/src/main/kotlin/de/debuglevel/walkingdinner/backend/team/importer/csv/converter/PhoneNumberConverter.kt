@@ -2,7 +2,7 @@ package de.debuglevel.walkingdinner.backend.team.importer.csv.converter
 
 import com.opencsv.bean.AbstractBeanField
 import com.opencsv.exceptions.CsvDataTypeMismatchException
-import de.debuglevel.walkingdinner.backend.PhoneNumber
+import de.debuglevel.walkingdinner.backend.common.PhoneNumber
 
 class PhoneNumberConverter<T> : AbstractBeanField<T>() {
     @Throws(CsvDataTypeMismatchException::class)

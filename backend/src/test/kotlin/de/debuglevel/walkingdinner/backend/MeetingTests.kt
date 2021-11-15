@@ -1,5 +1,7 @@
 package de.debuglevel.walkingdinner.backend
 
+import de.debuglevel.walkingdinner.backend.common.MailAddress
+import de.debuglevel.walkingdinner.backend.common.PhoneNumber
 import de.debuglevel.walkingdinner.backend.team.CookingCapability
 import de.debuglevel.walkingdinner.backend.team.Diet
 import de.debuglevel.walkingdinner.backend.team.Name

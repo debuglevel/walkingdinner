@@ -1,4 +1,4 @@
-package de.debuglevel.walkingdinner.backend
+package de.debuglevel.walkingdinner.backend.common
 
 import com.google.i18n.phonenumbers.NumberParseException
 import com.google.i18n.phonenumbers.PhoneNumberUtil
