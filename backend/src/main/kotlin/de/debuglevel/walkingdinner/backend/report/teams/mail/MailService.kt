@@ -1,4 +1,4 @@
-package de.debuglevel.walkingdinner.backend.plan.report.teams.mail
+package de.debuglevel.walkingdinner.backend.report.teams.mail
 
 import jakarta.inject.Singleton
 import mu.KotlinLogging

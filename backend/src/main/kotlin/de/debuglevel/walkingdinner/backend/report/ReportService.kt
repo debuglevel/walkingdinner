@@ -1,14 +1,14 @@
-package de.debuglevel.walkingdinner.backend.plan.report
+package de.debuglevel.walkingdinner.backend.report
 
 import de.debuglevel.walkingdinner.backend.common.ZipService
 import de.debuglevel.walkingdinner.backend.plan.PlanService
-import de.debuglevel.walkingdinner.backend.plan.report.teams.TextReportService
-import de.debuglevel.walkingdinner.backend.plan.report.teams.gmail.CreateGmailDraftsEvent
-import de.debuglevel.walkingdinner.backend.plan.report.teams.gmail.GmailDraftReportService
-import de.debuglevel.walkingdinner.backend.plan.report.teams.gmail.GmailDraftsReport
-import de.debuglevel.walkingdinner.backend.plan.report.teams.mail.MailFileReportService
-import de.debuglevel.walkingdinner.backend.plan.report.teams.mail.MailService
-import de.debuglevel.walkingdinner.backend.plan.report.teams.summary.SummaryReporter
+import de.debuglevel.walkingdinner.backend.report.teams.TextReportService
+import de.debuglevel.walkingdinner.backend.report.teams.gmail.CreateGmailDraftsEvent
+import de.debuglevel.walkingdinner.backend.report.teams.gmail.GmailDraftReportService
+import de.debuglevel.walkingdinner.backend.report.teams.gmail.GmailDraftsReport
+import de.debuglevel.walkingdinner.backend.report.teams.mail.MailFileReportService
+import de.debuglevel.walkingdinner.backend.report.teams.mail.MailService
+import de.debuglevel.walkingdinner.backend.report.teams.summary.SummaryReporter
 import io.micronaut.context.event.ApplicationEventPublisher
 import io.micronaut.runtime.event.annotation.EventListener
 import io.micronaut.scheduling.annotation.Async
