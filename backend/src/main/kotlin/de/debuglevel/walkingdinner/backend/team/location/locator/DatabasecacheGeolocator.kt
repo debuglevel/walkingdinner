@@ -45,13 +45,13 @@ class DatabasecacheGeolocator(
     }
 
     override fun initializeTeamLocation(team: Team) {
-        logger.debug("Geo-locating $team (city '${team.city}', address '${team.address}') by caching database...")
+        logger.debug("Geo-locating $team (city '${team.city}', address '${team.address}')...")
         val location = getLocation(team.address, team.city)
         team.location = location
 
         val cityLocation = getLocation(null, team.city)
 
         val centerDistance = GeoUtils.calculateDistanceInKilometer(cityLocation, location)
-        logger.debug("Geo-located $team ${DecimalFormat("#.##").format(centerDistance)}km from town center by caching database")
+        logger.debug("Geo-located $team ${DecimalFormat("#.##").format(centerDistance)}km from city center")
     }
 }

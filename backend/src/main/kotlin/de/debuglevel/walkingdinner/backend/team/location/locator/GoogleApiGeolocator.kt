@@ -48,13 +48,13 @@ class GoogleApiGeolocator(private val city: String) : Geolocator {
     }
 
     override fun initializeTeamLocation(team: Team) {
-        logger.debug("Geo-locating $team by Google API...")
+        logger.debug("Geo-locating $team...")
 
         val location = getLocation(team.address, team.city)
         team.location = location
 
         val distanceToCity = GeoUtils.calculateDistanceInKilometer(cityLocation, location)
 
-        logger.debug("Geo-located $team ${DecimalFormat("#.##").format(distanceToCity)}km from center by Google API")
+        logger.debug("Geo-located $team ${DecimalFormat("#.##").format(distanceToCity)}km from city center")
     }
 }

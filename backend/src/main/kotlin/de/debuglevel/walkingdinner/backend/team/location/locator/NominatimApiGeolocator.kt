@@ -42,7 +42,7 @@ class NominatimApiGeolocator : Geolocator {
     }
 
     override fun initializeTeamLocation(team: Team) {
-        logger.debug("Geo-locating team '$team' by Nominatim API...")
+        logger.debug("Geo-locating team '$team'...")
 
         val location = getLocation(team.address, team.city)
         team.location = location
@@ -51,7 +51,7 @@ class NominatimApiGeolocator : Geolocator {
 
         val distanceToCity = GeoUtils.calculateDistanceInKilometer(cityLocation, location)
 
-        logger.debug("Geo-located team '$team' ${DecimalFormat("#.##").format(distanceToCity)}km from center by Nominatim API")
+        logger.debug("Geo-located team '$team' ${DecimalFormat("#.##").format(distanceToCity)}km from city center")
     }
 
     private fun buildNominatimClient(): JsonNominatimClient {
@@ -95,5 +95,5 @@ class NominatimApiGeolocator : Geolocator {
     }
 
     class NoAddressesFoundException(address: String) :
-        Exception("No Nominatim API results found for address '$address'")
+        Exception("Noresults found for address '$address'")
 }
