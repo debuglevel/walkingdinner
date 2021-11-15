@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.backend.common.geo
 
-import de.debuglevel.walkingdinner.backend.team.location.Location
+import de.debuglevel.walkingdinner.backend.location.Location
 import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.sin

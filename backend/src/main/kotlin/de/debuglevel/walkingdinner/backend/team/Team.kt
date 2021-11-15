@@ -1,7 +1,7 @@
 package de.debuglevel.walkingdinner.backend.team
 
 import de.debuglevel.walkingdinner.backend.dinner.Dinner
-import de.debuglevel.walkingdinner.backend.team.location.Location
+import de.debuglevel.walkingdinner.backend.location.Location
 import org.hibernate.annotations.GenericGenerator
 import java.util.*
 import javax.persistence.*

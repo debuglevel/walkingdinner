@@ -1,9 +1,9 @@
-package de.debuglevel.walkingdinner.backend.team.location.locator
+package de.debuglevel.walkingdinner.backend.location.locator
 
 import de.debuglevel.walkingdinner.backend.common.geo.GeoUtils
+import de.debuglevel.walkingdinner.backend.location.Location
+import de.debuglevel.walkingdinner.backend.location.LocationService
 import de.debuglevel.walkingdinner.backend.team.Team
-import de.debuglevel.walkingdinner.backend.team.location.Location
-import de.debuglevel.walkingdinner.backend.team.location.LocationService
 import jakarta.inject.Singleton
 import mu.KotlinLogging
 import java.text.DecimalFormat

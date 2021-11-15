@@ -1,4 +1,4 @@
-package de.debuglevel.walkingdinner.backend.team.location
+package de.debuglevel.walkingdinner.backend.location
 
 import io.micronaut.data.annotation.Repository
 import io.micronaut.data.repository.CrudRepository

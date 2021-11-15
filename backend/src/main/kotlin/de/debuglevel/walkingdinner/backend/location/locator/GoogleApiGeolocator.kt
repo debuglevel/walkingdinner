@@ -1,10 +1,10 @@
-package de.debuglevel.walkingdinner.backend.team.location.locator
+package de.debuglevel.walkingdinner.backend.location.locator
 
 import com.google.maps.GeoApiContext
 import com.google.maps.GeocodingApi
 import de.debuglevel.walkingdinner.backend.common.geo.GeoUtils
+import de.debuglevel.walkingdinner.backend.location.Location
 import de.debuglevel.walkingdinner.backend.team.Team
-import de.debuglevel.walkingdinner.backend.team.location.Location
 import jakarta.inject.Singleton
 import mu.KotlinLogging
 import java.text.DecimalFormat

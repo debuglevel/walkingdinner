@@ -4,6 +4,7 @@ import com.opencsv.bean.CsvBindByName
 import com.opencsv.bean.CsvCustomBindByName
 import de.debuglevel.walkingdinner.backend.common.MailAddress
 import de.debuglevel.walkingdinner.backend.common.PhoneNumber
+import de.debuglevel.walkingdinner.backend.location.Location
 import de.debuglevel.walkingdinner.backend.team.CookingCapability
 import de.debuglevel.walkingdinner.backend.team.Diet
 import de.debuglevel.walkingdinner.backend.team.Name
@@ -12,7 +13,6 @@ import de.debuglevel.walkingdinner.backend.team.importer.csv.converter.Capabilit
 import de.debuglevel.walkingdinner.backend.team.importer.csv.converter.MailAddressConverter
 import de.debuglevel.walkingdinner.backend.team.importer.csv.converter.NameConverter
 import de.debuglevel.walkingdinner.backend.team.importer.csv.converter.PhoneNumberConverter
-import de.debuglevel.walkingdinner.backend.team.location.Location
 
 class TeamDTO {
     @CsvCustomBindByName(column = "Koch1", converter = NameConverter::class)

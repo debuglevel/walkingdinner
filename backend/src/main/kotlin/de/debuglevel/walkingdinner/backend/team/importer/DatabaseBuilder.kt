@@ -1,8 +1,8 @@
 package de.debuglevel.walkingdinner.backend.team.importer
 
+import de.debuglevel.walkingdinner.backend.location.locator.DatabasecacheGeolocator
 import de.debuglevel.walkingdinner.backend.team.Team
 import de.debuglevel.walkingdinner.backend.team.importer.csv.CsvTeamImporter
-import de.debuglevel.walkingdinner.backend.team.location.locator.DatabasecacheGeolocator
 import jakarta.inject.Singleton
 import mu.KotlinLogging
 

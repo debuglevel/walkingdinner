@@ -1,6 +1,6 @@
-package de.debuglevel.walkingdinner.backend.team.location.locator
+package de.debuglevel.walkingdinner.backend.location.locator
 
-import de.debuglevel.walkingdinner.backend.team.location.Location
+import de.debuglevel.walkingdinner.backend.location.Location
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import jakarta.inject.Inject
 import org.assertj.core.api.Assertions.assertThat

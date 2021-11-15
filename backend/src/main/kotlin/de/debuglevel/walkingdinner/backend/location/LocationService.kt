@@ -1,4 +1,4 @@
-package de.debuglevel.walkingdinner.backend.team.location
+package de.debuglevel.walkingdinner.backend.location
 
 import jakarta.inject.Singleton
 import mu.KotlinLogging
