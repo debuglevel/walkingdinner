@@ -65,4 +65,26 @@ data class Calculation(
     override fun toString(): String {
         return "Calculation(id=$id)"
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Calculation
+
+        if (populationsSize != other.populationsSize) return false
+        if (fitnessThreshold != other.fitnessThreshold) return false
+        if (steadyFitness != other.steadyFitness) return false
+        if (coursesNames != other.coursesNames) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = populationsSize
+        result = 31 * result + fitnessThreshold.hashCode()
+        result = 31 * result + steadyFitness
+        result = 31 * result + coursesNames.hashCode()
+        return result
+    }
 }

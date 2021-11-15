@@ -33,4 +33,22 @@ data class Meeting(
                 "course='$course', " +
                 ")"
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Meeting
+
+        if (teams != other.teams) return false
+        if (course != other.course) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = teams.hashCode()
+        result = 31 * result + course.hashCode()
+        return result
+    }
 }
