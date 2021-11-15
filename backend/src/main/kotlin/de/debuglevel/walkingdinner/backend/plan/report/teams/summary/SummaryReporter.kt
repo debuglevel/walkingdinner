@@ -1,8 +1,8 @@
 package de.debuglevel.walkingdinner.backend.plan.report.teams.summary
 
 import de.debuglevel.walkingdinner.backend.Meeting
-import de.debuglevel.walkingdinner.backend.participant.Team
 import de.debuglevel.walkingdinner.backend.plan.report.Reporter
+import de.debuglevel.walkingdinner.backend.team.Team
 import jakarta.inject.Singleton
 import mu.KotlinLogging
 

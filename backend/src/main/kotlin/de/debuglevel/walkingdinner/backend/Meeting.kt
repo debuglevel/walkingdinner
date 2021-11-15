@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.backend
 
-import de.debuglevel.walkingdinner.backend.participant.Team
+import de.debuglevel.walkingdinner.backend.team.Team
 import org.hibernate.annotations.GenericGenerator
 import java.util.*
 import javax.persistence.*

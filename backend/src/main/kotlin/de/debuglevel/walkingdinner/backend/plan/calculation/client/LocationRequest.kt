@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.backend.plan.calculation.client
 
-import de.debuglevel.walkingdinner.backend.participant.location.Location
+import de.debuglevel.walkingdinner.backend.team.location.Location
 
 class LocationRequest(
     val lng: Double,

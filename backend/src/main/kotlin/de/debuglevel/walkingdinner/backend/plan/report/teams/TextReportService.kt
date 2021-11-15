@@ -1,10 +1,10 @@
 package de.debuglevel.walkingdinner.backend.plan.report.teams
 
 import de.debuglevel.walkingdinner.backend.Meeting
-import de.debuglevel.walkingdinner.backend.participant.Diet
-import de.debuglevel.walkingdinner.backend.participant.Team
 import de.debuglevel.walkingdinner.backend.plan.Courses
 import de.debuglevel.walkingdinner.backend.plan.report.Reporter
+import de.debuglevel.walkingdinner.backend.team.Diet
+import de.debuglevel.walkingdinner.backend.team.Team
 import jakarta.inject.Singleton
 import mu.KotlinLogging
 import org.jtwig.JtwigModel

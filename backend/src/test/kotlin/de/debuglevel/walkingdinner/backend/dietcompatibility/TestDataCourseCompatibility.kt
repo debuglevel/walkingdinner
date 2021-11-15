@@ -3,7 +3,10 @@ package de.debuglevel.walkingdinner.backend.dietcompatibility
 import de.debuglevel.walkingdinner.backend.MailAddress
 import de.debuglevel.walkingdinner.backend.Meeting
 import de.debuglevel.walkingdinner.backend.PhoneNumber
-import de.debuglevel.walkingdinner.backend.participant.*
+import de.debuglevel.walkingdinner.backend.team.CookingCapability
+import de.debuglevel.walkingdinner.backend.team.Diet
+import de.debuglevel.walkingdinner.backend.team.Name
+import de.debuglevel.walkingdinner.backend.team.Team
 import java.util.stream.Stream
 
 object TestDataCourseCompatibility {
@@ -13,14 +16,14 @@ object TestDataCourseCompatibility {
                 listOf(
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
@@ -36,14 +39,14 @@ object TestDataCourseCompatibility {
                     ),
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
@@ -59,14 +62,14 @@ object TestDataCourseCompatibility {
                     ),
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
@@ -89,14 +92,14 @@ object TestDataCourseCompatibility {
                 listOf(
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
@@ -112,14 +115,14 @@ object TestDataCourseCompatibility {
                     ),
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
@@ -135,14 +138,14 @@ object TestDataCourseCompatibility {
                     ),
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
@@ -164,14 +167,14 @@ object TestDataCourseCompatibility {
                 listOf(
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
@@ -187,14 +190,14 @@ object TestDataCourseCompatibility {
                     ),
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
@@ -210,14 +213,14 @@ object TestDataCourseCompatibility {
                     ),
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
@@ -243,14 +246,14 @@ object TestDataCourseCompatibility {
                 listOf(
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
@@ -266,14 +269,14 @@ object TestDataCourseCompatibility {
                     ),
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
@@ -289,14 +292,14 @@ object TestDataCourseCompatibility {
                     ),
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
@@ -319,14 +322,14 @@ object TestDataCourseCompatibility {
                 listOf(
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
@@ -342,14 +345,14 @@ object TestDataCourseCompatibility {
                     ),
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
@@ -365,14 +368,14 @@ object TestDataCourseCompatibility {
                     ),
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
@@ -394,14 +397,14 @@ object TestDataCourseCompatibility {
                 listOf(
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
@@ -417,14 +420,14 @@ object TestDataCourseCompatibility {
                     ),
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
@@ -440,14 +443,14 @@ object TestDataCourseCompatibility {
                     ),
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook"
                             ),

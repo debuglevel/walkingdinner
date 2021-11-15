@@ -3,7 +3,10 @@ package de.debuglevel.walkingdinner.backend.plan.report.teams.summary
 import de.debuglevel.walkingdinner.backend.MailAddress
 import de.debuglevel.walkingdinner.backend.Meeting
 import de.debuglevel.walkingdinner.backend.PhoneNumber
-import de.debuglevel.walkingdinner.backend.participant.*
+import de.debuglevel.walkingdinner.backend.team.CookingCapability
+import de.debuglevel.walkingdinner.backend.team.Diet
+import de.debuglevel.walkingdinner.backend.team.Name
+import de.debuglevel.walkingdinner.backend.team.Team
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import jakarta.inject.Inject
 import org.assertj.core.api.Assertions
@@ -21,14 +24,14 @@ class SummaryReporterTests {
         get() {
             val cookingTeam = Team(
                 null,
-                Cook(
+                de.debuglevel.walkingdinner.backend.team.Cook(
                     name = Name(
                         name = "cook1"
                     ),
                     mailAddress = MailAddress(value = "mail"),
                     phoneNumber = PhoneNumber(number = "123")
                 ),
-                Cook(
+                de.debuglevel.walkingdinner.backend.team.Cook(
                     name = Name(
                         name = "cook2"
                     ),
@@ -47,14 +50,14 @@ class SummaryReporterTests {
                     cookingTeam,
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook3"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook4"
                             ),
@@ -70,14 +73,14 @@ class SummaryReporterTests {
                     ),
                     Team(
                         null,
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook5"
                             ),
                             mailAddress = MailAddress(value = "mail"),
                             phoneNumber = PhoneNumber(number = "123")
                         ),
-                        Cook(
+                        de.debuglevel.walkingdinner.backend.team.Cook(
                             name = Name(
                                 name = "cook6"
                             ),

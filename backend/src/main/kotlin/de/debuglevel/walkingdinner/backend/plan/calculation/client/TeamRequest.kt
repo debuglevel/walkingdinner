@@ -1,8 +1,8 @@
 package de.debuglevel.walkingdinner.backend.plan.calculation.client
 
-import de.debuglevel.walkingdinner.backend.participant.CookingCapability
-import de.debuglevel.walkingdinner.backend.participant.Diet
-import de.debuglevel.walkingdinner.backend.participant.Team
+import de.debuglevel.walkingdinner.backend.team.CookingCapability
+import de.debuglevel.walkingdinner.backend.team.Diet
+import de.debuglevel.walkingdinner.backend.team.Team
 import java.util.*
 
 data class TeamRequest(

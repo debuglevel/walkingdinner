@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.backend.plan.report.teams
 
-import de.debuglevel.walkingdinner.backend.participant.Team
+import de.debuglevel.walkingdinner.backend.team.Team
 
 /**
  * Report for a [team] containing information in the [plaintext].

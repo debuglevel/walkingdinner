@@ -2,9 +2,9 @@ package de.debuglevel.walkingdinner.backend.plan.report.teams.mail
 
 
 import de.debuglevel.walkingdinner.backend.Meeting
-import de.debuglevel.walkingdinner.backend.participant.Team
 import de.debuglevel.walkingdinner.backend.plan.report.Reporter
 import de.debuglevel.walkingdinner.backend.plan.report.teams.TextReportService
+import de.debuglevel.walkingdinner.backend.team.Team
 import io.micronaut.context.annotation.Property
 import jakarta.inject.Singleton
 import mu.KotlinLogging

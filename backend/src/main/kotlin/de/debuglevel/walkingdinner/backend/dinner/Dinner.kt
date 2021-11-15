@@ -1,8 +1,8 @@
 package de.debuglevel.walkingdinner.backend.dinner
 
 import de.debuglevel.walkingdinner.backend.organisation.Organisation
-import de.debuglevel.walkingdinner.backend.participant.Team
 import de.debuglevel.walkingdinner.backend.plan.calculation.Calculation
+import de.debuglevel.walkingdinner.backend.team.Team
 import org.hibernate.annotations.GenericGenerator
 import java.time.LocalDateTime
 import java.util.*

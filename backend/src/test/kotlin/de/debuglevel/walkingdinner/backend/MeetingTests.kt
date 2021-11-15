@@ -1,6 +1,9 @@
 package de.debuglevel.walkingdinner.backend
 
-import de.debuglevel.walkingdinner.backend.participant.*
+import de.debuglevel.walkingdinner.backend.team.CookingCapability
+import de.debuglevel.walkingdinner.backend.team.Diet
+import de.debuglevel.walkingdinner.backend.team.Name
+import de.debuglevel.walkingdinner.backend.team.Team
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.TestInstance
 
@@ -10,14 +13,14 @@ class MeetingTests {
         // Arrange
         val cookingTeam = Team(
             null,
-            Cook(
+            de.debuglevel.walkingdinner.backend.team.Cook(
                 name = Name(
                     name = "cook"
                 ),
                 mailAddress = MailAddress(value = "mail"),
                 phoneNumber = PhoneNumber(number = "123")
             ),
-            Cook(
+            de.debuglevel.walkingdinner.backend.team.Cook(
                 name = Name(
                     name = "cook"
                 ),
@@ -36,14 +39,14 @@ class MeetingTests {
                 cookingTeam,
                 Team(
                     null,
-                    Cook(
+                    de.debuglevel.walkingdinner.backend.team.Cook(
                         name = Name(
                             name = "cook"
                         ),
                         mailAddress = MailAddress(value = "mail"),
                         phoneNumber = PhoneNumber(number = "123")
                     ),
-                    Cook(
+                    de.debuglevel.walkingdinner.backend.team.Cook(
                         name = Name(
                             name = "cook"
                         ),
@@ -59,14 +62,14 @@ class MeetingTests {
                 ),
                 Team(
                     null,
-                    Cook(
+                    de.debuglevel.walkingdinner.backend.team.Cook(
                         name = Name(
                             name = "cook"
                         ),
                         mailAddress = MailAddress(value = "mail"),
                         phoneNumber = PhoneNumber(number = "123")
                     ),
-                    Cook(
+                    de.debuglevel.walkingdinner.backend.team.Cook(
                         name = Name(
                             name = "cook"
                         ),

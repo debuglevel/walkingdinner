@@ -1,14 +1,14 @@
 package de.debuglevel.walkingdinner.backend.plan.calculation
 
-import de.debuglevel.walkingdinner.backend.participant.Team
-import de.debuglevel.walkingdinner.backend.participant.TeamService
-import de.debuglevel.walkingdinner.backend.participant.importer.DatabaseBuilder
 import de.debuglevel.walkingdinner.backend.plan.Plan
 import de.debuglevel.walkingdinner.backend.plan.PlanService
 import de.debuglevel.walkingdinner.backend.plan.calculation.client.CalculationClient
 import de.debuglevel.walkingdinner.backend.plan.calculation.client.CalculationRequest
 import de.debuglevel.walkingdinner.backend.plan.calculation.client.TeamRequest
 import de.debuglevel.walkingdinner.backend.plan.client.PlanClient
+import de.debuglevel.walkingdinner.backend.team.Team
+import de.debuglevel.walkingdinner.backend.team.TeamService
+import de.debuglevel.walkingdinner.backend.team.importer.DatabaseBuilder
 import io.micronaut.http.client.exceptions.HttpClientResponseException
 import jakarta.inject.Singleton
 import mu.KotlinLogging
