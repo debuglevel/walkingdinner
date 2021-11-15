@@ -52,7 +52,7 @@ open class TextReportService : Reporter {
         val teamMeetings = meetings
             .filter { it.teams.contains(team) }
             .sortedBy {
-                when (it.course) {
+                when (it.courseName) {
                     Courses.course1name -> 1
                     Courses.course2name -> 2
                     Courses.course3name -> 3

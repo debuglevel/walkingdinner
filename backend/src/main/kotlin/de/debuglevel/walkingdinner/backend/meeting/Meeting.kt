@@ -10,7 +10,7 @@ data class Meeting(
     @ManyToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
     val teams: List<Team>,
 
-    val course: String,
+    val courseName: String,
 
     @Id
     @GeneratedValue(generator = "uuid2")
@@ -30,7 +30,7 @@ data class Meeting(
     override fun toString(): String {
         return "Meeting(" +
                 "id=$id" +
-                "course='$course', " +
+                "courseName='$courseName', " +
                 ")"
     }
 
@@ -41,14 +41,14 @@ data class Meeting(
         other as Meeting
 
         if (teams != other.teams) return false
-        if (course != other.course) return false
+        if (courseName != other.courseName) return false
 
         return true
     }
 
     override fun hashCode(): Int {
         var result = teams.hashCode()
-        result = 31 * result + course.hashCode()
+        result = 31 * result + courseName.hashCode()
         return result
     }
 }

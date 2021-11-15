@@ -16,7 +16,7 @@ class SummaryReporter : Reporter {
     override fun generateReports(meetings: Set<Meeting>): String {
         logger.trace { "Generating summary report..." }
         val summary = meetings
-            .groupBy { it.course }
+            .groupBy { it.courseName }
             .map { (course, meetings_) ->
                 var text = "== Course $course\n"
                 text += meetings_.map { meetingToString(it) }.joinToString("\n")

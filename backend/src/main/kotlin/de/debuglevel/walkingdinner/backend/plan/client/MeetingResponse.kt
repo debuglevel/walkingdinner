@@ -16,7 +16,7 @@ data class MeetingResponse(
                     fullTeam.id == team.id
                 }
             },
-            course = this.course,
+            courseName = this.course,
             id = null
         )
     }
