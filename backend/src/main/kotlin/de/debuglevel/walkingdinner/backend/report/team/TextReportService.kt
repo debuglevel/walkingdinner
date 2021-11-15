@@ -1,4 +1,4 @@
-package de.debuglevel.walkingdinner.backend.report.teams
+package de.debuglevel.walkingdinner.backend.report.team
 
 import de.debuglevel.walkingdinner.backend.meeting.Meeting
 import de.debuglevel.walkingdinner.backend.plan.Courses

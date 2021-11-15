@@ -1,9 +1,9 @@
-package de.debuglevel.walkingdinner.backend.report.teams.mail
+package de.debuglevel.walkingdinner.backend.report.team.mail
 
 
 import de.debuglevel.walkingdinner.backend.meeting.Meeting
 import de.debuglevel.walkingdinner.backend.report.Reporter
-import de.debuglevel.walkingdinner.backend.report.teams.TextReportService
+import de.debuglevel.walkingdinner.backend.report.team.TextReportService
 import de.debuglevel.walkingdinner.backend.team.Team
 import io.micronaut.context.annotation.Property
 import jakarta.inject.Singleton

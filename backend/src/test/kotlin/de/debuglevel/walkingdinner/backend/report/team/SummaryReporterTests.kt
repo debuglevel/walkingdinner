@@ -1,9 +1,9 @@
-package de.debuglevel.walkingdinner.backend.summary
+package de.debuglevel.walkingdinner.backend.report.team
 
 import de.debuglevel.walkingdinner.backend.common.MailAddress
 import de.debuglevel.walkingdinner.backend.common.PhoneNumber
 import de.debuglevel.walkingdinner.backend.meeting.Meeting
-import de.debuglevel.walkingdinner.backend.report.teams.summary.SummaryReporter
+import de.debuglevel.walkingdinner.backend.report.team.summary.SummaryReporter
 import de.debuglevel.walkingdinner.backend.team.*
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import jakarta.inject.Inject

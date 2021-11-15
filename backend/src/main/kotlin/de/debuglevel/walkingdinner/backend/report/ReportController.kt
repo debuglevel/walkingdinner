@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.backend.report
 
-import de.debuglevel.walkingdinner.backend.report.teams.gmail.GmailDraftsReport
+import de.debuglevel.walkingdinner.backend.report.team.gmail.GmailDraftsReport
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get

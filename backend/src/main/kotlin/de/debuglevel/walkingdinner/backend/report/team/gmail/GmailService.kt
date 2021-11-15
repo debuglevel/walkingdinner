@@ -1,4 +1,4 @@
-package de.debuglevel.walkingdinner.backend.report.teams.gmail
+package de.debuglevel.walkingdinner.backend.report.team.gmail
 
 import com.google.api.client.auth.oauth2.Credential
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp
@@ -14,7 +14,7 @@ import com.google.api.services.gmail.Gmail
 import com.google.api.services.gmail.GmailScopes
 import com.google.api.services.gmail.model.Draft
 import com.google.api.services.gmail.model.Message
-import de.debuglevel.walkingdinner.backend.report.teams.mail.MailService
+import de.debuglevel.walkingdinner.backend.report.team.mail.MailService
 import io.micronaut.context.annotation.Property
 import jakarta.inject.Singleton
 import mu.KotlinLogging

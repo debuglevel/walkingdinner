@@ -1,4 +1,4 @@
-package de.debuglevel.walkingdinner.backend.report.teams.gmail
+package de.debuglevel.walkingdinner.backend.report.team.gmail
 
 import com.google.api.services.gmail.model.Draft
 import de.debuglevel.walkingdinner.backend.plan.Plan
