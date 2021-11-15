@@ -32,7 +32,7 @@ open class TeamService(
     open fun getAll(): Set<Team> {
         logger.debug { "Getting all teams..." }
         val teams = teamRepository.findAll().toSet()
-        logger.debug { "Got all teams" }
+        logger.debug { "Got ${teams.count()} teams" }
         return teams
     }
 

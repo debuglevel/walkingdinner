@@ -25,7 +25,7 @@ class PlanService {
         val plans = plans
             .map { get(it.key) }
             .toSet()
-        logger.debug { "Got all plans" }
+        logger.debug { "Got ${plans.count()} plans" }
         return plans
     }
 

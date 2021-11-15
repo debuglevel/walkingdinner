@@ -22,7 +22,7 @@ open class LocationService(
     open fun getAll(): Set<Location> {
         logger.debug { "Getting all locations..." }
         val locations = locationRepository.findAll().toSet()
-        logger.debug { "Got all locations" }
+        logger.debug { "Got ${locations.count()} locations" }
         return locations
     }
 

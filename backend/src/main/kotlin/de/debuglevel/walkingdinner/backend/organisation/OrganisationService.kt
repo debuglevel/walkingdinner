@@ -20,7 +20,7 @@ class OrganisationService(
     fun getAll(): Set<Organisation> {
         logger.debug { "Getting all organisations..." }
         val organisations = organisationRepository.findAll().toSet()
-        logger.debug { "Got all organisations" }
+        logger.debug { "Got ${organisations.count()} organisations" }
         return organisations
     }
 
