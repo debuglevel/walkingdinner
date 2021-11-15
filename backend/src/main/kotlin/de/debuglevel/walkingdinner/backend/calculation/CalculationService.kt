@@ -3,6 +3,7 @@ package de.debuglevel.walkingdinner.backend.calculation
 import de.debuglevel.walkingdinner.backend.calculation.client.CalculationClient
 import de.debuglevel.walkingdinner.backend.calculation.client.CalculationRequest
 import de.debuglevel.walkingdinner.backend.calculation.client.TeamRequest
+import de.debuglevel.walkingdinner.backend.course.Courses
 import de.debuglevel.walkingdinner.backend.plan.Plan
 import de.debuglevel.walkingdinner.backend.plan.PlanService
 import de.debuglevel.walkingdinner.backend.plan.client.PlanClient
@@ -114,8 +115,8 @@ open class CalculationService(
         fitnessThreshold: Double,
         steadyFitness: Int
     ): Calculation {
-        // TODO: hardcode coursesNames for now
-        val coursesNames = listOf("Vorspeise", "Hauptspeise", "Dessert")
+        // TODO: uses hardcoded coursesNames for now; should be more flexible
+        val coursesNames = Courses.coursesNames
         val calculation = Calculation(
             null,
             false,
