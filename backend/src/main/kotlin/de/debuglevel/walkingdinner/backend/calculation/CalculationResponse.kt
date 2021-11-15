@@ -1,4 +1,4 @@
-package de.debuglevel.walkingdinner.backend.plan.calculation.client
+package de.debuglevel.walkingdinner.backend.calculation
 
 import java.time.LocalDateTime
 import java.util.*
@@ -25,10 +25,6 @@ data class CalculationResponse(
      */
     val steadyFitness: Int,
     /**
-     * Teams to calculate into the plan
-     */
-    val teams: List<TeamResponse>,
-    /**
      * UUID of the plan, once it is calculated
      */
     val planId: UUID?,
@@ -40,16 +36,20 @@ data class CalculationResponse(
      * When the calculation finished
      */
     var end: LocalDateTime? = null
-)
+) {
+    constructor(calculation: Calculation) :
+            this(
+                calculation.id!!,
+                calculation.finished,
+                calculation.populationsSize,
+                calculation.fitnessThreshold,
+                calculation.steadyFitness,
+                calculation.plan?.id,
+                calculation.begin,
+                calculation.end
+            )
 
-//fun Calculation.toCalculationResponse(): CalculationResponse {
-//    return CalculationResponse(
-//        id = this.id!!,
-//        finished = this.finished,
-//        fitnessThreshold = this.fitnessThreshold,
-//        populationsSize = this.populationsSize,
-//        steadyFitness = this.steadyFitness,
-//        teams = this.teams.map { it.toTeamResponse() },
-//        planId = this.plan?.id
-//    )
-//}
+    override fun toString(): String {
+        return "CalculationResponse(id=$id, planId=$planId)"
+    }
+}

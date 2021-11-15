@@ -1,10 +1,10 @@
-package de.debuglevel.walkingdinner.backend.plan.calculation
+package de.debuglevel.walkingdinner.backend.calculation
 
+import de.debuglevel.walkingdinner.backend.calculation.client.CalculationClient
+import de.debuglevel.walkingdinner.backend.calculation.client.CalculationRequest
+import de.debuglevel.walkingdinner.backend.calculation.client.TeamRequest
 import de.debuglevel.walkingdinner.backend.plan.Plan
 import de.debuglevel.walkingdinner.backend.plan.PlanService
-import de.debuglevel.walkingdinner.backend.plan.calculation.client.CalculationClient
-import de.debuglevel.walkingdinner.backend.plan.calculation.client.CalculationRequest
-import de.debuglevel.walkingdinner.backend.plan.calculation.client.TeamRequest
 import de.debuglevel.walkingdinner.backend.plan.client.PlanClient
 import de.debuglevel.walkingdinner.backend.team.Team
 import de.debuglevel.walkingdinner.backend.team.TeamService

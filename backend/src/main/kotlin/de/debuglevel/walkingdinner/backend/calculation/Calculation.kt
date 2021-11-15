@@ -1,4 +1,4 @@
-package de.debuglevel.walkingdinner.backend.plan.calculation
+package de.debuglevel.walkingdinner.backend.calculation
 
 import de.debuglevel.walkingdinner.backend.plan.Plan
 import de.debuglevel.walkingdinner.backend.team.Team

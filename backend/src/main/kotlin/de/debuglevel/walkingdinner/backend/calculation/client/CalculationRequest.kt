@@ -1,6 +1,6 @@
-package de.debuglevel.walkingdinner.backend.plan.calculation.client
+package de.debuglevel.walkingdinner.backend.calculation.client
 
-import de.debuglevel.walkingdinner.backend.plan.calculation.Calculation
+import de.debuglevel.walkingdinner.backend.calculation.Calculation
 
 data class CalculationRequest(
     /**

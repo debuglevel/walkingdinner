@@ -1,4 +1,4 @@
-package de.debuglevel.walkingdinner.backend.plan.calculation.client
+package de.debuglevel.walkingdinner.backend.calculation.client
 
 import java.util.*
 
