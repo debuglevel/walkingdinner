@@ -1,7 +1,6 @@
 package de.debuglevel.walkingdinner.backend.team
 
 import de.debuglevel.walkingdinner.backend.common.MailAddress
-import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertDoesNotThrow
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.params.ParameterizedTest
@@ -10,18 +9,6 @@ import java.util.stream.Stream
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class MailAddressTests {
-
-    @ParameterizedTest
-    @MethodSource("validMailProvider")
-    fun `toString() equals mail`(testData: MailData) {
-        // Arrange
-
-        // Act
-        val mail = MailAddress(value = testData.mail)
-
-        // Assert
-        assertThat(mail.toString()).isEqualTo(testData.mail)
-    }
 
     @ParameterizedTest
     @MethodSource("validMailProvider")
