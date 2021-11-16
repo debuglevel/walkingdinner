@@ -4,7 +4,7 @@ import com.opencsv.bean.AbstractBeanField
 import com.opencsv.exceptions.CsvDataTypeMismatchException
 import de.debuglevel.walkingdinner.backend.common.MailAddress
 
-class MailAddressConverter<T> : AbstractBeanField<T>() {
+class MailAddressConverter<T, I> : AbstractBeanField<T, I>() {
     @Throws(CsvDataTypeMismatchException::class)
     override fun convert(value: String): Any? {
         return MailAddress(value = value)

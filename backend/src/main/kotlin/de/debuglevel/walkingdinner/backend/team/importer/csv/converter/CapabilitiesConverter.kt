@@ -5,7 +5,7 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException
 import de.debuglevel.walkingdinner.backend.team.CookingCapability
 import mu.KotlinLogging
 
-class CapabilitiesConverter<T> : AbstractBeanField<T>() {
+class CapabilitiesConverter<T, I> : AbstractBeanField<T, I>() {
     private val logger = KotlinLogging.logger {}
 
     @Throws(CsvDataTypeMismatchException::class)
