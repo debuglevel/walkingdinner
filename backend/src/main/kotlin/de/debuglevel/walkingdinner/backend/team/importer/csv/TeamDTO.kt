@@ -35,7 +35,7 @@ class TeamDTO {
     @CsvCustomBindByName(column = "Diet", converter = DietConverter::class)
     lateinit var diet: Diet
 
-    @CsvCustomBindByName(column = "Capabilities", converter = CapabilitiesConverter::class)
+    @CsvCustomBindByName(column = "Capabilities", converter = CookingCapabilitiesConverter::class)
     val cookingCapabilities: List<CookingCapability?> = listOf()
 
     fun toTeam(): Team {
