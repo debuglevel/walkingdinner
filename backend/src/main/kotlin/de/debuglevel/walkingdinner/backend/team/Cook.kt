@@ -15,7 +15,7 @@ data class Cook(
     val id: UUID? = null,
 
     @OneToOne(cascade = [CascadeType.ALL])
-    val name: de.debuglevel.walkingdinner.backend.team.Name,
+    val name: Name,
 
     @OneToOne(cascade = [CascadeType.ALL])
     val mailAddress: MailAddress,
@@ -32,7 +32,7 @@ data class Cook(
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as de.debuglevel.walkingdinner.backend.team.Cook
+        other as Cook
 
         if (mailAddress != other.mailAddress) return false
 

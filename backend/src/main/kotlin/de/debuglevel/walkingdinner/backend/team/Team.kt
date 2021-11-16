@@ -15,10 +15,10 @@ data class Team(
     val id: UUID? = null,
 
     @OneToOne(cascade = [CascadeType.ALL])
-    val cook1: de.debuglevel.walkingdinner.backend.team.Cook,
+    val cook1: Cook,
 
     @OneToOne(cascade = [CascadeType.ALL])
-    val cook2: de.debuglevel.walkingdinner.backend.team.Cook,
+    val cook2: Cook,
 
     val address: String,
 
