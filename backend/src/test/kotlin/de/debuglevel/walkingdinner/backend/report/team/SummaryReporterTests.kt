@@ -26,21 +26,21 @@ class SummaryReporterTests {
                     name = Name(
                         name = "cook1"
                     ),
-                    mailAddress = MailAddress(value = "mail"),
-                    phoneNumber = PhoneNumber(number = "123")
+                    mailAddress = MailAddress(value = "mail1"),
+                    phoneNumber = PhoneNumber(number = "phone1")
                 ),
                 de.debuglevel.walkingdinner.backend.team.Cook(
                     name = Name(
                         name = "cook2"
                     ),
-                    mailAddress = MailAddress(value = "mail"),
-                    phoneNumber = PhoneNumber(number = "123")
+                    mailAddress = MailAddress(value = "mail2"),
+                    phoneNumber = PhoneNumber(number = "phone2")
                 ),
-                "address",
+                "address1",
                 Diet.Omnivore,
                 listOf(CookingCapability.OmnivoreAppetizer),
                 null,
-                "city",
+                "city1",
                 null
             )
             val meeting = Meeting(
@@ -52,21 +52,21 @@ class SummaryReporterTests {
                             name = Name(
                                 name = "cook3"
                             ),
-                            mailAddress = MailAddress(value = "mail"),
-                            phoneNumber = PhoneNumber(number = "123")
+                            mailAddress = MailAddress(value = "mail3"),
+                            phoneNumber = PhoneNumber(number = "phone3")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook4"
                             ),
-                            mailAddress = MailAddress(value = "mail"),
-                            phoneNumber = PhoneNumber(number = "123")
+                            mailAddress = MailAddress(value = "mail4"),
+                            phoneNumber = PhoneNumber(number = "phone4")
                         ),
-                        "address",
+                        "address2",
                         Diet.Omnivore,
                         listOf(),
                         null,
-                        "city",
+                        "city2",
                         null
                     ),
                     Team(
@@ -75,21 +75,21 @@ class SummaryReporterTests {
                             name = Name(
                                 name = "cook5"
                             ),
-                            mailAddress = MailAddress(value = "mail"),
-                            phoneNumber = PhoneNumber(number = "123")
+                            mailAddress = MailAddress(value = "mail5"),
+                            phoneNumber = PhoneNumber(number = "phone5")
                         ),
                         Cook(
                             name = Name(
                                 name = "cook6"
                             ),
-                            mailAddress = MailAddress(value = "mail"),
-                            phoneNumber = PhoneNumber(number = "123")
+                            mailAddress = MailAddress(value = "mail6"),
+                            phoneNumber = PhoneNumber(number = "phone6")
                         ),
-                        "address",
+                        "address3",
                         Diet.Omnivore,
                         listOf(),
                         null,
-                        "city",
+                        "city3",
                         null
                     )
                 ),
