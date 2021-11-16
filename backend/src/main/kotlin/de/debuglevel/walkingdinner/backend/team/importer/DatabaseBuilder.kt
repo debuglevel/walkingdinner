@@ -1,13 +1,13 @@
 package de.debuglevel.walkingdinner.backend.team.importer
 
-import de.debuglevel.walkingdinner.backend.location.locator.DatabasecacheGeolocator
+import de.debuglevel.walkingdinner.backend.location.locator.DatabaseCacheGeolocator
 import de.debuglevel.walkingdinner.backend.team.Team
 import de.debuglevel.walkingdinner.backend.team.importer.csv.CsvTeamImporter
 import jakarta.inject.Singleton
 import mu.KotlinLogging
 
 @Singleton
-class DatabaseBuilder(private val databasecacheGeolocator: DatabasecacheGeolocator) {
+class DatabaseBuilder(private val databasecacheGeolocator: DatabaseCacheGeolocator) {
     private val logger = KotlinLogging.logger {}
 
     fun build(csv: String): Database {

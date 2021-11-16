@@ -9,7 +9,7 @@ import mu.KotlinLogging
 import java.text.DecimalFormat
 
 @Singleton
-class DatabasecacheGeolocator(
+class DatabaseCacheGeolocator(
     private val locationService: LocationService,
     private val nominatimApiGeolocator: NominatimApiGeolocator,
 ) : Geolocator {
