@@ -9,12 +9,12 @@ class CapabilitiesConverter<T, I> : AbstractBeanField<T, I>() {
     private val logger = KotlinLogging.logger {}
 
     @Throws(CsvDataTypeMismatchException::class)
-    override fun convert(value: String): Any? {
+    override fun convert(value: String): List<CookingCapability> {
         logger.trace { "Converting capability answers '$value' to capability enums..." }
 
         val answers = value.split(';')
 
-        val capabilities = mapOf<String, CookingCapability>(
+        val capabilities = mapOf(
             "Ich schaffe es, eine vegane Vorspeise zu machen." to CookingCapability.VeganAppetizer,
             "Ich schaffe es, ein veganes Hauptgericht zu machen." to CookingCapability.VeganMaindish,
             "Ich schaffe es, ein veganes Dessert zu machen." to CookingCapability.VeganDessert,
@@ -33,7 +33,7 @@ class CapabilitiesConverter<T, I> : AbstractBeanField<T, I>() {
                     logger.error("Could not map answer '$it' to capability enum.")
                 }
             }
-            .map { capabilities[it] }
+            .map { capabilities.getValue(it) }
 
         logger.trace { "Converted capability answers '$value' to capability enums: ${teamCapabilities.joinToString(",")}" }
 

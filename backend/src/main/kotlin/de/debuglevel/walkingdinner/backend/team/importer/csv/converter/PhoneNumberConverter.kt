@@ -6,7 +6,7 @@ import de.debuglevel.walkingdinner.backend.common.PhoneNumber
 
 class PhoneNumberConverter<T, I> : AbstractBeanField<T, I>() {
     @Throws(CsvDataTypeMismatchException::class)
-    override fun convert(value: String): Any? {
+    override fun convert(value: String): PhoneNumber {
         return PhoneNumber(number = value)
     }
 }
