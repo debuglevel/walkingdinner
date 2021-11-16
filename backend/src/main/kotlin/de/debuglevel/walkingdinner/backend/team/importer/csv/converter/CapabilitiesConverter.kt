@@ -5,14 +5,25 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException
 import de.debuglevel.walkingdinner.backend.team.CookingCapability
 import mu.KotlinLogging
 
+/**
+ * Converts a String to a List of [CookingCapability]s.
+ */
 class CapabilitiesConverter<T, I> : AbstractBeanField<T, I>() {
     private val logger = KotlinLogging.logger {}
 
     @Throws(CsvDataTypeMismatchException::class)
     override fun convert(value: String): List<CookingCapability> {
-        logger.trace { "Converting capability answers '$value' to capability enums..." }
+        return convertValue(value)
+    }
 
-        val answers = value.split(';')
+    /**
+     * Convert a [cookingCapabilitiesList] to [CookingCapability]s
+     * @implNote Separate public function to being able to test it.
+     */
+    fun convertValue(cookingCapabilitiesList: String): List<CookingCapability> {
+        logger.trace { "Converting capability answers '$cookingCapabilitiesList' to capability enums..." }
+
+        val answers = cookingCapabilitiesList.split(';')
 
         val capabilities = mapOf(
             "Ich schaffe es, eine vegane Vorspeise zu machen." to CookingCapability.VeganAppetizer,
@@ -35,7 +46,13 @@ class CapabilitiesConverter<T, I> : AbstractBeanField<T, I>() {
             }
             .map { capabilities.getValue(it) }
 
-        logger.trace { "Converted capability answers '$value' to capability enums: ${teamCapabilities.joinToString(",")}" }
+        logger.trace {
+            "Converted capability answers '$cookingCapabilitiesList' to capability enums: ${
+                teamCapabilities.joinToString(
+                    ","
+                )
+            }"
+        }
 
         return teamCapabilities
     }
