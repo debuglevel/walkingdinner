@@ -7,8 +7,10 @@ import java.util.*
 
 data class TeamRequest(
     val address: String?,
-    val name1: String?,
-    val name2: String?,
+    val firstname1: String?,
+    val firstname2: String?,
+    val lastname1: String?,
+    val lastname2: String?,
     val mail1: String?,
     val mail2: String?,
     val phone1: String?,
@@ -47,7 +49,10 @@ data class TeamRequest(
         return Team(
             null,
             de.debuglevel.walkingdinner.backend.team.Cook(
-                name = Name(name = name1 ?: throw IllegalArgumentException("name1")),
+                name = Name(
+                    firstname = firstname1 ?: throw IllegalArgumentException("firstname1"),
+                    lastname = lastname1 ?: throw IllegalArgumentException("lastname1"),
+                ),
                 mailAddress = MailAddress(
                     value = mail1 ?: throw IllegalArgumentException("mail1")
                 ),
@@ -56,7 +61,10 @@ data class TeamRequest(
                 )
             ),
             de.debuglevel.walkingdinner.backend.team.Cook(
-                name = Name(name = name2 ?: throw IllegalArgumentException("name2")),
+                name = Name(
+                    firstname = firstname2 ?: throw IllegalArgumentException("firstname2"),
+                    lastname = lastname2 ?: throw IllegalArgumentException("lastname2"),
+                ),
                 mailAddress = MailAddress(
                     value = mail2 ?: throw IllegalArgumentException("mail2")
                 ),
