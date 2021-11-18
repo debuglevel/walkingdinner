@@ -9,7 +9,9 @@
       <mat-nav-list>
         <mat-list-item *ngFor="let team of teams">
           <a matLine routerLink="/teams/{{ team.id }}"
-            >{{ team.name1 }} &amp; {{ team.name2 }} ({{ team.address }})</a
+            >{{ team.fullname1 }} &amp; {{ team.fullname2 }} ({{
+              team.address
+            }})</a
           >
           <button
             mat-icon-button
@@ -70,7 +72,10 @@
           <mat-card-title>Koch 1</mat-card-title>
           Bitte tragt hier den Koch ein, bei dem das zuhause stattfindet.
           <mat-form-field class="full-width">
-            <input matInput placeholder="Vor- und Nachname" #teamName1 />
+            <input matInput placeholder="Vorame" #teamFirstname1 />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nachname" #teamLastname1 />
           </mat-form-field>
           <mat-form-field class="full-width">
             <input matInput placeholder="Mail-Adresse" #teamMail1 />
@@ -83,7 +88,10 @@
         <mat-card>
           <mat-card-title>Koch 2</mat-card-title>
           <mat-form-field class="full-width">
-            <input matInput placeholder="Vor- und Nachname" #teamName2 />
+            <input matInput placeholder="Vorame" #teamFirstname2 />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nachname" #teamLastname2 />
           </mat-form-field>
           <mat-form-field class="full-width">
             <input matInput placeholder="Mail-Adresse" #teamMail2 />
@@ -173,8 +181,10 @@
         (click)="
           add(
             teamAddress.value,
-            teamName1.value,
-            teamName2.value,
+            teamFirstname1.value,
+            teamFirstname2.value,
+            teamLastname1.value,
+            teamLastname2.value,
             teamMail1.value,
             teamMail2.value,
             teamPhone1.value,
