@@ -330,7 +330,7 @@ components:
           nullable: true
         finished:
           type: boolean
-        populationsSize:
+        populationSize:
           type: integer
           format: int32
         fitnessThreshold:
@@ -365,7 +365,7 @@ components:
         surveyfile:
           type: string
           nullable: true
-        populationsSize:
+        populationSize:
           type: integer
           format: int32
         fitnessThreshold:
@@ -388,7 +388,7 @@ components:
           format: uuid
         finished:
           type: boolean
-        populationsSize:
+        populationSize:
           type: integer
           format: int32
         fitnessThreshold:

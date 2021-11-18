@@ -15,7 +15,7 @@ data class CalculationResponse(
     /**
      * Size of the population (for calculation with Genetic Algorithm)
      */
-    val populationsSize: Int,
+    val populationSize: Int,
     /**
      * Fitness level to beat (minimization problem, i.e. fitness must be less than this threshold) (for calculation with Genetic Algorithm)
      */
@@ -47,7 +47,7 @@ data class CalculationResponse(
 //        id = this.id!!,
 //        finished = this.finished,
 //        fitnessThreshold = this.fitnessThreshold,
-//        populationsSize = this.populationsSize,
+//        populationSize = this.populationSize,
 //        steadyFitness = this.steadyFitness,
 //        teams = this.teams.map { it.toTeamResponse() },
 //        planId = this.plan?.id

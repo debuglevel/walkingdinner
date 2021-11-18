@@ -99,19 +99,19 @@ open class CalculationService(
     @Transactional
     open fun startCalculation(
         surveyfile: String,
-        populationsSize: Int,
+        populationSize: Int,
         fitnessThreshold: Double,
         steadyFitness: Int
     ): Calculation {
         val database = databaseBuilder.build(surveyfile)
         val savedTeams = database.teams.map { teamService.save(it) }
 
-        return startCalculation(savedTeams, populationsSize, fitnessThreshold, steadyFitness)
+        return startCalculation(savedTeams, populationSize, fitnessThreshold, steadyFitness)
     }
 
     fun startCalculation(
         teams: List<Team>,
-        populationsSize: Int,
+        populationSize: Int,
         fitnessThreshold: Double,
         steadyFitness: Int
     ): Calculation {
@@ -120,7 +120,7 @@ open class CalculationService(
         val calculation = Calculation(
             null,
             false,
-            populationsSize,
+            populationSize,
             fitnessThreshold,
             steadyFitness,
             null,
@@ -134,7 +134,7 @@ open class CalculationService(
         val savedCalculation = calculationRepository.save(calculation)
 
         val calculationRequest = CalculationRequest(
-            populationsSize = savedCalculation.populationsSize,
+            populationSize = savedCalculation.populationSize,
             steadyFitness = savedCalculation.steadyFitness,
             fitnessThreshold = savedCalculation.fitnessThreshold,
             teams = teams.map { TeamRequest(it) },

@@ -55,7 +55,7 @@ export class DinnerDetailComponent implements OnInit {
         .addCalculation({
           finished: false,
           dinnerId,
-          populationsSize: 200,
+          populationSize: 200,
           fitnessThreshold: 0.001,
           steadyFitness: 100,
         } as Calculation)

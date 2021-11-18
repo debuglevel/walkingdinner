@@ -4,7 +4,7 @@ data class AddCalculationRequest(
     /**
      * Size of the population
      */
-    val populationsSize: Int,
+    val populationSize: Int,
     /**
      * Fitness level to beat (minimization problem, i.e. fitness must be less than this threshold)
      */
@@ -27,7 +27,7 @@ data class AddCalculationRequest(
             id = null,
             teams = this.teams.map { it.toTeam() },
             steadyFitness = this.steadyFitness,
-            populationsSize = this.populationsSize,
+            populationSize = this.populationSize,
             fitnessThreshold = this.fitnessThreshold,
             finished = false,
             plan = null,

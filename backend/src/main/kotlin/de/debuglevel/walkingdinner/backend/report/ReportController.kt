@@ -60,7 +60,7 @@ class ReportController(private val reportService: ReportService) {
 //        val surveyCsv = Base64String(calculationRequest.surveyfile).asString
 //        val calculation = reportService.startCalculation(
 //            surveyCsv,
-//            calculationRequest.populationsSize,
+//            calculationRequest.populationSize,
 //            calculationRequest.fitnessThreshold,
 //            calculationRequest.steadyFitness,
 //            calculationRequest.location

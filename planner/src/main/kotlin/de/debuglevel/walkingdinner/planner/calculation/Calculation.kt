@@ -17,7 +17,7 @@ data class Calculation(
     /**
      * Size of the population (for calculation with Genetic Algorithm)
      */
-    val populationsSize: Int,
+    val populationSize: Int,
     /**
      * Fitness level to beat (minimization problem, i.e. fitness must be less than this threshold) (for calculation with Genetic Algorithm)
      */

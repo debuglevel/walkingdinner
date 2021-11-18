@@ -2,7 +2,7 @@ export interface Calculation {
   id: string;
   finished: boolean;
   surveyfile: string;
-  populationsSize: number;
+  populationSize: number;
   fitnessThreshold: number;
   steadyFitness: number;
   planId: string;

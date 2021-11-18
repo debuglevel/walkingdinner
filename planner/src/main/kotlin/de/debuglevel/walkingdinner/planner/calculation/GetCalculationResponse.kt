@@ -16,7 +16,7 @@ data class GetCalculationResponse(
     /**
      * Size of the population (for calculation with Genetic Algorithm)
      */
-    val populationsSize: Int,
+    val populationSize: Int,
     /**
      * Fitness level to beat (minimization problem, i.e. fitness must be less than this threshold) (for calculation with Genetic Algorithm)
      */
@@ -46,7 +46,7 @@ data class GetCalculationResponse(
         id = calculation.id!!,
         finished = calculation.finished,
         fitnessThreshold = calculation.fitnessThreshold,
-        populationsSize = calculation.populationsSize,
+        populationSize = calculation.populationSize,
         steadyFitness = calculation.steadyFitness,
         teams = calculation.teams.map { GetTeamResponse(it) },
         planId = calculation.plan?.id,

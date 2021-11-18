@@ -61,7 +61,7 @@ class GeneticPlanner(private val options: GeneticPlannerOptions) : Planner {
 
         val engine = Engine
             .builder(problem)
-            .populationSize(options.populationsSize)
+            .populationSize(options.populationSize)
             .optimize(Optimize.MINIMUM)
             .alterers(
                 SwapMutator(0.15),

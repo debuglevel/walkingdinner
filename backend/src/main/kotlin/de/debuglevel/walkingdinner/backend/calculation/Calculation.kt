@@ -24,7 +24,7 @@ data class Calculation(
     /**
      * Size of the population (for calculation with Genetic Algorithm)
      */
-    val populationsSize: Int,
+    val populationSize: Int,
     /**
      * Fitness level to beat (minimization problem, i.e. fitness must be less than this threshold) (for calculation with Genetic Algorithm)
      */
@@ -72,7 +72,7 @@ data class Calculation(
 
         other as Calculation
 
-        if (populationsSize != other.populationsSize) return false
+        if (populationSize != other.populationSize) return false
         if (fitnessThreshold != other.fitnessThreshold) return false
         if (steadyFitness != other.steadyFitness) return false
         if (coursesNames != other.coursesNames) return false
@@ -81,7 +81,7 @@ data class Calculation(
     }
 
     override fun hashCode(): Int {
-        var result = populationsSize
+        var result = populationSize
         result = 31 * result + fitnessThreshold.hashCode()
         result = 31 * result + steadyFitness
         result = 31 * result + coursesNames.hashCode()

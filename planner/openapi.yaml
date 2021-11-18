@@ -97,12 +97,12 @@ components:
     AddCalculationRequest:
       required:
         - fitnessThreshold
-        - populationsSize
+        - populationSize
         - steadyFitness
         - teams
       type: object
       properties:
-        populationsSize:
+        populationSize:
           type: integer
           description: Size of the population
           format: int32
@@ -175,7 +175,7 @@ components:
         - finished
         - fitnessThreshold
         - id
-        - populationsSize
+        - populationSize
         - steadyFitness
         - teams
       type: object
@@ -188,7 +188,7 @@ components:
           type: boolean
           description: Whether the calculation of the plan has finished or is still
             in progress
-        populationsSize:
+        populationSize:
           type: integer
           description: Size of the population (for calculation with Genetic Algorithm)
           format: int32

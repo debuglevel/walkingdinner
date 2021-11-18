@@ -19,7 +19,7 @@ data class GeneticPlannerOptions(
     /**
      * Size of the population
      */
-    val populationsSize: Int,
+    val populationSize: Int,
     var evolutionResultConsumer: Consumer<EvolutionResult<EnumGene<Team>, Double>>? = null,
     /**
      * Courses in the event
@@ -29,7 +29,7 @@ data class GeneticPlannerOptions(
     constructor(calculation: Calculation) : this(
         teams = calculation.teams,
         fitnessThreshold = calculation.fitnessThreshold,
-        populationsSize = calculation.populationsSize,
+        populationSize = calculation.populationSize,
         steadyFitness = calculation.steadyFitness,
         courses = calculation.coursesNames,
     )

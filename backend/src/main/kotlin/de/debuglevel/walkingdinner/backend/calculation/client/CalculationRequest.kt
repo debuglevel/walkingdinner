@@ -6,7 +6,7 @@ data class CalculationRequest(
     /**
      * Size of the population
      */
-    val populationsSize: Int,
+    val populationSize: Int,
     /**
      * Fitness level to beat (minimization problem, i.e. fitness must be less than this threshold)
      */
@@ -25,7 +25,7 @@ data class CalculationRequest(
     val coursesNames: List<String>,
 ) {
     constructor(calculation: Calculation) : this(
-        populationsSize = calculation.populationsSize,
+        populationSize = calculation.populationSize,
         steadyFitness = calculation.steadyFitness,
         fitnessThreshold = calculation.fitnessThreshold,
         teams = calculation.teams.map { TeamRequest(it) },

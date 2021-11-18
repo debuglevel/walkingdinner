@@ -57,11 +57,11 @@ export class CalculationsComponent implements OnInit {
   }
 
   addSurveyfile(
-    populationsSizeString: string,
+    populationSizeString: string,
     fitnessThresholdString: string,
     steadyFitnessString: string
   ): void {
-    const populationsSize = Number(populationsSizeString);
+    const populationSize = Number(populationSizeString);
     const fitnessThreshold = Number(fitnessThresholdString);
     const steadyFitness = Number(steadyFitnessString);
 
@@ -71,7 +71,7 @@ export class CalculationsComponent implements OnInit {
       .addCalculation({
         finished: false,
         surveyfile,
-        populationsSize: populationsSize,
+        populationSize: populationSize,
         fitnessThreshold: fitnessThreshold,
         steadyFitness: steadyFitness,
       } as Calculation)

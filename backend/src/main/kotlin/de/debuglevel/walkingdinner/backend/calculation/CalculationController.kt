@@ -39,7 +39,7 @@ class CalculationController(
 
             val calculation = calculationService.startCalculation(
                 teams,
-                calculationRequest.populationsSize,
+                calculationRequest.populationSize,
                 calculationRequest.fitnessThreshold,
                 calculationRequest.steadyFitness
             )
@@ -49,7 +49,7 @@ class CalculationController(
             val surveyCsv = Base64String(calculationRequest.surveyfile).decodedString
             val calculation = calculationService.startCalculation(
                 surveyCsv,
-                calculationRequest.populationsSize,
+                calculationRequest.populationSize,
                 calculationRequest.fitnessThreshold,
                 calculationRequest.steadyFitness
             )

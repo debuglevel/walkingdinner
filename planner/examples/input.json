@@ -1,6 +1,6 @@
 {
   "id": "c6dfe06f-1e92-4387-aa4a-4a330eaa27fe",
-  "populationsSize": 200,
+  "populationSize": 200,
   "fitnessThreshold": 0.001,
   "steadyFitness": 100,
   "teams": [
