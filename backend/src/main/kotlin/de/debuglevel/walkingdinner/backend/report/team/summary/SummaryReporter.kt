@@ -42,7 +42,7 @@ class SummaryReporter : Reporter {
     fun meetingToString(meeting: Meeting): String {
         return meeting.teams
             .map { it ->
-                val teamText = it.cooks.map { it.name }.joinToString(" & ")
+                val teamText = it.cooks.map { it.name.fullName }.joinToString(" & ")
                 if (isCookingTeam(it, meeting)) "[$teamText]" else teamText
             }
             .joinToString("\t")
