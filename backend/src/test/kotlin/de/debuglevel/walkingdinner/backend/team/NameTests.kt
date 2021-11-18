@@ -9,38 +9,13 @@ import java.util.stream.Stream
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class NameTests {
-
-    @ParameterizedTest
-    @MethodSource("nameProvider")
-    fun `get firstname`(testData: NameData) {
-        // Arrange
-
-        // Act
-        val name = Name(name = testData.name)
-
-        // Assert
-        Assertions.assertThat(name.firstname).isEqualTo(testData.expectedFirstname)
-    }
-
-    @ParameterizedTest
-    @MethodSource("nameProvider")
-    fun `get lastname`(testData: NameData) {
-        // Arrange
-
-        // Act
-        val name = Name(name = testData.name)
-
-        // Assert
-        Assertions.assertThat(name.lastname).isEqualTo(testData.expectedLastname)
-    }
-
     @ParameterizedTest
     @MethodSource("nameProvider")
     fun getAbbreviatedName(testData: NameData) {
         // Arrange
 
         // Act
-        val name = Name(name = testData.name)
+        val name = Name(firstname = testData.firstname, lastname = testData.lastname)
 
         // Assert
         Assertions.assertThat(name.abbreviatedName).isEqualTo(testData.expectedAbbreviatedName)
@@ -48,29 +23,25 @@ class NameTests {
 
     fun nameProvider() = Stream.of(
         NameData(
-            name = "John Dorian",
-            expectedFirstname = "John",
-            expectedLastname = "Dorian",
+            firstname = "John",
+            lastname = "Dorian",
             expectedAbbreviatedName = "J. Dorian"
         ),
         NameData(
-            name = "Jennifer Dylan Cox",
-            expectedFirstname = "Jennifer",
-            expectedLastname = "Cox",
+            firstname = "Jennifer Dylan",
+            lastname = "Cox",
             expectedAbbreviatedName = "J. Cox"
         ),
         NameData(
-            name = "Robert-Bob Kelso",
-            expectedFirstname = "Robert-Bob",
-            expectedLastname = "Kelso",
+            firstname = "Robert-Bob",
+            lastname = "Kelso",
             expectedAbbreviatedName = "R. Kelso"
         )
     )
 
     data class NameData(
-        val name: String,
-        val expectedFirstname: String,
-        val expectedLastname: String,
+        val firstname: String,
+        val lastname: String,
         val expectedAbbreviatedName: String
     )
 }
