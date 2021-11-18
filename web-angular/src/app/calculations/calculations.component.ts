@@ -64,10 +64,12 @@ export class CalculationsComponent implements OnInit {
       .addCalculation({
         finished: false,
         surveyfile,
+
         // development shortcut values:
         populationsSize: 200,
         fitnessThreshold: 0.1,
         steadyFitness: 10,
+
         // (maybe) useful production values:
         // populationsSize: 200,
         // fitnessThreshold: 0.001,
