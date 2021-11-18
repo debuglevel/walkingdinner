@@ -9,9 +9,8 @@
       <mat-nav-list>
         <mat-list-item *ngFor="let team of teams">
           <a matLine routerLink="/teams/{{ team.id }}"
-            >{{ team.fullname1 }} &amp; {{ team.fullname2 }} ({{
-              team.address
-            }})</a
+            >{{ team.firstname1 }} {{ team.lastname1 }} &amp;
+            {{ team.firstname2 }} {{ team.lastname2 }} ({{ team.address }})</a
           >
           <button
             mat-icon-button
