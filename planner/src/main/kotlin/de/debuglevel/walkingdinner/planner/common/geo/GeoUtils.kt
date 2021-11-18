@@ -1,8 +1,11 @@
 package de.debuglevel.walkingdinner.planner.common.geo
 
 import de.debuglevel.walkingdinner.planner.Location
+import mu.KotlinLogging
 
 object GeoUtils {
+    private val logger = KotlinLogging.logger {}
+
     /**
      * Cache for already calculated distances
      *
@@ -17,14 +20,22 @@ object GeoUtils {
         source: Location,
         destination: Location
     ): Double {
+        logger.trace { "Calculating (or getting from cache) distance between $source and $destination..." }
+
         // Retrieve distance from cache if already calculated
         val distance = distances.computeIfAbsent(source to destination) { calculateDistance(source, destination) }
 
+        logger.trace { "Calculated (or got from cache) distance between $source and $destination: $distance" }
         return distance
     }
 
     private fun calculateDistance(source: Location, destination: Location): Double {
-        return HaversineDistanceCalculator.calculate(source, destination)
+        logger.trace { "Calculating distance between $source and $destination..." }
+
+        val distance = HaversineDistanceCalculator.calculate(source, destination)
+
+        logger.trace { "Calculated distance between $source and $destination: $distance" }
+        return distance
     }
 
     /**
