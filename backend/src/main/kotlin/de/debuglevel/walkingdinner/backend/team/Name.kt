@@ -15,27 +15,20 @@ data class Name(
     @Column(columnDefinition = "BINARY(16)")
     val id: UUID? = null,
 
-    val name: String
-) {
-    val firstname = extractFirstname()
+    val firstname: String,
 
-    val lastname = extractLastname()
+    val lastname: String,
+) {
+    val fullName: String
+        get() = "$firstname $lastname"
 
     val abbreviatedName = run {
-        val firstletter = firstname.toCharArray().first()
-        "$firstletter. $lastname"
-    }
-
-    private fun extractFirstname(): String {
-        return this.name.split(" ").first()
-    }
-
-    private fun extractLastname(): String {
-        return this.name.split(" ").last()
+        val firstLetter = firstname.toCharArray().first()
+        "$firstLetter. $lastname"
     }
 
     override fun toString(): String {
-        return name
+        return "Name(id=$id, firstname='$firstname', lastname='$lastname')"
     }
 
     override fun equals(other: Any?): Boolean {
@@ -44,13 +37,15 @@ data class Name(
 
         other as Name
 
-        if (name != other.name) return false
+        if (firstname != other.firstname) return false
+        if (lastname != other.lastname) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        return name.hashCode()
+        var result = firstname.hashCode()
+        result = 31 * result + lastname.hashCode()
+        return result
     }
-
 }
