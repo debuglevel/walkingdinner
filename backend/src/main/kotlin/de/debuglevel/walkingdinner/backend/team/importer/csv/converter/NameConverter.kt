@@ -25,7 +25,7 @@ class NameConverter<T, I> : AbstractBeanField<T, I>() {
     }
 
     private fun extractFirstname(name: String): String {
-        return name.split(" ").first()
+        return name.split(" ").dropLast(1).joinToString(" ")
     }
 
     private fun extractLastname(name: String): String {
