@@ -9,12 +9,12 @@ class NameConverterTests {
     @Test
     fun `string is converted`() {
         // Arrange
-        val nameString = "Sherlock Holmes"
 
         // Act
-        val name = NameConverter<String, String>().convertValue(nameString)
+        val name = NameConverter<String, String>().convertValue("Harry James Potter")
 
         // Assert
-        Assertions.assertThat(name.name).isEqualTo(nameString)
+        Assertions.assertThat(name.firstname).isEqualTo("Harry James")
+        Assertions.assertThat(name.lastname).isEqualTo("Potter")
     }
 }
