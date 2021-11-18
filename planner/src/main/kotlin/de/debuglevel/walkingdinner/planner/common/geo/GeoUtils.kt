@@ -2,6 +2,7 @@ package de.debuglevel.walkingdinner.planner.common.geo
 
 import de.debuglevel.walkingdinner.planner.Location
 import mu.KotlinLogging
+import java.util.concurrent.ConcurrentHashMap
 
 object GeoUtils {
     private val logger = KotlinLogging.logger {}
@@ -11,7 +12,7 @@ object GeoUtils {
      *
      * @remarks Microbenchmark with JMH: about 4 times faster with caching.
      */
-    private val distances = hashMapOf<Pair<Location, Location>, Double>()
+    private val distances = ConcurrentHashMap<Pair<Location, Location>, Double>()
 
     /**
      * Calculates the distance (in kilometers) between to [Location]s and caches the result.
