@@ -56,24 +56,24 @@ export class CalculationsComponent implements OnInit {
       .subscribe((calculations) => (this.calculations = calculations));
   }
 
-  addSurveyfile(): void {
+  addSurveyfile(
+    populationsSizeString: string,
+    fitnessThresholdString: string,
+    steadyFitnessString: string
+  ): void {
+    const populationsSize = Number(populationsSizeString);
+    const fitnessThreshold = Number(fitnessThresholdString);
+    const steadyFitness = Number(steadyFitnessString);
+
     const surveyfile = this.fileToUploadBase64;
 
-    // TODO: do not hardcode these values
     this.calculationService
       .addCalculation({
         finished: false,
         surveyfile,
-
-        // development shortcut values:
-        populationsSize: 200,
-        fitnessThreshold: 0.1,
-        steadyFitness: 10,
-
-        // (maybe) useful production values:
-        // populationsSize: 200,
-        // fitnessThreshold: 0.001,
-        // steadyFitness: 100,
+        populationsSize: populationsSize,
+        fitnessThreshold: fitnessThreshold,
+        steadyFitness: steadyFitness,
       } as Calculation)
       .subscribe((calculation) => {
         if (this.calculations) {

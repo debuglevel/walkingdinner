@@ -32,13 +32,41 @@
     </mat-card-header>
     <mat-card-content>
       <form class="form">
-        <!-- <mat-form-field class="full-width">
+        <!-- for production, these values might be useful: 
+          populationsSize: 200
+          fitnessThreshold: 0.001
+          steadyFitness: 100 -->
+        <mat-form-field class="full-width">
           <input
             matInput
-            placeholder="Name der Calculations"
-            #calculationName
+            type="number"
+            min="0"
+            placeholder="Populationsgröße"
+            #populationsSize
+            value="200"
           />
-        </mat-form-field> -->
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            type="number"
+            min="0"
+            max="1"
+            placeholder="Fitness-Schwelle"
+            #fitnessThreshold
+            value="0.1"
+          />
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            type="number"
+            min="0"
+            placeholder="Anzahl Generationen mit gleich bleibender Fitness"
+            #steadyFitness
+            value="10"
+          />
+        </mat-form-field>
 
         <!-- <mat-form-field class="full-width"> -->
         <button mat-stroked-button (click)="inputFile.click()">
@@ -54,8 +82,16 @@
       </form>
     </mat-card-content>
     <mat-card-actions>
-      <!-- (click) passes input value to add() and then clears the input -->
-      <button mat-stroked-button (click)="addSurveyfile()">
+      <button
+        mat-stroked-button
+        (click)="
+          addSurveyfile(
+            populationsSize.value,
+            fitnessThreshold.value,
+            steadyFitness.value
+          )
+        "
+      >
         PER UMFRAGEDATEI HINZUFÜGEN
       </button>
     </mat-card-actions>
