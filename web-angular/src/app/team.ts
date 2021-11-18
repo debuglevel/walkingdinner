@@ -1,8 +1,8 @@
 export interface Team {
   id: string;
   address: string;
-  chef1: string;
-  chef2: string;
+  name1: string;
+  name2: string;
   mail1: string;
   mail2: string;
   phone1: string;

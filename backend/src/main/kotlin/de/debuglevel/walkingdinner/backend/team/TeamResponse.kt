@@ -5,8 +5,8 @@ import java.util.*
 data class TeamResponse(
     val id: UUID,
     val address: String?,
-    val chef1: String?,
-    val chef2: String?,
+    val name1: String?,
+    val name2: String?,
     val mail1: String?,
     val mail2: String?,
     val phone1: String?,
@@ -29,8 +29,8 @@ data class TeamResponse(
             this(
                 id = team.id!!,
                 address = team.address,
-                chef1 = team.cook1.name.name,
-                chef2 = team.cook2.name.name,
+                name1 = team.cook1.name.name,
+                name2 = team.cook2.name.name,
                 mail1 = team.cook1.mailAddress.value,
                 mail2 = team.cook2.mailAddress.value,
                 phone1 = team.cook1.phoneNumber.number,

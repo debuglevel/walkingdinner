@@ -20,4 +20,13 @@ class NameConverter<T, I> : AbstractBeanField<T, I>() {
     fun convertValue(nameString: String): Name {
         return Name(name = nameString)
     }
+
+
+    private fun extractFirstname(): String {
+        return this.name.split(" ").first()
+    }
+
+    private fun extractLastname(): String {
+        return this.name.split(" ").last()
+    }
 }

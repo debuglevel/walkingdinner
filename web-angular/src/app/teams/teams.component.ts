@@ -36,8 +36,8 @@ export class TeamsComponent implements OnInit {
 
   add(
     address: string,
-    chef1: string,
-    chef2: string,
+    name1: string,
+    name2: string,
     mail1: string,
     mail2: string,
     phone1: string,
@@ -66,8 +66,8 @@ export class TeamsComponent implements OnInit {
     this.teamService
       .addTeam({
         address,
-        chef1,
-        chef2,
+        name1,
+        name2,
         mail1,
         mail2,
         phone1,
