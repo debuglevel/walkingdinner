@@ -14,14 +14,16 @@ class MeetingTests {
             null,
             de.debuglevel.walkingdinner.backend.team.Cook(
                 name = Name(
-                    name = "cook"
+                    firstname = "firstname",
+                    lastname = "lastname",
                 ),
                 mailAddress = MailAddress(value = "mail"),
                 phoneNumber = PhoneNumber(number = "123")
             ),
             de.debuglevel.walkingdinner.backend.team.Cook(
                 name = Name(
-                    name = "cook"
+                    firstname = "firstname",
+                    lastname = "lastname",
                 ),
                 mailAddress = MailAddress(value = "mail"),
                 phoneNumber = PhoneNumber(number = "123")
@@ -40,14 +42,16 @@ class MeetingTests {
                     null,
                     Cook(
                         name = Name(
-                            name = "cook"
+                            firstname = "firstname",
+                            lastname = "lastname",
                         ),
                         mailAddress = MailAddress(value = "mail"),
                         phoneNumber = PhoneNumber(number = "123")
                     ),
                     Cook(
                         name = Name(
-                            name = "cook"
+                            firstname = "firstname",
+                            lastname = "lastname",
                         ),
                         mailAddress = MailAddress(value = "mail"),
                         phoneNumber = PhoneNumber(number = "123")
@@ -63,14 +67,16 @@ class MeetingTests {
                     null,
                     Cook(
                         name = Name(
-                            name = "cook"
+                            firstname = "firstname",
+                            lastname = "lastname",
                         ),
                         mailAddress = MailAddress(value = "mail"),
                         phoneNumber = PhoneNumber(number = "123")
                     ),
                     Cook(
                         name = Name(
-                            name = "cook"
+                            firstname = "firstname",
+                            lastname = "lastname",
                         ),
                         mailAddress = MailAddress(value = "mail"),
                         phoneNumber = PhoneNumber(number = "123")
