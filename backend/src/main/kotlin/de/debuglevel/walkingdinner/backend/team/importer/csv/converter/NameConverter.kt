@@ -18,15 +18,17 @@ class NameConverter<T, I> : AbstractBeanField<T, I>() {
      * @implNote Separate public function to being able to test it.
      */
     fun convertValue(nameString: String): Name {
-        return Name(name = nameString)
+        return Name(
+            firstname = extractFirstname(nameString),
+            lastname = extractLastname(nameString)
+        )
     }
 
-
-    private fun extractFirstname(): String {
-        return this.name.split(" ").first()
+    private fun extractFirstname(name: String): String {
+        return name.split(" ").first()
     }
 
-    private fun extractLastname(): String {
-        return this.name.split(" ").last()
+    private fun extractLastname(name: String): String {
+        return name.split(" ").last()
     }
 }
