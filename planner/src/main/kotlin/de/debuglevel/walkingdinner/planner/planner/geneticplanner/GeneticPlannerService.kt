@@ -1,8 +1,8 @@
 package de.debuglevel.walkingdinner.planner.planner.geneticplanner
 
-import de.debuglevel.walkingdinner.planner.team.Team
 import de.debuglevel.walkingdinner.planner.common.TimeMeasurement
 import de.debuglevel.walkingdinner.planner.plan.Plan
+import de.debuglevel.walkingdinner.planner.team.Team
 import io.jenetics.EnumGene
 import io.jenetics.engine.EvolutionResult
 import io.jenetics.engine.EvolutionStatistics
@@ -16,9 +16,7 @@ import kotlin.math.roundToInt
 class GeneticPlannerService {
     private val logger = KotlinLogging.logger {}
 
-    fun calculate(
-        options: GeneticPlannerOptions
-    ): Plan {
+    fun calculate(options: GeneticPlannerOptions): Plan {
         val evolutionStatistics = EvolutionStatistics.ofNumber<Double>()
         options.evolutionResultConsumer = Consumer<EvolutionResult<EnumGene<Team>, Double>> {
             evolutionStatistics.accept(it)
@@ -33,24 +31,24 @@ class GeneticPlannerService {
         return plan
     }
 
-    private fun logTimeMeasurement(e: EvolutionResult<EnumGene<Team>, Double>) {
+    private fun logTimeMeasurement(evolutionResult: EvolutionResult<EnumGene<Team>, Double>) {
         val reportInterval = 500L
-        TimeMeasurement.add("evolveDuration", e.durations().evolveDuration().toNanos(), reportInterval)
+        TimeMeasurement.add("evolveDuration", evolutionResult.durations().evolveDuration().toNanos(), reportInterval)
     }
 
     /**
      * Print some statistics about the state of the evolution process.
      */
-    private fun printIntermediary(e: EvolutionResult<EnumGene<Team>, Double>) {
+    private fun printIntermediary(evolutionResult: EvolutionResult<EnumGene<Team>, Double>) {
         val reportInterval = 500L
 
-        if (e.generation().rem(reportInterval) == 0L) {
+        if (evolutionResult.generation().rem(reportInterval) == 0L) {
             // Estimate current evolution speed by considering the current evolution step; which is only an approximation to the average speed
-            val generationDuration = e.durations().evolveDuration().toNanos() / 1_000_000_000.0
+            val generationDuration = evolutionResult.durations().evolveDuration().toNanos() / 1_000_000_000.0
             val generationsPerSecond = (1 / generationDuration).roundToInt()
             println(
-                "currently $generationsPerSecond generations/s\t| Generation #${e.generation()}\t| Best Fitness: ${
-                    e.bestFitness().toBigDecimal().toPlainString()
+                "currently $generationsPerSecond generations/s\t| Generation #${evolutionResult.generation()}\t| Best Fitness: ${
+                    evolutionResult.bestFitness().toBigDecimal().toPlainString()
                 }"
             )
         }
