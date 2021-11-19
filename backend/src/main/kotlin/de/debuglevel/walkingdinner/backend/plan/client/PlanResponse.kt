@@ -4,5 +4,6 @@ import java.util.*
 
 data class PlanResponse(
     val id: UUID,
-    val meetings: Set<MeetingResponse>
+    val meetings: Set<MeetingResponse>,
+    val fitness: Double,
 )

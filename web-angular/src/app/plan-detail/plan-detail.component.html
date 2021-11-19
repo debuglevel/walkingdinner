@@ -8,6 +8,15 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="Fitness"
+        disabled
+        value="{{ plan.fitness }}"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
       <textarea
         [(ngModel)]="plan.additionalInformation"
         matInput
@@ -20,9 +29,7 @@
     <button (click)="gotoSummaryReport()" mat-stroked-button>
       Summary Report
     </button>
-    <button (click)="gotoMailFileReport()" mat-stroked-button>
-      Mail File
-    </button>
+    <button (click)="gotoMailFileReport()" mat-stroked-button>Mail File</button>
     <button (click)="createGmailDraftsReport()" mat-stroked-button>
       Gmail drafts
     </button>

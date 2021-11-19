@@ -16,7 +16,9 @@ data class Plan(
     @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
     val meetings: Set<Meeting>,
 
-    val additionalInformation: String
+    val additionalInformation: String,
+
+    val fitness: Double,
 ) {
     override fun toString(): String {
         return "Plan(id=$id)"

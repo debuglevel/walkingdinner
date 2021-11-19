@@ -74,7 +74,8 @@ open class CalculationService(
         val plan = Plan(
             //meetings = planResponse.meetings.map { it.toMeeting(calculation.teams) }.toSet(),
             meetings = planResponse.meetings.map { it.toMeeting(fetchedTeams) }.toSet(),
-            additionalInformation = "TODO"
+            additionalInformation = "TODO",
+            fitness = planResponse.fitness,
         )
 
         val savedPlan = planService.add(plan)
