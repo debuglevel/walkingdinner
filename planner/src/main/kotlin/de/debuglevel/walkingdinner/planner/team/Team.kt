@@ -17,8 +17,7 @@ data class Team(
     override fun toString(): String {
         return "Team(" +
                 "id=$id, " +
-                "diet=$diet, " +
-                "location=$location" +
+                "diet=$diet" +
                 ")"
     }
 }
