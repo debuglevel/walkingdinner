@@ -79,5 +79,5 @@ class CalculationService(
         return calculation
     }
 
-    class CalculationNotFoundException(planId: UUID) : Exception("Calculation $planId not found")
+    class CalculationNotFoundException(id: UUID) : Exception("Calculation $id not found")
 }
