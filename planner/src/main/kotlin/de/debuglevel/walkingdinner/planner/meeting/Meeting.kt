@@ -1,7 +1,7 @@
 package de.debuglevel.walkingdinner.planner.meeting
 
-import de.debuglevel.walkingdinner.planner.team.Team
 import de.debuglevel.walkingdinner.planner.location.Location
+import de.debuglevel.walkingdinner.planner.team.Team
 import java.util.*
 
 /**
@@ -32,5 +32,26 @@ data class Meeting(
      */
     fun getLocation(): Location {
         return getCookingTeam().location
+    }
+
+    override fun toString(): String {
+        return "Meeting(" +
+                "courseName='$courseName', " +
+                "id=$id" +
+                ")"
+    }
+
+    /**
+     * @implNote: Delegated to superclass as [id] might not be set
+     */
+    override fun equals(other: Any?): Boolean {
+        return super.equals(other)
+    }
+
+    /**
+     * @implNote: Delegated to superclass as [id] might not be set
+     */
+    override fun hashCode(): Int {
+        return super.hashCode()
     }
 }

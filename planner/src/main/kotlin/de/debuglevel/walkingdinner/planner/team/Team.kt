@@ -13,4 +13,12 @@ data class Team(
     val diet: Diet,
     val cookingCapabilities: List<CookingCapability>,
     val location: Location
-)
+) {
+    override fun toString(): String {
+        return "Team(" +
+                "id=$id, " +
+                "diet=$diet, " +
+                "location=$location" +
+                ")"
+    }
+}
