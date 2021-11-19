@@ -23,6 +23,9 @@ class CookingCapabilitiesConverter<T, I> : AbstractBeanField<T, I>() {
         "Ich schaffe es, eine vegetarische Vorspeise zu machen." to CookingCapability.VegetarianAppetizer,
         "Ich schaffe es, ein vegetarisches Hauptgericht zu machen." to CookingCapability.VegetarianMaindish,
         "Ich schaffe es, ein vegetarisches Dessert zu machen." to CookingCapability.VegetarianDessert,
+        "Ich schaffe es, eine pescetarische Vorspeise zu machen." to CookingCapability.PescetarianAppetizer,
+        "Ich schaffe es, ein pescetarisches Hauptgericht zu machen." to CookingCapability.PescetarianMaindish,
+        "Ich schaffe es, ein pescetarisches Dessert zu machen." to CookingCapability.PescetarianDessert,
         "Ich schaffe es, eine omnivore Vorspeise zu machen." to CookingCapability.OmnivoreAppetizer,
         "Ich schaffe es, ein omnivores Hauptgericht zu machen." to CookingCapability.OmnivoreMaindish,
         "Ich schaffe es, ein omnivores Dessert zu machen." to CookingCapability.OmnivoreDessert

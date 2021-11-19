@@ -321,6 +321,11 @@ components:
   schemas:
     Calculation:
       required:
+        - coursesNames
+        - finished
+        - fitnessThreshold
+        - populationSize
+        - steadyFitness
         - teams
       type: object
       properties:
@@ -359,7 +364,15 @@ components:
           type: string
           format: date-time
           nullable: true
+        coursesNames:
+          type: array
+          items:
+            type: string
     CalculationRequest:
+      required:
+        - fitnessThreshold
+        - populationSize
+        - steadyFitness
       type: object
       properties:
         surveyfile:
@@ -380,7 +393,11 @@ components:
           nullable: true
     CalculationResponse:
       required:
+        - finished
+        - fitnessThreshold
         - id
+        - populationSize
+        - steadyFitness
       type: object
       properties:
         id:
@@ -441,6 +458,9 @@ components:
         - VegetarianAppetizer
         - VegetarianMaindish
         - VegetarianDessert
+        - PescetarianAppetizer
+        - PescetarianMaindish
+        - PescetarianDessert
         - OmnivoreAppetizer
         - OmnivoreMaindish
         - OmnivoreDessert
@@ -449,6 +469,7 @@ components:
       enum:
         - Vegan
         - Vegetarian
+        - Pescetarian
         - Omnivore
     Dinner:
       required:
@@ -543,6 +564,8 @@ components:
     Location:
       required:
         - address
+        - latitude
+        - longitude
       type: object
       properties:
         address:
@@ -571,7 +594,7 @@ components:
     Meeting:
       required:
         - cookingTeam
-        - course
+        - courseName
         - teams
       type: object
       properties:
@@ -579,7 +602,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Team'
-        course:
+        courseName:
           type: string
         id:
           type: string
@@ -591,19 +614,19 @@ components:
       required:
         - abbreviatedName
         - firstname
+        - fullName
         - lastname
-        - name
       type: object
       properties:
         id:
           type: string
           format: uuid
           nullable: true
-        name:
-          type: string
         firstname:
           type: string
         lastname:
+          type: string
+        fullName:
           type: string
         abbreviatedName:
           type: string
@@ -666,6 +689,7 @@ components:
     Plan:
       required:
         - additionalInformation
+        - fitness
         - meetings
       type: object
       properties:
@@ -679,6 +703,9 @@ components:
             $ref: '#/components/schemas/Meeting'
         additionalInformation:
           type: string
+        fitness:
+          type: number
+          format: double
     Team:
       required:
         - address
@@ -732,10 +759,16 @@ components:
         address:
           type: string
           nullable: true
-        chef1:
+        firstname1:
           type: string
           nullable: true
-        chef2:
+        firstname2:
+          type: string
+          nullable: true
+        lastname1:
+          type: string
+          nullable: true
+        lastname2:
           type: string
           nullable: true
         mail1:
@@ -770,6 +803,15 @@ components:
           type: boolean
           nullable: true
         vegetarianDessert:
+          type: boolean
+          nullable: true
+        pescetarianAppetizer:
+          type: boolean
+          nullable: true
+        pescetarianMaindish:
+          type: boolean
+          nullable: true
+        pescetarianDessert:
           type: boolean
           nullable: true
         omnivoreAppetizer:
@@ -802,10 +844,16 @@ components:
         address:
           type: string
           nullable: true
-        chef1:
+        firstname1:
           type: string
           nullable: true
-        chef2:
+        firstname2:
+          type: string
+          nullable: true
+        lastname1:
+          type: string
+          nullable: true
+        lastname2:
           type: string
           nullable: true
         mail1:
@@ -840,6 +888,15 @@ components:
           type: boolean
           nullable: true
         vegetarianDessert:
+          type: boolean
+          nullable: true
+        pescetarianAppetizer:
+          type: boolean
+          nullable: true
+        pescetarianMaindish:
+          type: boolean
+          nullable: true
+        pescetarianDessert:
           type: boolean
           nullable: true
         omnivoreAppetizer:

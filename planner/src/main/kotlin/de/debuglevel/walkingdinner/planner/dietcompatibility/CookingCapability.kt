@@ -7,6 +7,9 @@ enum class CookingCapability {
     VegetarianAppetizer,
     VegetarianMaindish,
     VegetarianDessert,
+    PescetarianAppetizer,
+    PescetarianMaindish,
+    PescetarianDessert,
     OmnivoreAppetizer,
     OmnivoreMaindish,
     OmnivoreDessert

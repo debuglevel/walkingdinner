@@ -80,19 +80,39 @@ object CourseDietCompatibility : DietCompatibility {
                 }
             }
 
+            Diet.Pescetarian -> {
+                when (course) {
+                    course1name ->
+                        return cookingCapabilities.contains(CookingCapability.VeganAppetizer) ||
+                                cookingCapabilities.contains(CookingCapability.VegetarianAppetizer) ||
+                                cookingCapabilities.contains(CookingCapability.PescetarianAppetizer)
+                    course2name ->
+                        return cookingCapabilities.contains(CookingCapability.VeganMaindish) ||
+                                cookingCapabilities.contains(CookingCapability.VegetarianMaindish) ||
+                                cookingCapabilities.contains(CookingCapability.PescetarianMaindish)
+                    course3name ->
+                        return cookingCapabilities.contains(CookingCapability.VeganDessert) ||
+                                cookingCapabilities.contains(CookingCapability.VegetarianDessert) ||
+                                cookingCapabilities.contains(CookingCapability.PescetarianDessert)
+                }
+            }
+
             Diet.Omnivore -> {
                 when (course) {
                     course1name ->
                         return cookingCapabilities.contains(CookingCapability.VeganAppetizer) ||
                                 cookingCapabilities.contains(CookingCapability.VegetarianAppetizer) ||
+                                cookingCapabilities.contains(CookingCapability.PescetarianAppetizer) ||
                                 cookingCapabilities.contains(CookingCapability.OmnivoreAppetizer)
                     course2name ->
                         return cookingCapabilities.contains(CookingCapability.VeganMaindish) ||
                                 cookingCapabilities.contains(CookingCapability.VegetarianMaindish) ||
+                                cookingCapabilities.contains(CookingCapability.PescetarianMaindish) ||
                                 cookingCapabilities.contains(CookingCapability.OmnivoreMaindish)
                     course3name ->
                         return cookingCapabilities.contains(CookingCapability.VeganDessert) ||
                                 cookingCapabilities.contains(CookingCapability.VegetarianDessert) ||
+                                cookingCapabilities.contains(CookingCapability.PescetarianDessert) ||
                                 cookingCapabilities.contains(CookingCapability.OmnivoreDessert)
                 }
             }

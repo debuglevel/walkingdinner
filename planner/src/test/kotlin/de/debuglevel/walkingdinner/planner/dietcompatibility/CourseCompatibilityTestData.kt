@@ -84,7 +84,7 @@ object CourseCompatibilityTestData {
                     )
                 )
             )
-        )
+        ),
     )
 
     fun incompatibleMeetingsProvider() = Stream.of(

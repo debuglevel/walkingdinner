@@ -6,7 +6,7 @@ import mu.KotlinLogging
 
 /**
  * This diet compatibility is defined by a simple "if all teams have the same diet, they are compatible".
- * With 3 diets, this will result in 3 virtual dinners running in parallel.
+ * With 4 diets, this will result in 4 virtual dinners running in parallel.
  */
 object HardDietCompatibility : DietCompatibility {
     private val logger = KotlinLogging.logger {}

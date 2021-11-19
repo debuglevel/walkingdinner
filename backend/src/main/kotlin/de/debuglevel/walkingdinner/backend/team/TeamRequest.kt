@@ -22,6 +22,9 @@ data class TeamRequest(
     val vegetarianAppetizer: Boolean?,
     val vegetarianMaindish: Boolean?,
     val vegetarianDessert: Boolean?,
+    val pescetarianAppetizer: Boolean?,
+    val pescetarianMaindish: Boolean?,
+    val pescetarianDessert: Boolean?,
     val omnivoreAppetizer: Boolean?,
     val omnivoreMaindish: Boolean?,
     val omnivoreDessert: Boolean?,
@@ -38,6 +41,9 @@ data class TeamRequest(
             capabilities[CookingCapability.VegetarianAppetizer] = vegetarianAppetizer ?: false
             capabilities[CookingCapability.VegetarianMaindish] = vegetarianMaindish ?: false
             capabilities[CookingCapability.VegetarianDessert] = vegetarianDessert ?: false
+            capabilities[CookingCapability.PescetarianAppetizer] = pescetarianAppetizer ?: false
+            capabilities[CookingCapability.PescetarianMaindish] = pescetarianMaindish ?: false
+            capabilities[CookingCapability.PescetarianDessert] = pescetarianDessert ?: false
             capabilities[CookingCapability.OmnivoreAppetizer] = omnivoreAppetizer ?: false
             capabilities[CookingCapability.OmnivoreMaindish] = omnivoreMaindish ?: false
             capabilities[CookingCapability.OmnivoreDessert] = omnivoreDessert ?: false

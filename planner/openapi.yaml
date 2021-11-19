@@ -96,6 +96,7 @@ components:
   schemas:
     AddCalculationRequest:
       required:
+        - coursesNames
         - fitnessThreshold
         - populationSize
         - steadyFitness
@@ -121,6 +122,11 @@ components:
           description: Teams to calculate into the plan
           items:
             $ref: '#/components/schemas/AddTeamRequest'
+        coursesNames:
+          type: array
+          description: Courses in the event
+          items:
+            type: string
     AddLocationRequest:
       required:
         - lat
@@ -161,6 +167,9 @@ components:
         - VegetarianAppetizer
         - VegetarianMaindish
         - VegetarianDessert
+        - PescetarianAppetizer
+        - PescetarianMaindish
+        - PescetarianDessert
         - OmnivoreAppetizer
         - OmnivoreMaindish
         - OmnivoreDessert
@@ -169,6 +178,7 @@ components:
       enum:
         - Vegan
         - Vegetarian
+        - Pescetarian
         - Omnivore
     GetCalculationResponse:
       required:
@@ -241,6 +251,7 @@ components:
     GetPlanResponse:
       required:
         - additionalInformation
+        - fitness
         - id
         - meetings
       type: object
@@ -254,6 +265,11 @@ components:
             $ref: '#/components/schemas/GetMeetingResponse'
         additionalInformation:
           type: string
+          description: Additional information provided by the Planner
+        fitness:
+          type: number
+          format: double
+      description: Should probably be agnostic to internal Planner information.
     GetTeamResponse:
       required:
         - id
