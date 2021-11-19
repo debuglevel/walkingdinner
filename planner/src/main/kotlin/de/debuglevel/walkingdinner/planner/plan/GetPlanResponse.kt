@@ -2,9 +2,15 @@ package de.debuglevel.walkingdinner.planner.plan
 
 import java.util.*
 
+/**
+ * @implNote: Should probably be agnostic to internal Planner information.
+ */
 data class GetPlanResponse(
     val id: UUID,
     val meetings: Set<GetMeetingResponse>,
+    /**
+     * Additional information provided by the Planner
+     */
     val additionalInformation: String,
     val fitness: Double,
 ) {
