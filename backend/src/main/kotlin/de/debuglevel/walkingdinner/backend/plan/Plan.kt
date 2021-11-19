@@ -16,6 +16,7 @@ data class Plan(
     @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
     val meetings: Set<Meeting>,
 
+    @Lob
     val additionalInformation: String,
 
     val fitness: Double,

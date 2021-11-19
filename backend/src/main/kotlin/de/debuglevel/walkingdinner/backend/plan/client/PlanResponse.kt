@@ -6,4 +6,5 @@ data class PlanResponse(
     val id: UUID,
     val meetings: Set<MeetingResponse>,
     val fitness: Double,
+    val additionalInformation: String,
 )
