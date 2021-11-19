@@ -1,7 +1,7 @@
 package de.debuglevel.walkingdinner.planner.dietcompatibility
 
-import de.debuglevel.walkingdinner.planner.Meeting
-import de.debuglevel.walkingdinner.planner.Team
+import de.debuglevel.walkingdinner.planner.meeting.Meeting
+import de.debuglevel.walkingdinner.planner.team.Team
 import mu.KotlinLogging
 
 /**

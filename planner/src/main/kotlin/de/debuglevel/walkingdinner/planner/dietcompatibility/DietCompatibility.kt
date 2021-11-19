@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.planner.dietcompatibility
 
-import de.debuglevel.walkingdinner.planner.Meeting
+import de.debuglevel.walkingdinner.planner.meeting.Meeting
 
 interface DietCompatibility {
     /**

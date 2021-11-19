@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.planner.planner.geneticplanner
 
-import de.debuglevel.walkingdinner.planner.Team
+import de.debuglevel.walkingdinner.planner.team.Team
 import de.debuglevel.walkingdinner.planner.plan.Plan
 import de.debuglevel.walkingdinner.planner.planner.Planner
 import io.jenetics.EnumGene

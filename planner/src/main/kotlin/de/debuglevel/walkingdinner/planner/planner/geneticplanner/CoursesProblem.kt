@@ -1,9 +1,9 @@
 package de.debuglevel.walkingdinner.planner.planner.geneticplanner
 
 import de.debuglevel.walkingdinner.planner.Courses
-import de.debuglevel.walkingdinner.planner.Location
-import de.debuglevel.walkingdinner.planner.Meeting
-import de.debuglevel.walkingdinner.planner.Team
+import de.debuglevel.walkingdinner.planner.location.Location
+import de.debuglevel.walkingdinner.planner.meeting.Meeting
+import de.debuglevel.walkingdinner.planner.team.Team
 import de.debuglevel.walkingdinner.planner.common.geo.GeoUtils
 import de.debuglevel.walkingdinner.planner.dietcompatibility.CourseDietCompatibility
 import io.jenetics.EnumGene

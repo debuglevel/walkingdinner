@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.planner.common.geo
 
-import de.debuglevel.walkingdinner.planner.Location
+import de.debuglevel.walkingdinner.planner.location.Location
 import kotlin.math.cos
 import kotlin.math.sqrt
 

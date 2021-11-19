@@ -1,5 +1,7 @@
-package de.debuglevel.walkingdinner.planner
+package de.debuglevel.walkingdinner.planner.meeting
 
+import de.debuglevel.walkingdinner.planner.team.Team
+import de.debuglevel.walkingdinner.planner.location.Location
 import java.util.*
 
 /**

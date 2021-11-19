@@ -1,8 +1,8 @@
 package de.debuglevel.walkingdinner.planner.calculation
 
-import de.debuglevel.walkingdinner.planner.Team
 import de.debuglevel.walkingdinner.planner.dietcompatibility.CookingCapability
 import de.debuglevel.walkingdinner.planner.dietcompatibility.Diet
+import de.debuglevel.walkingdinner.planner.team.Team
 import java.util.*
 
 data class AddTeamRequest(

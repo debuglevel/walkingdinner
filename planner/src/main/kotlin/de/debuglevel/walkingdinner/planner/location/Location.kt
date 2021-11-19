@@ -1,4 +1,4 @@
-package de.debuglevel.walkingdinner.planner
+package de.debuglevel.walkingdinner.planner.location
 
 /**
  * A [Location] defined by its [longitude] and [latitude].

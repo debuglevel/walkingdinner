@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.planner.common.geo
 
-import de.debuglevel.walkingdinner.planner.Location
+import de.debuglevel.walkingdinner.planner.location.Location
 import java.lang.Math.toRadians
 import kotlin.math.atan
 import kotlin.math.cos

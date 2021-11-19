@@ -1,6 +1,9 @@
 package de.debuglevel.walkingdinner.planner
 
 import de.debuglevel.walkingdinner.planner.dietcompatibility.Diet
+import de.debuglevel.walkingdinner.planner.location.Location
+import de.debuglevel.walkingdinner.planner.meeting.Meeting
+import de.debuglevel.walkingdinner.planner.team.Team
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import java.util.*

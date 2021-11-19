@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.planner.common
 
-import de.debuglevel.walkingdinner.planner.Location
+import de.debuglevel.walkingdinner.planner.location.Location
 import de.debuglevel.walkingdinner.planner.common.geo.GeoUtils
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.within

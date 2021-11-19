@@ -1,7 +1,8 @@
-package de.debuglevel.walkingdinner.planner
+package de.debuglevel.walkingdinner.planner.team
 
 import de.debuglevel.walkingdinner.planner.dietcompatibility.CookingCapability
 import de.debuglevel.walkingdinner.planner.dietcompatibility.Diet
+import de.debuglevel.walkingdinner.planner.location.Location
 import java.util.*
 
 /**

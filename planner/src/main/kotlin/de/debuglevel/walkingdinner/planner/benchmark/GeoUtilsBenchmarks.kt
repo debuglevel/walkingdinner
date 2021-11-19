@@ -1,6 +1,6 @@
 package de.debuglevel.walkingdinner.planner.benchmark
 
-import de.debuglevel.walkingdinner.planner.Location
+import de.debuglevel.walkingdinner.planner.location.Location
 import org.openjdk.jmh.Main
 import kotlin.random.Random
 

@@ -1,7 +1,7 @@
 package de.debuglevel.walkingdinner.planner.calculation
 
-import de.debuglevel.walkingdinner.planner.Team
 import de.debuglevel.walkingdinner.planner.plan.Plan
+import de.debuglevel.walkingdinner.planner.team.Team
 import java.time.LocalDateTime
 import java.util.*
 

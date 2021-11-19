@@ -1,5 +1,7 @@
 package de.debuglevel.walkingdinner.planner
 
+import de.debuglevel.walkingdinner.planner.meeting.Meeting
+import de.debuglevel.walkingdinner.planner.team.Team
 import mu.KotlinLogging
 
 /**
