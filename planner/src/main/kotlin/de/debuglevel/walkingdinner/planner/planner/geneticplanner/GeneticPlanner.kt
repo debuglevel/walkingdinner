@@ -1,8 +1,8 @@
 package de.debuglevel.walkingdinner.planner.planner.geneticplanner
 
-import de.debuglevel.walkingdinner.planner.team.Team
 import de.debuglevel.walkingdinner.planner.plan.Plan
 import de.debuglevel.walkingdinner.planner.planner.Planner
+import de.debuglevel.walkingdinner.planner.team.Team
 import io.jenetics.EnumGene
 import io.jenetics.Optimize
 import io.jenetics.PartiallyMatchedCrossover
@@ -49,7 +49,7 @@ class GeneticPlanner(private val options: GeneticPlannerOptions) : Planner {
             meetings: $meetings
         """.trimIndent()
 
-        val plan = Plan(UUID.randomUUID(), meetings.toSet(), additionalInformation)
+        val plan = Plan(UUID.randomUUID(), meetings.toSet(), additionalInformation, evolutionResult.bestFitness())
         logger.debug("Planned: $plan")
         return plan
     }

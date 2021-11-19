@@ -9,5 +9,6 @@ data class Plan(
      */
     val id: UUID,
     val meetings: Set<Meeting>,
-    val additionalInformation: String
+    val additionalInformation: String,
+    val fitness: Double,
 )
