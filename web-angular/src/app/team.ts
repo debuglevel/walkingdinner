@@ -16,6 +16,9 @@ export interface Team {
   vegetarianAppetizer: boolean;
   vegetarianMaindish: boolean;
   vegetarianDessert: boolean;
+  pescetarianAppetizer: boolean;
+  pescetarianMaindish: boolean;
+  pescetarianDessert: boolean;
   omnivoreAppetizer: boolean;
   omnivoreMaindish: boolean;
   omnivoreDessert: boolean;

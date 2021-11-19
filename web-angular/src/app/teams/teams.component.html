@@ -116,6 +116,9 @@
             <mat-select #teamDiet>
               <mat-option value="Vegan">Wir essen vegan</mat-option>
               <mat-option value="Vegetarian">Wir essen vegetarisch</mat-option>
+              <mat-option value="Pescetarian"
+                >Wir essen pescetarisch (d.h. auch Fisch)</mat-option
+              >
               <mat-option value="Omnivore"
                 >Wir essen omnivor (d.h. auch Fleisch)</mat-option
               >
@@ -135,6 +138,11 @@
               >
             </li>
             <li>
+              <mat-checkbox #teamPescetarianAppetizer
+                >pescetarischer Appetizer</mat-checkbox
+              >
+            </li>
+            <li>
               <mat-checkbox #teamOmnivoreAppetizer
                 >omnivorer Appetizer</mat-checkbox
               >
@@ -150,6 +158,11 @@
               >
             </li>
             <li>
+              <mat-checkbox #teamPescetarianMaindish
+                >pescetarische Hauptspeise</mat-checkbox
+              >
+            </li>
+            <li>
               <mat-checkbox #teamOmnivoreMaindish
                 >omnivore Hauptspeise</mat-checkbox
               >
@@ -162,6 +175,11 @@
             <li>
               <mat-checkbox #teamVegetarianDessert
                 >vegetarisches Dessert</mat-checkbox
+              >
+            </li>
+            <li>
+              <mat-checkbox #teamPescetarianDessert
+                >pescetarisches Dessert</mat-checkbox
               >
             </li>
             <li>
@@ -196,6 +214,9 @@
             teamVegetarianAppetizer.checked,
             teamVegetarianMaindish.checked,
             teamVegetarianDessert.checked,
+            teamPescetarianAppetizer.checked,
+            teamPescetarianMaindish.checked,
+            teamPescetarianDessert.checked,
             teamOmnivoreAppetizer.checked,
             teamOmnivoreMaindish.checked,
             teamOmnivoreDessert.checked,
