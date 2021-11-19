@@ -2,7 +2,7 @@ package de.debuglevel.walkingdinner.planner.calculation
 
 import java.util.*
 
-data class PostCalculationResponse(
+data class AddCalculationResponse(
     /**
      * UUID of the calculation
      */
