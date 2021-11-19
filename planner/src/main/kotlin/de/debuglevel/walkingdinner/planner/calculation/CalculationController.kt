@@ -28,7 +28,8 @@ class CalculationController(private val calculationService: CalculationService) 
     fun postOne(addCalculationRequest: AddCalculationRequest): GetCalculationResponse {
         logger.debug("Called postOne($addCalculationRequest)")
         val calculation = addCalculationRequest.toCalculation()
-        calculationService.start(calculation)
+        val addedCalculation = calculationService.add(calculation)
+        calculationService.start(addedCalculation.id!!)
         return GetCalculationResponse(calculation)
     }
 }

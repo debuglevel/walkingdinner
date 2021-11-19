@@ -39,14 +39,20 @@ class CalculationService(
         return calculations
     }
 
-    fun start(
-        calculation: Calculation
-    ): Calculation {
+    fun add(calculation: Calculation): Calculation {
         val uuid = UUID.randomUUID()
         calculation.id = uuid
-        logger.debug { "Starting calculation $calculation..." }
+        logger.debug { "Adding calculation $calculation..." }
 
         calculations[uuid] = calculation
+
+        logger.debug { "Added calculation $calculation" }
+        return calculation
+    }
+
+    fun start(id: UUID): Calculation {
+        logger.debug { "Starting calculation $id..." }
+        val calculation = get(id)
 
         val calculatePlanTask = Callable {
             try {
@@ -69,7 +75,7 @@ class CalculationService(
 
         executor.submit(calculatePlanTask)
 
-        logger.debug { "Started calculation $calculation" }
+        logger.debug { "Started calculation $id" }
         return calculation
     }
 
