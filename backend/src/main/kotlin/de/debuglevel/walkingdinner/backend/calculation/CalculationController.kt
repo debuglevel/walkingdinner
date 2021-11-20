@@ -37,22 +37,25 @@ class CalculationController(
             val dinner = dinnerService.get(calculationRequest.dinnerId)
             val teams = dinner.teams.toList()
 
-            val calculation = calculationService.startCalculation(
+            val calculation = calculationService.add(
                 teams,
                 calculationRequest.populationSize,
                 calculationRequest.fitnessThreshold,
                 calculationRequest.steadyFitness
             )
+            calculationService.start(calculation.id!!) // TODO: other thread
             calculation
         } else if (!calculationRequest.surveyfile.isNullOrBlank()) {
             // TODO: as this is just a CSV, we could just transfer it as a String
             val surveyCsv = Base64String(calculationRequest.surveyfile).decodedString
-            val calculation = calculationService.startCalculation(
+            // TODO: is also long running
+            val calculation = calculationService.add(
                 surveyCsv,
                 calculationRequest.populationSize,
                 calculationRequest.fitnessThreshold,
                 calculationRequest.steadyFitness
             )
+            calculationService.start(calculation.id!!) // TODO: other thread
             calculation
         } else {
             throw IllegalArgumentException("dinnerId or surveyfile must be set")

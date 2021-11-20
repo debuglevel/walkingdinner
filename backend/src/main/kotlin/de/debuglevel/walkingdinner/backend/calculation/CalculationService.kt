@@ -98,22 +98,25 @@ open class CalculationService(
     }
 
     @Transactional
-    open fun startCalculation(
+    open fun add(
         surveyCsv: String,
         populationSize: Int,
         fitnessThreshold: Double,
         steadyFitness: Int
     ): Calculation {
+        // TODO: importTeams() is long running and blocking because it fetches Geolocations
         val teams = csvTeamsImporter.importTeams(surveyCsv)
-        return startCalculation(teams, populationSize, fitnessThreshold, steadyFitness)
+        return add(teams, populationSize, fitnessThreshold, steadyFitness)
     }
 
-    fun startCalculation(
+    fun add(
         teams: List<Team>,
         populationSize: Int,
         fitnessThreshold: Double,
         steadyFitness: Int
     ): Calculation {
+        logger.debug { "Adding calculation..." }
+
         // TODO: uses hardcoded coursesNames for now; should be more flexible
         val coursesNames = Courses.coursesNames
         val calculation = Calculation(
@@ -130,14 +133,28 @@ open class CalculationService(
             coursesNames
         )
 
+        val savedCalculation = add(calculation)
+
+        logger.debug { "Added calculation" }
+        return savedCalculation
+    }
+
+    fun add(calculation: Calculation): Calculation {
+        logger.debug { "Adding plan '$calculation'..." }
         val savedCalculation = calculationRepository.save(calculation)
+        logger.debug { "Added plan: $savedCalculation" }
+        return savedCalculation
+    }
+
+    fun start(id: UUID): Calculation {
+        val calculation = this.get(id)
 
         val calculationRequest = CalculationRequest(
-            populationSize = savedCalculation.populationSize,
-            steadyFitness = savedCalculation.steadyFitness,
-            fitnessThreshold = savedCalculation.fitnessThreshold,
-            teams = teams.map { TeamRequest(it) },
-            coursesNames = savedCalculation.coursesNames,
+            populationSize = calculation.populationSize,
+            steadyFitness = calculation.steadyFitness,
+            fitnessThreshold = calculation.fitnessThreshold,
+            teams = calculation.teams.map { TeamRequest(it) },
+            coursesNames = calculation.coursesNames,
         )
 
         logger.debug { "Sending CalculationRequest: $calculationRequest..." }
@@ -145,9 +162,9 @@ open class CalculationService(
         logger.debug { "Received CalculationResponse: $calculationResponse..." }
 
         // TODO: here a save() is needed; I'm not sure why I don't just save() the calculation afterwards...
-        savedCalculation.calculationId = calculationResponse.id
+        calculation.calculationId = calculationResponse.id
 
-        return savedCalculation
+        return calculation
     }
 
     class CalculationNotFoundException(planId: UUID) : Exception("Plan $planId not found")
