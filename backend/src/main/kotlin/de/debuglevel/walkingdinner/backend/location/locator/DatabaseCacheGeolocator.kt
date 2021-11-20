@@ -1,12 +1,9 @@
 package de.debuglevel.walkingdinner.backend.location.locator
 
-import de.debuglevel.walkingdinner.backend.common.geo.GeoUtils
 import de.debuglevel.walkingdinner.backend.location.Location
 import de.debuglevel.walkingdinner.backend.location.LocationService
-import de.debuglevel.walkingdinner.backend.team.Team
 import jakarta.inject.Singleton
 import mu.KotlinLogging
-import java.text.DecimalFormat
 
 @Singleton
 class DatabaseCacheGeolocator(
@@ -42,16 +39,5 @@ class DatabaseCacheGeolocator(
         }
 
         return persistentLocation
-    }
-
-    override fun populateLocation(team: Team) {
-        logger.debug("Geo-locating $team (city '${team.city}', address '${team.address}')...")
-        val location = getLocation(team.address, team.city)
-        team.location = location
-
-        val cityLocation = getLocation(null, team.city)
-
-        val centerDistance = GeoUtils.calculateDistanceInKilometer(cityLocation, location)
-        logger.debug("Geo-located $team ${DecimalFormat("#.##").format(centerDistance)}km from city center")
     }
 }

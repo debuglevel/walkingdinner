@@ -38,7 +38,7 @@ class DatabaseBuilder(private val databaseCacheGeolocator: DatabaseCacheGeolocat
             //.onEach { logger.debug("== Processing: city '${it.city}',\taddress '${it.address}'\t$it") }
             .forEach {
                 //logger.debug("== Processing: city '${it.city}',\taddress '${it.address}'\t$it")
-                databaseCacheGeolocator.populateLocation(it)
+                it.location = databaseCacheGeolocator.getLocation(it.address, it.city)
             }
 
         logger.debug { "Populated team locations" }

@@ -2,12 +2,9 @@ package de.debuglevel.walkingdinner.backend.location.locator
 
 import com.google.maps.GeoApiContext
 import com.google.maps.GeocodingApi
-import de.debuglevel.walkingdinner.backend.common.geo.GeoUtils
 import de.debuglevel.walkingdinner.backend.location.Location
-import de.debuglevel.walkingdinner.backend.team.Team
 import jakarta.inject.Singleton
 import mu.KotlinLogging
-import java.text.DecimalFormat
 
 // TODO: does probably not really work anymore; should be aligned to NominatimApiGeolocator
 @Singleton
@@ -45,16 +42,5 @@ class GoogleApiGeolocator(private val city: String) : Geolocator {
             result.geometry.location.lng,
             result.geometry.location.lat
         )
-    }
-
-    override fun populateLocation(team: Team) {
-        logger.debug("Geo-locating $team...")
-
-        val location = getLocation(team.address, team.city)
-        team.location = location
-
-        val distanceToCity = GeoUtils.calculateDistanceInKilometer(cityLocation, location)
-
-        logger.debug("Geo-located $team ${DecimalFormat("#.##").format(distanceToCity)}km from city center")
     }
 }

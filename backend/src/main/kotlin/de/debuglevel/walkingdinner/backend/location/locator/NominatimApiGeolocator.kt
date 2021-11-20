@@ -1,15 +1,12 @@
 package de.debuglevel.walkingdinner.backend.location.locator
 
-import de.debuglevel.walkingdinner.backend.common.geo.GeoUtils
 import de.debuglevel.walkingdinner.backend.location.Location
-import de.debuglevel.walkingdinner.backend.team.Team
 import fr.dudie.nominatim.client.JsonNominatimClient
 import fr.dudie.nominatim.client.request.NominatimSearchRequest
 import fr.dudie.nominatim.model.Address
 import jakarta.inject.Singleton
 import mu.KotlinLogging
 import org.apache.http.impl.client.HttpClientBuilder
-import java.text.DecimalFormat
 import kotlin.concurrent.withLock
 
 @Singleton
@@ -39,19 +36,6 @@ class NominatimApiGeolocator : Geolocator {
 
         logger.debug { "Got location for address '$address' in city '$city': $location" }
         return location
-    }
-
-    override fun populateLocation(team: Team) {
-        logger.debug("Geo-locating team '$team'...")
-
-        val location = getLocation(team.address, team.city)
-        team.location = location
-
-        val cityLocation = getLocation(null, team.city)
-
-        val distanceToCity = GeoUtils.calculateDistanceInKilometer(cityLocation, location)
-
-        logger.debug("Geo-located team '$team' ${DecimalFormat("#.##").format(distanceToCity)}km from city center")
     }
 
     private fun buildNominatimClient(): JsonNominatimClient {
