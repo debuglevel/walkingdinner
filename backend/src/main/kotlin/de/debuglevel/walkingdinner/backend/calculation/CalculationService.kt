@@ -104,10 +104,8 @@ open class CalculationService(
         fitnessThreshold: Double,
         steadyFitness: Int
     ): Calculation {
-        val teams = csvTeamsImporter.getTeams(surveyCsv)
-        val savedTeams = teams.map { teamService.save(it) }
-
-        return startCalculation(savedTeams, populationSize, fitnessThreshold, steadyFitness)
+        val teams = csvTeamsImporter.importTeams(surveyCsv)
+        return startCalculation(teams, populationSize, fitnessThreshold, steadyFitness)
     }
 
     fun startCalculation(
