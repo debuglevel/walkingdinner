@@ -5,7 +5,7 @@ import de.debuglevel.walkingdinner.backend.team.Team
 /**
  * Imports [Team]s.
  */
-interface TeamImporter {
+interface TeamsImporter {
     /**
      * Imports the [Team]s.
      */

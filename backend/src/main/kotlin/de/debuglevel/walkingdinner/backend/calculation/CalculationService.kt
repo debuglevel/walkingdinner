@@ -99,13 +99,13 @@ open class CalculationService(
 
     @Transactional
     open fun startCalculation(
-        surveyfile: String,
+        surveyCsv: String,
         populationSize: Int,
         fitnessThreshold: Double,
         steadyFitness: Int
     ): Calculation {
-        val database = databaseBuilder.build(surveyfile)
-        val savedTeams = database.teams.map { teamService.save(it) }
+        val teams = databaseBuilder.getTeams(surveyCsv)
+        val savedTeams = teams.map { teamService.save(it) }
 
         return startCalculation(savedTeams, populationSize, fitnessThreshold, steadyFitness)
     }

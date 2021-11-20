@@ -44,7 +44,7 @@ class DatabaseCacheGeolocator(
         return persistentLocation
     }
 
-    override fun initializeTeamLocation(team: Team) {
+    override fun populateLocation(team: Team) {
         logger.debug("Geo-locating $team (city '${team.city}', address '${team.address}')...")
         val location = getLocation(team.address, team.city)
         team.location = location

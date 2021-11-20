@@ -2,13 +2,13 @@ package de.debuglevel.walkingdinner.backend.team.importer.csv
 
 import com.opencsv.bean.CsvToBeanBuilder
 import de.debuglevel.walkingdinner.backend.team.Team
-import de.debuglevel.walkingdinner.backend.team.importer.TeamImporter
+import de.debuglevel.walkingdinner.backend.team.importer.TeamsImporter
 import mu.KotlinLogging
 
 /**
  * Imports [Team]s from a [csv] string.
  */
-class CsvTeamImporter(private val csv: String) : TeamImporter {
+class CsvTeamsImporter(private val csv: String) : TeamsImporter {
     private val logger = KotlinLogging.logger {}
 
     override fun import(): List<Team> {

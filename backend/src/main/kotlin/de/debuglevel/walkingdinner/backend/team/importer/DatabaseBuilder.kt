@@ -2,45 +2,45 @@ package de.debuglevel.walkingdinner.backend.team.importer
 
 import de.debuglevel.walkingdinner.backend.location.locator.DatabaseCacheGeolocator
 import de.debuglevel.walkingdinner.backend.team.Team
-import de.debuglevel.walkingdinner.backend.team.importer.csv.CsvTeamImporter
+import de.debuglevel.walkingdinner.backend.team.importer.csv.CsvTeamsImporter
 import jakarta.inject.Singleton
 import mu.KotlinLogging
 
+/**
+ * @implNote Seems to be used when uploading a CSV and everything must be initialized first.
+ */
 @Singleton
-class DatabaseBuilder(private val databasecacheGeolocator: DatabaseCacheGeolocator) {
+class DatabaseBuilder(private val databaseCacheGeolocator: DatabaseCacheGeolocator) {
     private val logger = KotlinLogging.logger {}
 
-    fun build(csv: String): Database {
-        logger.debug { "Building database..." }
+    /**
+     * Read [Team]s from the [csv] and initialize their Locations.
+     */
+    fun getTeams(csv: String): List<Team> {
+        logger.debug { "Getting teams..." }
 
-        val teams = initializeTeams(csv)
-        val database = Database(teams)
+        // Read/Import teams from the CSV
+        val teams = CsvTeamsImporter(csv).import()
+        populateTeamLocations(teams)
 
-        logger.debug { "Built database" }
-        return database
-    }
-
-    private fun initializeTeams(csv: String): List<Team> {
-        logger.debug { "Initializing teams..." }
-
-        val teams = CsvTeamImporter(csv).import()
-        initializeTeamLocations(teams)
-
-        logger.debug { "Initialized teams" }
+        logger.debug { "Got ${teams.count()} teams" }
         return teams
     }
 
-    private fun initializeTeamLocations(teams: List<Team>) {
-        logger.debug { "Initializing team locations..." }
+    /**
+     * Populates the [Team]s' Locations by their provided address.
+     */
+    private fun populateTeamLocations(teams: List<Team>) {
+        logger.debug { "Populating team locations..." }
 
         teams
             //.parallelStream()
             //.onEach { logger.debug("== Processing: city '${it.city}',\taddress '${it.address}'\t$it") }
             .forEach {
                 //logger.debug("== Processing: city '${it.city}',\taddress '${it.address}'\t$it")
-                databasecacheGeolocator.initializeTeamLocation(it)
+                databaseCacheGeolocator.populateLocation(it)
             }
 
-        logger.debug { "Initialized team locations" }
+        logger.debug { "Populated team locations" }
     }
 }

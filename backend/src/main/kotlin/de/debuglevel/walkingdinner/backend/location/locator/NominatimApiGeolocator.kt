@@ -41,7 +41,7 @@ class NominatimApiGeolocator : Geolocator {
         return location
     }
 
-    override fun initializeTeamLocation(team: Team) {
+    override fun populateLocation(team: Team) {
         logger.debug("Geo-locating team '$team'...")
 
         val location = getLocation(team.address, team.city)

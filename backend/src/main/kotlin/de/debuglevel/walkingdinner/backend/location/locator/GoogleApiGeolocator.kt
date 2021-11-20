@@ -47,7 +47,7 @@ class GoogleApiGeolocator(private val city: String) : Geolocator {
         )
     }
 
-    override fun initializeTeamLocation(team: Team) {
+    override fun populateLocation(team: Team) {
         logger.debug("Geo-locating $team...")
 
         val location = getLocation(team.address, team.city)
