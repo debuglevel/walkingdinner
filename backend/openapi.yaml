@@ -331,41 +331,57 @@ components:
       properties:
         id:
           type: string
+          description: UUID of the calculation
           format: uuid
           nullable: true
         finished:
           type: boolean
+          description: Whether the calculation of the plan has finished or is still
+            in progress
         populationSize:
           type: integer
+          description: Size of the population (for calculation with Genetic Algorithm)
           format: int32
         fitnessThreshold:
           type: number
+          description: "Fitness level to beat (minimization problem, i.e. fitness\
+            \ must be less than this threshold) (for calculation with Genetic Algorithm)"
           format: double
         steadyFitness:
           type: integer
+          description: Number of generations with constant fitness level to stop further
+            calculations (for calculation with Genetic Algorithm)
           format: int32
         plan:
           allOf:
             - $ref: '#/components/schemas/Plan'
-            - nullable: true
+            - description: "The plan, once it is calculated"
+              nullable: true
         teams:
           type: array
+          description: Teams to calculate into the plan
           items:
             $ref: '#/components/schemas/Team'
         calculationId:
           type: string
+          description: ID on calculation microservices
           format: uuid
           nullable: true
         begin:
           type: string
+          description: When the calculation began
           format: date-time
           nullable: true
         end:
           type: string
+          description: When the calculation finished
           format: date-time
           nullable: true
         coursesNames:
           type: array
+          description: |-
+            Courses in the event
+             TODO: might be stored in a better way
           items:
             type: string
     CalculationRequest:
@@ -377,15 +393,21 @@ components:
       properties:
         surveyfile:
           type: string
+          description: Survey data as CSV to base the calculation on
           nullable: true
         populationSize:
           type: integer
+          description: Size of the population (for calculation with Genetic Algorithm)
           format: int32
         fitnessThreshold:
           type: number
+          description: "Fitness level to beat (minimization problem, i.e. fitness\
+            \ must be less than this threshold) (for calculation with Genetic Algorithm)"
           format: double
         steadyFitness:
           type: integer
+          description: Number of generations with constant fitness level to stop further
+            calculations (for calculation with Genetic Algorithm)
           format: int32
         dinnerId:
           type: string
@@ -402,28 +424,39 @@ components:
       properties:
         id:
           type: string
+          description: UUID of the calculation
           format: uuid
         finished:
           type: boolean
+          description: Whether the calculation of the plan has finished or is still
+            in progress
         populationSize:
           type: integer
+          description: Size of the population (for calculation with Genetic Algorithm)
           format: int32
         fitnessThreshold:
           type: number
+          description: "Fitness level to beat (minimization problem, i.e. fitness\
+            \ must be less than this threshold) (for calculation with Genetic Algorithm)"
           format: double
         steadyFitness:
           type: integer
+          description: Number of generations with constant fitness level to stop further
+            calculations (for calculation with Genetic Algorithm)
           format: int32
         planId:
           type: string
+          description: "UUID of the plan, once it is calculated"
           format: uuid
           nullable: true
         begin:
           type: string
+          description: When the calculation began
           format: date-time
           nullable: true
         end:
           type: string
+          description: When the calculation finished
           format: date-time
           nullable: true
     Cook:
@@ -609,7 +642,11 @@ components:
           format: uuid
           nullable: true
         cookingTeam:
-          $ref: '#/components/schemas/Team'
+          allOf:
+            - $ref: '#/components/schemas/Team'
+            - description: |-
+                Gets the team which is cooking in this meeting.
+                 The cooking team is defined as the first one in the list.
     Name:
       required:
         - abbreviatedName
