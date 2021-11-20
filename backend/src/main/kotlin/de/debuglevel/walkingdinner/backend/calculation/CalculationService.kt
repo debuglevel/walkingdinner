@@ -9,7 +9,7 @@ import de.debuglevel.walkingdinner.backend.plan.PlanService
 import de.debuglevel.walkingdinner.backend.plan.client.PlanClient
 import de.debuglevel.walkingdinner.backend.team.Team
 import de.debuglevel.walkingdinner.backend.team.TeamService
-import de.debuglevel.walkingdinner.backend.team.importer.DatabaseBuilder
+import de.debuglevel.walkingdinner.backend.team.importer.csv.CsvTeamsImporter
 import io.micronaut.http.client.exceptions.HttpClientResponseException
 import jakarta.inject.Singleton
 import mu.KotlinLogging
@@ -22,7 +22,7 @@ open class CalculationService(
     private val planClient: PlanClient,
     private val planService: PlanService,
     private val teamService: TeamService,
-    private val databaseBuilder: DatabaseBuilder,
+    private val csvTeamsImporter: CsvTeamsImporter,
     private val calculationRepository: CalculationRepository
 ) {
     private val logger = KotlinLogging.logger {}
@@ -104,7 +104,7 @@ open class CalculationService(
         fitnessThreshold: Double,
         steadyFitness: Int
     ): Calculation {
-        val teams = databaseBuilder.getTeams(surveyCsv)
+        val teams = csvTeamsImporter.getTeams(surveyCsv)
         val savedTeams = teams.map { teamService.save(it) }
 
         return startCalculation(savedTeams, populationSize, fitnessThreshold, steadyFitness)
