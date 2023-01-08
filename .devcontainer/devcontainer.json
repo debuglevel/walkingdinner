@@ -18,6 +18,10 @@
 		"8080": {
 			"label": "backend",
 			"onAutoForward": "ignore"  // As at best it shows 404 at the root path
+			},
+		"4200": {
+			"label": "frontend",
+			"onAutoForward": "openBrowser"
 			}
 		},
 
@@ -33,7 +37,8 @@
 	//"postAttachCommand": "echo '🐧 postAttachCommand' && date",
 	//"postAttachCommand": "date && echo '🐧 Building and running...' && ./gradlew run",
 	"postAttachCommand": {
-		"backend": "date && echo '🐧 Building and running backend...' && ./gradlew run"
+		"backend": "date && echo '🐧 Building and running backend...' && ./gradlew run",
+		"frontend": "date && echo '🐧 Building and running frontend...' && cd web-angular && echo '🐧 Installing dependencies...' && npm install && echo '🐧 Building and running...' && npm start"
 		//"db": ["mysql", "-u", "root", "-p", "my database"]
 	},
 
