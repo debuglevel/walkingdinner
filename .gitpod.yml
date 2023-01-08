@@ -4,27 +4,27 @@ image:
 tasks:
   - name: Backend
     init: |
-      echo === INIT
-      ./gradlew :rest:build
-      echo === INIT DONE
+      echo = GitPod Tasks -> Backend -> Init
+      ./gradlew :backend:build
+      echo = GitPod Tasks -> Backend -> Init done
     command: |
-      echo === COMMAND
-      MICRONAUT_ENVIRONMENTS=dev ./gradlew :rest:run
-      echo === COMMAND DONE
+      echo = GitPod Tasks -> Backend -> Command
+      MICRONAUT_ENVIRONMENTS=dev ./gradlew :backend:run
+      echo = GitPod Tasks -> Backend -> Command done
   # - name: Planner
   #   init: ./gradlew :planner:build
   #   command: ./gradlew :planner:run
   - name: Angular
     init: |
-      echo === INIT
+      echo = GitPod Tasks -> Angular -> Init
       cd /workspace/walkingdinner/web-angular
       npm install
-      echo === INIT DONE
+      echo = GitPod Tasks -> Angular -> Init done
     command: |
-      echo === COMMAND
+      echo = GitPod Tasks -> Angular -> Command
       cd /workspace/walkingdinner/web-angular
       npm start
-      echo === COMMAND DONE
+      echo = GitPod Tasks -> Angular -> Command done
 
 ports:
   # Backend
