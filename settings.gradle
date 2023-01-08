@@ -42,7 +42,7 @@ println("settings.gradle: Including 'planner' subproject...")
 include 'planner'
 //include 'models'
 
-// only include 'web-angular' project in Linux, as the node plugin fails in Windows
+// only include 'web-angular' project in Linux, as the node plugin fails on Windows
 import org.gradle.internal.os.OperatingSystem
 println("settings.gradle: Checking if operating system is Linux...")
 println("settings.gradle: OperatingSystem.current() = " + OperatingSystem.current())
