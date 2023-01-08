@@ -37,7 +37,9 @@
 	//"postAttachCommand": "echo '🐧 postAttachCommand' && date",
 	//"postAttachCommand": "date && echo '🐧 Building and running...' && ./gradlew run",
 	"postAttachCommand": {
-		"backend": "date && echo '🐧 Building and running backend...' && ./gradlew run",
+		"backend": "date && echo '🐧 Building and running backend...' && ./gradlew :backend:run",
+		"planner": "date && echo '🐧 Building and running planner...' && ./gradlew :planner:run",
+		// TODO: Frontend still points to localhost:8081; API_URL env for docker container does not help, as it is a envsubst thingy.
 		"frontend": "date && echo '🐧 Building and running frontend...' && cd web-angular && echo '🐧 Installing dependencies...' && npm install && echo '🐧 Building and running...' && npm start"
 		//"db": ["mysql", "-u", "root", "-p", "my database"]
 	},
