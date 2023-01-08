@@ -251,9 +251,7 @@ release {
     failOnCommitNeeded = true // fail because changed files would be committed automatically
     failOnUnversionedFiles = false // don't fail because unversioned files would not be committed automatically
     git {
-        // depends on old vs. new default branch
-        requireBranch = 'master'
-        // requireBranch = 'main'
+        requireBranch.set('/master|main/')
     }
 }
 

@@ -8,7 +8,7 @@ buildscript {
 }
 
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version "1.5.31" apply false
+    id 'org.jetbrains.kotlin.jvm' version "1.7.21" apply false
 
 //    // Release version with "gradle release"
     id 'net.researchgate.release'
@@ -20,4 +20,5 @@ release {
     failOnUnversionedFiles = false
 }
 // needed by release plugin for a root project without own build task
-task build {}
+// Removed on 2023-01-08 because gradle complained "Cannot add task 'build' as a task with that name already exists."
+//task build {}
