@@ -1,6 +1,8 @@
 plugins {
   // java is needed for jar/zip
   id 'java'
+  
+  // TODO: Does not work with Gradle 7 anymore.
   id "com.moowork.node" version "1.3.1"
 }
 

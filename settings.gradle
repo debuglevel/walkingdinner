@@ -42,13 +42,14 @@ println("settings.gradle: Including 'planner' subproject...")
 include 'planner'
 //include 'models'
 
-// only include 'web-angular' project in Linux, as the node plugin fails on Windows
-import org.gradle.internal.os.OperatingSystem
-println("settings.gradle: Checking if operating system is Linux...")
-println("settings.gradle: OperatingSystem.current() = " + OperatingSystem.current())
-if (OperatingSystem.current().isLinux()) {
-    println("settings.gradle: Including 'web-angular' subproject on Linux...")
-    include 'web-angular'
-} else {
-    println("settings.gradle: Skipping 'web-angular' subproject on Windows...")
-}
+// TODO: Does not work with Gradle 7 anymore.
+// // only include 'web-angular' project in Linux, as the node plugin fails on Windows
+// import org.gradle.internal.os.OperatingSystem
+// println("settings.gradle: Checking if operating system is Linux...")
+// println("settings.gradle: OperatingSystem.current() = " + OperatingSystem.current())
+// if (OperatingSystem.current().isLinux()) {
+//     println("settings.gradle: Including 'web-angular' subproject on Linux...")
+//     include 'web-angular'
+// } else {
+//     println("settings.gradle: Skipping 'web-angular' subproject on Windows...")
+// }
